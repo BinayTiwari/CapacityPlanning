@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capacity Planning :: New Joiners</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <style type="text/css">
+    body {
+    
+    } .modal-confirm {
+    color: #636363;
+    width: 400px;
+    }
+    .modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    }
+    .modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+    }
+    .modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -10px;
+    }
+    .modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    }
+    .modal-confirm .modal-body {
+    color: #999;
+    }
+    .modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 15px 25px;
+    }
+    .modal-confirm .modal-footer a {
+    color: #999;
+    }
+    .modal-confirm .icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 9;
+    text-align: center;
+    border: 3px solid #f15e5e;
+    }
+    .modal-confirm .icon-box i {
+    color: #f15e5e;
+    font-size: 46px;
+    display: inline-block;
+    margin-top: 13px;
+    }
+    .modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
+    }
+    .modal-confirm .btn-info {
+    background: #c1c1c1;
+    }
+    .modal-confirm .btn-info:hover, .modal-confirm .btn-info:focus {
+    background: #a8a8a8;
+    }
+    .modal-confirm .btn-danger {
+    background: #f15e5e;
+    }
+    .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+    background: #ee3535;
+    }
+    .trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <!-- Logo -->
+            <div class="logo">
+              <a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+              
+              <!--<h1><a href="index.html">Capacity Planning</a></h1>-->
+              
+            </div>
+          </div>
+          <div class="col-md-5 pull-right">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="input-group form">
+                  <br>
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <br>
+                    <button class="btn btn-primary" type="button">Search</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="col-md-2">
+            <div class="navbar navbar-default bg-light" role="banner">
+              <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+          <ul class="nav">
+            <!-- Main menu -->
+            <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+            <li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+            <li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+            <li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i> Priotize/Allocate Resource</a></li>
+            
+            <li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+            
+            <li><a href="generate_report.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+            
+            
+            
+            
+            
+          </ul>
+        </div>
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          
+          
+          <li class="breadcrumb-item active" aria-current="page">New Joiners</li>
+        </ol>
+      </nav>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="content-box-large">
+              <div class="panel-heading">
+                <div class="panel-title"> New Joiners </div>
+                <a href="addNewJoiners.html">
+                  <button style="float: right;" class="btn btn-success btn-md">Add New Joiner</button>
+                </a>
+                
+                
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      
+                      <th>Name</th>
+                      <th>Designation</th>
+                      <th>Joining Date</th>
+                      <th>Location</th>
+                      <th>Account</th>
+                      <th>Skill</th>
+                      <th>Experience</th>
+                      
+                      
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ankit Gupta</td>
+                      <td>Senior Technical Consultant</td>
+                      <td>22-jan-2018</td>
+                      <td>Gurgaon</td>
+                      <td>Oman Arab Bank</td>
+                      <td>RPA</td>
+                      <td>NA</td>
+                      
+                      
+                      <td>
+                        <a href="edit_new_joinings.html"><img src="images/user_edit.png"></a></td>
+                        <td>
+                          <a href="#myModal"  data-toggle="modal"><img src="images/trash.png"></td></a>
+                          
+                        </tr>
+                      </tr>
+                      <tr>
+                        <td>Rahul Chaurasia </td>
+                        <td>Intern</td>
+                        <td>08-jan-2018</td>
+                        <td>Gurgaon</td>
+                        <td>FADV</td>
+                        <td>RPA</td>
+                        <td>NA</td>
+                        
+                        
+                        <td><a href="edit_new_joinings.html"><img src="images/user_edit.png"></a></td>
+                        <td>
+                          <a href="#myModal"  data-toggle="modal"><img src="images/trash.png"></td></a>
+                          
+                        </tr>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <td>Anshuman Rai</td>
+                        <td>Junior Technical Consultant</td>
+                        <td>08-jan-2018</td>
+                        <td>Gurgaon</td>
+                        <td>UHG</td>
+                        <td>RPA</td>
+                        <td>NA</td>
+                        
+                        
+                        <td><a href="edit_new_joinings.html"><img src="images/user_edit.png"></a></td>
+                        <td>
+                          <a href="#myModal"  data-toggle="modal"><img src="images/trash.png"></td></a>
+                          
+                        </tr>
+                      </tr>
+                    </tr>
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination pull-right">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+                <div id="myModal" class="modal fade">
+                  <div class="modal-dialog modal-confirm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <div class="icon-box">
+                          <i class="material-icons">&#xE5CD;</i>
+                        </div>
+                        <h4 class="modal-title">Are you sure?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        
+        <div class="copy text-center">
+          Copyright 2014 <a href='#'>Website</a>
+        </div>
+        
+      </div>
+    </footer>
+    <link href="vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables/dataTables.bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/tables.js"></script>
+  </body>
+</html>

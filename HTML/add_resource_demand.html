@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Capacity Planning</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- styles -->
+		<link href="css/styles.css" rel="stylesheet">
+		<style>
+			AndaleMono, monospace;
+		color: #fff;
+		padding: 50px;
+		width: 300px;
+		margin: 0 auto;
+		
+		}
+		.dropdown {
+		display: inline-block;
+		position: relative;
+		
+		transform: translateY(-50%);
+		}
+		
+		.dropdown dd,
+		.dropdown dt {
+		margin: 0px;
+		padding: 0px;
+		}
+		.dropdown ul {
+		margin: -1px 0 0 0;
+		}
+		.dropdown dd {
+		position: relative;
+		}
+		.dropdown a,
+		.dropdown a:visited {
+		color: black;
+		text-decoration: none;
+		outline: none;
+		font-size: 12px;
+		}
+		.dropdown dt a {
+		
+		display: block;
+		padding: 8px 20px 5px 10px;
+		
+		
+		
+		border: 2px;
+		
+		}
+		.dropdown dt a span,
+		.multiSel span {
+		cursor: pointer;
+		display: inline-block;
+		padding: 0 3px 2px 0;
+		}
+		.dropdown dd ul {
+		z-index: 5000;
+		border: 0;
+		color: black;
+		background-color: white;
+		display: none;
+		left: 0px;
+		padding: 2px 15px 2px 5px;
+		position: absolute;
+		top: 2px;
+		width: 350px;
+		list-style: none;
+		
+		
+		}
+		.dropdown span.value {
+		display: none;
+		}
+		.dropdown dd ul li a {
+		padding: 5px;
+		display: block;
+		}
+		.dropdown dd ul li a:hover {
+		background-color: #fff;
+		}
+		</style>
+		
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Logo -->
+						<div class="logo">
+							<a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+							
+							
+						</div>
+					</div>
+					<div class="col-md-5 pull-right">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="input-group form">
+									<br>
+									<input type="text" class="form-control" placeholder="Search...">
+									<span class="input-group-btn">
+										<br>
+										<button class="btn btn-primary" type="button">Search</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-2">
+						<div class="navbar navbar-default bg-light" role="banner">
+							<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="sidebar content-box" style="display: block;">
+					<ul class="nav">
+						<!-- Main menu -->
+						<li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+						<li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+						<li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+						<li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i> Priotize/Allocate Resource</a></li>
+						<li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+						<li><a href="generate_report.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+					</ul>
+				</div>
+			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item "><a href="resource_demand.html"> Resource Demand</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Add Resource Demand</li>
+				</ol>
+			</nav>
+			<div class="col-md-10 panel-info">
+				<div class="row">
+					<div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+						<div class="panel-title ">Resource Demand</div>
+					</div>
+					<div class="content-box-large box-with-header">
+						<div>
+							<div class="row">
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Account</option>
+										<option>Oman Arab Bank</option>
+										<option>Etisalat</option>
+										<option>EMAAR</option>
+										<option>Dubai Health Authority</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Region</option>
+										<option>MENA</option>
+										
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Country</option>
+										<option>India</option>
+										<option>Oman</option>
+										<option>Malaysia</option>
+										<option>West Indies</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select City</option>
+										<option>Varanasi</option>
+										<option>Allabhad</option>
+										<option>Lucknow</option>
+										<option>Gurgaon</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Opportunity Type</option>
+										<option>RA</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Sales Stage</option>
+										<option>Suspect</option>
+										<option>Prospect</option>
+										<option>Confirmed</option>
+										
+									</select>
+								</div>
+								
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-4">
+									<input type="text" class="form-control" placeholder="Process Name">
+								</div>
+								<br>
+								<br>
+								<br>
+								<br>
+								<table class="table table-bordered table-hover" id="tab_logic">
+									<thead>
+										<tr>
+											<th class="text-center">
+												#
+											</th>
+											<th class="text-center">
+												Resource Type
+											</th>
+											<th class="text-center">
+												No of Resources
+											</th>
+											<th class="text-center">
+												Tool/Domain Knowledge
+											</th>
+											<th class="text-center">
+												Start Date
+											</th>
+											<th class="text-center">
+												End Date
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr id='addr0'>
+											<td>
+												1
+											</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option>Resource Type</option>
+													<option>Technical Consultant</option>
+													<option>Business Analyst</option>
+													<option>Project Manager</option>
+													
+												</select>
+											</td>
+											<td>
+												<input type="number" name='mail0' placeholder='No of Resources' class="form-control"/>
+											</td>
+											<td>
+												<div class="row">
+													
+													<dl class="dropdown col-sm-12">
+														
+														<dt  class="form-control">
+														<a >
+															<span class="hida">Select Skills</span>
+															<p class="multiSel"></p>
+														</a>
+														</dt>
+														
+														<dd>
+														
+														<div class="mutliSelect">
+															<ul>
+																<li>
+																	<input type="checkbox" value="UiPath" />&nbsp;  UiPath</li>
+																	<li>
+																		<input type="checkbox" value="C#" />&nbsp;  C#</li>
+																		<li>
+																			<input type="checkbox" value="SQL" />&nbsp;  SQL</li>
+																			<li>
+																				<input type="checkbox" value="ASP .Net" />&nbsp;  ASP .Net</li>
+																				
+																			</ul>
+																		</div>
+																		</dd>
+																		
+																	</dl>
+																	
+																</div>
+															</td>
+															<td>
+																<input type="date" name='mobile0' placeholder='From' class="form-control"/>
+															</td>
+															<td>
+																<input type="date" name='mobil0' placeholder='To' class="form-control"/>
+															</td>
+														</tr>
+														<tr id='addr1'>
+															<td>
+																2
+															</td>
+															<td>
+																<select class="form-control" id="sel1">
+																	<option>Resource Type</option>
+																	<option>Technical Consultant</option>
+																	<option>Business Analyst</option>
+																	<option>Project Manager</option>
+																	
+																</select>
+															</td>
+															<td>
+																<input type="number" name='mail0' placeholder='No of Resources' class="form-control"/>
+															</td>
+															<td>
+																<input type="text" name='mail0' placeholder='Tool/Domain Knowledge' class="form-control"/>
+															</td>
+															<td>
+																<input type="date" name='mobile0' placeholder='From' class="form-control"/>
+															</td>
+															<td>
+																<input type="date" name='mobil0' placeholder='To' class="form-control"/>
+															</td>
+														</tr>
+														<tr id='addr2'>
+															<td>
+																3
+															</td>
+															<td>
+																<select class="form-control" id="sel1">
+																	<option>Resource Type</option>
+																	<option>Technical Consultant</option>
+																	<option>Business Analyst</option>
+																	<option>Project Manager</option>
+																	
+																</select>
+															</td>
+															<td>
+																<input type="number" name='mail0' placeholder='No of Resources' class="form-control"/>
+															</td>
+															<td>
+																<input type="text" name='mail0' placeholder='Tool/Domain Knowledge' class="form-control"/>
+															</td>
+															<td>
+																<input type="date" name='mobile0' placeholder='From' class="form-control"/>
+															</td>
+															<td>
+																<input type="date" name='mobil0' placeholder='To' class="form-control"/>
+															</td>
+														</tr>
+													<tr id='addr3'></tr>
+												</tbody>
+											</table>
+											<div class="row">
+												
+												
+												<div class="col-sm-1">
+													<a id="add_row" class="btn btn-primary pull-left">Add Row</a>
+													
+												</div>
+												<div class="col-sm-2">
+													<a id='delete_row' class="pull-left btn btn-danger">Delete Row</a>
+												</div>
+												<div class="col-sm-9">
+													<a id='delete_row' class="pull-right btn-success  btn btn-default">Save</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<footer>
+					<div class="container">
+						
+						<div class="copy text-center">
+							Copyright 2014 <a href='#'>Website</a>
+						</div>
+						
+					</div>
+				</footer>
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				<script src="https://code.jquery.com/jquery.js"></script>
+				<!-- jQuery UI -->
+				<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+				<!-- Include all compiled plugins (below), or include individual files as needed -->
+				<script src="bootstrap/js/bootstrap.min.js"></script>
+				<script src="vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
+				<script src="vendors/select/bootstrap-select.min.js"></script>
+				<script src="vendors/tags/js/bootstrap-tags.min.js"></script>
+				<script src="vendors/mask/jquery.maskedinput.min.js"></script>
+				<script src="vendors/moment/moment.min.js"></script>
+				<script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+				<!-- bootstrap-datetimepicker -->
+				<link href="vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
+				<script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+				<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+				<script src="js/custom.js"></script>
+				<script src="js/dynamic_demand.js"></script>
+				<script src="js/forms.js"></script>
+				<script >
+				$(".dropdown dt a").on('click', function() {
+				$(".dropdown dd ul").slideToggle('fast');
+				});
+				$(".dropdown dd ul li a").on('click', function() {
+				$(".dropdown dd ul").hide();
+				});
+				function getSelectedValue(id) {
+				return $("#" + id).find("dt a span.value").html();
+				}
+				$(document).bind('click', function(e) {
+				var $clicked = $(e.target);
+				if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+				});
+				$('.mutliSelect input[type="checkbox"]').on('click', function() {
+				var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+				title = $(this).val() + ",";
+				if ($(this).is(':checked')) {
+				var html = '<span title="' + title + '">' + title + '</span>';
+				$('.multiSel').append(html);
+				$(".hida").hide();
+				} else {
+				$('span[title="' + title + '"]').remove();
+				var ret = $(".hida");
+				$('.dropdown dt a').append(ret);
+				}
+				});
+				</script>
+			</body>
+		</html>

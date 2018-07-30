@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Capacity Planning</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- styles -->
+		<link href="css/styles.css" rel="stylesheet">
+		
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Logo -->
+						<div class="logo">
+							<a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+							
+							<!--<h1><a href="index.html">Capacity Planning</a></h1>-->
+							
+						</div>
+					</div>
+					
+					
+					<div class="col-md-2">
+						<div class="navbar navbar-default bg-light" role="banner">
+							<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+								
+								
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="sidebar content-box" style="display: block;">
+						<ul class="nav">
+							<!-- Main menu -->
+							<li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+							<li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+							<li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+							<li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i>Priotize/Allocate Resource</a></li>
+							
+							<li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+							
+							<li><a href="generate_report.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+							
+							
+						</ul>
+					</div>
+				</div>
+				
+				
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+						
+						<li class="breadcrumb-item "><a href="resource_demand.html"> Resource Demand</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Edit Resource Demand</li>
+					</ol>
+				</nav>
+				<div class="col-md-10 panel-info">
+					<div class="row">
+						<div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+							<div class="panel-title ">Edit Resource Demand</div>
+							
+							
+						</div>
+						<div class="content-box-large box-with-header">
+							<div>
+								
+								
+								
+								<div class="row">
+									<div class="col-sm-4">
+										<label >Account</label>
+										<select class="form-control" id="sel1">
+											
+											<option>Oman Arab Bank</option>
+											<option>Etisalat</option>
+											<option>EMAAR</option>
+											<option>Dubai Health Authority</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<label >Region</label>
+										<select class="form-control" id="sel1">
+											
+											<option>MENA</option>
+											
+										</select>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-sm-4">
+										<label >Country</label>
+										<select class="form-control" id="sel1">
+											<option>Oman</option>
+											<option>India</option>
+											
+											<option>Malaysia</option>
+											<option>West Indies</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<label >City</label>
+										<select class="form-control" id="sel1">
+											
+											<option>Varanasi</option>
+											<option>Allabhad</option>
+											<option>Lucknow</option>
+											<option>Gurgaon</option>
+										</select>
+									</div>
+									
+									
+								</div>
+								<br>
+								
+								<div class="row">
+									
+									
+									<div class="col-sm-4">
+										<label >Opportunity Type</label>
+										<select class="form-control" id="sel1">
+											
+											<option>Resource Augmentation</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<label >Sales Stage</label>
+										<select class="form-control" id="sel1">
+											
+											<option>Suspect</option>
+											<option>Prospect</option>
+											<option>Confirmed</option>
+											
+										</select>
+									</div>
+									
+								</div>
+								<br>
+								<div class="row">
+									
+									
+									<div class="col-sm-4">
+										<label >Process Name</label>
+										<input type="text" value=" Still to be determined" class="form-control" placeholder="Process Name">
+									</div>
+									
+									<br>
+									<br>
+									<br>
+									<br>
+									
+									<table class="table table-bordered table-hover" id="tab_logic">
+										<thead>
+											<tr>
+												<th class="text-center">
+													#
+												</th>
+												<th class="text-center">
+													Resource Type
+												</th>
+												<th class="text-center">
+													No of Resources
+												</th>
+												<th class="text-center">
+													Tool/Domain Knowledge
+												</th>
+												<th class="text-center">
+													Start Date
+												</th>
+												<th class="text-center">
+													End Date
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id='addr0'>
+												<td>
+													1
+												</td>
+												<td>
+													<select class="form-control" id="sel1">
+														<
+														<option>Technical Consultant</option>
+														<option>Business Analyst</option>
+														<option>Project Manager</option>
+														
+													</select>
+												</td>
+												<td>
+													<input type="number" value="5" name='mail0' placeholder='No of Resources' class="form-control"/>
+												</td>
+												<td>
+													<input type="text" name='mail0' value="UiPath" placeholder='Tool/Domain Knowledge' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobile0' value="10/01/2018" placeholder='From' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobil0' value="11/06/2018" placeholder='To' class="form-control"/>
+												</td>
+											</tr>
+											<tr id='addr1'>
+												<td>
+													2
+												</td>
+												<td>
+													<select class="form-control" id="sel1">
+														<option>Resource Type</option>
+														<option>Technical Consultant</option>
+														<option>Business Analyst</option>
+														<option>Project Manager</option>
+														
+													</select>
+												</td>
+												<td>
+													<input type="number" name='mail0' placeholder='No of Resources' class="form-control"/>
+												</td>
+												<td>
+													<input type="text" name='mail0' placeholder='Tool/Domain Knowledge' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobile0' placeholder='From' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobil0' placeholder='To' class="form-control"/>
+												</td>
+											</tr>
+											<tr id='addr2'>
+												<td>
+													3
+												</td>
+												<td>
+													<select class="form-control" id="sel1">
+														<option>Resource Type</option>
+														<option>Technical Consultant</option>
+														<option>Business Analyst</option>
+														<option>Project Manager</option>
+														
+													</select>
+												</td>
+												<td>
+													<input type="number" name='mail0' placeholder='No of Resources' class="form-control"/>
+												</td>
+												<td>
+													<input type="text" name='mail0' placeholder='Tool/Domain Knowledge' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobile0' placeholder='From' class="form-control"/>
+												</td>
+												<td>
+													<input type="date" name='mobil0' placeholder='To' class="form-control"/>
+												</td>
+											</tr>
+										<tr id='addr3'></tr>
+									</tbody>
+								</table>
+								<div class="row">
+									
+									
+									
+									<div class="col-sm-6">
+										<a href="" id='delete_row' class="pull-right btn-success  btn btn-default">Save</a>
+									</div>
+									
+									
+								</div>
+								
+								
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<!--  Page content -->
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			
+			<div class="copy text-center">
+				Copyright 2014 <a href='#'>Website</a>
+			</div>
+			
+		</div>
+	</footer>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- jQuery UI -->
+	<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
+	<script src="vendors/select/bootstrap-select.min.js"></script>
+	<script src="vendors/tags/js/bootstrap-tags.min.js"></script>
+	<script src="vendors/mask/jquery.maskedinput.min.js"></script>
+	<script src="vendors/moment/moment.min.js"></script>
+	<script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+	<!-- bootstrap-datetimepicker -->
+	<link href="vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
+	<script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/dynamic_demand.js"></script>
+	<script src="js/forms.js"></script>
+</body>
+</html>

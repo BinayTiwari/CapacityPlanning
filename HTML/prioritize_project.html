@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Capacity Planning</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- styles -->
+		<link href="css/styles.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Logo -->
+						<div class="logo">
+							<a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+							
+							<!--<h1><a href="index.html">Capacity Planning</a></h1>-->
+							
+						</div>
+					</div>
+					
+					<div class="col-md-5 pull-right">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="input-group form">
+									<br>
+									<input type="text" class="form-control" placeholder="Search...">
+									<span class="input-group-btn">
+										<br>
+										<button class="btn btn-primary" type="button">Search</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="navbar navbar-default bg-light" role="banner">
+							<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="sidebar content-box" style="display: block;">
+					<ul class="nav">
+						<!-- Main menu -->
+						<li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+						<li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+						<li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+						<li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i> Priotize/Allocate Resource</a></li>
+						
+						<li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+						
+						<li><a href="generate_reports.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+						
+						
+					</ul>
+				</div>
+			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					
+					<li class="breadcrumb-item active" aria-current="page">Prioritize/Allocate Resource</li>
+				</ol>
+			</nav>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="content-box-large">
+							<div class="panel-heading">
+								<div class="panel-title">Prioritize Project </div>
+								
+								
+								
+							</div>
+							<div class="panel-body">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Ticket ID</th>
+											<th>Account</th>
+											<th>Owner</th>
+											<th>Process Name</th>
+											<th>Start Date</th>
+											<th>Sales Stage</th>
+											
+											<th>Grand Total</th>
+											<th>Priority</th>
+											<th>Allocate</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>120618R01</td>
+											<td>Bank Dhofar</td>
+											<td>Rajesh</td>
+											<td>To be Identified</td>
+											<td>NA</td>
+											<td>NA</td>
+											<td>3</td>
+											
+											
+											
+											
+											<td><select><option>Set Priority</option><option>High</option><option>Medium</option><option>Low</option></select></td>
+											<td><a href="allocate_resource.html"><button class="btn-success btn btn-md">Allocate</button></a></td>
+											
+										</tr>
+										<tr>
+											<td>120618R02</td>
+											<td>Etisalat</td>
+											<td>Vishal</td>
+											<td>To be Identified</td>
+											<td>NA</td>
+											<td>NA</td>
+											<td>1</td>
+											
+											
+											<td><select><option>Set Priority</option><option>High</option><option>Medium</option><option>Low</option></select></td>
+											
+											<td><a href="allocate_resource.html"><button class="btn-success btn btn-md">Allocate</button></a></td>
+											
+										</tr>
+										<tr>
+											<td>120618R03</td>
+											<td>FADV</td>
+											<td>Pradeep</td>
+											<td>To be Identified</td>
+											<td>NA</td>
+											<td>NA</td>
+											<td>4</td>
+											
+											
+											<td><select><option>Set Priority</option><option>High</option><option>Medium</option><option>Low</option></select></td>
+											<td><a href="allocate_resource.html"><button class="btn-success btn btn-md">Allocate</button></a></td>
+											
+										</tr>
+										
+									</tbody>
+								</table>
+								<a href="forms.html">
+									<button style="float: left;" class="btn btn-success btn-md">Save</button>
+								</a>
+								<nav aria-label="Page navigation example">
+									<ul class="pagination pull-right">
+										<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#">Next</a></li>
+									</ul>
+								</nav>
+								<div id="myModal" class="modal fade">
+									<div class="modal-dialog modal-confirm">
+										<div class="modal-content">
+											<div class="modal-header">
+												<div class="icon-box">
+													<i class="material-icons">&#xE5CD;</i>
+												</div>
+												<h4 class="modal-title">Are you sure?</h4>
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											</div>
+											<div class="modal-body">
+												<p>Do you really want to delete these records? This process cannot be undone.</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+												<button type="button" class="btn btn-danger">Delete</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				
+				<div class="copy text-center">
+					Copyright 2014 <a href='#'>Website</a>
+				</div>
+				
+			</div>
+		</footer>
+		
+		<link href="vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<!-- jQuery UI -->
+		<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="vendors/datatables/dataTables.bootstrap.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/tables.js"></script>
+	</body>
+</html>r

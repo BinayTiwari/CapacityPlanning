@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Capacity Planning :: Add New Joiners</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- styles -->
+		<link href="css/styles.css" rel="stylesheet">
+		
+		<style>
+			AndaleMono, monospace;
+		color: #fff;
+		padding: 50px;
+		width: 300px;
+		margin: 0 auto;
+		
+		}
+		.dropdown {
+		display: inline-block;
+		position: relative;
+		
+		transform: translateY(-50%);
+		}
+		
+		.dropdown dd,
+		.dropdown dt {
+		margin: 0px;
+		padding: 0px;
+		}
+		.dropdown ul {
+		margin: -1px 0 0 0;
+		}
+		.dropdown dd {
+		position: relative;
+		}
+		.dropdown a,
+		.dropdown a:visited {
+		color: black;
+		text-decoration: none;
+		outline: none;
+		font-size: 12px;
+		}
+		.dropdown dt a {
+		
+		display: block;
+		padding: 8px 20px 5px 10px;
+		
+		
+		
+		border: 2px;
+		
+		}
+		.dropdown dt a span,
+		.multiSel span {
+		cursor: pointer;
+		display: inline-block;
+		padding: 0 3px 2px 0;
+		}
+		.dropdown dd ul {
+		z-index: 5000;
+		border: 0;
+		color: black;
+		background-color: white;
+		display: none;
+		left: 0px;
+		padding: 2px 15px 2px 5px;
+		position: absolute;
+		top: 2px;
+		width: 350px;
+		list-style: none;
+		
+		
+		}
+		.dropdown span.value {
+		display: none;
+		}
+		.dropdown dd ul li a {
+		padding: 5px;
+		display: block;
+		}
+		.dropdown dd ul li a:hover {
+		background-color: #fff;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Logo -->
+						<div class="logo">
+							<a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+							
+							<!--<h1><a href="index.html">Capacity Planning</a></h1>-->
+							
+						</div>
+					</div>
+					<div class="col-md-5 pull-right">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="input-group form">
+									<br>
+									<input type="text" class="form-control" placeholder="Search...">
+									<span class="input-group-btn">
+										<br>
+										<button class="btn btn-primary" type="button">Search</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="col-md-2">
+						<div class="navbar navbar-default bg-light" role="banner">
+							<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="sidebar content-box" style="display: block;">
+					<ul class="nav">
+						<!-- Main menu -->
+						<li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+						<li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+						<li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+						<li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i> Priotize/Allocate Resource</a></li>
+						
+						<li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+						
+						<li><a href="generate_report.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+						
+						
+					</ul>
+				</div>
+			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="new_joiners.html">New Joiners</a></li>
+					
+					
+					<li class="breadcrumb-item active" aria-current="page">Add New Joiner</li>
+				</ol>
+			</nav>
+			<div class="col-md-10 panel-info">
+				<div class="row">
+					<div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+						<div class="panel-title ">Add New Joiner</div>
+						
+						
+					</div>
+					<div class="content-box-large box-with-header">
+						<div>
+							
+							
+							
+							<div class="row">
+								<div class="col-sm-4">
+									<input type="text"   class="form-control" placeholder="First Name">
+								</div>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" placeholder="Last Name">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Designation</option>
+										<option>Intern</option>
+										<option>Reporting Manager</option>
+										<option>Technical Consultant</option>
+										<option>CTO</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<input type="text"  onfocus="(this.type='date')" class="form-control" placeholder="Date of joining">
+									
+								</div>
+								
+								
+							</div>
+							<br>
+							
+							<div class="row">
+								
+								
+								<div class="col-sm-4">
+									<select class="form-control" id="sel1">
+										<option>Select Location</option>
+										<option>Gurgaon</option>
+										<option>Mumbai</option>
+										<option>Chennai</option>
+										<option>Lucknow</option>
+									</select>
+									
+								</div>
+								<div class="col-sm-4">
+									<dl class="dropdown">
+										
+										<dt  class="form-control">
+										<a href="#">
+											<span class="hida">Select Skills</span>
+											<p class="multiSel"></p>
+										</a>
+										</dt>
+										
+										<dd>
+										<div class="mutliSelect">
+											<ul>
+												<li>
+													<input type="checkbox" value="UiPath" />&nbsp;UiPath</li>
+													<li>
+														<input type="checkbox" value="C#" />&nbsp;C#</li>
+														<li>
+															<input type="checkbox" value="SQL" />&nbsp;SQL</li>
+															<li>
+																<input type="checkbox" value="ASP .Net" />&nbsp;ASP .Net</li>
+																
+															</ul>
+														</div>
+														</dd>
+														
+													</dl>
+													
+												</div>
+												
+											</div>
+											
+											
+											
+											<div class="row">
+												
+												
+												<div class="col-sm-4">
+
+
+
+
+													
+													<select class="form-control" id="sel1">
+														<option>Select Account</option>
+														<option>Oman Arab Bank</option>
+														<option>Etisalat</option>
+														<option>EMAAR</option>
+														<option>Dubai Health Authority</option>
+													</select>
+												</div>
+												<div class="col-sm-4">
+													<input type="text"  class="form-control" placeholder="Experience">
+												</div>
+												
+											</div>
+											<br>
+											<div class="row">
+												
+												<div class="col-sm-8">
+													<a href="">
+													<button style="float: right;" class="btn btn-success btn-md">Submit</button></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<!--  Page content -->
+						</div>
+					</div>
+				</div>
+				<footer>
+					<div class="container">
+						<div class="copy text-center">
+							Copyright 2014 <a href='#'>Website</a>
+						</div>
+					</div>
+				</footer>
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				<script src="https://code.jquery.com/jquery.js"></script>
+				<!-- jQuery UI -->
+				<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+				<!-- Include all compiled plugins (below), or include individual files as needed -->
+				<script src="bootstrap/js/bootstrap.min.js"></script>
+				<script src="vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
+				<script src="vendors/select/bootstrap-select.min.js"></script>
+				<script src="vendors/tags/js/bootstrap-tags.min.js"></script>
+				<script src="vendors/mask/jquery.maskedinput.min.js"></script>
+				<script src="vendors/moment/moment.min.js"></script>
+				<script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+				<!-- bootstrap-datetimepicker -->
+				<link href="vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
+				<script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+				<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+				<script src="js/custom.js"></script>
+				<script src="js/forms.js"></script>
+				<script >
+				$(".dropdown dt a").on('click', function() {
+				$(".dropdown dd ul").slideToggle('fast');
+				});
+				$(".dropdown dd ul li a").on('click', function() {
+				$(".dropdown dd ul").hide();
+				});
+				function getSelectedValue(id) {
+				return $("#" + id).find("dt a span.value").html();
+				}
+				$(document).bind('click', function(e) {
+				var $clicked = $(e.target);
+				if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+				});
+				$('.mutliSelect input[type="checkbox"]').on('click', function() {
+				var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+				title = $(this).val() + ",";
+				if ($(this).is(':checked')) {
+				var html = '<span title="' + title + '">' + title + '</span>';
+				$('.multiSel').append(html);
+				$(".hida").hide();
+				} else {
+				$('span[title="' + title + '"]').remove();
+				var ret = $(".hida");
+				$('.dropdown dt a').append(ret);
+				}
+				});
+				</script>
+			</body>
+		</html>

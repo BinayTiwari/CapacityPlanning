@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Capacity Planning</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- styles -->
+		<link href="css/styles.css" rel="stylesheet">
+		
+		<style>
+			AndaleMono, monospace;
+		color: #fff;
+		padding: 50px;
+		width: 300px;
+		margin: 0 auto;
+		
+		}
+		.dropdown {
+		display: inline-block;
+		position: relative;
+		
+		transform: translateY(-50%);
+		}
+		
+		.dropdown dd,
+		.dropdown dt {
+		margin: 0px;
+		padding: 0px;
+		}
+		.dropdown ul {
+		margin: -1px 0 0 0;
+		}
+		.dropdown dd {
+		position: relative;
+		}
+		.dropdown a,
+		.dropdown a:visited {
+		color: black;
+		text-decoration: none;
+		outline: none;
+		font-size: 12px;
+		}
+		.dropdown dt a {
+		
+		display: block;
+		padding: 8px 20px 5px 10px;
+		
+		
+		
+		border: 2px;
+		
+		}
+		.dropdown dt a span,
+		.multiSel span {
+		cursor: pointer;
+		display: inline-block;
+		padding: 0 3px 2px 0;
+		}
+		.dropdown dd ul {
+		z-index: 5000;
+		border: 0;
+		color: black;
+		background-color: white;
+		display: none;
+		left: 0px;
+		padding: 2px 15px 2px 5px;
+		position: absolute;
+		top: 2px;
+		width: 350px;
+		list-style: none;
+		
+		
+		}
+		.dropdown span.value {
+		display: none;
+		}
+		.dropdown dd ul li a {
+		padding: 5px;
+		display: block;
+		}
+		.dropdown dd ul li a:hover {
+		background-color: #fff;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Logo -->
+						<div class="logo">
+							<a href=""> <img src="images/1.png" height="70px", width="190px"></a>
+							
+							<!--<h1><a href="index.html">Capacity Planning</a></h1>-->
+							
+						</div>
+					</div>
+					
+					
+					<div class="col-md-2">
+						<div class="navbar navbar-default bg-light" role="banner">
+							<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="sidebar content-box" style="display: block;">
+					<ul class="nav">
+						<!-- Main menu -->
+						<li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+						<li><a href="resource_master.html"><i class="glyphicon glyphicon-calendar"></i> Resource Master</a></li>
+						<li><a href="resource_demand.html"><i class="glyphicon glyphicon-stats"></i>Resource Demand</a></li>
+						<li><a href="prioritize_project.html"><i class="glyphicon glyphicon-record"></i> Priotize/Allocate Resource</a></li>
+						
+						<li><a href="new_joinings.html"><i class="glyphicon glyphicon-list"></i> New Joinings</a></li>
+						
+						<li><a href="generate_report.html"><i class="glyphicon glyphicon-tasks"></i> Generate Report</a></li>
+						
+						
+					</ul>
+				</div>
+			</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a href="#">Resource Master</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Edit Employee</li>
+				</ol>
+			</nav>
+			<div class="col-md-10 panel-info">
+				<div class="row">
+					<div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+						<div class="panel-title ">Edit Employee Details</div>
+						
+						
+					</div>
+					<div class="content-box-large box-with-header">
+						<div>
+							
+							
+							
+							<div class="row">
+								<div class="col-sm-4">
+									<label >First Name</label>
+									<input type="text" value="Anshuman " class="form-control" placeholder="First Name">
+								</div>
+								<div class="col-sm-4">
+									<label >Last Name</label>
+									<input type="text" value="Rai" class="form-control" placeholder="Last Name">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								
+								<div class="col-sm-4">
+									<label >Reporting Manager</label>
+									<input type="text" value="Vinay Tiwari" class="form-control" placeholder="Reporting Manager">
+								</div>
+								<div class="col-sm-4">
+									<label >Email</label>
+									<input type="email" value="anshuman.rai@gridinfocom.com" class="form-control" placeholder="Email">
+								</div>
+								
+								
+							</div>
+							<br>
+							
+							<div class="row">
+								
+								
+								<div class="col-sm-4">
+									<label >Base Location</label>
+									<input type="text" value="Gurgaon" class="form-control" placeholder="Base Location">
+								</div>
+								<div class="col-sm-4">
+									<label >Mobile No.</label>
+									<input type="text" value="9990331845" class="form-control" placeholder="Mobile">
+								</div>
+								
+							</div>
+							<br>
+							<div class="row">
+								
+								
+								<div class="col-sm-4">
+									<label >Designation</label>
+									<select  class="form-control" id="sel1">
+										
+										<option>Intern</option>
+										<option>Reporting Manager</option>
+										<option>Technical Consultant</option>
+										<option>CTO</option>
+									</select>
+								</div>
+								<div class="row">
+									<div class="col-sm-4">
+										<label >Grade</label>
+										<select class="form-control" id="sel1">
+											
+											<option>G5</option>
+											<option>G6</option>
+											<option>G7</option>
+											<option>G8</option>
+										</select>
+									</div>
+									
+								</div>
+								<br>
+								
+								<div class="col-sm-4">
+									<label >Role</label>
+									<select class="form-control" id="sel1">
+										<option>Intern</option>
+										<option>Developer</option>
+										<option>LA</option>
+										<option>Tech Lead</option>
+										<option>Project Manager</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label >Date of Borth</label>
+									<input type="text" value="10/07/1996" onfocus="(this.type='date')" class="form-control" placeholder="Date of Birth">
+								</div>
+								
+							</div>
+							<br>
+							<div class="row">
+								
+								<div class="col-sm-4">
+									<label >Date of Joining</label>
+									<input type="text" value="08/01/2018" onfocus="(this.type='date')" class="form-control" placeholder="Date of joining">
+								</div>
+								<div class="col-sm-4">
+									<label >PAN</label>
+									<input type="text" value="PRS12QNB" class="form-control" placeholder="PAN">
+								</div>
+								
+							</div>
+							<br>
+							<div class="row">
+								
+								<dl class="dropdown col-sm-4">
+									
+									<dt  class="form-control">
+									<a href="#">
+										<span class="hida">Select Skills</span>
+										<p class="multiSel"></p>
+									</a>
+									</dt>
+									
+									<dd>
+									<div class="mutliSelect">
+										<ul>
+											<li>
+												<input type="checkbox" value="UiPath" />UiPath</li>
+												<li>
+													<input type="checkbox" value="C#" />C#</li>
+													<li>
+														<input type="checkbox" value="SQL" />SQL</li>
+														<li>
+															<input type="checkbox" value="ASP .Net" />ASP .Net</li>
+															
+														</ul>
+													</div>
+													</dd>
+													
+												</dl>
+												
+											</div>
+											
+											<div class="row">
+												
+												<div class="col-sm-4">
+													<h4>Present Address:</h4>
+													
+												</div>
+												
+												
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<label >House No.</label>
+													<input type="text" value="R-740" class="form-control" placeholder="House No">
+												</div>
+												<div class="col-sm-4">
+													<label >Area and Street</label>
+													<input type="text" value="Rajnagar" class="form-control" placeholder="Area and Street">
+												</div>
+											</div>
+											<br>
+											<div class="row">
+												
+												<div class="col-sm-4">
+													<label >City</label>
+													<input type="text" value="Ghaziabad" class="form-control" placeholder="City ">
+												</div>
+												<div class="col-sm-4">
+													<input type="text" value="Uttar Pradesh" class="form-control" placeholder="State">
+												</div>
+												
+												
+												
+											</div>
+											<br>
+											
+											<div class="row">
+												
+												
+												<div class="col-sm-3">
+													<label >PIN</label>
+													<input type="text" value="201001" class="form-control" placeholder="PIN">
+												</div>
+												
+											</div>
+											<br>
+											<div class="row">
+												
+												<div class="col-sm-4">
+													<h4>Permanent Address:</h4>
+													
+												</div>
+												
+												
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<label >House No.</label>
+													<input type="text" value="R-740" class="form-control" placeholder="House No">
+												</div>
+												<div class="col-sm-4">
+													<label >Area and Street</label>
+													<input type="text" class="form-control" value="Rajangar" placeholder="Area and Street">
+												</div>
+											</div>
+											<br>
+											<div class="row">
+												
+												<div class="col-sm-4">
+													<label >City</label>
+													<input type="text" class="form-control" value="Ghaziabad" placeholder="City ">
+												</div>
+												<div class="col-sm-4">
+													<label >State</label>
+													<input type="text" value="Uttar Pradesh" class="form-control" placeholder="State">
+												</div>
+												
+												
+												
+											</div>
+											<br>
+											
+											<div class="row">
+												
+												
+												<div class="col-sm-3">
+													<label >PIN</label>
+													<input type="text" value="201003" class="form-control" placeholder="PIN">
+												</div>
+												
+											</div>
+											<br>
+											<div class="row">
+												<div class="col-sm-4">
+													<h4>Passport & Visa Details:</h4>
+													
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<label >Passport No.</label>
+													<input type="text" value="PRS96335" class="form-control" placeholder="Passport Number">
+												</div>
+												<div class="col-sm-4">
+													<label >Expiry Date</label>
+													<input type="text" value="10/11/2027" onfocus="(this.type='date')" class="form-control" placeholder="Expiry Date">
+												</div>
+											</div>
+											<br>
+											<div class="row">
+												
+												<div class="col-sm-4">
+													<label >Visa Expiry Date</label>
+													<input type="text" value="05/05/2019" onfocus="(this.type='date')" class="form-control" placeholder="Visa Expiary Date">
+												</div>
+												
+												
+												
+											</div>
+											<div class="row">
+												
+												<div class="col-sm-8">
+													<a href="edit_employee_exp.html">
+													<button style="float: right;" class="btn btn-success btn-md">Next</button></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<!--  Page content -->
+						</div>
+					</div>
+				</div>
+				<footer>
+					<div class="container">
+						
+						<div class="copy text-center">
+							Copyright 2014 <a href='#'>Website</a>
+						</div>
+						
+					</div>
+				</footer>
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				<script src="https://code.jquery.com/jquery.js"></script>
+				<!-- jQuery UI -->
+				<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+				<!-- Include all compiled plugins (below), or include individual files as needed -->
+				<script src="bootstrap/js/bootstrap.min.js"></script>
+				<script src="vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
+				<script src="vendors/select/bootstrap-select.min.js"></script>
+				<script src="vendors/tags/js/bootstrap-tags.min.js"></script>
+				<script src="vendors/mask/jquery.maskedinput.min.js"></script>
+				<script src="vendors/moment/moment.min.js"></script>
+				<script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+				<!-- bootstrap-datetimepicker -->
+				<link href="vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
+				<script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+				<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+				<script src="js/custom.js"></script>
+				<script src="js/forms.js"></script>
+				<script >
+									$(".dropdown dt a").on('click', function() {
+									$(".dropdown dd ul").slideToggle('fast');
+									});
+									$(".dropdown dd ul li a").on('click', function() {
+									$(".dropdown dd ul").hide();
+									});
+									function getSelectedValue(id) {
+									return $("#" + id).find("dt a span.value").html();
+									}
+									$(document).bind('click', function(e) {
+									var $clicked = $(e.target);
+									if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+									});
+									$('.mutliSelect input[type="checkbox"]').on('click', function() {
+									var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+									title = $(this).val() + ",";
+									if ($(this).is(':checked')) {
+									var html = '<span title="' + title + '">' + title + '</span>';
+									$('.multiSel').append(html);
+									$(".hida").hide();
+									} else {
+									$('span[title="' + title + '"]').remove();
+									var ret = $(".hida");
+									$('.dropdown dt a').append(ret);
+									}
+									});
+				</script>
+			</body>
+		</html>
