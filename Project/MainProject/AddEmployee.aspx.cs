@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,11 +19,10 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
-                ClsCommon.ddlGetGrade(listGrade);
-                ClsCommon.ddlGetRole(listRole);
-                ClsCommon.lstGetSkill(listSkill);
-                ClsCommon.ddlGetCity(listCity);
-                ClsCommon.ddlGetCity(listCitypmnt);
+                 ClsCommon.ddlGetRole(listRole);
+                ClsCommon.ddlGetSkill(listSkill);
+                ClsCommon.ddlGetManager(RManagerDropDownList);
+               
             }
         }
 
@@ -43,21 +43,23 @@ namespace CapacityPlanning
                 }
                 message = message.Remove(message.Length - 1);
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
-                employeeDetails.Photo = @"C:\Users\raian\Downloads\Data'"+FileUploadControl.FileName+"'";
+                employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text);
                 employeeDetails.EmployeetName = fName.Text;
-                employeeDetails.ReportingManagerID = Convert.ToInt32(rManager.Text);
+                employeeDetails.Photo = @"C:\Users\raian\Downloads\Data'" + FileUploadControl.FileName + "'";
+                employeeDetails.ReportingManagerID =Convert.ToInt32( RManagerDropDownList.Text);
                 employeeDetails.Email = mail.Text;
                 employeeDetails.EmployeePassword = pass.Text;
                 employeeDetails.BaseLocation = bLocation.Text;
                 employeeDetails.Mobile = phone.Text;
-                employeeDetails.DesignationID = Convert.ToInt32( listDesignation.SelectedValue);
-                employeeDetails.RolesID = Convert.ToInt32( listRole.SelectedValue);
-                employeeDetails.JoiningDate = Convert.ToDateTime( dojoining.Text);
-                employeeDetails.PAN = panno.Text;
+                employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
+                employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
+                employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text);
+                employeeDetails.PAN = panNoTxt.Text;
                 employeeDetails.Skillsid = message;
+                employeeDetails.PriorWorkExperience =Convert.ToInt32( expText.Text);
                 employeeDetails.PassportNo = passportNum.Text;
-                employeeDetails.PassportExpiryDate = Convert.ToDateTime( passExpDate.Text);
-                employeeDetails.VisaExpiryDate = Convert.ToDateTime( visExpDate.Text);
+                employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text);
+                employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text);
                 employeeDetails.DateOfCreation = DateTime.Now;
                 employeeDetails.DateOfModification = DateTime.Now;
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;
@@ -72,14 +74,5 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
-
-        
-
-
-        
-
-
-        
-
     }
-    }
+}

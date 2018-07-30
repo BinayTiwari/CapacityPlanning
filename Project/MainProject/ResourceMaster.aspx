@@ -23,18 +23,27 @@
                 <br />
                 <br />
                 <div class="content-box-large">
-                    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="EmployeeMasterId" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
+                    <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="EmployeeMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
+                CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"
+                OnRowDeleting="delete"
+                OnRowCancelingEdit="canceledit"
+                OnRowUpdating="update" BackColor="White" BorderColor="#919191" BorderStyle="Inset" EmptyDataText="No records to show" Font-Size="Medium" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
+
+
+                <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
+
+                    <%--<asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="EmployeeMasterId" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                         CssClass="pager rows header1 mygrdContent" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"
                         OnRowDeleting="delete"
                         OnRowCancelingEdit="canceledit"
                         OnRowUpdating="update" BackColor="White" BorderColor="White" EmptyDataText="N/A" Font-Size="Medium" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
 
 
-                        <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
+                        <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />--%>
 
 
                         <Columns>
-                            <asp:TemplateField HeaderText="Image">
+                            <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
                                     <asp:Image ID="Image1" Height="40" Width="40" runat="server"
                                         ImageUrl="~/images/user.png" />
@@ -42,9 +51,9 @@
                             </asp:TemplateField>
 
                             <asp:BoundField DataField="EmployeeMasterId" HeaderText="Employee ID" />
-                            <asp:BoundField DataField="FirstName" HeaderText="Name" />
-                            <asp:BoundField DataField="ReportingManager" HeaderText="Reporting Manager" />
-                            <asp:BoundField DataField="GradeID" HeaderText="Grade" />
+                            <asp:BoundField DataField="EmployeetName" HeaderText="Name" />
+                            <asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />
+                           
                             <asp:BoundField DataField="BaseLocation" HeaderText="Location" />
                             <asp:BoundField DataField="Mobile" HeaderText="Mobile" />
 
@@ -78,16 +87,13 @@
                         <FooterStyle BackColor="White" />
 
 
-                        <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
+                <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
 
 
-                        <PagerSettings Mode="NumericFirstLast" NextPageImageUrl="~/images/126490.png" PageButtonCount="5" />
+                <PagerSettings Mode="NumericFirstLast" NextPageImageUrl="~/images/126490.png" PageButtonCount="5" />
 
 
-                        <RowStyle Font-Names="Calibri" />
-
-
-                        <SelectedRowStyle BorderStyle="Inset" />
+                <SelectedRowStyle BorderStyle="Inset" />
 
 
                     </asp:GridView>

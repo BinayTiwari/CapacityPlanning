@@ -22,11 +22,8 @@ namespace CapacityPlanning
             if (!IsPostBack)
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
-                ClsCommon.ddlGetGrade(listGrade);
                 ClsCommon.ddlGetRole(listRole);
-                ClsCommon.lstGetSkill(listSkill);
-                ClsCommon.ddlGetCity(listCity);
-                ClsCommon.ddlGetCity(listCitypmnt);
+                ClsCommon.ddlGetSkill(listSkill);
                 BindTextBoxvalues();
             }
 
@@ -55,12 +52,16 @@ namespace CapacityPlanning
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID = employeeID;
                 employeeDetails.EmployeetName = fName.Text;
+                employeeDetails.ReportingManagerID = Convert.ToInt32( RManagerDropDownList.Text);
                 employeeDetails.Email = mail.Text;
+                employeeDetails.EmployeePassword = pass.Text;
                 employeeDetails.BaseLocation = bLocation.Text;
+                employeeDetails.Mobile = phone.Text;
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.ToString());
-                employeeDetails.PAN = panno.Text;
+                employeeDetails.PriorWorkExperience = Convert.ToInt32( expText.Text);
+                employeeDetails.PAN = panNoTxt.Text;
                 employeeDetails.Skillsid = message;
                 employeeDetails.PassportNo = passportNum.Text;
                 employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.ToString());
@@ -87,33 +88,28 @@ namespace CapacityPlanning
             CPT_ResourceMaster resourceMaster = new CPT_ResourceMaster();
             resourceMaster.EmployeeMasterID = employeeID;
             ResourceMasterBL resourceMasterBL = new ResourceMasterBL();
-            List<CPT_ResourceMaster> lst =resourceMasterBL.uiDataBinding(resourceMaster);
+            List<CPT_ResourceMaster> lst = resourceMasterBL.uiDataBinding(resourceMaster);
+            empIdText.Text = lst[0].EmployeeMasterID.ToString();
             fName.Text = lst[0].EmployeetName;
-            lName.Text = lst[0].LastName;
+            RManagerDropDownList..Text = lst[0].ReportingManagerID.ToString();
+
+            pass.Text = lst[0].EmployeePassword;
             mail.Text = lst[0].Email;
-            rManager.Text = lst[0].ReportingManager;
             bLocation.Text = lst[0].BaseLocation;
             phone.Text = Convert.ToString(lst[0].Mobile);
-            dobirth.Text = Convert.ToString(lst[0].DOB.ToShortDateString());
+            listDesignation.Text =Convert.ToString( lst[0].DesignationID);
             dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
-            panno.Text = lst[0].PassportNo;
-            prsnthno.Text = lst[0].PresentHouseNumber;
-            prsntareastreet.Text = lst[0].PresentArea;
-            pin.Text = Convert.ToString(lst[0].PresentPin);
-            pmnthno.Text = lst[0].PmntHNo;
-            pmntAreaStreet.Text = lst[0].PmntArea;
-            StatePmnt.Text = lst[0].PmntState;
-            pmntPIN.Text = Convert.ToString(lst[0].PmntPin);
+            expText.Text =Convert.ToString( lst[0].PriorWorkExperience);
+            panNoTxt.Text = lst[0].PassportNo;
             passportNum.Text = lst[0].PassportNo;
+            listSkill.Text = lst[0].Skillsid;
+            addressTxt.Text = lst[0].Address;
             passExpDate.Text = Convert.ToString(lst[0].PassportExpiryDate);
             visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
-
             listDesignation.Text = lst[0].DesignationID.ToString();
-            listGrade.Text = lst[0].GradeID.ToString();
             listRole.Text = lst[0].RolesID.ToString();
-            listSkill.Text = lst[0].Skillsid.ToString();
-            listCity.Text = lst[0].PresentCity.ToString();
-            listCitypmnt.Text = lst[0].PmntCity.ToString();
+            //listSkill.Text = Convert.ToString( lst[0].Skillsid.ToString());
+            
         }
 
 

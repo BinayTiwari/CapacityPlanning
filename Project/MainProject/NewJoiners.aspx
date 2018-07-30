@@ -28,12 +28,12 @@
                             <Columns>
                                 <asp:BoundField DataField="NewJoinerID" HeaderText="ID" />
                                 <asp:BoundField DataField="FirstName" HeaderText="Name" />
-                                <asp:BoundField DataField="DesignationID" HeaderText="Designation" />
+                                <asp:BoundField DataField="DesignationName" HeaderText="Designation" />
                                 <asp:BoundField DataField="JoiningDate" HeaderText="Date of Joining" />
                                 <asp:BoundField DataField="Location" HeaderText="BaseLocation" />
                                 <asp:BoundField DataField="Experience" HeaderText="Experience" />
                                 <asp:BoundField DataField="Skills" HeaderText="Skills" />
-                                <asp:BoundField DataField="Account" HeaderText="Account" />
+                                <asp:BoundField DataField="AccountName" HeaderText="Account" />
                                 <asp:BoundField DataField="InterviewedBy" HeaderText="Interviewed By" />
 
                                 <asp:TemplateField>

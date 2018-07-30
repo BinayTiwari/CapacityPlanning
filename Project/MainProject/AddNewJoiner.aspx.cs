@@ -21,7 +21,7 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetAccount(accountDropDownList);
-                ClsCommon.lstGetSkill(skillList);
+                ClsCommon.ddlGetSkill(skillList);
 
             }
             

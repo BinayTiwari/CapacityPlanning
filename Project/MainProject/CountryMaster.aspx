@@ -29,7 +29,8 @@
 
                 <Columns>
                     <asp:BoundField ReadOnly="true" DataField="CountryMasterID" HeaderText="Country ID" />
-                    <%--<asp:BoundField ReadOnly="true" DataField="RegionID" HeaderText="Region Name" />--%>
+                    <asp:BoundField ReadOnly="true" DataField="RegionName" HeaderText="Region Name" />
+                    <asp:BoundField DataField="RegionName" HeaderText="Country Name" />
 
                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                     <asp:TemplateField>

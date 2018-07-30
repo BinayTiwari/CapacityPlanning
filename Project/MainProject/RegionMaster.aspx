@@ -18,15 +18,8 @@
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
                 OnRowUpdating="update" BackColor="White" BorderColor="#919191" BorderStyle="Inset" EmptyDataText="No records to show" Font-Size="Medium" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
-
-
                 <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
-
-
                 <Columns>
-
-
-
                     <asp:BoundField DataField="RegionMasterID" ReadOnly="true" HeaderText="Region ID" />
                     <asp:BoundField DataField="RegionName" HeaderText="Region Name" />
                     <asp:TemplateField>

@@ -34,8 +34,8 @@
 
                 <Columns>
                     <asp:BoundField ReadOnly="true" DataField="CityID" HeaderText="City ID" />
-                    <%--<asp:BoundField ReadOnly="true" DataField="RegionID" HeaderText="Region" />--%>
-                    <%--<asp:BoundField ReadOnly="true" DataField="CountryID" HeaderText="Country" />--%>
+                   <asp:BoundField ReadOnly="true" DataField="RegionName" HeaderText="City" />
+                    <asp:BoundField ReadOnly="true" DataField="CountryName" HeaderText="City" />
                     <asp:BoundField DataField="CityName" HeaderText="City" />
                     <asp:TemplateField>
                         <ItemTemplate>

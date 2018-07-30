@@ -77,20 +77,26 @@ namespace businessLogic
 
                 foreach (CPT_ResourceMaster detail in query)
                 {
+                    detail.EmployeeMasterID = resourceDetails.EmployeeMasterID;
                     detail.EmployeetName = resourceDetails.EmployeetName;
-                    detail.ReportingManagerID = resourceDetails.ReportingManagerID;
+                    detail.EmployeePassword = resourceDetails.EmployeePassword;
+                    detail.ReportingManagerID= resourceDetails.ReportingManagerID;
                     detail.Email = resourceDetails.Email;
                     detail.BaseLocation = resourceDetails.BaseLocation;
                     detail.Mobile = resourceDetails.Mobile;
+                    detail.DesignationID = resourceDetails.DesignationID;
+                    detail.RolesID = resourceDetails.RolesID;
                     detail.JoiningDate = resourceDetails.JoiningDate;
+                    detail.PriorWorkExperience = resourceDetails.PriorWorkExperience;
+                    detail.Address = resourceDetails.Address;
                     detail.PAN = resourceDetails.PAN;
                     detail.PassportNo = resourceDetails.PassportNo;
                     detail.PassportExpiryDate = resourceDetails.PassportExpiryDate;
                     detail.VisaExpiryDate = resourceDetails.VisaExpiryDate;
-                    detail.DesignationID = resourceDetails.DesignationID;
-                    detail.RolesID = resourceDetails.RolesID;
-                    detail.Skillsid = resourceDetails.Skillsid;
+                    detail.DateOfModification = DateTime.Now;
+                    detail.ModifiedBy = resourceDetails.ModifiedBy;
                     
+                   
 
 
 

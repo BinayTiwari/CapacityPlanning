@@ -25,89 +25,67 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <label >First Name</label>
                             <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
 
 
                         </div>
                         <div class="col-sm-4">
-                            <label >Last Name</label>
-                            <asp:TextBox ID="lName" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="lName" runat="server" Display="Dynamic" ForeColor="Red" />
+
+                            <div class="col-sm-4">
+                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
+
 
                         </div>
-
-                    </div>
-                    
-
-
-                    <div class="row">
-
-                        
-                        
+                        </div>
 
                     </div>
                     <br>
-
-
                     <div class="row">
                         <div class="col-sm-4">
-                            <label >Reporting Manager</label>
-                            <asp:TextBox ID="rManager" runat="server" CssClass="form-control" placeholder="Reporting Manager"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="rManager" runat="server" Display="Dynamic" ForeColor="Red" />
-
-                        </div>
-                        <div class="col-sm-4">
-                            <label >Email</label>
                             <asp:TextBox ID="mail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="mail" runat="server" Display="Dynamic" ForeColor="Red" />
-
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label >Base Location</label>
-                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="bLocation" runat="server" Display="Dynamic" ForeColor="Red" />
-
                         </div>
                         <div class="col-sm-4">
-                            <label >Mobile</label>
-                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
-
+                            <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" />
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="pass" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <label >Designation</label>
-                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
+                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
                             </asp:DropDownList>
-
                             <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
 
 
                         </div>
-
                         <div class="col-sm-4">
-                            <label >Grade</label>
-                            <asp:DropDownList ID="listGrade" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Grade--</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listGrade" runat="server" Display="Dynamic" ForeColor="Red" />
-
+                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="bLocation" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
-
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <label >Role</label>
+                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
+
+
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-4">
                             <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="0">--Select Role--</asp:ListItem>
                             </asp:DropDownList>
@@ -116,30 +94,15 @@
 
 
                         </div>
-                   
-                    <div class="col-sm-4">
-                        <label >Date of Birth</label>
-                        <asp:TextBox ID="dobirth" runat="server" CssClass="form-control" placeholder="Date of Birth"></asp:TextBox>
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-
                         <div class="col-sm-4">
-                            <label >Date of Joining</label>
-                            <asp:TextBox ID="dojoining"  runat="server" CssClass="form-control" placeholder="Date of joining"></asp:TextBox>
+                            <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)"></asp:TextBox>
 
                         </div>
-                        <div class="col-sm-4">
-                            <label >PAN</label>
-                            <asp:TextBox ID="panno" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
 
-
-                        </div>
 
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:Label ID="Label1" class="form-control" runat="server" Text="Select Skills: "></asp:Label>
@@ -150,113 +113,61 @@
                     </div>
                 </div>
                 <br>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" placeholder="Address"></asp:TextBox>
+
+                    </div>
+
+                </div>
+                 <div class="row">
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
+
+                    </div>
+
+                </div>
+                <br>
+
+
+
+
+
                 <div class="row">
                     <div class="col-sm-4">
-                        <h4>Present Address:</h4>
+                        <h4>Passport & Visa Details:</h4>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <label >House No</label>
-                        <asp:TextBox ID="prsnthno" runat="server" CssClass="form-control" placeholder="House No"></asp:TextBox>
-
+                        <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
                     </div>
                     <div class="col-sm-4">
-                        <label >Area</label>
-                        <asp:TextBox ID="prsntareastreet" runat="server" CssClass="form-control" placeholder="Area and Street"></asp:TextBox>
-
+                        <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)"></asp:TextBox>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <label >City</label>
-                        <asp:DropDownList ID="listCity" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            <asp:ListItem Value="0">--Select City--</asp:ListItem>
-                        </asp:DropDownList>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <label >State</label>
-                        <asp:TextBox ID="State" runat="server" CssClass="form-control" placeholder="State"></asp:TextBox>
+                        <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
                     </div>
                 </div>
-                <br>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h4>Previous Experience:</h4>
+
+                    </div>
+                </div>
 
                 <div class="row">
-                    <div class="col-sm-3">
-                        <label >PIN</label>
-                        <asp:TextBox ID="pin" runat="server" CssClass="form-control" placeholder="PIN"></asp:TextBox>
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
                     </div>
 
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h4>Permanent Address:</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label >House No.</label>
-                        <asp:TextBox ID="pmnthno" runat="server" CssClass="form-control" placeholder="House No"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-4">
-                        <label >Area</label>
-                        <asp:TextBox ID="pmntAreaStreet" runat="server" CssClass="form-control" placeholder="Area and Street"></asp:TextBox>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label >City</label>
-                        <asp:DropDownList ID="listCitypmnt" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            <asp:ListItem Value="0">--Select City--</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    
-                    <div class="col-sm-4">
-                        <label >State</label>
-                        
-                        <asp:TextBox ID="StatePmnt" runat="server" CssClass="form-control" placeholder="State"></asp:TextBox>
-                    
-                    </div>
-                    </div>
-
-                    <br>
-  
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label >PIN</label>
-                            <asp:TextBox ID="pmntPIN" runat="server" CssClass="form-control" placeholder="PIN"></asp:TextBox>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-4">
-
-                            <h4>Passport & Visa Details:</h4>
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label >Passport No</label>
-                            <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-4">
-                            <label >Passport Expiry Date</label>
-                            <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date(dd/mm/yyyy)"></asp:TextBox>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label >Visa Expiry Date</label>
-                            <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date(dd/mm/yyyy)"></asp:TextBox>
-                       
-                            </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-8">
                             <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Update" OnClick="AddEmployeeDetail_Click"/>

@@ -112,27 +112,6 @@ namespace businessLogic
 
 
         }
-        public static void ddlGetPriority(DropDownList ddldropdownName)
-        {
-            ddldropdownName.Items.Clear();
-            ListItem li = new ListItem();
-            li.Text = "Select Priority";
-            li.Value = "0";
-            ddldropdownName.Items.Add(li);
-
-            using (var db = new CPContext())
-            {
-                var query = from c in db.CPT_PriorityMaster select c;
-                foreach (var item in query)
-                {
-                    li = new ListItem();
-                    li.Value = item.PriorityID.ToString();
-                    li.Text = item.PriorityName.ToString();
-                    ddldropdownName.Items.Add(li);
-
-                }
-            }
-        }
 
         public static void ddlGetDesignation(DropDownList ddldropdownName)
         {
@@ -233,13 +212,13 @@ namespace businessLogic
 
         }
 
-        public static void lstGetSkill(ListBox ddldropdownName)
+        public static void ddlGetSkill(ListBox ddldropdownName)
         {
             ddldropdownName.Items.Clear();
             ListItem li = new ListItem();
-            li.Text = "Select Skills";
-            li.Value = "0";
-            ddldropdownName.Items.Add(li);
+            //li.Text = "Select Skills";
+            //li.Value = "0";
+           // ddldropdownName.Items.Add(li);
 
             using (var db = new CPContext())
             {
@@ -281,11 +260,34 @@ namespace businessLogic
             }
         }
 
-        public static int GetRandomNumber(int min, int max)
+        public static void ddlGetManager(DropDownList ddldropdownName)
         {
-            var random = new Random((int)DateTime.Now.Ticks);
-            var randomValue = random.Next(min, max + 1);
-            return randomValue;
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Reporting Manager";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = (from p in db.CPT_ResourceMaster
+                             join q in db.CPT_RoleMaster on p.RolesID equals q.RoleMasterID
+                             where q.RoleMasterID !=2
+
+                             select new
+                             {
+                                 p.EmployeeMasterID,
+                                 p.EmployeetName
+                             }).ToList();
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.EmployeeMasterID.ToString();
+                    li.Text = item.EmployeetName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
         }
     }
 }

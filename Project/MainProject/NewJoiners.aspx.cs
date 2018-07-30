@@ -28,8 +28,24 @@ namespace CapacityPlanning
         {
             using(CPContext db = new CPContext())
             {
-                GridView1.DataSource = (from c in db.CPT_NewJoiners
-                                        select c).ToList();
+                var query = (from p in db.CPT_NewJoiners
+                             join q in db.CPT_AccountMaster on p.Account equals q.AccountMasterID
+                             join r in db.CPT_DesignationMaster on p.DesignationID equals r.DesignationMasterID
+                             select new
+                             {
+                                 p.NewJoinerID,
+                                 p.FirstName,
+                                 p.Location,
+                                 p.LastName,
+                                 p.JoiningDate,
+                                 p.Experience,
+                                 p.InterviewedBy,
+                                 p.Skills,
+                                 q.AccountName,
+                                 r.DesignationName  
+                             }).ToList();
+
+                GridView1.DataSource = query;
                 GridView1.DataBind();
             }
             

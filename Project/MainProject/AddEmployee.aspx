@@ -31,22 +31,24 @@
 
 
                         </div>
+
                         <div class="col-sm-4">
-                            <asp:TextBox ID="lName" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="lName" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
+
 
                         </div>
+
+
+
+
 
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-
-                            <asp:FileUpload ID="FileUploadControl" CssClass="form-control" runat="server" text="uploadPhoto" />
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="FileUploadControl" runat="server" Display="Dynamic" ForeColor="Red" />
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$"
-                                ControlToValidate="FileUploadControl" runat="server" ForeColor="Red" ErrorMessage="Please select a Image"
-                                Display="Dynamic" />
+                            <asp:TextBox ID="mail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="mail" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                         <div class="col-sm-4">
                             <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" />
@@ -56,23 +58,23 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="rManager" runat="server" CssClass="form-control" placeholder="Reporting Manager"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="rManager" runat="server" Display="Dynamic" ForeColor="Red" />
+
+
+                            
+                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
+
+
                         </div>
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="mail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="mail" runat="server" Display="Dynamic" ForeColor="Red" />
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
+
+
+                            
+                        
                         <div class="col-sm-4">
                             <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="bLocation" runat="server" Display="Dynamic" ForeColor="Red" />
-                        </div>
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <br>
@@ -85,17 +87,13 @@
 
 
                         </div>
-
                         <div class="col-sm-4">
-                            <asp:DropDownList ID="listGrade" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Grade--</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listGrade" runat="server" Display="Dynamic" ForeColor="Red" />
-
+                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
-
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
@@ -106,27 +104,15 @@
 
 
                         </div>
-
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="dobirth"  runat="server" CssClass="form-control" placeholder="Date of Birth(DD/MM/YYYY)"></asp:TextBox>
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-
                         <div class="col-sm-4">
                             <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)"></asp:TextBox>
 
                         </div>
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="panno" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
 
-
-                        </div>
 
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:Label ID="Label1" class="form-control" runat="server" Text="Select Skills: "></asp:Label>
@@ -137,78 +123,33 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col-sm-4">
-                        <h4>Present Address:</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <asp:TextBox ID="prsnthno" runat="server" CssClass="form-control" placeholder="House No"></asp:TextBox>
+                        <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
 
                     </div>
-                    <div class="col-sm-4">
-                        <asp:TextBox ID="prsntareastreet" runat="server" CssClass="form-control" placeholder="Area and Street"></asp:TextBox>
 
-                    </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col-sm-4">
-                        <asp:DropDownList ID="listCity" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            <asp:ListItem Value="0">--Select City--</asp:ListItem>
-                        </asp:DropDownList>
 
+                        <asp:FileUpload ID="FileUploadControl" CssClass="form-control" runat="server" text="uploadPhoto" />
+                        <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="FileUploadControl" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$"
+                            ControlToValidate="FileUploadControl" runat="server" ForeColor="Red" ErrorMessage="Please select a Image"
+                            Display="Dynamic" />
                     </div>
-                    <div class="col-sm-4">
-                        <asp:TextBox ID="State" runat="server" CssClass="form-control" placeholder="State"></asp:TextBox>
-                    </div>
+
                 </div>
                 <br>
 
                 <div class="row">
-                    <div class="col-sm-3">
-                        <asp:TextBox ID="pin" runat="server" CssClass="form-control" placeholder="PIN"></asp:TextBox>
+                    <div class="col-sm-8">
+                        <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Address"></asp:TextBox>
+
                     </div>
 
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h4>Permanent Address:</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <asp:TextBox ID="pmnthno" runat="server" CssClass="form-control" placeholder="House No"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-4">
-                        <asp:TextBox ID="pmntAreaStreet" runat="server" CssClass="form-control" placeholder="Area and Street"></asp:TextBox>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <asp:DropDownList ID="listCitypmnt" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            <asp:ListItem Value="0">--Select City--</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
 
-                    <div class="col-sm-4">
-
-                        <asp:TextBox ID="StatePmnt" runat="server" CssClass="form-control" placeholder="State"></asp:TextBox>
-
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <asp:TextBox ID="pmntPIN" runat="server" CssClass="form-control" placeholder="PIN"></asp:TextBox>
-                    </div>
-                </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-4">
                         <h4>Passport & Visa Details:</h4>
@@ -229,9 +170,24 @@
                         <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
                     </div>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h4>Previous Experience:</h4>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
+                    </div>
+
+                </div>
+
                 <div class="row">
                     <div class="col-sm-8">
-                        <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Next" OnClick="AddEmployee_Click" />
+                        <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Submit" OnClick="AddEmployee_Click" />
 
                     </div>
                 </div>

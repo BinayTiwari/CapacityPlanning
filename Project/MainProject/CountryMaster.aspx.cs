@@ -28,9 +28,19 @@ namespace CapacityPlanning
             using (CPContext db = new CPContext())
             {
                 //GridView1.DataSource = db.CPT_CountryMaster.ToList();
-                GridView1.DataSource = (from c in db.CPT_CountryMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
+                var query = (from p in db.CPT_CountryMaster
+                             join q in db.CPT_RegionMaster on p.RegionID equals q.RegionMasterID
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.CountryMasterID,
+                                 p.CountryName,
+                                 q.RegionName
+                             }).ToList();
+                //GridView1.DataSource = (from c in db.CPT_CountryMaster
+                //                        where c.IsActive == true
+                //                        select c).ToList();
+                GridView1.DataSource = query;
 
                 GridView1.DataBind();
 

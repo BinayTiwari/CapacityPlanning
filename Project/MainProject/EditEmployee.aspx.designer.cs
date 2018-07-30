@@ -22,22 +22,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox fName;
         
         /// <summary>
-        /// lName control.
+        /// empIdText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lName;
-        
-        /// <summary>
-        /// rManager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rManager;
+        protected global::System.Web.UI.WebControls.TextBox empIdText;
         
         /// <summary>
         /// mail control.
@@ -49,6 +40,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox mail;
         
         /// <summary>
+        /// pass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox pass;
+        
+        /// <summary>
+        /// RManagerDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList RManagerDropDownList;
+        
+        /// <summary>
         /// bLocation control.
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox bLocation;
-        
-        /// <summary>
-        /// phone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox phone;
         
         /// <summary>
         /// listDesignation control.
@@ -76,13 +76,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList listDesignation;
         
         /// <summary>
-        /// listGrade control.
+        /// phone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listGrade;
+        protected global::System.Web.UI.WebControls.TextBox phone;
         
         /// <summary>
         /// listRole control.
@@ -94,15 +94,6 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList listRole;
         
         /// <summary>
-        /// dobirth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dobirth;
-        
-        /// <summary>
         /// dojoining control.
         /// </summary>
         /// <remarks>
@@ -110,15 +101,6 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox dojoining;
-        
-        /// <summary>
-        /// panno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox panno;
         
         /// <summary>
         /// Label1 control.
@@ -139,94 +121,22 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.ListBox listSkill;
         
         /// <summary>
-        /// prsnthno control.
+        /// addressTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prsnthno;
+        protected global::System.Web.UI.WebControls.TextBox addressTxt;
         
         /// <summary>
-        /// prsntareastreet control.
+        /// panNoTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prsntareastreet;
-        
-        /// <summary>
-        /// listCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listCity;
-        
-        /// <summary>
-        /// State control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox State;
-        
-        /// <summary>
-        /// pin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pin;
-        
-        /// <summary>
-        /// pmnthno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pmnthno;
-        
-        /// <summary>
-        /// pmntAreaStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pmntAreaStreet;
-        
-        /// <summary>
-        /// listCitypmnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listCitypmnt;
-        
-        /// <summary>
-        /// StatePmnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StatePmnt;
-        
-        /// <summary>
-        /// pmntPIN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pmntPIN;
+        protected global::System.Web.UI.WebControls.TextBox panNoTxt;
         
         /// <summary>
         /// passportNum control.
@@ -254,6 +164,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox visExpDate;
+        
+        /// <summary>
+        /// expText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox expText;
         
         /// <summary>
         /// AddEmployeeDetail control.
