@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapacityPlanning", "CapacityPlanning\CapacityPlanning.csproj", "{3A173202-B0AB-415B-A057-945CF2B318BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "CapacityPlanning\MainProject.csproj", "{3A173202-B0AB-415B-A057-945CF2B318BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDataModel", "Entity\EntityDataModel.csproj", "{E20CAD70-8DE9-4D11-9636-D560BB9B9799}"
 EndProject
