@@ -28,15 +28,15 @@
                         <div class="box">
                             <div class="content-wrap">
 
-                                <img style="outline: 0;" src="images/1.png" height="110px" width="100%" />
+                                <img style="outline: 0;" src="images/logo.png"  />
 
 
                                 <div class="social">
                                 </div>
                                 <br />
-                                <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required title="Three letter country code"></asp:TextBox>
                                 <br />
-                                <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" placeholder="Password" runat="server" required></asp:TextBox>
                                 <div class="action">
                                     <asp:Button CssClass="btn btn-primary signup" ID="loginButton" runat="server" Text="Login" OnClick="loginButton_Click" />
 
