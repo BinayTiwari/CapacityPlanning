@@ -12,7 +12,7 @@
 
                 <asp:Button ID="PriorityAddButton" runat="server" Text="Add Priority " CssClass="btn btn-md btn-success" OnClick="PriorityAddButton_Click" />
             </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="PriorityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvPriority" Width="100%" runat="server" DataKeyNames="PriorityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
@@ -27,11 +27,11 @@
                     <asp:BoundField DataField="PriorityName" HeaderText="Priority" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:ImageButton ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" />
+                            <asp:ImageButton ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" formnovalidate />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" />
-                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
+                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
@@ -39,7 +39,7 @@
                         <ItemTemplate>
                             <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/images/trash.png"
                                 CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
-                                AlternateText="Delete" />
+                                AlternateText="Delete" formnovalidate />
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -53,7 +53,7 @@
 
 
                 <SelectedRowStyle BorderStyle="Inset" />
-
+                <PagerStyle HorizontalAlign="Right" />
 
             </asp:GridView>
         </div>

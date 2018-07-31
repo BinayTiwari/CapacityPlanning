@@ -30,16 +30,16 @@
                 <Columns>
                     <asp:BoundField ReadOnly="true" DataField="CountryMasterID" HeaderText="Country ID" />
                     <asp:BoundField ReadOnly="true" DataField="CPT_RegionMaster.RegionName" HeaderText="Region Name" />
-                    <asp:BoundField DataField="CPT_RegionMaster.RegionName" HeaderText="Country Name" />
-
                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
+
+                    
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:ImageButton ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" />
+                            <asp:ImageButton ValidateRequestMode="Disabled" ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" formnovalidate />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" ValidateRequestMode="Disabled" />
-                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" ValidateRequestMode="Disabled" />
+                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
+                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
@@ -47,7 +47,7 @@
                         <ItemTemplate>
                             <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/images/trash.png"
                                 CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
-                                AlternateText="Delete" />
+                                AlternateText="Delete" formnovalidate />
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -61,7 +61,7 @@
 
 
                 <PagerSettings Mode="NumericFirstLast" />
-
+                <PagerStyle HorizontalAlign="Right" />
 
             </asp:GridView>
         </div>

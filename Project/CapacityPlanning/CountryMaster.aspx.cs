@@ -18,7 +18,7 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
 
-                
+
                 ClsCommon.ddlGetRegion(RegionList);
                 BindGrid();
             }
@@ -33,7 +33,7 @@ namespace CapacityPlanning
             gvCountry.DataSource = lstCountry;
             gvCountry.DataBind();
 
-            
+
         }
 
         protected void CountryAddButton_Click(object sender, EventArgs e)
@@ -123,8 +123,8 @@ namespace CapacityPlanning
 
         protected void RegionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-           
+
+
         }
     }
 }

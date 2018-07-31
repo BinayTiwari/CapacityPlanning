@@ -27,8 +27,8 @@ namespace CapacityPlanning
             SkillsMasterBL clsSkill = new SkillsMasterBL();
             lstSkill = clsSkill.getSkill();
 
-            GridView1.DataSource = lstSkill;
-            GridView1.DataBind();
+            gvSkills.DataSource = lstSkill;
+            gvSkills.DataBind();
         }
 
         protected void SkillsAddButton_Click(object sender, EventArgs e)
@@ -51,14 +51,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvSkills.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_SkillsMaster Skillsdetails = new CPT_SkillsMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvSkills.DataKeys[e.RowIndex].Value.ToString());
             Skillsdetails.SkillsMasterID = id;
 
             SkillsMasterBL deleteSkills = new SkillsMasterBL();
@@ -71,13 +71,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_SkillsMaster Skillsdetails = new CPT_SkillsMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvSkills.DataKeys[e.RowIndex].Value.ToString());
                 Skillsdetails.SkillsMasterID = id;
-                string SkillsName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
+                string SkillsName = ((TextBox)gvSkills.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 Skillsdetails.SkillsName = SkillsName;
                 SkillsMasterBL updateSkills = new SkillsMasterBL();
                 updateSkills.Update(Skillsdetails);
-                GridView1.EditIndex = -1;
+                gvSkills.EditIndex = -1;
                 BindGrid();
             }
             catch (Exception ex)
@@ -88,12 +88,12 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvSkills.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = -1;
+            gvSkills.EditIndex = -1;
             BindGrid();
         }
 

@@ -110,6 +110,7 @@ namespace businessLogic
                 //GridView1.DataSource = db.CPT_CountryMaster.ToList();
                 var query = (from p in db.CPT_CountryMaster
                              join q in db.CPT_RegionMaster on p.RegionID equals q.RegionMasterID
+                             orderby p.CountryMasterID descending
                              where p.IsActive == true
                              select new
                              {
@@ -118,7 +119,7 @@ namespace businessLogic
                                  q.RegionName
                              }).ToList();
 
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     CPT_CountryMaster clsCountry = new CPT_CountryMaster();
                     clsCountry.CountryMasterID = item.CountryMasterID;
@@ -129,14 +130,15 @@ namespace businessLogic
                     clsCountry.CPT_RegionMaster = region;
                     
 
+
                     lstCountryName.Add(clsCountry);
                 }
 
 
                 return lstCountryName;
-                    
+
             }
-            
+
         }
     }
     

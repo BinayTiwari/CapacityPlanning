@@ -23,14 +23,15 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                //GridView1.DataSource = db.CPT_StatusMaster.ToList();
-                GridView1.DataSource = (from c in db.CPT_StatusMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                GridView1.DataBind();
-            }
+
+            List<CPT_StatusMaster> lstStatus = new List<CPT_StatusMaster>();
+            StatusMasterBL clsStatus = new StatusMasterBL();
+            lstStatus = clsStatus.getStatus();
+
+            gvStatus.DataSource = lstStatus;
+            gvStatus.DataBind();
+
+
         }
 
         protected void StatusAddButton_Click(object sender, EventArgs e)
@@ -53,14 +54,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvStatus.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_StatusMaster Statusdetails = new CPT_StatusMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvStatus.DataKeys[e.RowIndex].Value.ToString());
             Statusdetails.StatusMasterID = id;
 
             StatusMasterBL deleteStatus = new StatusMasterBL();
@@ -73,13 +74,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_StatusMaster Statusdetails = new CPT_StatusMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvStatus.DataKeys[e.RowIndex].Value.ToString());
                 Statusdetails.StatusMasterID = id;
-                string StatusName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string StatusName = ((TextBox)gvStatus.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 Statusdetails.StatusName = StatusName;
                 StatusMasterBL updateStatus = new StatusMasterBL();
                 updateStatus.Update(Statusdetails);
-                GridView1.EditIndex = -1;
+                gvStatus.EditIndex = -1;
                 BindGrid();
             }
             catch (Exception ex)
@@ -90,12 +91,12 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvStatus.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = -1;
+            gvStatus.EditIndex = -1;
             BindGrid();
         }
 

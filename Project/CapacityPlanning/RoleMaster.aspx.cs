@@ -27,8 +27,8 @@ namespace CapacityPlanning
             RoleMasterBL clsRole = new RoleMasterBL();
             lstRole = clsRole.getRole();
 
-            GridView1.DataSource = lstRole;
-            GridView1.DataBind();
+            gvRole.DataSource = lstRole;
+            gvRole.DataBind();
         }
 
         protected void RoleAddButton_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace CapacityPlanning
             try
             {
                 CPT_RoleMaster Roledetails = new CPT_RoleMaster();
-                Roledetails.RoleName = RoleNameTextBox.Text.Trim();
+                Roledetails.RoleName = RoleNameTextBox.Text;
                 Roledetails.IsActive = true;
 
                 RoleMasterBL insertRole = new RoleMasterBL();
@@ -51,14 +51,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvRole.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_RoleMaster Roledetails = new CPT_RoleMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvRole.DataKeys[e.RowIndex].Value.ToString());
             Roledetails.RoleMasterID = id;
 
             RoleMasterBL deleteRole = new RoleMasterBL();
@@ -71,13 +71,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_RoleMaster Roledetails = new CPT_RoleMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvRole.DataKeys[e.RowIndex].Value.ToString());
                 Roledetails.RoleMasterID = id;
-                string RoleName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
+                string RoleName = ((TextBox)gvRole.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 Roledetails.RoleName = RoleName;
                 RoleMasterBL updateRole = new RoleMasterBL();
                 updateRole.Update(Roledetails);
-                GridView1.EditIndex = -1;
+                gvRole.EditIndex = -1;
                 BindGrid();
             }
             catch (Exception ex)
@@ -88,12 +88,12 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvRole.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = -1;
+            gvRole.EditIndex = -1;
             BindGrid();
         }
 

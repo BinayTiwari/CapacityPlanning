@@ -104,7 +104,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_GradeMaster.ToList();
                 var query = (from p in db.CPT_GradeMaster
-
+                             orderby p.GradeID descending
                              where p.IsActive == true
                              select new
                              {

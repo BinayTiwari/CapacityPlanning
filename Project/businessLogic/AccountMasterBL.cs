@@ -111,7 +111,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_AccountMaster.ToList();
                 var query = (from p in db.CPT_AccountMaster
-                             
+                             orderby p.AccountMasterID descending
                              where p.IsActive == true
                              select new
                              {

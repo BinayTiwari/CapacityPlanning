@@ -90,7 +90,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_DesignationMaster.ToList();
                 var query = (from p in db.CPT_DesignationMaster
-
+                             orderby p.DesignationMasterID descending
                              where p.IsActive == true
                              select new
                              {

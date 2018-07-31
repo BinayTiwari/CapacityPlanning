@@ -84,5 +84,38 @@ namespace businessLogic
             }
             return 1;
         }
+        public List<CPT_StatusMaster> getStatus()
+        {
+
+            List<CPT_StatusMaster> lstStatusName = new List<CPT_StatusMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from c in db.CPT_StatusMaster
+                             orderby c.StatusMasterID descending
+                             where c.IsActive == true
+                             select new
+                             {
+                                 c.StatusMasterID,
+                                 c.StatusName
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_StatusMaster Status = new CPT_StatusMaster();
+
+                    Status.StatusName = item.StatusName;
+                    Status.StatusMasterID = item.StatusMasterID;
+
+
+                    lstStatusName.Add(Status);
+                }
+
+
+                return lstStatusName;
+
+            }
+
+        }
     }
 }

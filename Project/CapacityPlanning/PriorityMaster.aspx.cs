@@ -16,10 +16,22 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                PriorityMasterBL.FetchGrid(GridView1);
+
+                BindGrid();
 
             }
         }
+
+        private void BindGrid()
+        {
+            List<CPT_PriorityMaster> lstPriority = new List<CPT_PriorityMaster>();
+            PriorityMasterBL clsPriority = new PriorityMasterBL();
+            lstPriority = clsPriority.getPriority();
+
+            gvPriority.DataSource = lstPriority;
+            gvPriority.DataBind();
+        }
+
 
         protected void PriorityAddButton_Click(object sender, EventArgs e)
         {
@@ -27,12 +39,12 @@ namespace CapacityPlanning
             {
 
                 CPT_PriorityMaster accountdetails = new CPT_PriorityMaster();
-                accountdetails.PriorityName = PriorityNameTextBox.Text.Trim();
+                accountdetails.PriorityName = PriorityNameTextBox.Text;
                 accountdetails.IsActive = true;
 
                 PriorityMasterBL insertPriority = new PriorityMasterBL();
                 insertPriority.Insert(accountdetails);
-                PriorityMasterBL.FetchGrid(GridView1);
+                BindGrid();
 
 
             }
@@ -45,19 +57,19 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
-            PriorityMasterBL.FetchGrid(GridView1);
+            gvPriority.PageIndex = e.NewPageIndex;
+            this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_PriorityMaster accountdetails = new CPT_PriorityMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvPriority.DataKeys[e.RowIndex].Value.ToString());
             accountdetails.PriorityID = id;
 
             PriorityMasterBL deletePriority = new PriorityMasterBL();
             deletePriority.Delete(accountdetails);
-            PriorityMasterBL.FetchGrid(GridView1);
+            BindGrid();
 
 
         }
@@ -70,14 +82,14 @@ namespace CapacityPlanning
             try
             {
                 CPT_PriorityMaster accountdetails = new CPT_PriorityMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvPriority.DataKeys[e.RowIndex].Value.ToString());
                 accountdetails.PriorityID = id;
-                string accountName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
+                string accountName = ((TextBox)gvPriority.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 accountdetails.PriorityName = accountName;
                 PriorityMasterBL updatePriority = new PriorityMasterBL();
                 updatePriority.Update(accountdetails);
-                GridView1.EditIndex = -1;
-                PriorityMasterBL.FetchGrid(GridView1);
+                gvPriority.EditIndex = -1;
+                BindGrid();
 
             }
             catch (Exception ex)
@@ -90,14 +102,14 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
-            PriorityMasterBL.FetchGrid(GridView1);
+            gvPriority.EditIndex = e.NewEditIndex;
+            BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
-            PriorityMasterBL.FetchGrid(GridView1);
+            gvPriority.EditIndex = -1;
+            BindGrid();
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

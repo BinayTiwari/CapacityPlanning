@@ -81,6 +81,54 @@ namespace businessLogic
             }
             return 1;
         }
+
+        public List<CPT_CityMaster> getCity()
+        {
+
+            List<CPT_CityMaster> lstCityName = new List<CPT_CityMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_OpportunityMaster.ToList();
+                var query = (from p in db.CPT_CityMaster
+                             join q in db.CPT_CountryMaster on p.CountryID equals q.CountryMasterID
+                             join r in db.CPT_RegionMaster on p.RegionID equals r.RegionMasterID
+                             orderby p.CityID descending
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.CityID,
+                                 p.CityName,
+                                 q.CountryName,
+                                 r.RegionName
+                                 
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_CityMaster clscity = new CPT_CityMaster();
+                    clscity.CityID = item.CityID;
+                    clscity.CityName = item.CityName;
+                    
+                    
+
+                    CPT_CountryMaster clsCountry = new CPT_CountryMaster();
+                    clsCountry.CountryName = item.CountryName;
+                    clscity.CPT_CountryMaster = clsCountry;
+
+                    CPT_RegionMaster region = new CPT_RegionMaster();
+                    region.RegionName = item.RegionName;
+                    clscity.CPT_RegionMaster = region;
+                    
+
+                    lstCityName.Add(clscity);
+                }
+
+
+                return lstCityName;
+
+            }
+
+        }
     }
 
 }

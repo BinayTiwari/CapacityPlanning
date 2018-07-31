@@ -27,8 +27,8 @@ namespace CapacityPlanning
             SalesStageMasterBL clsSalesStage = new SalesStageMasterBL();
             lstSalesStage = clsSalesStage.getSalesStage();
 
-            GridView1.DataSource = lstSalesStage;
-            GridView1.DataBind();
+            gvSalesStage.DataSource = lstSalesStage;
+            gvSalesStage.DataBind();
         }
 
         protected void SalesStageAddButton_Click(object sender, EventArgs e)
@@ -51,14 +51,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvSalesStage.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_SalesStageMaster SalesStagedetails = new CPT_SalesStageMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvSalesStage.DataKeys[e.RowIndex].Value.ToString());
             SalesStagedetails.SalesStageMasterID = id;
 
             SalesStageMasterBL deleteSalesStage = new SalesStageMasterBL();
@@ -71,13 +71,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_SalesStageMaster SalesStagedetails = new CPT_SalesStageMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvSalesStage.DataKeys[e.RowIndex].Value.ToString());
                 SalesStagedetails.SalesStageMasterID = id;
-                string SalesStageName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
+                string SalesStageName = ((TextBox)gvSalesStage.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 SalesStagedetails.SalesStageName = SalesStageName;
                 SalesStageMasterBL updateSalesStage = new SalesStageMasterBL();
                 updateSalesStage.Update(SalesStagedetails);
-                GridView1.EditIndex = -1;
+                gvSalesStage.EditIndex = -1;
                 BindGrid();
             }
             catch (Exception ex)
@@ -88,12 +88,12 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvSalesStage.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = -1;
+            gvSalesStage.EditIndex = -1;
             BindGrid();
         }
 

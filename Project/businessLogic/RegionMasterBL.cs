@@ -123,6 +123,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_CountryMaster.ToList();
                 var query = (from c in db.CPT_RegionMaster
+                             orderby c.RegionMasterID descending
                              where c.IsActive == true
                              select new
                              {

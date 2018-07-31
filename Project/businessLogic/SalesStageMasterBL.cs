@@ -93,6 +93,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_CountryMaster.ToList();
                 var query = (from c in db.CPT_SalesStageMaster
+                             orderby c.SalesStageMasterID descending
                              where c.IsActive == true
                              select new
                              {

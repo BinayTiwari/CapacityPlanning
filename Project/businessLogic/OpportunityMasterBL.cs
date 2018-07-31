@@ -105,7 +105,7 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_OpportunityMaster.ToList();
                 var query = (from p in db.CPT_OpportunityMaster
-
+                             orderby p.OpportunityID descending
                              where p.IsActive == true
                              select new
                              {

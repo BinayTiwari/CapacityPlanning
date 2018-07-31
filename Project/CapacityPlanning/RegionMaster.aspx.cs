@@ -28,8 +28,8 @@ namespace CapacityPlanning
             RegionMasterBL clsRegion = new RegionMasterBL();
             lstRegion = clsRegion.getRegion();
 
-            GridView1.DataSource = lstRegion;
-            GridView1.DataBind();
+            gvRegion.DataSource = lstRegion;
+            gvRegion.DataBind();
         }
 
         protected void SaveRegionButton(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace CapacityPlanning
             {
 
                 CPT_RegionMaster Regiondetails = new CPT_RegionMaster();
-                Regiondetails.RegionName = RegionInput.Text.Trim();
+                Regiondetails.RegionName = RegionInput.Text;
                 Regiondetails.IsActive = true;
 
                 RegionMasterBL insertRegion = new RegionMasterBL();
@@ -57,7 +57,7 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvRegion.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
@@ -69,7 +69,7 @@ namespace CapacityPlanning
         {
 
             CPT_RegionMaster Regiondetails = new CPT_RegionMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvRegion.DataKeys[e.RowIndex].Value.ToString());
             Regiondetails.RegionMasterID = id;
 
             RegionMasterBL deleteRegion = new RegionMasterBL();
@@ -87,13 +87,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_RegionMaster Regiondetails = new CPT_RegionMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvRegion.DataKeys[e.RowIndex].Value.ToString());
                 Regiondetails.RegionMasterID = id;
-                string RegionName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
+                string RegionName = ((TextBox)gvRegion.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 Regiondetails.RegionName = RegionName;
                 RegionMasterBL updateRegion = new RegionMasterBL();
                 updateRegion.Update(Regiondetails);
-                GridView1.EditIndex = -1;
+                gvRegion.EditIndex = -1;
                 BindGrid();
 
             }
@@ -107,13 +107,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvRegion.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvRegion.EditIndex = -1;
             BindGrid();
         }
 

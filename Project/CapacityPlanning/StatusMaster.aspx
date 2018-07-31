@@ -8,10 +8,10 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="StatusNameTextBox" placeholder="Status" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="StatusNameTextBox" placeholder="Status" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="StatusAddButton" runat="server" Text="Add Status " CssClass="btn btn-md btn-success" OnClick="StatusAddButton_Click" />
             </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="StatusMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvStatus" Width="100%" runat="server" DataKeyNames="StatusMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
@@ -22,11 +22,11 @@
                     <asp:BoundField DataField="StatusName" HeaderText="Status" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:ImageButton ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" />
+                            <asp:ImageButton ID="ButtonEdit" runat="server" ImageUrl="~/images/user_edit.png" CommandName="Edit" formnovalidate />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" />
-                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+                            <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
+                            <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
@@ -41,6 +41,7 @@
                 <FooterStyle BackColor="#DADEE5" />
                 <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
                 <PagerSettings Mode="NumericFirstLast" />
+                <PagerStyle HorizontalAlign="Right" />
             </asp:GridView>
         </div>
     </div>
