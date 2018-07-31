@@ -27,15 +27,15 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
 
-                GridView1.DataSource = (from c in db.CPT_AccountMaster
-                                       where c.IsActive ==true
-                                       select c).ToList();
-                
-                GridView1.DataBind();
-            }
+            List<CPT_AccountMaster> lstAccount = new List<CPT_AccountMaster>();
+            AccountMasterBL clsAccount = new AccountMasterBL();
+            lstAccount = clsAccount.getAccount();
+
+            gvAccount.DataSource = lstAccount;
+            gvAccount.DataBind();
+
+
         }
 
 
@@ -45,7 +45,7 @@ namespace CapacityPlanning
             {
 
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
-                accountdetails.AccountName = AccountNameTextBox.Text;
+                accountdetails.AccountName = AccountNameTextBox.Text.Trim();
                 accountdetails.IsActive = true;
 
                 AccountMasterBL insertAccount = new AccountMasterBL();
@@ -63,14 +63,14 @@ namespace CapacityPlanning
         
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvAccount.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_AccountMaster accountdetails = new CPT_AccountMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvAccount.DataKeys[e.RowIndex].Value.ToString());
             accountdetails.AccountMasterID = id;
 
             AccountMasterBL deleteAccount = new AccountMasterBL();
@@ -88,13 +88,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvAccount.DataKeys[e.RowIndex].Value.ToString());
                 accountdetails.AccountMasterID = id;
-                string accountName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string accountName = ((TextBox)gvAccount.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 accountdetails.AccountName = accountName;
                 AccountMasterBL updateAccount = new AccountMasterBL();
                 updateAccount.Update(accountdetails);
-                GridView1.EditIndex = -1;
+                gvAccount.EditIndex = -1;
                 BindGrid();
 
             }
@@ -108,13 +108,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvAccount.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvAccount.EditIndex = -1;
             BindGrid();
         }
 

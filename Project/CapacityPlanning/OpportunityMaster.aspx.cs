@@ -26,14 +26,15 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                GridView1.DataSource = (from c in db.CPT_OpportunityMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                //GridView1.DataSource = db.CPT_OpportunityMaster.ToList();
-                GridView1.DataBind();
-            }
+
+            List<CPT_OpportunityMaster> lstOpportunity = new List<CPT_OpportunityMaster>();
+            OpportunityMasterBL clsOpportunity = new OpportunityMasterBL();
+            lstOpportunity = clsOpportunity.getOpportunity();
+
+            gvOpportunity.DataSource = lstOpportunity;
+            gvOpportunity.DataBind();
+
+
         }
 
 
@@ -43,7 +44,7 @@ namespace CapacityPlanning
             {
 
                 CPT_OpportunityMaster opportunitydetails = new CPT_OpportunityMaster();
-                opportunitydetails.OpportunityType = OpportunityNameTextBox.Text;
+                opportunitydetails.OpportunityType = OpportunityNameTextBox.Text.Trim();
                 opportunitydetails.IsActive = true;
 
                 OpportunityMasterBL insertOpportunity = new OpportunityMasterBL();
@@ -61,14 +62,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvOpportunity.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_OpportunityMaster opportunitydetails = new CPT_OpportunityMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvOpportunity.DataKeys[e.RowIndex].Value.ToString());
             opportunitydetails.OpportunityID = id;
 
             OpportunityMasterBL deleteOpportunity = new OpportunityMasterBL();
@@ -86,13 +87,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_OpportunityMaster opportunitydetails = new CPT_OpportunityMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvOpportunity.DataKeys[e.RowIndex].Value.ToString());
                 opportunitydetails.OpportunityID = id;
-                string opportunityName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string opportunityName = ((TextBox)gvOpportunity.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 opportunitydetails.OpportunityType = opportunityName;
                 OpportunityMasterBL updateOpportunity = new OpportunityMasterBL();
                 updateOpportunity.Update(opportunitydetails);
-                GridView1.EditIndex = -1;
+                gvOpportunity.EditIndex = -1;
                 BindGrid();
 
             }
@@ -106,13 +107,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvOpportunity.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvOpportunity.EditIndex = -1;
             BindGrid();
         }
 

@@ -25,11 +25,15 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                GridView1.DataSource = db.CPT_GradeMaster.ToList();
-                GridView1.DataBind();
-            }
+
+            List<CPT_GradeMaster> lstDesignation = new List<CPT_GradeMaster>();
+            GradeMasterBL clsDesignation = new GradeMasterBL();
+            lstDesignation = clsDesignation.getGrade();
+
+            gvGrade.DataSource = lstDesignation;
+            gvGrade.DataBind();
+
+
         }
 
 
@@ -57,14 +61,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvGrade.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_GradeMaster gradedetails = new CPT_GradeMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvGrade.DataKeys[e.RowIndex].Value.ToString());
             gradedetails.GradeID = id;
 
             GradeMasterBL deleteGrade = new GradeMasterBL();
@@ -82,13 +86,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_GradeMaster gradedetails = new CPT_GradeMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvGrade.DataKeys[e.RowIndex].Value.ToString());
                 gradedetails.GradeID = id;
-                string gradeName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string gradeName = ((TextBox)gvGrade.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 gradedetails.Grade = gradeName;
                 GradeMasterBL updateGrade = new GradeMasterBL();
                 updateGrade.Update(gradedetails);
-                GridView1.EditIndex = -1;
+                gvGrade.EditIndex = -1;
                 BindGrid();
 
             }
@@ -102,13 +106,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvGrade.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvGrade.EditIndex = -1;
             BindGrid();
         }
 

@@ -23,22 +23,22 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                GridView1.DataSource = (from c in db.CPT_DesignationMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                //GridView1.DataSource = db.CPT_DesignationMaster.ToList();
-                GridView1.DataBind();
-            }
-        }
 
+            List<CPT_DesignationMaster> lstDesignation = new List<CPT_DesignationMaster>();
+            DesignationMasterBL clsDesignation = new DesignationMasterBL();
+            lstDesignation = clsDesignation.getDesignation();
+
+            gvDesignation.DataSource = lstDesignation;
+            gvDesignation.DataBind();
+
+
+        }
         protected void DesignationAddButton_Click(object sender, EventArgs e)
         {
             try
             {
                 CPT_DesignationMaster Designationdetails = new CPT_DesignationMaster();
-                Designationdetails.DesignationName = DesignationNameTextBox.Text;
+                Designationdetails.DesignationName = DesignationNameTextBox.Text.Trim();
                 Designationdetails.IsActive = true;
 
                 DesignationMasterBL insertDesignation = new DesignationMasterBL();
@@ -53,14 +53,14 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvDesignation.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_DesignationMaster Designationdetails = new CPT_DesignationMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvDesignation.DataKeys[e.RowIndex].Value.ToString());
             Designationdetails.DesignationMasterID = id;
 
             DesignationMasterBL deleteDesignation = new DesignationMasterBL();
@@ -73,13 +73,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_DesignationMaster Designationdetails = new CPT_DesignationMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvDesignation.DataKeys[e.RowIndex].Value.ToString());
                 Designationdetails.DesignationMasterID = id;
-                string DesignationName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string DesignationName = ((TextBox)gvDesignation.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 Designationdetails.DesignationName = DesignationName;
                 DesignationMasterBL updateDesignation = new DesignationMasterBL();
                 updateDesignation.Update(Designationdetails);
-                GridView1.EditIndex = -1;
+                gvDesignation.EditIndex = -1;
                 BindGrid();
 
             }
@@ -91,12 +91,12 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvDesignation.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = -1;
+            gvDesignation.EditIndex = -1;
             BindGrid();
         }
 

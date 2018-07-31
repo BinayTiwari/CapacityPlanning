@@ -10,12 +10,10 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server"></asp:TextBox>
-
-
+                <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" />
             </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="AccountMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvAccount" Width="100%" runat="server" DataKeyNames="AccountMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

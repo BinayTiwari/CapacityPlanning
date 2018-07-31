@@ -8,11 +8,11 @@
         
         <div class="content-box-large">
             <div class="form-group form-inline">
-            <asp:TextBox ID="OpportunityNameTextBox" placeholder="Opportunity Type" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="OpportunityNameTextBox" placeholder="Opportunity Type" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="OpportunityAddButton" runat="server" Text="Add Opportunity Type" CssClass="btn btn-md btn-success" OnClick="OpportunityAddButton_Click" />
         </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="OpportunityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvOpportunity" Width="100%" runat="server" DataKeyNames="OpportunityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

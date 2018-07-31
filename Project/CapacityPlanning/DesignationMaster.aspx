@@ -8,11 +8,11 @@
         
         <div class="content-box-large">
             <div class="form-group form-inline">
-            <asp:TextBox ID="DesignationNameTextBox" placeholder="Designation Name" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="DesignationNameTextBox" placeholder="Designation Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="DesignationAddButton" runat="server" Text="Add Designation" CssClass="btn btn-md btn-success" OnClick="DesignationAddButton_Click" />
         </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="DesignationMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvDesignation" Width="100%" runat="server" DataKeyNames="DesignationMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
