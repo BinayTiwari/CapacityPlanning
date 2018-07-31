@@ -60,9 +60,9 @@ namespace businessLogic
                     ddlPriorities.DataTextField = "PriorityName";
                     ddlPriorities.DataValueField = "PriorityName";
                     ddlPriorities.DataBind();
-                    ddlPriorities.Items.Insert(0, new ListItem("Set Priority"));
-                    //string country = (e.Row.FindControl("PriorityName") as Label).Text;
-                    //ddlPriorities.Items.FindByValue(country).Selected = true;
+                    //ddlPriorities.Items.Insert(0, new ListItem("--Set Priority--"));
+                    string country = (e.Row.FindControl("lblPriority") as Label).Text;
+                    ddlPriorities.Items.FindByValue(country).Selected = true;
                 }
             }
         }
