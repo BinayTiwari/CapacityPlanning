@@ -84,5 +84,37 @@ namespace businessLogic
             }
             return 1;
         }
+        public List<CPT_RoleMaster> getRole()
+        {
+
+            List<CPT_RoleMaster> lstRoleName = new List<CPT_RoleMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from c in db.CPT_RoleMaster
+                             where c.IsActive == true
+                             select new
+                             {
+                                 c.RoleMasterID,
+                                 c.RoleName
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_RoleMaster Role = new CPT_RoleMaster();
+
+                    Role.RoleName = item.RoleName;
+                    Role.RoleMasterID = item.RoleMasterID;
+
+
+                    lstRoleName.Add(Role);
+                }
+
+
+                return lstRoleName;
+
+            }
+
+        }
     }
 }

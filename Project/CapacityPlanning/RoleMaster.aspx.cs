@@ -23,14 +23,12 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                GridView1.DataSource = (from c in db.CPT_RoleMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                //GridView1.DataSource = db.CPT_RoleMaster.ToList();
-                GridView1.DataBind();
-            }
+            List<CPT_RoleMaster> lstRole = new List<CPT_RoleMaster>();
+            RoleMasterBL clsRole = new RoleMasterBL();
+            lstRole = clsRole.getRole();
+
+            GridView1.DataSource = lstRole;
+            GridView1.DataBind();
         }
 
         protected void RoleAddButton_Click(object sender, EventArgs e)
@@ -38,7 +36,7 @@ namespace CapacityPlanning
             try
             {
                 CPT_RoleMaster Roledetails = new CPT_RoleMaster();
-                Roledetails.RoleName = RoleNameTextBox.Text;
+                Roledetails.RoleName = RoleNameTextBox.Text.Trim();
                 Roledetails.IsActive = true;
 
                 RoleMasterBL insertRole = new RoleMasterBL();
@@ -75,7 +73,7 @@ namespace CapacityPlanning
                 CPT_RoleMaster Roledetails = new CPT_RoleMaster();
                 int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
                 Roledetails.RoleMasterID = id;
-                string RoleName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string RoleName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 Roledetails.RoleName = RoleName;
                 RoleMasterBL updateRole = new RoleMasterBL();
                 updateRole.Update(Roledetails);

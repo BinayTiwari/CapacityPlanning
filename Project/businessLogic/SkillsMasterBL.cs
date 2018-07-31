@@ -84,5 +84,37 @@ namespace businessLogic
             }
             return 1;
         }
+        public List<CPT_SkillsMaster> getSkill()
+        {
+
+            List<CPT_SkillsMaster> lstSkillName = new List<CPT_SkillsMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from c in db.CPT_SkillsMaster
+                             where c.IsActive == true
+                             select new
+                             {
+                                 c.SkillsMasterID,
+                                 c.SkillsName
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_SkillsMaster Skill = new CPT_SkillsMaster();
+
+                    Skill.SkillsMasterID = item.SkillsMasterID;
+                    Skill.SkillsName = item.SkillsName;
+
+
+                    lstSkillName.Add(Skill);
+                }
+
+
+                return lstSkillName;
+
+            }
+
+        }
     }
 }

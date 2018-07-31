@@ -8,7 +8,7 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="PriorityNameTextBox" placeholder="Priority" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="PriorityNameTextBox" placeholder="Priority" CssClass="form-control" runat="server" required></asp:TextBox>
 
                 <asp:Button ID="PriorityAddButton" runat="server" Text="Add Priority " CssClass="btn btn-md btn-success" OnClick="PriorityAddButton_Click" />
             </div>

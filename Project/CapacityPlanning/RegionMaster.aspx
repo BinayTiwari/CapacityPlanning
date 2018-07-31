@@ -9,7 +9,7 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="RegionInput" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="RegionInput" CssClass="form-control" runat="server" required></asp:TextBox>
 
                 <asp:Button ID="Button1" runat="server" Text="Add Region" CssClass="btn btn-md btn-success" OnClick="SaveRegionButton" />
             </div>

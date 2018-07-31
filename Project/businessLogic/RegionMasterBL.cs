@@ -115,6 +115,37 @@ namespace businessLogic
             return 1;
         }
 
+        public List<CPT_RegionMaster> getRegion()
+        {
 
+            List<CPT_RegionMaster> lstRegionName = new List<CPT_RegionMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from c in db.CPT_RegionMaster
+                             where c.IsActive == true
+                             select new
+                             {
+                                 c.RegionMasterID,
+                                 c.RegionName
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_RegionMaster region = new CPT_RegionMaster();
+
+                    region.RegionName = item.RegionName;
+                    region.RegionMasterID = item.RegionMasterID;
+
+
+                    lstRegionName.Add(region);
+                }
+
+
+                return lstRegionName;
+
+            }
+
+        }
     }
 }

@@ -8,7 +8,7 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="SalesStageNameTextBox" placeholder="SalesStage" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="SalesStageNameTextBox" placeholder="SalesStage" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="SalesStageAddButton" runat="server" Text="Add SalesStage " CssClass="btn btn-md btn-success" OnClick="SalesStageAddButton_Click" />
             </div>
             <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="SalesStageMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"

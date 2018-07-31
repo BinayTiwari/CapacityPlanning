@@ -7,7 +7,7 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="RoleAddButton" runat="server" Text="Add Role " CssClass="btn btn-md btn-success" OnClick="RoleAddButton_Click" />
             </div>
             <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="RoleMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"

@@ -23,14 +23,12 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                //GridView1.DataSource = db.CPT_SkillsMaster.ToList();
-                GridView1.DataSource = (from c in db.CPT_SkillsMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                GridView1.DataBind();
-            }
+            List<CPT_SkillsMaster> lstSkill = new List<CPT_SkillsMaster>();
+            SkillsMasterBL clsSkill = new SkillsMasterBL();
+            lstSkill = clsSkill.getSkill();
+
+            GridView1.DataSource = lstSkill;
+            GridView1.DataBind();
         }
 
         protected void SkillsAddButton_Click(object sender, EventArgs e)
@@ -38,7 +36,7 @@ namespace CapacityPlanning
             try
             {
                 CPT_SkillsMaster Skillsdetails = new CPT_SkillsMaster();
-                Skillsdetails.SkillsName = SkillsNameTextBox.Text;
+                Skillsdetails.SkillsName = SkillsNameTextBox.Text.Trim();
                 Skillsdetails.IsActive = true;
 
                 SkillsMasterBL insertSkills = new SkillsMasterBL();
@@ -75,7 +73,7 @@ namespace CapacityPlanning
                 CPT_SkillsMaster Skillsdetails = new CPT_SkillsMaster();
                 int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
                 Skillsdetails.SkillsMasterID = id;
-                string SkillsName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string SkillsName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 Skillsdetails.SkillsName = SkillsName;
                 SkillsMasterBL updateSkills = new SkillsMasterBL();
                 updateSkills.Update(Skillsdetails);

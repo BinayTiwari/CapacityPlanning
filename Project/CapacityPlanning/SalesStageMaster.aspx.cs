@@ -23,14 +23,12 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                //GridView1.DataSource = db.CPT_SalesStageMaster.ToList();
-                GridView1.DataSource = (from c in db.CPT_SalesStageMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                GridView1.DataBind();
-            }
+            List<CPT_SalesStageMaster> lstSalesStage = new List<CPT_SalesStageMaster>();
+            SalesStageMasterBL clsSalesStage = new SalesStageMasterBL();
+            lstSalesStage = clsSalesStage.getSalesStage();
+
+            GridView1.DataSource = lstSalesStage;
+            GridView1.DataBind();
         }
 
         protected void SalesStageAddButton_Click(object sender, EventArgs e)
@@ -38,7 +36,7 @@ namespace CapacityPlanning
             try
             {
                 CPT_SalesStageMaster SalesStagedetails = new CPT_SalesStageMaster();
-                SalesStagedetails.SalesStageName = SalesStageNameTextBox.Text;
+                SalesStagedetails.SalesStageName = SalesStageNameTextBox.Text.Trim();
                 SalesStagedetails.IsActive = true;
 
                 SalesStageMasterBL insertSalesStage = new SalesStageMasterBL();
@@ -75,7 +73,7 @@ namespace CapacityPlanning
                 CPT_SalesStageMaster SalesStagedetails = new CPT_SalesStageMaster();
                 int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
                 SalesStagedetails.SalesStageMasterID = id;
-                string SalesStageName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string SalesStageName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 SalesStagedetails.SalesStageName = SalesStageName;
                 SalesStageMasterBL updateSalesStage = new SalesStageMasterBL();
                 updateSalesStage.Update(SalesStagedetails);

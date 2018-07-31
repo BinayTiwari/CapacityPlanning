@@ -9,7 +9,7 @@
 
         <div class="content-box-large">
             <div class="form-group form-inline">
-                <asp:TextBox ID="SkillsNameTextBox" placeholder="Skills" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="SkillsNameTextBox" placeholder="Skills" CssClass="form-control" runat="server" required></asp:TextBox>
 
                 <asp:Button ID="SkillsAddButton" runat="server" Text="Add Skills " CssClass="btn btn-md btn-success" OnClick="SkillsAddButton_Click" />
             </div>

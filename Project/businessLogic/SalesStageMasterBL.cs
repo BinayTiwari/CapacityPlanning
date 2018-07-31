@@ -85,5 +85,37 @@ namespace businessLogic
             }
             return 1;
         }
+        public List<CPT_SalesStageMaster> getSalesStage()
+        {
+
+            List<CPT_SalesStageMaster> lstSalesStage = new List<CPT_SalesStageMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from c in db.CPT_SalesStageMaster
+                             where c.IsActive == true
+                             select new
+                             {
+                                 c.SalesStageMasterID,
+                                 c.SalesStageName
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_SalesStageMaster SalesStage = new CPT_SalesStageMaster();
+
+                    SalesStage.SalesStageMasterID = item.SalesStageMasterID;
+                    SalesStage.SalesStageName = item.SalesStageName;
+
+
+                    lstSalesStage.Add(SalesStage);
+                }
+
+
+                return lstSalesStage;
+
+            }
+
+        }
     }
 }

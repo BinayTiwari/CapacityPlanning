@@ -5,12 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using businessLogic;
+using System.Web.UI.WebControls;
 
 namespace businessLogic
 {
     public class PriorityMasterBL
     {
-         public int Insert(CPT_PriorityMaster priorityDetails)
+        public static void FetchGrid(GridView GV)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    GV.DataSource = (from c in db.CPT_PriorityMaster
+                                            where c.IsActive == true
+                                            select c).ToList();
+                    //GridView1.DataSource = db.CPT_PriorityMaster.ToList();
+                    GV.DataBind();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+        }
+        public int Insert(CPT_PriorityMaster priorityDetails)
         {
             using (CPContext db = new CPContext())
             {

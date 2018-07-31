@@ -24,14 +24,12 @@ namespace CapacityPlanning
         }
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                //GridView1.DataSource = db.CPT_RegionMaster.ToList();
-                GridView1.DataSource = (from c in db.CPT_RegionMaster
-                                        where c.IsActive == true
-                                        select c).ToList();
-                GridView1.DataBind();
-            }
+            List<CPT_RegionMaster> lstRegion = new List<CPT_RegionMaster>();
+            RegionMasterBL clsRegion = new RegionMasterBL();
+            lstRegion = clsRegion.getRegion();
+
+            GridView1.DataSource = lstRegion;
+            GridView1.DataBind();
         }
 
         protected void SaveRegionButton(object sender, EventArgs e)
@@ -41,7 +39,7 @@ namespace CapacityPlanning
             {
 
                 CPT_RegionMaster Regiondetails = new CPT_RegionMaster();
-                Regiondetails.RegionName = RegionInput.Text;
+                Regiondetails.RegionName = RegionInput.Text.Trim();
                 Regiondetails.IsActive = true;
 
                 RegionMasterBL insertRegion = new RegionMasterBL();
@@ -91,7 +89,7 @@ namespace CapacityPlanning
                 CPT_RegionMaster Regiondetails = new CPT_RegionMaster();
                 int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
                 Regiondetails.RegionMasterID = id;
-                string RegionName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string RegionName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text.Trim();
                 Regiondetails.RegionName = RegionName;
                 RegionMasterBL updateRegion = new RegionMasterBL();
                 updateRegion.Update(Regiondetails);
