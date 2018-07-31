@@ -61,37 +61,67 @@ namespace businessLogic
                     ddlPriorities.DataValueField = "PriorityName";
                     ddlPriorities.DataBind();
                     ddlPriorities.Items.Insert(0, new ListItem("Set Priority"));
-                    ddlPriorities.SelectedIndex = 0;
+                    //string country = (e.Row.FindControl("PriorityName") as Label).Text;
+                    //ddlPriorities.Items.FindByValue(country).Selected = true;
                 }
             }
         }
         public int Update(CPT_ResourceDemand details)
         {
-            using (CPContext db = new CPContext())
+            try
             {
-                var query =
-                   (from p in db.CPT_ResourceDemand
-                    where p.RequestID == details.RequestID
-                    select p);
-
-                foreach (CPT_ResourceDemand detail in query)
+                using (CPContext db = new CPContext())
                 {
-                    detail.PriorityID = details.PriorityID;
+                    var query =
+                       (from p in db.CPT_ResourceDemand
+                        where p.RequestID == details.RequestID
+                        select p);
 
+                    foreach (CPT_ResourceDemand detail in query)
+                    {
+                        detail.PriorityID = details.PriorityID;
+
+                    }
+
+
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+
+                    }
+                    return 1;
                 }
-
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-
-                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 return 1;
             }
         }
+        public int SelectID(string PriorityName)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                   var query =
+                       (from p in db.CPT_PriorityMaster
+                        where p.PriorityName == PriorityName
+                        select p.PriorityID).ToList();
+                    int val = query[0];
+                    return val;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return 1;
+            }
+            }
+        
     }
 }

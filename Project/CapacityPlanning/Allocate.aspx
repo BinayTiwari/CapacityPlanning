@@ -44,7 +44,7 @@
             </ItemTemplate>
         </asp:TemplateField>
                             
-                            <asp:ButtonField ButtonType="Button" CommandName="Update" HeaderText="Allocate" ShowHeader="True" Text="Allocate" />
+                            <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-success btn-md" CommandName="Update" HeaderText="Allocate" ShowHeader="True" Text="Allocate"/>
                             
                         </Columns>
                         
@@ -61,6 +61,10 @@
                     </asp:GridView>
 
                 </div>
+                <br />
+                <br />
+                <asp:Button ID="btnSave" style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" OnClick="btnSave_Click" />
+                 <br />
                 <br />
             </div>
         </div>
