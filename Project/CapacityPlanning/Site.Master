@@ -120,35 +120,36 @@
                     <div class="col-md-5">
                         <!-- Logo -->
                         <div class="logo">
-
-
                             <a href="Default.aspx"> <img src="images/1.png" height="70px", width="190px"></a>
                         </div>
                     </div>
-
-                    <div class="col-md-3 pull-right">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <br />
-                                <div class="input-group form">
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                    <span class="input-group-btn">
-
-                                        <button class="btn btn-primary" type="button">Search</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-md-4 pull-right">
+            <div class="row">
+                <div class="col-lg-12">
+                    <br />
+                    <%--<div class="input-group form col-lg-8">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button">Search</button>
+                        </span>
+                    </div>--%>
+                    <div class="col-lg-4 pull-right">
+                                                                                                          
+                          <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>                                                                                    
+                         ( <asp:HyperLink ID="SignOut" runat="server" OnDataBinding="LogOut">Sign Out</asp:HyperLink> )
                     </div>
+                </div>                      
+            </div>
+        </div>
 
-                </div>
+        </div>
             </div>
         </div>
         <div class="page-content">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="sidebar  content-box" style="background-color:#f2f4f7">
-                        <ul class="nav" >
+                    <div class="sidebar  content-box" style="background-color: #f2f4f7">
+                        <ul class="nav">
                             <!-- Main menu -->
                             <asp:Repeater ID="rptMeanu" runat="server">
                                 <ItemTemplate>
@@ -158,7 +159,7 @@
                             </asp:Repeater>
                         </ul>
                     </div>
-                </div>
+             </div>
 
 
                 <div class="container body-content">
@@ -172,7 +173,7 @@
             <footer>
                 <div class="container">
                     <div class="copy text-center">
-                        <p>&copy; <%: DateTime.Now.Year %> - Grid Infocom</p>
+                        <p>&copy; <%: DateTime.Now.Year %> - Grid Infocon</p>
                     </div>
                 </div>
             </footer>

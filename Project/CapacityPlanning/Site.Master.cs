@@ -18,9 +18,11 @@ namespace CapacityPlanning
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
 
+                lblUserName.Text = lstdetils[0].EmployeetName;
                 ClsAuthentication authmenu = new ClsAuthentication();
                 rptMeanu.DataSource = authmenu.getMeanu(lstdetils[0].RolesID);
                 rptMeanu.DataBind();
+                
 
             }
             else
@@ -31,6 +33,13 @@ namespace CapacityPlanning
 
         protected void rptMeanu_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+
+        }
+
+        protected void LogOut(object source, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("login.aspx");
 
         }
     }
