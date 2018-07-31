@@ -13,7 +13,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Default.aspx">Home</a></li>
             <li class="breadcrumb-item"><a href="ResourceMaster.aspx">Resource Master</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
+            <li class="breadcrumb-item active aria-current"="page">Add Employee</li>
         </ol>
     </nav>
     <div class="col-md-10 panel-info">
@@ -41,9 +41,7 @@
 
 
 
-
-
-                    </div>
+                         </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">

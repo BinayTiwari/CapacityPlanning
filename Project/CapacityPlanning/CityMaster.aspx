@@ -18,7 +18,7 @@
                 <asp:ListItem Value="0">--Select Country--</asp:ListItem>
 
             </asp:DropDownList>
-            <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="CityNameTextBox"  placeholder="Enter City" CssClass="form-control" runat="server"></asp:TextBox>
 
             <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />
         </div>

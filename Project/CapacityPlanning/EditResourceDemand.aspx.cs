@@ -11,7 +11,7 @@ namespace CapacityPlanning
 {
     public partial class EditResourceDemand : System.Web.UI.Page
     {
-        String requestID;
+      //  String requestID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)

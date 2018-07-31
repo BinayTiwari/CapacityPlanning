@@ -13,11 +13,11 @@
                 <asp:ListItem Value="0">--Select Region--</asp:ListItem>
 
             </asp:DropDownList>
-            <asp:TextBox ID="CountryNameTextBox" placeholder="Enter Country" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="CountryNameTextBox" placeholder="Enter Country" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="CountryAddButton" runat="server" Text="Add Country " CssClass="btn btn-md btn-success" OnClick="CountryAddButton_Click" />
         </div>
-            <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="CountryMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvCountry" Width="100%" runat="server" DataKeyNames="CountryMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
@@ -29,8 +29,8 @@
 
                 <Columns>
                     <asp:BoundField ReadOnly="true" DataField="CountryMasterID" HeaderText="Country ID" />
-                    <asp:BoundField ReadOnly="true" DataField="RegionName" HeaderText="Region Name" />
-                    <asp:BoundField DataField="RegionName" HeaderText="Country Name" />
+                    <asp:BoundField ReadOnly="true" DataField="CPT_RegionMaster.RegionName" HeaderText="Region Name" />
+                    <asp:BoundField DataField="CPT_RegionMaster.RegionName" HeaderText="Country Name" />
 
                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                     <asp:TemplateField>

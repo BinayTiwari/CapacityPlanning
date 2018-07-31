@@ -25,26 +25,15 @@ namespace CapacityPlanning
         }
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
-                var query = (from p in db.CPT_CountryMaster
-                             join q in db.CPT_RegionMaster on p.RegionID equals q.RegionMasterID
-                             where p.IsActive == true
-                             select new
-                             {
-                                 p.CountryMasterID,
-                                 p.CountryName,
-                                 q.RegionName
-                             }).ToList();
-                //GridView1.DataSource = (from c in db.CPT_CountryMaster
-                //                        where c.IsActive == true
-                //                        select c).ToList();
-                GridView1.DataSource = query;
 
-                GridView1.DataBind();
+            List<CPT_CountryMaster> lstCountry = new List<CPT_CountryMaster>();
+            CountryMasterBL clsCountry = new CountryMasterBL();
+            lstCountry = clsCountry.getCountry();
 
-            }
+            gvCountry.DataSource = lstCountry;
+            gvCountry.DataBind();
+
+            
         }
 
         protected void CountryAddButton_Click(object sender, EventArgs e)
@@ -54,7 +43,7 @@ namespace CapacityPlanning
 
                 CPT_CountryMaster Countrydetails = new CPT_CountryMaster();
                 Countrydetails.RegionID = Convert.ToInt32(RegionList.SelectedValue);
-                Countrydetails.CountryName = CountryNameTextBox.Text;
+                Countrydetails.CountryName = CountryNameTextBox.Text.Trim();
                 Countrydetails.IsActive = true;
 
                 CountryMasterBL insertCountry = new CountryMasterBL();
@@ -71,7 +60,7 @@ namespace CapacityPlanning
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvCountry.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
@@ -79,7 +68,7 @@ namespace CapacityPlanning
         {
 
             CPT_CountryMaster Countrydetails = new CPT_CountryMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvCountry.DataKeys[e.RowIndex].Value.ToString());
             Countrydetails.CountryMasterID = id;
 
             CountryMasterBL deleteCountry = new CountryMasterBL();
@@ -97,13 +86,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_CountryMaster Countrydetails = new CPT_CountryMaster();
-                int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(gvCountry.DataKeys[e.RowIndex].Value.ToString());
                 Countrydetails.CountryMasterID = id;
-                string CountryName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
+                string CountryName = ((TextBox)gvCountry.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
                 Countrydetails.CountryName = CountryName;
                 CountryMasterBL updateCountry = new CountryMasterBL();
                 updateCountry.Update(Countrydetails);
-                GridView1.EditIndex = -1;
+                gvCountry.EditIndex = -1;
                 BindGrid();
 
             }
@@ -117,13 +106,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvCountry.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvCountry.EditIndex = -1;
             BindGrid();
         }
 
