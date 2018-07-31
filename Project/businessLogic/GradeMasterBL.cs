@@ -95,5 +95,40 @@ namespace businessLogic
             }
             return 1;
         }
-    }
+
+        public List<CPT_GradeMaster> getGrade()
+        {
+
+            List<CPT_GradeMaster> lstGradeName = new List<CPT_GradeMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_GradeMaster.ToList();
+                var query = (from p in db.CPT_GradeMaster
+
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.GradeID,
+                                 p.Grade,
+
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_GradeMaster clsGrade = new CPT_GradeMaster();
+                    clsGrade.GradeID = item.GradeID;
+                    clsGrade.Grade = item.Grade;
+
+
+
+
+
+                    lstGradeName.Add(clsGrade);
+                }
+
+
+                return lstGradeName;
+
+            }
+        }       }
 }

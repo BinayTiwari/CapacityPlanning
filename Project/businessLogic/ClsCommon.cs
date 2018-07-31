@@ -37,6 +37,30 @@ namespace businessLogic
             }
         }
 
+        public static void ddlGetCountry(DropDownList ddldropdownName, int regionID)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Country";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_CountryMaster
+                            where c.IsActive == true & c.RegionID == regionID
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.CountryMasterID.ToString();
+                    li.Text = item.CountryName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
         public static void ddlGetCity(DropDownList ddldropdownName)
         {
             ddldropdownName.Items.Clear();
@@ -72,7 +96,7 @@ namespace businessLogic
             using (var db = new CPContext())
             {
                 var query = from c in db.CPT_RegionMaster
-                            where c.IsActive == true
+                            where c.IsActive == true 
                             select c;
                 foreach (var item in query)
                 {

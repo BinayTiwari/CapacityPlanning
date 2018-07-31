@@ -103,6 +103,43 @@ namespace businessLogic
             return 1;
         }
 
-        
+        public List<CPT_AccountMaster> getAccount()
+        {
+
+            List<CPT_AccountMaster> lstAccountName = new List<CPT_AccountMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_AccountMaster.ToList();
+                var query = (from p in db.CPT_AccountMaster
+                             
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.AccountMasterID,
+                                 p.AccountName,
+                                 
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_AccountMaster clsAccount = new CPT_AccountMaster();
+                    clsAccount.AccountMasterID = item.AccountMasterID;
+                    clsAccount.AccountName = item.AccountName;
+
+                    
+                    
+
+
+                    lstAccountName.Add(clsAccount);
+                }
+
+
+                return lstAccountName;
+
+            }
+
+        }
+
+
     }
 }

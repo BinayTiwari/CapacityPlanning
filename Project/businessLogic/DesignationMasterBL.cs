@@ -82,5 +82,41 @@ namespace businessLogic
             }
             return 1;
         }
+        public List<CPT_DesignationMaster> getDesignation()
+        {
+
+            List<CPT_DesignationMaster> lstDesignationName = new List<CPT_DesignationMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_DesignationMaster.ToList();
+                var query = (from p in db.CPT_DesignationMaster
+
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.DesignationMasterID,
+                                 p.DesignationName,
+
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_DesignationMaster clsDesignation = new CPT_DesignationMaster();
+                    clsDesignation.DesignationMasterID = item.DesignationMasterID;
+                    clsDesignation.DesignationName = item.DesignationName;
+
+
+
+
+
+                    lstDesignationName.Add(clsDesignation);
+                }
+
+
+                return lstDesignationName;
+
+            }
+
+        }
     }
 }

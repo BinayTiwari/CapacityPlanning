@@ -97,5 +97,42 @@ namespace businessLogic
             return 1;
         }
 
+        public List<CPT_OpportunityMaster> getOpportunity()
+        {
+
+            List<CPT_OpportunityMaster> lstOpportunityName = new List<CPT_OpportunityMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_OpportunityMaster.ToList();
+                var query = (from p in db.CPT_OpportunityMaster
+
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.OpportunityID,
+                                 p.OpportunityType,
+
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_OpportunityMaster clsOpportunity = new CPT_OpportunityMaster();
+                    clsOpportunity.OpportunityID = item.OpportunityID;
+                    clsOpportunity.OpportunityType = item.OpportunityType;
+
+
+
+
+
+                    lstOpportunityName.Add(clsOpportunity);
+                }
+
+
+                return lstOpportunityName;
+
+            }
+
+        }
+
     }
 }
