@@ -172,7 +172,7 @@
             <footer>
                 <div class="container">
                     <div class="copy text-center">
-                        <p>&copy; <%: DateTime.Now.Year %> - Grid Infocon</p>
+                        <p>&copy; <%: DateTime.Now.Year %> - Grid Infocom</p>
                     </div>
                 </div>
             </footer>
