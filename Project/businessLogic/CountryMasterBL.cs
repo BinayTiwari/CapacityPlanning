@@ -100,6 +100,44 @@ namespace businessLogic
             }
             return 1;
         }
+
+        public List<CPT_CountryMaster> getCountry()
+        {
+
+            List<CPT_CountryMaster> lstCountryName = new List<CPT_CountryMaster>();
+            using (CPContext db = new CPContext())
+            {
+                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
+                var query = (from p in db.CPT_CountryMaster
+                             join q in db.CPT_RegionMaster on p.RegionID equals q.RegionMasterID
+                             where p.IsActive == true
+                             select new
+                             {
+                                 p.CountryMasterID,
+                                 p.CountryName,
+                                 q.RegionName
+                             }).ToList();
+
+                foreach(var item in query)
+                {
+                    CPT_CountryMaster clsCountry = new CPT_CountryMaster();
+                    clsCountry.CountryMasterID = item.CountryMasterID;
+                    clsCountry.CountryName = item.CountryName;
+
+                    CPT_RegionMaster region = new CPT_RegionMaster();
+                    region.RegionName = item.RegionName;
+                    clsCountry.CPT_RegionMaster = region;
+                    
+
+                    lstCountryName.Add(clsCountry);
+                }
+
+
+                return lstCountryName;
+                    
+            }
+            
+        }
     }
     
 }

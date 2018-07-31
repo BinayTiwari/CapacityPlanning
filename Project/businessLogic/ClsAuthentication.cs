@@ -44,7 +44,7 @@ namespace businessLogic
             {
                 var query = from m in db.CPT_MenuMaster
                             join mr in db.RoleMenuMappings on m.MenuID equals mr.MenuID
-                            where mr.RoleID == RoleID
+                            where mr.RoleID == RoleID && m.IsActive == true 
                             select m;
 
                 foreach (var item in query)
