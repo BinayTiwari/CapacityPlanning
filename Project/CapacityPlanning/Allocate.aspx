@@ -6,14 +6,14 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                <li class="breadcrumb-item active" aria-current="page">Allocation</li>
+                <li class="breadcrumb-item active" aria-current="page">Project Allocation</li>
             </ol>
         </nav>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="panel-heading">
-                    <div class="panel-title">Allocation </div>
+                    <div class="panel-title">Project Allocation </div>
 
                 </div>
                 <br />
@@ -31,7 +31,7 @@
                             <asp:BoundField DataField="AccountName" HeaderText="Account Name" />
                             <asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />
                             <asp:BoundField DataField="ProcessName" HeaderText="Process Name" />
-                            <asp:BoundField DataField="StartDate" HeaderText="Start Date" />
+                            <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" DataFormatString="{0:d}"/>
                             <asp:BoundField DataField="SalesStageName" HeaderText="Sales Stage Name" />
                             <asp:BoundField DataField="NoOfResources" HeaderText="No Of Resources" />
                             <asp:BoundField DataField="PriorityName" HeaderText="Priority Name"  Visible = "false" />
