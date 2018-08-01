@@ -142,7 +142,7 @@ namespace CapacityPlanning
         protected void RegionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            if (RegionList.SelectedValue == "")
+            if (RegionList.SelectedItem.Text =="Select Region")
             {
                 CountryNameTextBox.Enabled = false;
             }

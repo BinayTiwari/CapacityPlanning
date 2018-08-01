@@ -138,7 +138,7 @@ namespace CapacityPlanning
         {
             
             
-            if(RegionList.SelectedValue == null)
+            if(RegionList.SelectedItem.Text == "Select Region")
             {
                 CountryList.Enabled = false;
                 CityNameTextBox.Enabled = false; 
@@ -155,7 +155,7 @@ namespace CapacityPlanning
 
         protected void CountryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CountryList.SelectedValue == null)
+            if (CountryList.SelectedItem.Text == "Select Country")
             {
                 CityNameTextBox.Enabled = false;
             }
