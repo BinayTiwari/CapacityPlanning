@@ -24,7 +24,23 @@ namespace CapacityPlanning
 
             }
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         private void BindGrid()
         {
 
@@ -34,7 +50,7 @@ namespace CapacityPlanning
 
             gvAccount.DataSource = lstAccount;
             gvAccount.DataBind();
-
+            CleartextBoxes(this);
 
         }
 

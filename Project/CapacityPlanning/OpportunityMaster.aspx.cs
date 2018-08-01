@@ -36,7 +36,23 @@ namespace CapacityPlanning
 
 
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
 
         protected void OpportunityAddButton_Click(object sender, EventArgs e)
         {
@@ -50,7 +66,7 @@ namespace CapacityPlanning
                 OpportunityMasterBL insertOpportunity = new OpportunityMasterBL();
                 insertOpportunity.Insert(opportunitydetails);
                 BindGrid();
-
+                CleartextBoxes(this);
 
             }
             catch (Exception ex)

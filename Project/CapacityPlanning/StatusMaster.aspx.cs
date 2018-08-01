@@ -33,7 +33,23 @@ namespace CapacityPlanning
 
 
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         protected void StatusAddButton_Click(object sender, EventArgs e)
         {
             try
@@ -45,6 +61,7 @@ namespace CapacityPlanning
                 StatusMasterBL insertStatus = new StatusMasterBL();
                 insertStatus.Insert(Statusdetails);
                 BindGrid();
+                CleartextBoxes(this);
             }
             catch (Exception ex)
             {

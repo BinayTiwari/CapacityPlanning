@@ -31,13 +31,29 @@ namespace CapacityPlanning
             gvPriority.DataSource = lstPriority;
             gvPriority.DataBind();
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
 
         protected void PriorityAddButton_Click(object sender, EventArgs e)
         {
             try
             {
-
+                
                 CPT_PriorityMaster accountdetails = new CPT_PriorityMaster();
                 accountdetails.PriorityName = PriorityNameTextBox.Text;
                 accountdetails.IsActive = true;
@@ -45,6 +61,7 @@ namespace CapacityPlanning
                 PriorityMasterBL insertPriority = new PriorityMasterBL();
                 insertPriority.Insert(accountdetails);
                 BindGrid();
+                CleartextBoxes(this);
 
 
             }

@@ -30,7 +30,23 @@ namespace CapacityPlanning
             gvSalesStage.DataSource = lstSalesStage;
             gvSalesStage.DataBind();
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         protected void SalesStageAddButton_Click(object sender, EventArgs e)
         {
             try
@@ -42,6 +58,7 @@ namespace CapacityPlanning
                 SalesStageMasterBL insertSalesStage = new SalesStageMasterBL();
                 insertSalesStage.Insert(SalesStagedetails);
                 BindGrid();
+                CleartextBoxes(this);
             }
             catch (Exception ex)
             {

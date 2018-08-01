@@ -23,6 +23,23 @@ namespace CapacityPlanning
                 BindGrid();
             }
         }
+        public void CleartextBoxes(Control parent)
+        {
+
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         private void BindGrid()
         {
 
@@ -50,6 +67,7 @@ namespace CapacityPlanning
                 CityMasterBL insertCity = new CityMasterBL();
                 insertCity.Insert(Citydetails);
                 BindGrid();
+                CleartextBoxes(this);
             }
             catch (Exception ex)
             {

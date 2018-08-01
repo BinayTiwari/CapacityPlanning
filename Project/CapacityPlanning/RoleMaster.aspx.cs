@@ -30,7 +30,23 @@ namespace CapacityPlanning
             gvRole.DataSource = lstRole;
             gvRole.DataBind();
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         protected void RoleAddButton_Click(object sender, EventArgs e)
         {
             try
@@ -42,6 +58,7 @@ namespace CapacityPlanning
                 RoleMasterBL insertRole = new RoleMasterBL();
                 insertRole.Insert(Roledetails);
                 BindGrid();
+                CleartextBoxes(this);
             }
             catch (Exception ex)
             {

@@ -31,7 +31,23 @@ namespace CapacityPlanning
             gvRegion.DataSource = lstRegion;
             gvRegion.DataBind();
         }
+        public void CleartextBoxes(Control parent)
+        {
 
+            foreach (Control c in parent.Controls)
+            {
+                if ((c.GetType() == typeof(TextBox)))
+                {
+
+                    ((TextBox)(c)).Text = "";
+                }
+
+                if (c.HasControls())
+                {
+                    CleartextBoxes(c);
+                }
+            }
+        }
         protected void SaveRegionButton(object sender, EventArgs e)
         {
 
@@ -45,7 +61,7 @@ namespace CapacityPlanning
                 RegionMasterBL insertRegion = new RegionMasterBL();
                 insertRegion.Insert(Regiondetails);
                 BindGrid();
-
+                CleartextBoxes(this);
 
             }
             catch (Exception ex)
