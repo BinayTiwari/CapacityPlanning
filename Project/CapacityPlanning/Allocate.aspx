@@ -29,14 +29,15 @@
                             
                             <asp:BoundField DataField="RequestID" ReadOnly="true" HeaderText="Request ID" />
                             <asp:BoundField DataField="AccountName" HeaderText="Account Name" />
-                            <asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />
+                            <%--<asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />--%>
                             <asp:BoundField DataField="ProcessName" HeaderText="Process Name" />
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" DataFormatString="{0:d}"/>
-                            <asp:BoundField DataField="SalesStageName" HeaderText="Sales Stage Name" />
-                            <asp:BoundField DataField="NoOfResources" HeaderText="No Of Resources" />
-                            <asp:BoundField DataField="PriorityName" HeaderText="Priority Name"  Visible = "false" />
+                            <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" DataFormatString="{0:d}"/>
+                            <asp:BoundField DataField="SalesStageName" HeaderText="Sales Stage" />
+                            <asp:BoundField DataField="NoOfResources" HeaderText="Resources" />
+                            <asp:BoundField DataField="PriorityName" HeaderText="Priority"  Visible = "false" />
 
-                            <asp:TemplateField HeaderText = "Priority Name">
+                            <asp:TemplateField HeaderText = "Priority">
             <ItemTemplate>
                 <asp:Label ID="lblPriority" runat="server" Text='<%# Eval("PriorityName") %>' Visible = "false" />
                 <asp:DropDownList ID="ddlPriorities" runat="server">

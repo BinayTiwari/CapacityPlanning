@@ -29,9 +29,9 @@ namespace businessLogic
                  {
                      p.RequestID,
                      q.AccountName,
-                     s.ReportingManagerID,
                      p.ProcessName,
                      u.StartDate,
+                     u.EndDate,
                      r.SalesStageName,
                      u.NoOfResources,
                      t.PriorityName
