@@ -95,10 +95,6 @@ namespace businessLogic
                     detail.VisaExpiryDate = resourceDetails.VisaExpiryDate;
                     detail.DateOfModification = DateTime.Now;
                     detail.ModifiedBy = resourceDetails.ModifiedBy;
-                    
-                   
-
-
 
                 }
 
@@ -133,5 +129,49 @@ namespace businessLogic
             }
             return data;
         }
+        //public List<CPT_ResourceMaster> getResource()
+        //{
+
+        //    List<CPT_ResourceMaster> lstResourceName = new List<CPT_ResourceMaster>();
+        //    using (CPContext db = new CPContext())
+        //    {
+
+
+
+        //        var query = (from p in db.CPT_ResourceMaster
+        //                     join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
+        //                     let mgrName = p.EmployeetName
+        //                     select new
+        //                     {
+        //                         q.EmployeeMasterID,
+        //                         q.EmployeetName,
+        //                         q.ReportingManagerID,
+        //                         q.BaseLocation,
+        //                         q.Mobile,
+        //                         mgrName
+
+
+        //                     }).ToList();
+
+        //        foreach (var item in query)
+        //        {
+        //            CPT_ResourceMaster clsResource = new CPT_ResourceMaster();
+        //            clsResource.EmployeeMasterID = item.EmployeeMasterID;
+        //            clsResource.EmployeetName = item.EmployeetName;
+        //            clsResource.ReportingManagerID = item.ReportingManagerID;
+        //            clsResource.Mobile = item.Mobile;
+        //            clsResource.BaseLocation = item.BaseLocation;
+
+        //            lstResourceName.Add(clsResource);
+        //        }
+
+
+        //        return lstResourceName;
+
+        //    }
+
+        //}
+
     }
+
 }

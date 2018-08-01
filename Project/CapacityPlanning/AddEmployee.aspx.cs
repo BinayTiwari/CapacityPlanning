@@ -32,6 +32,7 @@ namespace CapacityPlanning
             {
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                
 
                 string message = "";
                 foreach (ListItem item in listSkill.Items)
@@ -56,6 +57,7 @@ namespace CapacityPlanning
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text);
                 employeeDetails.PAN = panNoTxt.Text;
                 employeeDetails.Skillsid = message;
+                employeeDetails.Address = addressTxt.Text;
                 employeeDetails.PriorWorkExperience =Convert.ToInt32( expText.Text);
                 employeeDetails.PassportNo = passportNum.Text;
                 employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text);

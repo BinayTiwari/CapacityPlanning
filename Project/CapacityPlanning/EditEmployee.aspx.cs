@@ -24,6 +24,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
                 ClsCommon.ddlGetSkill(listSkill);
+                ClsCommon.ddlGetManager(RManagerDropDownList);
                 BindTextBoxvalues();
             }
 
@@ -63,6 +64,7 @@ namespace CapacityPlanning
                 employeeDetails.PriorWorkExperience = Convert.ToInt32( expText.Text);
                 employeeDetails.PAN = panNoTxt.Text;
                 employeeDetails.Skillsid = message;
+                employeeDetails.Address = addressTxt.Text;
                 employeeDetails.PassportNo = passportNum.Text;
                 employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.ToString());
                 employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.ToString());
@@ -92,7 +94,6 @@ namespace CapacityPlanning
             empIdText.Text = lst[0].EmployeeMasterID.ToString();
             fName.Text = lst[0].EmployeetName;
             RManagerDropDownList.Text = lst[0].ReportingManagerID.ToString();
-
             pass.Text = lst[0].EmployeePassword;
             mail.Text = lst[0].Email;
             bLocation.Text = lst[0].BaseLocation;
@@ -100,15 +101,16 @@ namespace CapacityPlanning
             listDesignation.Text =Convert.ToString( lst[0].DesignationID);
             dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
             expText.Text =Convert.ToString( lst[0].PriorWorkExperience);
-            panNoTxt.Text = lst[0].PassportNo;
+            panNoTxt.Text = lst[0].PAN;
             passportNum.Text = lst[0].PassportNo;
-            listSkill.Text = lst[0].Skillsid;
+            
             addressTxt.Text = lst[0].Address;
             passExpDate.Text = Convert.ToString(lst[0].PassportExpiryDate);
             visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
             listDesignation.Text = lst[0].DesignationID.ToString();
             listRole.Text = lst[0].RolesID.ToString();
-            //listSkill.Text = Convert.ToString( lst[0].Skillsid.ToString());
+            
+            
             
         }
 

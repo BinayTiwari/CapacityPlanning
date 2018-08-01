@@ -13,6 +13,7 @@ namespace CapacityPlanning
 {
     public partial class ResourceMaster : System.Web.UI.Page
     {
+        
 
         
         protected void Page_Load(object sender, EventArgs e)
@@ -26,20 +27,38 @@ namespace CapacityPlanning
         }
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
+
+            //List<CPT_ResourceMaster> lstResource = new List<CPT_ResourceMaster>();
+            //ResourceMasterBL clsResource = new ResourceMasterBL();
+            //lstResource = clsResource.getResource();
+
+            //gvResource.DataSource = lstResource;
+            //gvResource.DataBind();
+            using (CPContext db = new CPContext()) { 
+            var query = (from p in db.CPT_ResourceMaster
+                         join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
+                         let mgrName = p.EmployeetName
+                         select new
+                         {
+                             q.EmployeeMasterID,
+                             q.EmployeetName,
+                             q.ReportingManagerID,
+                             q.BaseLocation,
+                             q.Mobile,
+                             mgrName
 
 
-                GridView1.DataSource = (from c in db.CPT_ResourceMaster
-                                       select c).ToList();
-                GridView1.DataBind();
-            }
+                         }).ToList();
+            gvResource.DataSource = query;
+            gvResource.DataBind();
+        }
+
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_ResourceMaster cPT_ResourceMaster = new CPT_ResourceMaster();
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(gvResource.DataKeys[e.RowIndex].Value.ToString());
             cPT_ResourceMaster.EmployeeMasterID = id;
 
             ResourceMasterBL deleteresourceMasterBL = new ResourceMasterBL();
@@ -58,19 +77,19 @@ namespace CapacityPlanning
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            gvResource.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+            gvResource.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            gvResource.EditIndex = -1;
             BindGrid();
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -78,10 +97,19 @@ namespace CapacityPlanning
             if (e.CommandName == "EditButton")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = GridView1.Rows[index];
+                GridViewRow row = gvResource.Rows[index];
                 string rows = row.Cells[1].Text;
 
                 Response.Redirect("~/EditEmployee.aspx?EmployeeId=" + row.Cells[1].Text);
+            }
+
+            if(e.CommandName == "ViewProfile")
+            {
+                int index1 = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row1 = gvResource.Rows[index1];
+                string rows = row1.Cells[1].Text;
+
+                Response.Redirect("~/ResourceMaster.aspx?EmployeeId=" + row1.Cells[1].Text);
             }
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +119,31 @@ namespace CapacityPlanning
 
         protected void View_Resource_Master(object sender, EventArgs e)
         {
+            viewUserProfile();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            
+        }
+
+        public void viewUserProfile()
+        {
+            int empID = 0;
+            if (!string.IsNullOrEmpty(Request.QueryString["EmployeeId"]))
+            {
+                empID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
+            }
+
+            using(CPContext db = new CPContext())
+            {
+
+                var query = (from c in db.CPT_ResourceMaster
+                            where c.EmployeeMasterID == empID
+                            select c).ToList();
+
+
+                GridView2.DataSource = query;
+                GridView2.DataBind();
+
+            }
         }
 
 

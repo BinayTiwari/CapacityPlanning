@@ -13,7 +13,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="Default.aspx">Home</a></li>
             <li class="breadcrumb-item"><a href="ResourceMaster.aspx">Resource Master</a></li>
-            <li class="breadcrumb-item active aria-current"="page">Add Employee</li>
+            <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
         </ol>
     </nav>
     <div class="col-md-10 panel-info">
@@ -26,53 +26,36 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
-
-
+                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="First Name" required></asp:TextBox>
                         </div>
 
                         <div class="col-sm-4">
-                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
-
+                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" required></asp:TextBox>
 
                         </div>
 
-
-
-                         </div>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="mail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="mail" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:TextBox ID="mail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required></asp:TextBox>
+                            
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" />
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="pass" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" required />
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-
-
-                            
-                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
                                 <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
-
-
                         </div>
 
-
-                            
-                        
                         <div class="col-sm-4">
                             <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="bLocation" runat="server" Display="Dynamic" ForeColor="Red" />
+                            
                         </div>
                     </div>
                     <br>
@@ -81,13 +64,13 @@
                             <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
+                           
 
 
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:TextBox ID="phone" TextMode="Phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
+                            
                         </div>
                     </div>
                     <br>
@@ -98,12 +81,9 @@
                                 <asp:ListItem Value="0">--Select Role--</asp:ListItem>
                             </asp:DropDownList>
 
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listRole" runat="server" Display="Dynamic" ForeColor="Red" />
-
-
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)"></asp:TextBox>
+                            <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)" required></asp:TextBox>
 
                         </div>
 
@@ -124,14 +104,14 @@
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
+                        <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN" required></asp:TextBox>
 
                     </div>
 
                     <div class="col-sm-4">
 
                         <asp:FileUpload ID="FileUploadControl" CssClass="form-control" runat="server" text="uploadPhoto" />
-                        <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="FileUploadControl" runat="server" Display="Dynamic" ForeColor="Red" />
+                        
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$"
                             ControlToValidate="FileUploadControl" runat="server" ForeColor="Red" ErrorMessage="Please select a Image"
                             Display="Dynamic" />
@@ -156,16 +136,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
+                        <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No" required></asp:TextBox>
                     </div>
                     <div class="col-sm-4">
-                        <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                        <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)" required></asp:TextBox>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                        <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)" required></asp:TextBox>
                     </div>
                 </div>
                 <br />
@@ -178,7 +158,7 @@
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
+                        <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years" required></asp:TextBox>
                     </div>
 
                 </div>

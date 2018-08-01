@@ -25,77 +25,84 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <label>Name</label>
+                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Name" required></asp:TextBox>
+                            
 
 
                         </div>
                         <div class="col-sm-4">
 
-                            <div class="col-sm-4">
-                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="fName" runat="server" Display="Dynamic" ForeColor="Red" />
+                            
+                                <label>Employee ID</label>
+                            <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" required></asp:TextBox>
+                            
 
 
-                        </div>
+                        
                         </div>
 
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="mail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="mail" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <label>Email</label>
+                            <asp:TextBox ID="mail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required></asp:TextBox>
+                            
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" />
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="pass" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <label>Password</label>
+                            <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" required/>
+                            
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
+                            <label>Reporting Manager</label>
                             <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
+                            
 
 
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="bLocation" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <label>Base Location</label>
+                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location" required ></asp:TextBox>
+                           
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
+                            <label>Designation</label>
                             <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listDesignation" runat="server" Display="Dynamic" ForeColor="Red" />
+                            
 
 
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="phone" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <label>Mobile No.</label>
+                            <asp:TextBox ID="phone" TextMode="Phone" runat="server" CssClass="form-control" placeholder="Mobile Number" required></asp:TextBox>
+                            
                         </div>
                     </div>
                     <br>
 
                     <div class="row">
                         <div class="col-sm-4">
+                            <label>Role</label>
                             <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="0">--Select Role--</asp:ListItem>
                             </asp:DropDownList>
 
-                            <asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="listRole" runat="server" Display="Dynamic" ForeColor="Red" />
-
-
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)"></asp:TextBox>
+                            <label>Date of Joining</label>
+                            <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)" required ></asp:TextBox>
 
                         </div>
 
@@ -116,23 +123,22 @@
 
                 <div class="row">
                     <div class="col-sm-8">
-                        <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" placeholder="Address"></asp:TextBox>
+                        <label>Address</label>
+                        <asp:TextBox ID="addressTxt" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Address"></asp:TextBox>
 
                     </div>
-
+                    
                 </div>
+                <br />
                  <div class="row">
                     <div class="col-sm-8">
+                        <label>PAN</label>
                         <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
 
                     </div>
 
                 </div>
                 <br>
-
-
-
-
 
                 <div class="row">
                     <div class="col-sm-4">
