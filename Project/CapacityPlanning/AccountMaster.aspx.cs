@@ -50,7 +50,7 @@ namespace CapacityPlanning
 
             gvAccount.DataSource = lstAccount;
             gvAccount.DataBind();
-            CleartextBoxes(this);
+            
 
         }
 
@@ -67,6 +67,8 @@ namespace CapacityPlanning
                 AccountMasterBL insertAccount = new AccountMasterBL();
                 insertAccount.Insert(accountdetails);
                 BindGrid();
+                CleartextBoxes(this);
+                
 
 
             }
