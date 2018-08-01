@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AccountMasterBL.cs" />
     <Compile Include="AllocateBL.cs" />
+    <Compile Include="AllocateResourceBL.cs" />
     <Compile Include="CityMasterBL.cs" />
     <Compile Include="ClsAuthentication.cs" />
     <Compile Include="ClsCommon.cs" />

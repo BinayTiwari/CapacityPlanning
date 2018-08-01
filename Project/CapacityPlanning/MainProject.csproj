@@ -147,6 +147,7 @@
     <Content Include="AddExperience.aspx" />
     <Content Include="AddNewJoiner.aspx" />
     <Content Include="Allocate.aspx" />
+    <Content Include="Allocate_Resource.aspx" />
     <Content Include="CityMaster.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Allocate.aspx.designer.cs">
       <DependentUpon>Allocate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Allocate_Resource.aspx.cs">
+      <DependentUpon>Allocate_Resource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Allocate_Resource.aspx.designer.cs">
+      <DependentUpon>Allocate_Resource.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

@@ -6,14 +6,14 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                <li class="breadcrumb-item active" aria-current="page">Project Allocation</li>
+                <li class="breadcrumb-item active" aria-current="page">Project Prioritization</li>
             </ol>
         </nav>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="panel-heading">
-                    <div class="panel-title">Project Allocation </div>
+                    <div class="panel-title">Project Prioritization</div>
 
                 </div>
                 <br />

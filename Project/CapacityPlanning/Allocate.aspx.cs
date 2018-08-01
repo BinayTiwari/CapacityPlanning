@@ -62,5 +62,16 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
+        protected void update(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
