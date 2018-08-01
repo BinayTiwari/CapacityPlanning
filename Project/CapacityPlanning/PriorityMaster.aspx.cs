@@ -53,7 +53,7 @@ namespace CapacityPlanning
         {
             try
             {
-                
+
                 CPT_PriorityMaster accountdetails = new CPT_PriorityMaster();
                 accountdetails.PriorityName = PriorityNameTextBox.Text;
                 accountdetails.IsActive = true;
@@ -62,7 +62,6 @@ namespace CapacityPlanning
                 insertPriority.Insert(accountdetails);
                 BindGrid();
                 CleartextBoxes(this);
-
 
             }
             catch (Exception ex)

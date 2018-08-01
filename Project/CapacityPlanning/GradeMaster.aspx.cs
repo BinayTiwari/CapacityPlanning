@@ -35,7 +35,6 @@ namespace CapacityPlanning
 
 
         }
-
         public void CleartextBoxes(Control parent)
         {
 
@@ -53,6 +52,7 @@ namespace CapacityPlanning
                 }
             }
         }
+
         protected void GradeAddButton_Click(object sender, EventArgs e)
         {
             try
@@ -66,6 +66,7 @@ namespace CapacityPlanning
                 insertGrade.Insert(gradedetails);
                 BindGrid();
                 CleartextBoxes(this);
+
 
             }
             catch (Exception ex)

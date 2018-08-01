@@ -54,6 +54,7 @@ namespace CapacityPlanning
             }
         }
 
+
         protected void OpportunityAddButton_Click(object sender, EventArgs e)
         {
             try

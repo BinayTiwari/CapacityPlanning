@@ -24,6 +24,19 @@ namespace CapacityPlanning
 
             }
         }
+
+        private void BindGrid()
+        {
+
+            List<CPT_AccountMaster> lstAccount = new List<CPT_AccountMaster>();
+            AccountMasterBL clsAccount = new AccountMasterBL();
+            lstAccount = clsAccount.getAccount();
+
+            gvAccount.DataSource = lstAccount;
+            gvAccount.DataBind();
+
+
+        }
         public void CleartextBoxes(Control parent)
         {
 
@@ -41,18 +54,6 @@ namespace CapacityPlanning
                 }
             }
         }
-        private void BindGrid()
-        {
-
-            List<CPT_AccountMaster> lstAccount = new List<CPT_AccountMaster>();
-            AccountMasterBL clsAccount = new AccountMasterBL();
-            lstAccount = clsAccount.getAccount();
-
-            gvAccount.DataSource = lstAccount;
-            gvAccount.DataBind();
-            
-
-        }
 
 
         protected void AccountAddButton_Click(object sender, EventArgs e)
@@ -68,7 +69,6 @@ namespace CapacityPlanning
                 insertAccount.Insert(accountdetails);
                 BindGrid();
                 CleartextBoxes(this);
-                
 
 
             }

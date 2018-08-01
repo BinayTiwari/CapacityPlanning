@@ -18,10 +18,24 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 ClsCommon.ddlGetRegion(RegionList);
+                CountryList.Enabled = false;
+                CityNameTextBox.Enabled = false;
                 
                 
                 BindGrid();
             }
+        }
+        private void BindGrid()
+        {
+
+            List<CPT_CityMaster> lstCity = new List<CPT_CityMaster>();
+            CityMasterBL clsAccount = new CityMasterBL();
+            lstCity = clsAccount.getCity();
+
+            gvCity.DataSource = lstCity;
+            gvCity.DataBind();
+
+
         }
         public void CleartextBoxes(Control parent)
         {
@@ -40,19 +54,6 @@ namespace CapacityPlanning
                 }
             }
         }
-        private void BindGrid()
-        {
-
-            List<CPT_CityMaster> lstCity = new List<CPT_CityMaster>();
-            CityMasterBL clsAccount = new CityMasterBL();
-            lstCity = clsAccount.getCity();
-
-            gvCity.DataSource = lstCity;
-            gvCity.DataBind();
-
-
-        }
-
 
         protected void CityAddButton_Click(object sender, EventArgs e)
         {
@@ -135,16 +136,35 @@ namespace CapacityPlanning
 
         protected void RegionList_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            int regionID = Convert.ToInt32( RegionList.SelectedValue);
             
             
+            if(RegionList.SelectedValue == null)
+            {
+                CountryList.Enabled = false;
+                CityNameTextBox.Enabled = false; 
+            }
+            else
+            {
+                CountryList.Enabled = true;
+            }
+
+            int regionID = Convert.ToInt32(RegionList.SelectedValue);
             ClsCommon.ddlGetCountry(CountryList,regionID);
             
         }
 
         protected void CountryList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (CountryList.SelectedValue == null)
+            {
+                CityNameTextBox.Enabled = false;
+            }
+            else
+            {
+                CityNameTextBox.Enabled = true;
 
+            }
+            
         }
     }
 }

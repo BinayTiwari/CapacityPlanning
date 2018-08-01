@@ -9,16 +9,16 @@
         <div class="content-box-large">
             <div class="form-group form-inline">
             <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="RegionName" DataValueField="RegionID" AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1">
-                <asp:ListItem Value="0">--Select Region--</asp:ListItem>
+                DataTextField="RegionName" DataValueField="RegionID" AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1" required>
+                <asp:ListItem Value="">--Select Region--</asp:ListItem>
 
             </asp:DropDownList>
-            <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="CountryName" DataValueField="CountryID" OnSelectedIndexChanged="CountryList_SelectedIndexChanged">
-                <asp:ListItem Value="0">--Select Country--</asp:ListItem>
+            <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control" 
+                DataTextField="CountryName" DataValueField="CountryID" OnSelectedIndexChanged="CountryList_SelectedIndexChanged" AutoPostBack="True" required >
+                <asp:ListItem Value="">--Select Country--</asp:ListItem>
 
             </asp:DropDownList>
-            <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server" required></asp:TextBox>
+            <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server"  required AutoPostBack="True"></asp:TextBox>
 
             <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />
         </div>

@@ -9,8 +9,8 @@
         <div class="content-box-large">
             <div class="form-group form-inline">
             <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="RegionName" DataValueField="RegionID" OnSelectedIndexChanged="RegionList_SelectedIndexChanged">
-                <asp:ListItem Value="0">--Select Region--</asp:ListItem>
+                DataTextField="RegionName" DataValueField="RegionID" OnSelectedIndexChanged="RegionList_SelectedIndexChanged" AutoPostBack="True" required>
+                <asp:ListItem Value="">--Select Region--</asp:ListItem>
 
             </asp:DropDownList>
             <asp:TextBox ID="CountryNameTextBox" placeholder="Enter Country" CssClass="form-control" runat="server" required></asp:TextBox>

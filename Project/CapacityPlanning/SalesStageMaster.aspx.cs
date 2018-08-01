@@ -30,6 +30,7 @@ namespace CapacityPlanning
             gvSalesStage.DataSource = lstSalesStage;
             gvSalesStage.DataBind();
         }
+
         public void CleartextBoxes(Control parent)
         {
 
@@ -47,6 +48,7 @@ namespace CapacityPlanning
                 }
             }
         }
+
         protected void SalesStageAddButton_Click(object sender, EventArgs e)
         {
             try

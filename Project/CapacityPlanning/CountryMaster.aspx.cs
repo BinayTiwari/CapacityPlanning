@@ -17,7 +17,7 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-
+                CountryNameTextBox.Enabled = false;
 
                 ClsCommon.ddlGetRegion(RegionList);
                 BindGrid();
@@ -52,6 +52,7 @@ namespace CapacityPlanning
                 }
             }
         }
+
         protected void CountryAddButton_Click(object sender, EventArgs e)
         {
             try
@@ -66,6 +67,7 @@ namespace CapacityPlanning
                 insertCountry.Insert(Countrydetails);
                 BindGrid();
                 CleartextBoxes(this);
+
 
             }
             catch (Exception ex)
@@ -139,7 +141,15 @@ namespace CapacityPlanning
 
         protected void RegionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
+            if (RegionList.SelectedValue == "")
+            {
+                CountryNameTextBox.Enabled = false;
+            }
+            else
+            {
+                CountryNameTextBox.Enabled = true;
+            }
 
         }
     }
