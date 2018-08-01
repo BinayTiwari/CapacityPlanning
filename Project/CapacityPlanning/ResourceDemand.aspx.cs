@@ -13,6 +13,7 @@ namespace CapacityPlanning
 {
     public partial class ResourceDemand : System.Web.UI.Page
     {
+        int employeeID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -24,19 +25,39 @@ namespace CapacityPlanning
 
         private void BindGrid()
         {
+            List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+            lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+            employeeID = lstdetils[0].EmployeeMasterID;
             using (CPContext db = new CPContext())
             {
-                var query = from a in db.CPT_CityMaster
-                            join c in db.CPT_ResourceDemand on a.CityID equals c.CityID
-                            select a;
-                foreach (var details in query)
-                {
-                    //Response.Write("<Script>alert('Record found "+details.CityName+"')</script>");
-                }
+                var query1 = (from p in db.CPT_ResourceDemand
+                              join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
+                              join r in db.CPT_CityMaster on p.CityID equals r.CityID
+                              join ct in db.CPT_CountryMaster on r.CountryID equals ct.CountryMasterID
+                              join s in db.CPT_CityMaster on p.CityID equals s.CityID
+                              join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
+                              join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
+                              join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                              orderby p.DateOfCreation descending
+                              where p.ResourceRequestBy == employeeID
+                              select new
+                              {
+                                  p.RequestID,
+                                  q.AccountName,
+                                  ct.CountryName,
+                                  s.CityName,
+                                  t.OpportunityType,
+                                  u.SalesStageName,
+                                  p.ProcessName,
+                                  v.StatusName
 
-                GridView1.DataSource = db.CPT_ResourceDemand.ToList();
+                              }).ToList();
+
+                GridView1.DataSource = query1;
                 GridView1.DataBind();
+
             }
+           
         }
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)

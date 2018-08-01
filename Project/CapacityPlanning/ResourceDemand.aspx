@@ -28,13 +28,13 @@
                         <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
                         <Columns>
                             <asp:BoundField DataField="RequestId" ReadOnly="true" HeaderText="RequestID" />
-                            <asp:BoundField DataField="AccountID" HeaderText="Account" />
-                            <%--<asp:BoundField DataField="CountryID" HeaderText="Country" />--%>
-                            <asp:BoundField DataField="CityID" HeaderText="City" />
-                            <asp:BoundField DataField="OpportunityID" HeaderText="Opportunity Type" />
-                            <asp:BoundField DataField="SalesStageID" HeaderText="Sales Stage" />
+                            <asp:BoundField DataField="AccountName" HeaderText="Account" />
+                            <asp:BoundField DataField="CountryName" HeaderText="Country" />
+                            <asp:BoundField DataField="CityName" HeaderText="City" />
+                            <asp:BoundField DataField="OpportunityType" HeaderText="Opportunity Type" />
+                            <asp:BoundField DataField="SalesStageName" HeaderText="Sales Stage" />
                             <asp:BoundField DataField="ProcessName" HeaderText="Process Name" />
-                            <%--<asp:BoundField DataField="StatusID" HeaderText="Demand Status"/>--%>
+                            <asp:BoundField DataField="StatusName" HeaderText="Demand Status"/>
 
                             <asp:TemplateField>
                                 <ItemTemplate>

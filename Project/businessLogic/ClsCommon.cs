@@ -85,6 +85,30 @@ namespace businessLogic
             }
         }
 
+        public static void ddlGetCity(DropDownList ddldropdownName, int countryID, int regionID)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select City";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_CityMaster
+                            where c.IsActive == true & c.RegionID == regionID & c.CountryID == countryID 
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.CityID.ToString();
+                    li.Text = item.CityName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
         public static void ddlGetRegion(DropDownList ddldropdownName)
         {
             ddldropdownName.Items.Clear();
@@ -231,9 +255,6 @@ namespace businessLogic
 
                 }
             }
-
-
-
         }
 
         public static void ddlGetSkill(ListBox ddldropdownName)
@@ -312,6 +333,61 @@ namespace businessLogic
 
                 }
             }
+        }
+
+        public static void ddlGetStatus(DropDownList ddldropdownName)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Status";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_StatusMaster
+                            where c.IsActive == true
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.StatusMasterID.ToString();
+                    li.Text = item.StatusName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
+        public static void ddlGetPriority(DropDownList ddldropdownName)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Priority";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_PriorityMaster
+                            where c.IsActive == true
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.PriorityID.ToString();
+                    li.Text = item.PriorityName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
+        public static int GetRandomNumber(int minValue, int maxValue)
+        {
+            Random r = new Random();
+            int number=r.Next(minValue, maxValue);
+            return number;
         }
     }
 }
