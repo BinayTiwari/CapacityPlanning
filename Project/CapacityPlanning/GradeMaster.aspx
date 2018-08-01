@@ -12,7 +12,7 @@
 
                 <asp:Button ID="GradeAddButton" runat="server" Text="Add Grade" CssClass="btn btn-md btn-success" OnClick="GradeAddButton_Click" />
             </div>
-            <asp:GridView ID="gvGrade" Width="100%" runat="server" DataKeyNames="GradeID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvGrade" Width="100%" runat="server" DataKeyNames="GradeID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

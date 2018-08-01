@@ -63,7 +63,7 @@
         }
 
         .mygrdContent a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
-            background-color: #000;
+            
             color: #fff;
         }
 
@@ -74,7 +74,7 @@
         }
 
         .pager {
-            background-color: #fcfcfc;
+           
             font-family: Arial;
             color: #000000;
             height: 30px;
@@ -133,9 +133,9 @@
                             <button class="btn btn-primary" type="button">Search</button>
                         </span>
                     </div>--%>
-                    <div class="col-lg-4 pull-right">
+                    <div class="col-lg-8 text-center pull-right">
                                                                                                           
-                          <strong><asp:Label ID="lblUserName" runat="server" Text=""></asp:Label></strong>
+                          <strong><asp:Label ID="lblUserName" runat="server" Text=""></asp:Label></strong><br />
                           ( <asp:LinkButton ID="SignOutLink" runat="server" OnClick="LogOut">Sign Out</asp:LinkButton> )                                                                                   
                          
                     </div>

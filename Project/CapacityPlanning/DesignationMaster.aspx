@@ -12,7 +12,7 @@
 
             <asp:Button ID="DesignationAddButton" runat="server" Text="Add Designation" CssClass="btn btn-md btn-success" OnClick="DesignationAddButton_Click" />
         </div>
-            <asp:GridView ID="gvDesignation" Width="100%" runat="server" DataKeyNames="DesignationMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvDesignation" Width="100%" runat="server" DataKeyNames="DesignationMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

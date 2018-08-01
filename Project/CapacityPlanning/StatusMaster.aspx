@@ -11,7 +11,7 @@
                 <asp:TextBox ID="StatusNameTextBox" placeholder="Status" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="StatusAddButton" runat="server" Text="Add Status " CssClass="btn btn-md btn-success" OnClick="StatusAddButton_Click" />
             </div>
-            <asp:GridView ID="gvStatus" Width="100%" runat="server" DataKeyNames="StatusMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvStatus" Width="100%" runat="server" DataKeyNames="StatusMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

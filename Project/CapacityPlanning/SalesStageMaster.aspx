@@ -11,7 +11,7 @@
                 <asp:TextBox ID="SalesStageNameTextBox" placeholder="SalesStage" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="SalesStageAddButton" runat="server" Text="Add SalesStage " CssClass="btn btn-md btn-success" OnClick="SalesStageAddButton_Click" />
             </div>
-            <asp:GridView ID="gvSalesStage" Width="100%" runat="server" DataKeyNames="SalesStageMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvSalesStage" Width="100%" runat="server" DataKeyNames="SalesStageMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"

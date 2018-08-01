@@ -10,7 +10,7 @@
                 <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server" required></asp:TextBox>
                 <asp:Button ID="RoleAddButton" runat="server" Text="Add Role " CssClass="btn btn-md btn-success" OnClick="RoleAddButton_Click" />
             </div>
-            <asp:GridView ID="gvRole" Width="100%" runat="server" DataKeyNames="RoleMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+            <asp:GridView ID="gvRole" Width="100%" runat="server" DataKeyNames="RoleMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
                 CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
