@@ -24,7 +24,8 @@ namespace businessLogic
                  join r in db.CPT_ResourceDetails on p.RequestID equals r.RequestID
                  join u in db.CPT_DesignationMaster on r.ResourceTypeID equals u.DesignationMasterID
                  join s in db.CPT_StatusMaster on p.StatusMasterID equals s.StatusMasterID
-                 join t in db.CPT_SkillsMaster on r.SkillID equals t.SkillsName
+                 join t in db.CPT_SkillsMaster on r.SkillID equals t.SkillsMasterID.ToString()
+                 where p.RequestID == r.RequestID
                  select new
                  {
                      u.DesignationName,

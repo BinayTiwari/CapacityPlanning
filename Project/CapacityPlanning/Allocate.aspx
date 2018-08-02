@@ -19,36 +19,38 @@
                 <br />
                 <div class="content-box-large">
                     <asp:GridView ID="GridView1" Width="100%" runat="server" OnPageIndexChanging="OnPageIndexChanging"
-                        CssClass="pager rows header1 mygrdContent" AutoGenerateColumns="False" 
-                        
-                         BackColor="White" BorderColor="White" EmptyDataText="N/A" Font-Size="Medium" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal" OnRowDataBound="GridView1_RowDataBound">
+                        CssClass="pager rows header1 mygrdContent" AutoGenerateColumns="False"
+                        BackColor="White" BorderColor="White" EmptyDataText="N/A" Font-Size="Medium" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal" OnRowDataBound="GridView1_RowDataBound">
 
                         <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
 
                         <Columns>
-                            
+
                             <asp:BoundField DataField="RequestID" ReadOnly="true" HeaderText="Request ID" />
                             <asp:BoundField DataField="AccountName" HeaderText="Account Name" />
                             <%--<asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />--%>
                             <asp:BoundField DataField="ProcessName" HeaderText="Process Name" />
-                            <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" DataFormatString="{0:d}"/>
-                            <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" DataFormatString="{0:d}"/>
+                            <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" DataFormatString="{0:d}" />
+                            <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" DataFormatString="{0:d}" />
                             <asp:BoundField DataField="SalesStageName" HeaderText="Sales Stage" />
                             <asp:BoundField DataField="NoOfResources" HeaderText="Resources" />
-                            <asp:BoundField DataField="PriorityName" HeaderText="Priority"  Visible = "false" />
+                            <asp:BoundField DataField="PriorityName" HeaderText="Priority" Visible="false" />
 
-                            <asp:TemplateField HeaderText = "Priority">
-            <ItemTemplate>
-                <asp:Label ID="lblPriority" runat="server" Text='<%# Eval("PriorityName") %>' Visible = "false" />
-                <asp:DropDownList ID="ddlPriorities" runat="server">
-                </asp:DropDownList>
-            </ItemTemplate>
-        </asp:TemplateField>
-                            
-                            <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-success btn-md" CommandName="Update" HeaderText="Allocate" ShowHeader="True" Text="Allocate"/>
-                            
+                            <asp:TemplateField HeaderText="Priority">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblPriority" runat="server" Text='<%# Eval("PriorityName") %>' Visible="false" />
+                                    <asp:DropDownList ID="ddlPriorities" runat="server">
+                                    </asp:DropDownList>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Allocate">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnAllocate" Class="btn btn-success btn-md" Style="float: left;" runat="server" Text="Allocate" CommandArgument='<%#Eval("RequestID")%>' OnClick="btnAllocate_Click" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--<asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-success btn-md" CommandName="Update" HeaderText="Allocate" ShowHeader="True" Text="Allocate"/>--%>
                         </Columns>
-                        
+
                         <FooterStyle BackColor="White" />
 
                         <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
@@ -64,8 +66,8 @@
                 </div>
                 <br />
                 <br />
-                <asp:Button ID="btnSave" style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" OnClick="btnSave_Click" />
-                 <br />
+                <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" OnClick="btnSave_Click" />
+                <br />
                 <br />
             </div>
         </div>

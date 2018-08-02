@@ -37,7 +37,20 @@ namespace CapacityPlanning
         {
             AllocateBL.ddlGetPriority(e);
         }
+        protected void btnAllocate_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+                Button theButton = sender as Button;
+                Response.Redirect("Allocate_Resource.aspx?RequestID=" + theButton.CommandArgument);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
         protected void btnSave_Click(object sender, EventArgs e)
         {
 

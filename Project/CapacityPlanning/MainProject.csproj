@@ -146,6 +146,7 @@
     <Content Include="AddEmployee.aspx" />
     <Content Include="AddExperience.aspx" />
     <Content Include="AddNewJoiner.aspx" />
+    <Content Include="AddResourceDemand.aspx" />
     <Content Include="Allocate.aspx" />
     <Content Include="Allocate_Resource.aspx" />
     <Content Include="CityMaster.aspx" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="AddNewJoiner.aspx.designer.cs">
       <DependentUpon>AddNewJoiner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddResourceDemand.aspx.cs">
+      <DependentUpon>AddResourceDemand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddResourceDemand.aspx.designer.cs">
+      <DependentUpon>AddResourceDemand.aspx</DependentUpon>
     </Compile>
     <Compile Include="Allocate.aspx.cs">
       <DependentUpon>Allocate.aspx</DependentUpon>

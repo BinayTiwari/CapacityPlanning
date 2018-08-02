@@ -28,13 +28,11 @@
                         <Columns>
                             
                             <asp:BoundField DataField="DesignationName" ReadOnly="true" HeaderText="Resource Type" />
-                            <asp:BoundField DataField="NoOfResources" HeaderText="No Of Resources" />
-                            <%--<asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />--%>
+                            <asp:BoundField DataField="NoOfResources" HeaderText="Resources" />
                             <asp:BoundField DataField="SkillsName" HeaderText="Tool/Domain Knowledge" />
                             <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" DataFormatString="{0:d}"/>
                             <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" DataFormatString="{0:d}"/>
                             <asp:BoundField DataField="StatusName" HeaderText="Status" />
-                            <asp:BoundField DataField="NoOfResources" HeaderText="Resources" />
                             <asp:BoundField DataField="PriorityName" HeaderText="Priority" />
                             <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-success btn-md" CommandName="Update" HeaderText="Align to Project" ShowHeader="False" Text="Align"/>
                             
