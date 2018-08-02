@@ -13,11 +13,7 @@ namespace Entity
 
         [Required]
         [StringLength(50)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         public int? DesignationID { get; set; }
 
@@ -39,5 +35,9 @@ namespace Entity
         [Required]
         [StringLength(50)]
         public string Experience { get; set; }
+
+        public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
+
+        public virtual CPT_DesignationMaster CPT_DesignationMaster { get; set; }
     }
 }

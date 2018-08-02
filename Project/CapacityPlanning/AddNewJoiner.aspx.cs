@@ -36,7 +36,7 @@ namespace CapacityPlanning
                 string message = "";
                 foreach (ListItem item in skillList.Items)
                 {
-                    if (!item.Selected)
+                    if (item.Selected)
                     {
                         message += item.Value + ",";
                     }
@@ -46,16 +46,17 @@ namespace CapacityPlanning
                 CPT_NewJoiners cPT_NewJoiners = new CPT_NewJoiners();
                 cPT_NewJoiners.Account = Convert.ToInt32( accountDropDownList.SelectedValue);
                 cPT_NewJoiners.DesignationID = Convert.ToInt32( listDesignation.SelectedValue);
-                cPT_NewJoiners.Experience = expTextBox.Text;
-                cPT_NewJoiners.FirstName = firstNameTextBox.Text;
-                cPT_NewJoiners.LastName = lastNameTextBox.Text;
-                cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text;
-                cPT_NewJoiners.JoiningDate = Convert.ToDateTime(dojTextBox.Text);
-                cPT_NewJoiners.Skills = message;
-                cPT_NewJoiners.Location = baseLocationTextBox.Text;
+                cPT_NewJoiners.Experience = expTextBox.Text.Trim();
+                cPT_NewJoiners.Name = firstNameTextBox.Text.Trim();
+            
+                cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text.Trim();
+                cPT_NewJoiners.JoiningDate = Convert.ToDateTime(dojTextBox.Text.Trim());
+                cPT_NewJoiners.Skills = message.Trim();
+                cPT_NewJoiners.Location = baseLocationTextBox.Text.Trim();
 
                 NewJoinersBL newJoinersBL = new NewJoinersBL();
                 newJoinersBL.Insert(cPT_NewJoiners);
+                Response.Redirect("NewJoiners.aspx");
             }
             catch (Exception ex)
             {
@@ -64,6 +65,11 @@ namespace CapacityPlanning
             }
             
 
+        }
+
+        protected void UnDoButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewJoiners.aspx");
         }
     }
 }

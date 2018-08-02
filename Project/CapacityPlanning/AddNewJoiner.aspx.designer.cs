@@ -22,15 +22,6 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox firstNameTextBox;
         
         /// <summary>
-        /// lastNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lastNameTextBox;
-        
-        /// <summary>
         /// listDesignation control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox skillList;
+        
+        /// <summary>
+        /// UnDoButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UnDoButton;
         
         /// <summary>
         /// NewJoinerButton control.

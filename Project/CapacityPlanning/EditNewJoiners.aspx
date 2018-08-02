@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Edit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditNewJoiners.aspx.cs" Inherits="CapacityPlanning.EditNewJoiners" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -30,67 +31,54 @@
 
 
                     <div class="row">
-                        <div class="col-sm-4">
-                            <label >First Name</label>
-                            <asp:TextBox ID="firstNameTextBox" CssClass="form-control" placeholder="First Name" runat="server"></asp:TextBox>
+                        <div class="col-sm-8">
+                            <label>Name</label>
+                            <asp:TextBox ID="firstNameTextBox" CssClass="form-control" placeholder="Name" runat="server" required></asp:TextBox>
+                        </div>
 
-                        </div>
-                        <div class="col-sm-4">
-                            <label >Last Name</label>
-                            <asp:TextBox ID="lastNameTextBox" CssClass="form-control" placeholder="Last Name" runat="server"></asp:TextBox>
-                        </div>
                     </div>
                     <br>
                     <div class="row">
 
                         <div class="col-sm-4">
-                            <label >Desgnation</label>
-                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                            <label>Desgnation</label>
+                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
                                 <asp:ListItem>--Select Designation--</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-sm-4">
-                            <label >Date of Joining</label>
-                            <asp:TextBox ID="dojTextBox" CssClass="form-control" Placehplder="Date of Joining (DD/MM/YYYY)" runat="server"></asp:TextBox>
+                            <label>Date of Joining</label>
+                            <asp:TextBox ID="dojTextBox" CssClass="form-control" Placehplder="Date of Joining (DD/MM/YYYY)" runat="server" required></asp:TextBox>
 
                         </div>
-
-
                     </div>
                     <br>
-
                     <div class="row">
-
-
                         <div class="col-sm-4">
-                            <label >Base Locaton</label>
-                            <asp:TextBox ID="baseLocationTextBox" Placeholder="Base Location" CssClass="form-control" runat="server"></asp:TextBox>
+                            <label>Base Locaton</label>
+                            <asp:TextBox ID="baseLocationTextBox" Placeholder="Base Location" CssClass="form-control" runat="server" required></asp:TextBox>
 
                         </div>
                         <div class="col-sm-4">
-                            <label >Experience</label>
+                            <label>Experience</label>
 
-                            <asp:TextBox ID="expTextBox" Placeholder="Experience" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="expTextBox" Placeholder="Experience" CssClass="form-control" runat="server" required></asp:TextBox>
                         </div>
-
-
-
-
                     </div>
 
                     <br />
 
                     <div class="row">
                         <div class="col-sm-4">
-                            <label >Account</label>
-                            <asp:DropDownList ID="accountDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem >--Select Account--</asp:ListItem>
+                            <label>Account</label>
+                            <asp:DropDownList ID="accountDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
+                                <asp:ListItem>--Select Account--</asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
                         <div class="col-sm-4">
-                            <label >Interviewed By</label>
-                            <asp:TextBox ID="interviewedTextBox" Placeholder="Interviewed By" CssClass="form-control" runat="server"></asp:TextBox>
+                            <label>Interviewed By</label>
+                            <asp:TextBox ID="interviewedTextBox" Placeholder="Interviewed By" CssClass="form-control" runat="server" required></asp:TextBox>
                         </div>
 
                     </div>
@@ -107,8 +95,12 @@
                     <div class="row">
 
                         <div class="col-sm-8">
+                            <div class="col-md-2 pull-right" >
+                            <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click"/>
+                                </div>
+                            <div>
                             <asp:Button ID="NewJoinerButton" Style="float: right;" CssClass="btn btn-success btn-md" OnClick="NewJoinerButton_Click" runat="server" Text="Save" />
-
+                                </div>
                         </div>
                     </div>
                 </div>

@@ -40,8 +40,8 @@ namespace businessLogic
                                 select c;
                     foreach(var detail in query)
                     {
-                        detail.FirstName = newJoinersDetails.FirstName;
-                        detail.LastName = newJoinersDetails.LastName;
+                        detail.Name = newJoinersDetails.Name;
+                        
                         detail.Location = newJoinersDetails.Location;
                         detail.JoiningDate = newJoinersDetails.JoiningDate;
                         detail.Experience = newJoinersDetails.Experience;
@@ -111,6 +111,70 @@ namespace businessLogic
               
             }
             return data;
+        }
+        public List<CPT_NewJoiners> getNewJoiners()
+        {
+
+            List<CPT_NewJoiners> lstNewJoiners = new List<CPT_NewJoiners>();
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_NewJoiners
+                             join q in db.CPT_AccountMaster on p.Account equals q.AccountMasterID
+                             join r in db.CPT_DesignationMaster on p.DesignationID equals r.DesignationMasterID
+                             select new
+                             {
+                                 p.NewJoinerID,
+                                 p.Name,
+                                 p.Location,
+                               
+                                 p.JoiningDate,
+                                 p.Experience,
+                                 p.InterviewedBy,
+                                 p.Skills,
+                                 q.AccountName,
+                                 r.DesignationName,
+                                 p.Account,
+                                 p.DesignationID
+                             }).ToList();
+
+                foreach (var item in query)
+                {
+                    CPT_NewJoiners clsNewJoiners = new CPT_NewJoiners();
+                    clsNewJoiners.NewJoinerID = item.NewJoinerID;
+                    clsNewJoiners.Name = item.Name;
+                    clsNewJoiners.Location = item.Location;
+                    clsNewJoiners.Skills = item.Skills;
+                    clsNewJoiners.InterviewedBy = item.InterviewedBy;
+                    clsNewJoiners.Experience = item.Experience;
+                    
+                    clsNewJoiners.JoiningDate = item.JoiningDate;
+
+                    CPT_AccountMaster account = new CPT_AccountMaster();
+                    account.AccountName = item.AccountName;
+                    clsNewJoiners.CPT_AccountMaster = account;
+                   
+                   
+
+                    CPT_DesignationMaster designation = new CPT_DesignationMaster();
+                    designation.DesignationName = item.DesignationName;
+                    clsNewJoiners.CPT_DesignationMaster = designation;
+                    
+                   
+                    
+
+
+
+
+
+
+                    lstNewJoiners.Add(clsNewJoiners);
+                }
+
+
+                return lstNewJoiners;
+
+            }
+
         }
     }
 }
