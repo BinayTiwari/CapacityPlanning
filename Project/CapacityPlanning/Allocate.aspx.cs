@@ -19,6 +19,7 @@ namespace CapacityPlanning
             {
 
                 AllocateBL.AllocateGrid(GridView1);
+                
             }
         }
 

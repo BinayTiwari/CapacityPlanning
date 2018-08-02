@@ -12,11 +12,12 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="panel-heading">
-                    <div class="panel-title">Project Prioritization</div>
+                <div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+                    <div class="panel-title ">Project Prioritization</div>
+
 
                 </div>
-                <br />
+
                 <div class="content-box-large">
                     <asp:GridView ID="GridView1" Width="100%" runat="server" OnPageIndexChanging="OnPageIndexChanging"
                         CssClass="pager rows header1 mygrdContent" AutoGenerateColumns="False"

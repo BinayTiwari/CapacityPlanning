@@ -18,6 +18,8 @@ namespace CapacityPlanning
                 //details.RequestID = "1";// Session["RequestID"].ToString();
 
                 AllocateResourceBL.AllocateResource(gdvAllocateResources);
+                AllocateResourceBL.bindRepeater(Repeat);
+               
             }
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -29,7 +31,21 @@ namespace CapacityPlanning
         {
             //AllocateResourceBL.AllocateResource(gdvAllocateResources);
         }
-       
+        protected void btnAllocate_Resource_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                
+                //Button theButton = sender as Button;
+                //Response.Redirect("Allocate_Resource.aspx?RequestID=" + theButton.CommandArgument);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
         protected void gdvAllocateResources_SelectedIndexChanged(object sender, EventArgs e)
         {
             //gdvAllocateResources.PageIndex = e.NewPageIndex;
