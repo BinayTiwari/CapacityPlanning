@@ -19,16 +19,13 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                ClsCommon.ddlGetAccount(AccountMasterID);
                 ClsCommon.ddlGetRegion(RegionMasterID);
-                CountryMasterID.Enabled = false;
-                CityID.Enabled = false;
+                ClsCommon.ddlGetAccount(AccountMasterID);
+                AccountMasterID.Enabled = false;
 
                 ClsCommon.ddlGetOpportunity(OpportunityID);
-                ClsCommon.ddlGetSalesStage(SalesStageMasterID);
-                ClsCommon.ddlGetStatus(StatusMasterID);
-                ClsCommon.ddlGetPriority(PriorityID);
-
+                ClsCommon.ddlGetSalesStage(SalesStageMasterID);               
+                
                 SetInitialRow();
             }
         }
@@ -44,16 +41,13 @@ namespace CapacityPlanning
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
 
                 resourceDemandDetails.RequestID = ClsCommon.GetRandomNumber(111111, 999999).ToString();
-                resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
-                resourceDemandDetails.CityID = Convert.ToInt32(CityID.SelectedValue);
+                resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);                
                 resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
                 resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
                 resourceDemandDetails.ProcessName = processName.Text.Trim();
                 resourceDemandDetails.DateOfCreation = DateTime.Now;
                 resourceDemandDetails.DateOfModification = DateTime.Now;
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
-                resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
-                resourceDemandDetails.PriorityID = Convert.ToInt32(PriorityID.SelectedValue);
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
                 insertResourceDemand.Insert(resourceDemandDetails);
@@ -113,7 +107,7 @@ namespace CapacityPlanning
                 CPT_ResourceDetails demandDetails = new CPT_ResourceDetails();
                 ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
 
-                for (int i = 0; i < data.Rows.Count - 1; i++)
+                for(int i = 0; i < data.Rows.Count - 1; i++)
                 {
                     demandDetails.RequestID = resourceDemandDetails.RequestID;
                     demandDetails.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
@@ -133,9 +127,7 @@ namespace CapacityPlanning
             {
                 Console.WriteLine(ex.Message);
             }
-        }
-
-
+        }      
 
         private void SetInitialRow()
         {
@@ -153,7 +145,7 @@ namespace CapacityPlanning
 
             dr = dt.NewRow();
             dr["RowNumber"] = 1;
-
+            
             //dr["Column1"] = string.Empty;
             dr["NoOfResources"] = 5;
             dr["StartDate"] = string.Empty;
@@ -173,7 +165,7 @@ namespace CapacityPlanning
             //DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[4].FindControl("DropDownList2");
             ClsCommon.ddlGetDesignation(ddl);
             ClsCommon.ddlGetSkill(ddl1);
-
+            
 
         }
 
@@ -211,11 +203,11 @@ namespace CapacityPlanning
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
 
                         ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-
+                       
 
                         // Update the DataRow with the DDL Selected Items   
                         string message = "";
-
+                        
                         foreach (var z in ddl1.GetSelectedIndices())
                         {
                             message += ddl1.Items[z].Value + ",";
@@ -224,7 +216,7 @@ namespace CapacityPlanning
                         dtCurrentTable.Rows[i]["SkillID"] = message;
                         Skill = message.Split(',');
                         id.Add(Skill);
-
+                        
                         //dtCurrentTable.Rows[i]["SkillID"] = id;
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
@@ -271,29 +263,29 @@ namespace CapacityPlanning
                         //DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("DropDownList2");
 
                         //Fill the DropDownList with Data 
-
+                        
                         ClsCommon.ddlGetDesignation(ddl);
                         ClsCommon.ddlGetSkill(ddl1);
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("EndDate");
-
+                        
 
                         if (i < dt.Rows.Count - 1)
                         {
                             string[] ids = id[i];
                             ddl.ClearSelection();
                             ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
-
+                            
                             //Assign the value from DataTable to the TextBox   
-
+                            
                             box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
 
                             //Set the Previous Selected Items on Each DropDownList on Postbacks
-
+                            
                             ddl1.ClearSelection();
-
-                            for (int j = 0; j < ids.Count(); j++)
+                            
+                            for(int j = 0; j < ids.Count(); j++)
                             {
                                 for (int i1 = 0; i1 < ddl1.Items.Count; i1++)
                                 {
@@ -305,14 +297,14 @@ namespace CapacityPlanning
                                     }
                                 }
                             }
-
-
+                                
+                               
                             //ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
 
                             box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
                             box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
-
-
+                           
+                            
                         }
 
                         rowIndex++;
@@ -323,9 +315,9 @@ namespace CapacityPlanning
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-
+            
             AddNewRowToGrid();
-
+            
         }
 
         protected void GridviewResourceDetail_RowCreated(object sender, GridViewRowEventArgs e)
@@ -399,32 +391,19 @@ namespace CapacityPlanning
         {
             if (RegionMasterID.SelectedItem.Text == "Select Region")
             {
-                CountryMasterID.Enabled = false;
-                CityID.Enabled = false;
+                AccountMasterID.Enabled = false;
             }
             else
             {
-                CountryMasterID.Enabled = true;
+                AccountMasterID.Enabled = true;
             }
 
             int regionID = Convert.ToInt32(RegionMasterID.SelectedValue);
-            ClsCommon.ddlGetCountry(CountryMasterID, regionID);
-        }
+            List<int> CityIDs = ResourceDemandBL.CityIDs(regionID);
+            
+        
+            ClsCommon.ddlGetAccountWithCity(AccountMasterID, CityIDs);
 
-        protected void CountryMasterID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CountryMasterID.SelectedItem.Text == "Select Country")
-            {
-                CityID.Enabled = false;
-            }
-            else
-            {
-                CityID.Enabled = true;
-            }
-
-            int regionID = Convert.ToInt32(RegionMasterID.SelectedValue);
-            int countryID = Convert.ToInt32(CountryMasterID.SelectedValue);
-            ClsCommon.ddlGetCity(CityID, countryID, regionID);
         }
 
         protected void UnDoButton_Click(object sender, EventArgs e)

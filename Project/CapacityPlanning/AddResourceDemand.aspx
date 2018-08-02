@@ -18,27 +18,16 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-sm-4">
                             <asp:DropDownList ID="RegionMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="RegionMasterID_SelectedIndexChanged" AutoPostBack="True">
                             </asp:DropDownList>
                         </div>
+                        <div class="col-sm-4">
+                            <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                            </asp:DropDownList>
+                        </div>                        
                     </div>
                     <br />
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="CountryMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="CountryMasterID_SelectedIndexChanged" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="CityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <br />
-
+                    
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
@@ -50,22 +39,12 @@
                         </div>
                     </div>
                     <br />
+
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="StatusMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="PriorityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
+                        </div>                        
+                    </div>                   
                     <br />
                     <br />
                     <br />
@@ -148,11 +127,7 @@
         rel="stylesheet" type="text/css" />
     <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
         type="text/javascript"></script>
-    <!-- bootstrap-datetimepicker -->
-    <link href="vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
-    <script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    
 
     <script type="text/javascript">  
         $(function () {
