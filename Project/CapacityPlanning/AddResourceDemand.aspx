@@ -80,12 +80,12 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="No of resources" HeaderStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="NoOfResources" TextMode="Number"  placeholder='No of Resources' CssClass="form-control" runat="server" required></asp:TextBox>
+                                    <asp:TextBox ID="NoOfResources" TextMode="Number" placeholder='No of Resources' CssClass="form-control" runat="server" required></asp:TextBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Skills" HeaderStyle-CssClass="text-center">
                                 <ItemTemplate>
-                                   <asp:ListBox ID="SkillID" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>
+                                    <asp:ListBox ID="SkillID" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Start Date" HeaderStyle-CssClass="text-center">
@@ -110,10 +110,16 @@
                         </Columns>
                     </asp:GridView>
                     <br />
-                
-                    <div class="row">                       
-                        <div class="col-md-12">
-                            <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-1.5 pull-right">
+                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
+
+                            </div>
+                            <div>
+                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
+                            </div>
                         </div>
                     </div>
 
@@ -147,7 +153,7 @@
     <script src="vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-      
+
     <script type="text/javascript">  
         $(function () {
             $('[id*=SkillID]').multiselect({

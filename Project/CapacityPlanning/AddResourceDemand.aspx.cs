@@ -81,7 +81,7 @@ namespace CapacityPlanning
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
 
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
-                            dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text;
+                            dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
                             ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
 
                             // Update the DataRow with the DDL Selected Items   
@@ -90,7 +90,7 @@ namespace CapacityPlanning
                             {
                                 message += ddl1.Items[z].Value + ",";
                             }
-                            message = message.Remove(message.Length - 1);
+                            message = message.Remove(message.Length - 1).Trim();
                             dtCurrentTable.Rows[i]["SkillID"] = message;
                             Skill = message.Split(',');
                             id.Add(Skill);
@@ -99,8 +99,8 @@ namespace CapacityPlanning
 
                             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("EndDate");
-                            dtCurrentTable.Rows[i]["StartDate"] = box3.Text;
-                            dtCurrentTable.Rows[i]["EndDate"] = box4.Text;
+                            dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
+                            dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
                         }
 
                         //Rebind the Grid with the current data to reflect changes   
@@ -118,7 +118,7 @@ namespace CapacityPlanning
                     demandDetails.RequestID = resourceDemandDetails.RequestID;
                     demandDetails.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
                     demandDetails.NoOfResources = Convert.ToInt32(data.Rows[i]["NoOfResources"]);
-                    demandDetails.SkillID = data.Rows[i]["SkillID"].ToString();
+                    demandDetails.SkillID = data.Rows[i]["SkillID"].ToString().Trim();
                     demandDetails.StartDate = Convert.ToDateTime(data.Rows[i]["StartDate"]);
                     demandDetails.EndDate = Convert.ToDateTime(data.Rows[i]["EndDate"]);
 
@@ -208,7 +208,7 @@ namespace CapacityPlanning
 
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         //dtCurrentTable.Rows[i]["Column1"] = box1.Text;
-                        dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text;
+                        dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
 
                         ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
                        
@@ -220,7 +220,7 @@ namespace CapacityPlanning
                         {
                             message += ddl1.Items[z].Value + ",";
                         }
-                        message = message.Remove(message.Length - 1);
+                        message = message.Remove(message.Length - 1).Trim();
                         dtCurrentTable.Rows[i]["SkillID"] = message;
                         Skill = message.Split(',');
                         id.Add(Skill);
@@ -229,8 +229,8 @@ namespace CapacityPlanning
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("EndDate");
-                        dtCurrentTable.Rows[i]["StartDate"] = box3.Text;
-                        dtCurrentTable.Rows[i]["EndDate"] = box4.Text;
+                        dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
+                        dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
 
 
                     }
@@ -287,7 +287,7 @@ namespace CapacityPlanning
                             
                             //Assign the value from DataTable to the TextBox   
                             
-                            box2.Text = dt.Rows[i]["NoOfResources"].ToString();
+                            box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
 
                             //Set the Previous Selected Items on Each DropDownList on Postbacks
                             
@@ -309,8 +309,8 @@ namespace CapacityPlanning
                                
                             //ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
 
-                            box3.Text = dt.Rows[i]["StartDate"].ToString();
-                            box4.Text = dt.Rows[i]["EndDate"].ToString();
+                            box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
+                            box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
                            
                             
                         }
@@ -425,6 +425,11 @@ namespace CapacityPlanning
             int regionID = Convert.ToInt32(RegionMasterID.SelectedValue);
             int countryID = Convert.ToInt32(CountryMasterID.SelectedValue);
             ClsCommon.ddlGetCity(CityID,countryID, regionID);
+        }
+
+        protected void UnDoButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ResourceDemand.aspx");
         }
     }
 
