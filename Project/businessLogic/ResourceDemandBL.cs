@@ -42,7 +42,7 @@ namespace businessLogic
                     foreach (var detail in query)
                     {
                         detail.AccountID = resourceDemandDetails.AccountID;
-                        detail.CityID = resourceDemandDetails.CityID;
+                        //detail.CityID = resourceDemandDetails.CityID;
                         detail.OpportunityID = resourceDemandDetails.OpportunityID;
                         detail.SalesStageID = resourceDemandDetails.SalesStageID;
                         detail.ProcessName = resourceDemandDetails.ProcessName;
@@ -57,29 +57,29 @@ namespace businessLogic
             return 1;
         }
 
-        public int Delete(CPT_ResourceDemand resourceDemandDetails)
-        {
-            using (CPContext db = new CPContext())
-            {
-                try
-                {
-                    var deleteResourceDemandDetails = from details in db.CPT_ResourceDemand
-                                                      where details.RequestID == resourceDemandDetails.RequestID
-                                                      select details;
+        //public int Delete(CPT_ResourceDemand resourceDemandDetails)
+        //{
+        //    using (CPContext db = new CPContext())
+        //    {
+        //        try
+        //        {
+        //            var deleteResourceDemandDetails = from details in db.CPT_ResourceDemand
+        //                                              where details.RequestID == resourceDemandDetails.RequestID
+        //                                              select details;
 
-                    foreach (var detail in deleteResourceDemandDetails)
-                    {
-                        db.CPT_ResourceDemand.Remove(detail);
-                    }
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
-            return 1;
-        }
+        //            foreach (var detail in deleteResourceDemandDetails)
+        //            {
+        //                db.CPT_ResourceDemand.Remove(detail);
+        //            }
+        //            db.SaveChanges();
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e.Message);
+        //        }
+        //    }
+        //    return 1;
+        //}
 
         public static void getResourceDemand(GridView gridview, int employeeID)
         {
@@ -103,6 +103,19 @@ namespace businessLogic
                 gridview.DataSource = query1;
                 gridview.DataBind();
             }
+        }
+        public static List<int> CityIDs(int regionID)
+        {
+            List<int> CityIDs;
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_CityMaster
+                             where p.RegionID == regionID & p.IsActive == true
+                             select p.CityID).ToList();
+                CityIDs = query;
+
+            }
+            return CityIDs;
         }
     }
 }
