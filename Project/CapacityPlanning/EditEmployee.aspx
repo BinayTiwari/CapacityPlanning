@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label>Name</label>
-                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Name" required></asp:TextBox>
+                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Employee Name" required></asp:TextBox>
                             
 
 
@@ -60,8 +60,8 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label>Reporting Manager</label>
-                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
+                            <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" equired>
+                                <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
                             </asp:DropDownList>
                             
 
@@ -77,8 +77,8 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label>Designation</label>
-                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
+                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
+                                <asp:ListItem Value="">--Select Designation--</asp:ListItem>
                             </asp:DropDownList>
                             
 
@@ -95,8 +95,8 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label>Role</label>
-                            <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Role--</asp:ListItem>
+                            <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
+                                <asp:ListItem Value="">--Select Role--</asp:ListItem>
                             </asp:DropDownList>
 
                         </div>
@@ -176,8 +176,12 @@
                 </div>
                     <div class="row">
                         <div class="col-sm-8">
+                            <div class="col-md-2 pull-right" >
+                            <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate/>
+                                </div>
+                            <div  >
                             <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Update" OnClick="AddEmployeeDetail_Click"/>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -42,26 +42,26 @@ namespace CapacityPlanning
                         message += item.Value + ",";
                     }
                 }
-                message = message.Remove(message.Length - 1);
+                message = message.Remove(message.Length - 1).Trim();
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
-                employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text);
+                employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text.Trim());
                 employeeDetails.EmployeetName = fName.Text;
                 employeeDetails.Photo = @"C:\Users\raian\Downloads\Data'" + FileUploadControl.FileName + "'";
-                employeeDetails.ReportingManagerID =Convert.ToInt32( RManagerDropDownList.Text);
-                employeeDetails.Email = mail.Text;
-                employeeDetails.EmployeePassword = pass.Text;
-                employeeDetails.BaseLocation = bLocation.Text;
-                employeeDetails.Mobile = phone.Text;
+                employeeDetails.ReportingManagerID =Convert.ToInt32( RManagerDropDownList.Text.Trim());
+                employeeDetails.Email = mail.Text.Trim();
+                employeeDetails.EmployeePassword = pass.Text.Trim();
+                employeeDetails.BaseLocation = bLocation.Text.Trim();
+                employeeDetails.Mobile = phone.Text.Trim();
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
-                employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text);
-                employeeDetails.PAN = panNoTxt.Text;
+                employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.Trim());
+                employeeDetails.PAN = panNoTxt.Text.Trim();
                 employeeDetails.Skillsid = message;
-                employeeDetails.Address = addressTxt.Text;
-                employeeDetails.PriorWorkExperience =Convert.ToInt32( expText.Text);
+                employeeDetails.Address = addressTxt.Text.Trim();
+                employeeDetails.PriorWorkExperience =(float) Convert.ToDouble( expText.Text.Trim());
                 employeeDetails.PassportNo = passportNum.Text;
-                employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text);
-                employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text);
+                employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim());
+                employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim());
                 employeeDetails.DateOfCreation = DateTime.Now;
                 employeeDetails.DateOfModification = DateTime.Now;
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;
@@ -69,12 +69,18 @@ namespace CapacityPlanning
                 employeeDetails.LastLogin = DateTime.Now;
                 ResourceMasterBL insertResource = new ResourceMasterBL();
                 insertResource.Insert(employeeDetails);
+                Response.Redirect("ResourceMaster.aspx");
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        protected void UnDoButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ResourceMaster.aspx");
         }
     }
 }

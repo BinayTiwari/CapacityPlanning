@@ -26,7 +26,7 @@
                 <div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="First Name" required></asp:TextBox>
+                            <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Employee" required></asp:TextBox>
                         </div>
 
                         <div class="col-sm-4">
@@ -49,20 +49,20 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                <asp:ListItem Value="0">--Select Reporting Manager--</asp:ListItem>
+                                <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
                         <div class="col-sm-4">
-                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
+                            <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location" required></asp:TextBox>
                             
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="0">--Select Designation--</asp:ListItem>
+                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
+                                <asp:ListItem Value="">--Select Designation--</asp:ListItem>
                             </asp:DropDownList>
                            
 
@@ -136,16 +136,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No" required></asp:TextBox>
+                        <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
                     </div>
                     <div class="col-sm-4">
-                        <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)" required></asp:TextBox>
+                        <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)" ></asp:TextBox>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)" required></asp:TextBox>
+                        <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)" ></asp:TextBox>
                     </div>
                 </div>
                 <br />
@@ -165,8 +165,12 @@
 
                 <div class="row">
                     <div class="col-sm-8">
+                         <div class="col-md-2 pull-right" >
+                            <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate/>
+                                </div>
+                        <div>
                         <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Submit" OnClick="AddEmployee_Click" />
-
+                        </div>
                     </div>
                 </div>
             </div>
