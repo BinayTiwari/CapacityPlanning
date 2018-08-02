@@ -37,18 +37,23 @@ namespace CapacityPlanning
             using (CPContext db = new CPContext()) { 
             var query = (from p in db.CPT_ResourceMaster
                          join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
+                         join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
                          let mgrName = p.EmployeetName
+                         
                          select new
+
                          {
                              q.EmployeeMasterID,
                              q.EmployeetName,
                              q.ReportingManagerID,
                              q.BaseLocation,
                              q.Mobile,
-                             mgrName
+                             mgrName,
+                             r.RoleName
+                             
 
 
-                         }).ToList();
+                         }).OrderBy(p=>p.EmployeetName).ToList();
             gvResource.DataSource = query;
             gvResource.DataBind();
         }
@@ -119,32 +124,12 @@ namespace CapacityPlanning
 
         protected void View_Resource_Master(object sender, EventArgs e)
         {
-            viewUserProfile();
+            
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             
         }
 
-        public void viewUserProfile()
-        {
-            int empID = 0;
-            if (!string.IsNullOrEmpty(Request.QueryString["EmployeeId"]))
-            {
-                empID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
-            }
-
-            using(CPContext db = new CPContext())
-            {
-
-                var query = (from c in db.CPT_ResourceMaster
-                            where c.EmployeeMasterID == empID
-                            select c).ToList();
-
-
-                GridView2.DataSource = query;
-                GridView2.DataBind();
-
-            }
-        }
+        
 
 
 

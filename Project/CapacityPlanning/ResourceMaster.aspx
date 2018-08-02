@@ -40,7 +40,7 @@
                             <asp:BoundField DataField="EmployeetName" HeaderText="Name" />
                             <asp:BoundField DataField="mgrName" HeaderText="Reporting Manager" />
                             <asp:BoundField DataField="BaseLocation" HeaderText="Location" />
-                            <asp:BoundField DataField="Mobile" HeaderText="Mobile" />
+                            <asp:BoundField DataField="RoleName" HeaderText="Role" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:ImageButton ID="btnView" runat="server" ImageUrl="images/info.png" CommandName="ViewProfile"
@@ -87,27 +87,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     
-                   <asp:GridView ID="GridView2" Width="100%" runat="server" DataKeyNames="EmployeeMasterID" CellPadding="8" 
-                        CssClass="pager rows header1 mygrdContent">
-                        <Columns>
-                            <asp:TemplateField HeaderText="">
-                                <ItemTemplate>
-                                    <asp:Image ID="Image1" Height="40" Width="40" runat="server"
-                                        ImageUrl="~/images/user.png" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="EmployeeMasterId" HeaderText="Employee ID" />
-                            <asp:BoundField DataField="EmployeetName" HeaderText="Name" />
-                            <asp:BoundField DataField="ReportingManagerID" HeaderText="Reporting Manager" />
-                            <asp:BoundField DataField="BaseLocation" HeaderText="Location" />
-                            <asp:BoundField DataField="Mobile" HeaderText="Mobile" />
-                        </Columns>
-                        <FooterStyle BackColor="White" />
-                        <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" CssClass="pagination-ys" />
-                        <PagerSettings Mode="NumericFirstLast" NextPageImageUrl="~/images/126490.png" PageButtonCount="5" />
-                        <PagerStyle HorizontalAlign="Right" />
-                       <SelectedRowStyle BorderStyle="Inset" />
-                    </asp:GridView>
+                  
 
                 </div>
             </div>

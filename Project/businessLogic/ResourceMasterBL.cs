@@ -68,39 +68,42 @@ namespace businessLogic
 
         public int Update(CPT_ResourceMaster resourceDetails)
         {
+
             using (CPContext db = new CPContext())
             {
-                var query = from details in db.CPT_ResourceMaster
-                            where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
-                            select details;
-
-
-                foreach (CPT_ResourceMaster detail in query)
-                {
-                    detail.EmployeeMasterID = resourceDetails.EmployeeMasterID;
-                    detail.EmployeetName = resourceDetails.EmployeetName;
-                    detail.EmployeePassword = resourceDetails.EmployeePassword;
-                    detail.ReportingManagerID= resourceDetails.ReportingManagerID;
-                    detail.Email = resourceDetails.Email;
-                    detail.BaseLocation = resourceDetails.BaseLocation;
-                    detail.Mobile = resourceDetails.Mobile;
-                    detail.DesignationID = resourceDetails.DesignationID;
-                    detail.RolesID = resourceDetails.RolesID;
-                    detail.JoiningDate = resourceDetails.JoiningDate;
-                    detail.PriorWorkExperience = resourceDetails.PriorWorkExperience;
-                    detail.Address = resourceDetails.Address;
-                    detail.PAN = resourceDetails.PAN;
-                    detail.PassportNo = resourceDetails.PassportNo;
-                    detail.PassportExpiryDate = resourceDetails.PassportExpiryDate;
-                    detail.VisaExpiryDate = resourceDetails.VisaExpiryDate;
-                    detail.DateOfModification = DateTime.Now;
-                    detail.ModifiedBy = resourceDetails.ModifiedBy;
-
-                }
+                
 
 
                 try
                 {
+                    var query = from details in db.CPT_ResourceMaster
+                                where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
+                                select details;
+
+
+                    foreach (CPT_ResourceMaster detail in query)
+                    {
+                        detail.EmployeeMasterID = resourceDetails.EmployeeMasterID;
+                        detail.EmployeetName = resourceDetails.EmployeetName;
+                        detail.EmployeePassword = resourceDetails.EmployeePassword;
+                        detail.ReportingManagerID = resourceDetails.ReportingManagerID;
+                        detail.Email = resourceDetails.Email;
+                        detail.BaseLocation = resourceDetails.BaseLocation;
+                        detail.Mobile = resourceDetails.Mobile;
+                        detail.DesignationID = resourceDetails.DesignationID;
+                        detail.RolesID = resourceDetails.RolesID;
+                        detail.JoiningDate = resourceDetails.JoiningDate;
+                        detail.PriorWorkExperience = resourceDetails.PriorWorkExperience;
+                        detail.Address = resourceDetails.Address;
+                        detail.PAN = resourceDetails.PAN;
+                        detail.Skillsid = resourceDetails.Skillsid;
+                        detail.PassportNo = resourceDetails.PassportNo;
+                        detail.PassportExpiryDate = resourceDetails.PassportExpiryDate;
+                        detail.VisaExpiryDate = resourceDetails.VisaExpiryDate;
+                        detail.DateOfModification = DateTime.Now;
+                        detail.ModifiedBy = resourceDetails.ModifiedBy;
+
+                    }
                     db.SaveChanges();
                 }
                 catch (Exception e)
