@@ -18,7 +18,7 @@ namespace CapacityPlanning
                 //details.RequestID = "1";// Session["RequestID"].ToString();
 
                 AllocateResourceBL.AllocateResource(gdvAllocateResources);
-                AllocateResourceBL.bindRepeater(Repeat);
+                //AllocateResourceBL.bindRepeater(Repeat);
                
             }
         }
@@ -36,7 +36,7 @@ namespace CapacityPlanning
 
             try
             {
-                
+                AllocateResourceBL.getEmployeeNameByResourceType(Repeat);
                 //Button theButton = sender as Button;
                 //Response.Redirect("Allocate_Resource.aspx?RequestID=" + theButton.CommandArgument);
             }

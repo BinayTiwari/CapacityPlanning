@@ -11,6 +11,7 @@ namespace Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CPT_ResourceDemand()
         {
+            CPT_AllocateResource = new HashSet<CPT_AllocateResource>();
             CPT_ResourceDetails = new HashSet<CPT_ResourceDetails>();
         }
 
@@ -41,6 +42,9 @@ namespace Entity
         public int? PriorityID { get; set; }
 
         public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 
         public virtual CPT_CityMaster CPT_CityMaster { get; set; }
 

@@ -47,23 +47,23 @@ namespace CapacityPlanning
             this.BindGrid();
         }
 
-        protected void delete(object sender, GridViewDeleteEventArgs e)
-        {
-            try
-            {
-                CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
-                String id = GridView1.DataKeys[e.RowIndex].Value.ToString().Trim();
-                resourceDemandDetails.RequestID = id;
+        //protected void delete(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    try
+        //    {
+        //        CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+        //        String id = GridView1.DataKeys[e.RowIndex].Value.ToString().Trim();
+        //        resourceDemandDetails.RequestID = id;
 
-                ResourceDemandBL deleteResourceDemand = new ResourceDemandBL();
-                deleteResourceDemand.Delete(resourceDemandDetails);
-                BindGrid();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
-        }
+        //        ResourceDemandBL deleteResourceDemand = new ResourceDemandBL();
+        //        deleteResourceDemand.Delete(resourceDemandDetails);
+        //        BindGrid();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.Write(ex.Message);
+        //    }
+        //}
 
         protected void update(object sender, GridViewUpdateEventArgs e)
         {

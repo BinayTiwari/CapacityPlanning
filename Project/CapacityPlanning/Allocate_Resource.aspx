@@ -48,9 +48,10 @@
                             <asp:BoundField DataField="StatusName" HeaderText="Status" />
                             <asp:BoundField DataField="PriorityName" HeaderText="Priority" />
                             <%--<asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-success btn-md" HeaderText="Align" ShowHeader="True" Text="Align" />--%>
+                            <%--OnClientClick="ToggleDiv('first');return false;"--%>
                             <asp:TemplateField HeaderText="Align">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" Style="float: left;" runat="server" Text="Align" OnClientClick="ToggleDiv('first');return false;" />
+                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" Style="float: left;" runat="server" Text="Align"  OnClick="btnAllocate_Resource_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <%--CommandArgument='<%#Eval("RequestID")%>'--%>

@@ -11,6 +11,7 @@ namespace Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CPT_CityMaster()
         {
+            CPT_AccountMaster = new HashSet<CPT_AccountMaster>();
             CPT_ResourceDemand = new HashSet<CPT_ResourceDemand>();
         }
 
@@ -26,6 +27,9 @@ namespace Entity
         public string CityName { get; set; }
 
         public bool IsActive { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CPT_AccountMaster> CPT_AccountMaster { get; set; }
 
         public virtual CPT_CountryMaster CPT_CountryMaster { get; set; }
 

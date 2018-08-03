@@ -10,6 +10,31 @@ namespace businessLogic
 {
     public class AllocateResourceBL
     {
+        public static void getEmployeeNameByResourceType(Repeater repeater)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
+                                 join r in db.CPT_ResourceDemand on q.RequestID equals r.RequestID
+                                 where (p.Skillsid == q.SkillID) && (p.EmployeeMasterID == r.ResourceRequestBy) && (p.RolesID == q.ResourceTypeID)
+                                 select new
+                                 {
+                                     p.EmployeetName,
+                                     q.StartDate,
+                                     q.EndDate
+                                 }).ToList();
+                    repeater.DataSource = query;
+                    repeater.DataBind();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         public static void bindRepeater(Repeater rpt)
         {
             try

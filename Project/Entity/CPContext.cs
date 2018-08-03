@@ -13,6 +13,7 @@ namespace Entity
         }
 
         public virtual DbSet<CPT_AccountMaster> CPT_AccountMaster { get; set; }
+        public virtual DbSet<CPT_AllocateResource> CPT_AllocateResource { get; set; }
         public virtual DbSet<CPT_CityMaster> CPT_CityMaster { get; set; }
         public virtual DbSet<CPT_CountryMaster> CPT_CountryMaster { get; set; }
         public virtual DbSet<CPT_DesignationMaster> CPT_DesignationMaster { get; set; }
@@ -35,6 +36,18 @@ namespace Entity
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CPT_AccountMaster>()
+                .HasMany(e => e.CPT_AllocateResource)
+                .WithRequired(e => e.CPT_AccountMaster)
+                .HasForeignKey(e => e.AccountID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_AccountMaster>()
+                .HasMany(e => e.CPT_NewJoiners)
+                .WithRequired(e => e.CPT_AccountMaster)
+                .HasForeignKey(e => e.Account)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_AccountMaster>()
                 .HasMany(e => e.CPT_ResourceDemand)
                 .WithRequired(e => e.CPT_AccountMaster)
                 .HasForeignKey(e => e.AccountID)
@@ -56,6 +69,11 @@ namespace Entity
                 .WithRequired(e => e.CPT_CountryMaster1)
                 .HasForeignKey(e => e.CountryID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_DesignationMaster>()
+                .HasMany(e => e.CPT_NewJoiners)
+                .WithOptional(e => e.CPT_DesignationMaster)
+                .HasForeignKey(e => e.DesignationID);
 
             modelBuilder.Entity<CPT_DesignationMaster>()
                 .HasMany(e => e.CPT_ResourceMaster)
@@ -89,8 +107,19 @@ namespace Entity
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CPT_ResourceDemand>()
+                .HasMany(e => e.CPT_AllocateResource)
+                .WithRequired(e => e.CPT_ResourceDemand)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_ResourceDemand>()
                 .HasMany(e => e.CPT_ResourceDetails)
                 .WithRequired(e => e.CPT_ResourceDemand)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_ResourceMaster>()
+                .HasMany(e => e.CPT_AllocateResource)
+                .WithRequired(e => e.CPT_ResourceMaster)
+                .HasForeignKey(e => e.ResourceID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CPT_ResourceMaster>()
