@@ -131,8 +131,6 @@ namespace businessLogic
 
                 }
             }
-
-
         }
 
         public static void ddlGetAccount(DropDownList ddldropdownName)
