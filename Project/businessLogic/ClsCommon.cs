@@ -389,5 +389,36 @@ namespace businessLogic
             int number=r.Next(minValue, maxValue);
             return number;
         }
+
+        public static void ddlGetAccountWithCity(DropDownList ddldropdownName, List<int> CityIDs)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Account";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            { 
+                foreach(var item in CityIDs)
+                {
+                    var query = from q in db.CPT_AccountMaster
+                                join r in db.CPT_CityMaster on q.CityID equals r.CityID
+                                where item == q.CityID & q.IsActive == true
+                                select new
+                                { q.AccountMasterID, q.AccountName, r.CityName };
+                    foreach (var detail in query)
+                    {
+                        li = new ListItem();
+                        li.Value = detail.AccountMasterID.ToString();
+                        li.Text = detail.AccountName + " - " + detail.CityName;
+                        ddldropdownName.Items.Add(li);
+
+                    }
+
+                }
+                
+            }
+        }
     }
 }
