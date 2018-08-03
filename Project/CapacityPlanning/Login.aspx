@@ -12,38 +12,47 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
+    
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/1.png" rel="shortcut icon" type="image/x-icon" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    <link href="css/main.css" rel="stylesheet" />
+
 </head>
-<body class="login-bg">
+<body class="login">
+    <form runat="server" accept-charset="utf-8" method="post">
+        <div class="login_wrapper">
+            <div class="login-box">
+                <div class="login-logo">
+                    <img src="images/logo.png" width="250" height="100" alt="" />
+                </div>
+                <div class="login-box-body">
+                    <p class="login-box-msg">Sign in to your account</p>
+                    <div class="form-group has-feedback">
+                        <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required ></asp:TextBox>
+                        <span class="fa fa-user form-control-feedback"></span><span><font color="red"></font></span>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" placeholder="Password" runat="server" required></asp:TextBox>
+                        <span class="fa fa-lock form-control-feedback"></span><span><font color="red"></font></span>
+                    </div>
+                    <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
+                        <input type="checkbox" name="remember" value="" id="remember" />
+                        Remember me
+                    </div>
 
 
-    <br />
-    <br />
-    <form runat="server" method="post">
-        <div class="page-content container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="login-wrapper">
-                        <div class="box">
-                            <div class="content-wrap">
-
-                                <img style="outline: 0;" src="images/logo.png"  />
-
-
-                                <div class="social">
-                                </div>
-                                <br />
-                                <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required title="Three letter country code"></asp:TextBox>
-                                <br />
-                                <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" placeholder="Password" runat="server" required></asp:TextBox>
-                                <div class="action">
-                                    <asp:Button CssClass="btn btn-primary signup" ID="loginButton" runat="server" Text="Login" OnClick="loginButton_Click" />
-
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <asp:Button CssClass="btn btn-primary signup" ID="Button1" runat="server" Text="Login" OnClick="loginButton_Click" />
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
