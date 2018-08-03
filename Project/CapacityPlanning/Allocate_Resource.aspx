@@ -51,7 +51,9 @@
                             <%--OnClientClick="ToggleDiv('first');return false;"--%>
                             <asp:TemplateField HeaderText="Align">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" Style="float: left;" runat="server" Text="Align"  OnClick="btnAllocate_Resource_Click" />
+                                     <%--<asp:ImageButton ID="btnView" runat="server" ImageUrl="images/info.png" CommandName="AlignRes"
+                                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClick="View_Resource_Master" />--%>
+                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" Style="float: left;" runat="server" Text="Align" CommandArgument='<%#Eval("RoleName")%>'  OnClick="btnAllocate_Resource_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <%--CommandArgument='<%#Eval("RequestID")%>'--%>
@@ -110,7 +112,7 @@
                                                 <%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%>
                                             </td>
                                             <td>
-                                                <asp:CheckBox Text="Align" ID="chkRequired" runat="server" />
+                                                <asp:CheckBox ID="chkRequired" Text="Align"  OnCheckedChanged="btnSave_Click" runat="server" />
                                             </td>
 
                                         </ItemTemplate>
@@ -128,7 +130,7 @@
                             </div>
                             <br />
                             <br />
-                            <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" />
+                            <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save"  OnClick="btnSave_Click" />
                             <br />
                             <br />
                         </div>

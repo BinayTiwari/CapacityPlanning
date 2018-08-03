@@ -21,7 +21,7 @@
                 <div class="content-box-large">
                     <asp:GridView ID="GridView1" Width="100%" runat="server" DataKeyNames="RequestId" OnPageIndexChanging="OnPageIndexChanging"
                         PageSize="10" CssClass="pager rows header1 mygrdContent" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
-                        OnRowCommand="GridView1_RowCommand" OnRowDeleting="delete" OnRowCancelingEdit="canceledit" OnRowUpdating="update"
+                        OnRowCommand="GridView1_RowCommand" OnRowCancelingEdit="canceledit" OnRowUpdating="update"
                         BackColor="White" BorderColor="White" EmptyDataText="N/A" Font-Size="Medium" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
                         Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
 
@@ -48,12 +48,7 @@
                                         CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/images/trash.png" CommandName="Delete"
-                                        OnClientClick="return confirm('Are you sure you want to delete this Request Demand?');" AlternateText="Delete" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                        
 
                         </Columns>
 

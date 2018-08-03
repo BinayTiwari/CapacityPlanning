@@ -15,11 +15,10 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                //CPT_ResourceDetails details = new CPT_ResourceDetails();
-                //details.RequestID = "1";// Session["RequestID"].ToString();
+               
 
                 AllocateResourceBL.AllocateResource(gdvAllocateResources);
-                //AllocateResourceBL.bindRepeater(Repeat);
+               
                
             }
         }
@@ -34,18 +33,38 @@ namespace CapacityPlanning
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
         {
-            //int empID = 0;
+            
 
             try
             {
                 myDIV.Style.Add("display","block");
-                
-                AllocateResourceBL.getEmployeeNameByResourceType(Repeat);
-
+                Button theButton = sender as Button;
+                if (theButton != null)
+                {
+                    AllocateResourceBL.getEmployeeNameByResourceType(Repeat, theButton.CommandArgument);
+                }
             }
             catch (Exception ex)
             {
 
+                Console.WriteLine(ex.Message);
+            }
+        }
+        protected void btnSave_Click(object sender,EventArgs e)
+        {
+            try
+            {
+                foreach(RepeaterItem item in Repeat.Items)
+                {
+                    CheckBox chk = (CheckBox)item.FindControl("chkRequired");
+                    if (chk.Checked)
+                    {
+                        //insert here from ui
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
         }

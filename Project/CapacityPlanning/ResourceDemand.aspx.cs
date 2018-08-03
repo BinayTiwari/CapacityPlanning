@@ -92,6 +92,9 @@ namespace CapacityPlanning
             GridView1.EditIndex = e.NewEditIndex;
             BindGrid();
         }
+       
+
+
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 

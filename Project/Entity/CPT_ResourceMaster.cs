@@ -49,7 +49,7 @@ namespace Entity
         public int RolesID { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime JoiningDate { get; set; }
+        public DateTime? JoiningDate { get; set; }
 
         public float? PriorWorkExperience { get; set; }
 
@@ -70,15 +70,15 @@ namespace Entity
         [Column(TypeName = "date")]
         public DateTime? VisaExpiryDate { get; set; }
 
-        public DateTime DateOfCreation { get; set; }
+        public DateTime? DateOfCreation { get; set; }
 
-        public DateTime DateOfModification { get; set; }
+        public DateTime? DateOfModification { get; set; }
 
-        public int CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
 
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
 
-        public DateTime LastLogin { get; set; }
+        public DateTime? LastLogin { get; set; }
 
         public float? isMapped { get; set; }
 
