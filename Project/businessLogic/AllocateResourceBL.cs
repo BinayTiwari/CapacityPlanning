@@ -18,8 +18,8 @@ namespace businessLogic
                 {
                     var query = (from p in db.CPT_ResourceMaster
                                  join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-                                 join r in db.CPT_ResourceDemand on q.RequestID equals r.RequestID
-                                 where (p.Skillsid == q.SkillID) && (p.EmployeeMasterID == r.ResourceRequestBy) && (p.RolesID == q.ResourceTypeID)
+                                 join r in db.CPT_AllocateResource on p.isMapped equals r.Utilization
+                                 where (r.Utilization != p.isMapped) && (p.RolesID == q.ResourceTypeID)
                                  select new
                                  {
                                      p.EmployeetName,
@@ -35,30 +35,30 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        public static void bindRepeater(Repeater rpt)
-        {
-            try
-            {
-                using (CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_ResourceMaster
-                                 join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-                                 select new
-                                 {
-                                     p.EmployeetName,
-                                     q.StartDate,
-                                     q.EndDate
-                                 }
-                               ).ToList();
-                    rpt.DataSource = query;
-                    rpt.DataBind();   
-                }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+        //public static void bindRepeater(Repeater rpt)
+        //{
+        //    try
+        //    {
+        //        using (CPContext db = new CPContext())
+        //        {
+        //            var query = (from p in db.CPT_ResourceMaster
+        //                         join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
+        //                         select new
+        //                         {
+        //                             p.EmployeetName,
+        //                             q.StartDate,
+        //                             q.EndDate
+        //                         }
+        //                       ).ToList();
+        //            rpt.DataSource = query;
+        //            rpt.DataBind();   
+        //        }
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
+        //}
         public static void AllocateResource(GridView GV)
         {
             try

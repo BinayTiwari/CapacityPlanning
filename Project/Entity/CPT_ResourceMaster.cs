@@ -80,6 +80,8 @@ namespace Entity
 
         public DateTime LastLogin { get; set; }
 
+        public float? isMapped { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 

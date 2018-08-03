@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using businessLogic;
 using Entity;
@@ -33,12 +34,14 @@ namespace CapacityPlanning
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
         {
+            //int empID = 0;
 
             try
             {
+                myDIV.Style.Add("display","block");
+                
                 AllocateResourceBL.getEmployeeNameByResourceType(Repeat);
-                //Button theButton = sender as Button;
-                //Response.Redirect("Allocate_Resource.aspx?RequestID=" + theButton.CommandArgument);
+
             }
             catch (Exception ex)
             {

@@ -71,7 +71,7 @@
 
 
                 </div>
-                <div id="myDIV" style="display: none;">
+                <div id="myDIV" style="display: none;" runat="server">
                     <div class="row">
 
                         <div class="panel-heading">
