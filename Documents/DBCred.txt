@@ -1,0 +1,13 @@
+MSSQL: sql7003.site4now.net
+Username: DB_A3EE23_CapacityPlanning_admin
+Password: anshuman@123
+DBName: DB_A3EE23_CapacityPlanning
+URL: rahulgic-001-site1.htempurl.com
+
+
+------------------FTP Details-----------------
+User:  rahulgic-001
+Pass:  anshuman@123
+host:  ftp.smarterasp.net
+
+DESKTOP-654818S\SQLEXPRESS
