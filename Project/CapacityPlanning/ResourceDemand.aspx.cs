@@ -31,7 +31,7 @@ namespace CapacityPlanning
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 employeeID = lstdetils[0].EmployeeMasterID;
 
-                ResourceDemandBL.getResourceDemand(GridView1, employeeID);
+                ResourceDemandBL.getResourceDemand(rptResourcedemand, employeeID);
 
             }
             catch (Exception ex)
@@ -43,12 +43,12 @@ namespace CapacityPlanning
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
-            this.BindGrid();
+          //  GridView1.PageIndex = e.NewPageIndex;
+            //this.BindGrid();
         }
 
-        //protected void delete(object sender, GridViewDeleteEventArgs e)
-        //{
+        protected void delete(object sender, GridViewDeleteEventArgs e)
+        {
         //    try
         //    {
         //        CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
@@ -63,7 +63,7 @@ namespace CapacityPlanning
         //    {
         //        Console.Write(ex.Message);
         //    }
-        //}
+        }
 
         protected void update(object sender, GridViewUpdateEventArgs e)
         {
@@ -89,7 +89,7 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            GridView1.EditIndex = e.NewEditIndex;
+       ////     GridView1.EditIndex = e.NewEditIndex;
             BindGrid();
         }
        
@@ -98,7 +98,7 @@ namespace CapacityPlanning
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            GridView1.EditIndex = -1;
+            //GridView1.EditIndex = -1;
             BindGrid();
         }
 
@@ -107,10 +107,10 @@ namespace CapacityPlanning
             if (e.CommandName == "EditButton")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = GridView1.Rows[index];
-                string rows = row.Cells[0].Text;
+              //  GridViewRow row = GridView1.Rows[index];
+                //string rows = row.Cells[0].Text;
 
-                Response.Redirect("~/EditResourceDemand.aspx?RequestId=" + row.Cells[0].Text);
+                //Response.Redirect("~/EditResourceDemand.aspx?RequestId=" + row.Cells[0].Text);
             }
         }
 

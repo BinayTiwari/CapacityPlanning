@@ -18,25 +18,9 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
 
-                AllocateBL.AllocateGrid(GridView1);
+                AllocateBL.getResourceDemand(rptResourceAllocation);
                 
             }
-        }
-
-        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            AllocateBL.AllocateGrid(GridView1);
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            AllocateBL.ddlGetPriority(e);
         }
         protected void btnAllocate_Click(object sender, EventArgs e)
         {
@@ -54,18 +38,23 @@ namespace CapacityPlanning
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            
             try
             {
-                for (int i = 0; i < GridView1.Rows.Count; i++)
+                
+                foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
-                    DropDownList ddl = (DropDownList)GridView1.Rows[i].FindControl("ddlPriorities");
+                    DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
                     string Priority = ddl.SelectedValue;
                     AllocateBL ABL = new AllocateBL();
+
                     CPT_ResourceDemand CRM = new CPT_ResourceDemand();
                     CRM.PriorityID = ABL.SelectID(Priority);
-                    CRM.RequestID = GridView1.Rows[i].Cells[0].Text;
-                    ABL.Update(CRM);
+
+                    Label lblRequestID = (Label)item.FindControl("Request");
+                    CRM.RequestID = lblRequestID.Text.Trim();
+                   
+                    ABL.UpdateData(CRM);
                 }
 
                 
@@ -76,15 +65,12 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
-        protected void update(object sender, GridViewUpdateEventArgs e)
+        protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            try
+            DropDownList selectList = e.Item.FindControl("ddlPriorities") as DropDownList;
+            if (selectList != null)
             {
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                 AllocateBL.ddlGetPriority(selectList);
             }
         }
     }

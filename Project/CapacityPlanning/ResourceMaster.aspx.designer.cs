@@ -13,12 +13,21 @@ namespace CapacityPlanning {
     public partial class ResourceMaster {
         
         /// <summary>
-        /// gvResource control.
+        /// Add Employee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvResource;
+       // protected global::System.Web.UI.WebControls.Button Add Employee;
+        
+        /// <summary>
+        /// rptResourceMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptResourceMaster;
     }
 }

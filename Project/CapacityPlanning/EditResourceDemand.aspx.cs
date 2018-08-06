@@ -18,12 +18,12 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetAccount(AccountMasterID);
                 ClsCommon.ddlGetRegion(RegionMasterID);
-                ClsCommon.ddlGetCountry(CountryMasterID);
-                ClsCommon.ddlGetCity(CityID);
+              //  ClsCommon.ddlGetCountry(CountryMasterID);
+            //    ClsCommon.ddlGetCity(CityID);
                 ClsCommon.ddlGetOpportunity(OpportunityID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
                // ClsCommon.ddlGetPriority(PriorityID);
-                ClsCommon.ddlGetDesignation(ResourceType);
+           //     ClsCommon.ddlGetDesignation(ResourceType);
                 //BindGrid();
 
 
@@ -48,7 +48,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
                 //cityDetails.RegionID = Convert.ToInt32(RegionMasterID.SelectedValue);
                 //cityDetails.CountryID = Convert.ToInt32(CountryMasterID.SelectedValue);
-                resourceDemandDetails.CityID = Convert.ToInt32(CityID.SelectedValue);
+              //  resourceDemandDetails.CityID = Convert.ToInt32(CityID.SelectedValue);
                 resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
                 resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
                 resourceDemandDetails.ProcessName = processName.Text;
@@ -57,7 +57,7 @@ namespace CapacityPlanning
                 insertResourceDemand.Update(resourceDemandDetails);
 
                 CPT_ResourceDetails resourceDetails = new CPT_ResourceDetails();
-                resourceDetails.ResourceTypeID = Convert.ToInt32( ResourceType.SelectedValue);
+            //    resourceDetails.ResourceTypeID = Convert.ToInt32( ResourceType.SelectedValue);
 
             }
             catch (Exception ex)

@@ -54,8 +54,8 @@ namespace CapacityPlanning
 
 
                          }).OrderBy(p=>p.EmployeetName).ToList();
-            gvResource.DataSource = query;
-            gvResource.DataBind();
+                rptResourceMaster.DataSource = query;
+                rptResourceMaster.DataBind();
         }
 
         }
@@ -63,8 +63,8 @@ namespace CapacityPlanning
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_ResourceMaster cPT_ResourceMaster = new CPT_ResourceMaster();
-            int id = int.Parse(gvResource.DataKeys[e.RowIndex].Value.ToString());
-            cPT_ResourceMaster.EmployeeMasterID = id;
+           // int id = int.Parse(gvResource.DataKeys[e.RowIndex].Value.ToString());
+         //   cPT_ResourceMaster.EmployeeMasterID = id;
 
             ResourceMasterBL deleteresourceMasterBL = new ResourceMasterBL();
             deleteresourceMasterBL.Delete(cPT_ResourceMaster);
@@ -82,19 +82,19 @@ namespace CapacityPlanning
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvResource.PageIndex = e.NewPageIndex;
+        //    gvResource.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            gvResource.EditIndex = e.NewEditIndex;
+        //    gvResource.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            gvResource.EditIndex = -1;
+          //  gvResource.EditIndex = -1;
             BindGrid();
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -102,19 +102,19 @@ namespace CapacityPlanning
             if (e.CommandName == "EditButton")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvResource.Rows[index];
-                string rows = row.Cells[1].Text;
+            //    GridViewRow row = gvResource.Rows[index];
+            //    string rows = row.Cells[1].Text;
 
-                Response.Redirect("~/EditEmployee.aspx?EmployeeId=" + row.Cells[1].Text);
+            ///    Response.Redirect("~/EditEmployee.aspx?EmployeeId=" + row.Cells[1].Text);
             }
 
             if(e.CommandName == "ViewProfile")
             {
                 int index1 = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row1 = gvResource.Rows[index1];
-                string rows = row1.Cells[1].Text;
+             //   GridViewRow row1 = gvResource.Rows[index1];
+             //   string rows = row1.Cells[1].Text;
 
-                Response.Redirect("~/ResourceMaster.aspx?EmployeeId=" + row1.Cells[1].Text);
+              //  Response.Redirect("~/ResourceMaster.aspx?EmployeeId=" + row1.Cells[1].Text);
             }
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

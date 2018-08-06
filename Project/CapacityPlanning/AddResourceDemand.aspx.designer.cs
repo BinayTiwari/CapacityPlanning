@@ -13,13 +13,13 @@ namespace CapacityPlanning {
     public partial class AddResourceDemand {
         
         /// <summary>
-        /// AccountMasterID control.
+        /// OpportunityID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AccountMasterID;
+        protected global::System.Web.UI.WebControls.DropDownList OpportunityID;
         
         /// <summary>
         /// RegionMasterID control.
@@ -31,31 +31,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList RegionMasterID;
         
         /// <summary>
-        /// CountryMasterID control.
+        /// AccountMasterID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CountryMasterID;
-        
-        /// <summary>
-        /// CityID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CityID;
-        
-        /// <summary>
-        /// OpportunityID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OpportunityID;
+        protected global::System.Web.UI.WebControls.DropDownList AccountMasterID;
         
         /// <summary>
         /// SalesStageMasterID control.
@@ -74,24 +56,6 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox processName;
-        
-        /// <summary>
-        /// StatusMasterID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StatusMasterID;
-        
-        /// <summary>
-        /// PriorityID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList PriorityID;
         
         /// <summary>
         /// GridviewResourceDetail control.

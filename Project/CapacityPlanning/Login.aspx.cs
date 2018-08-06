@@ -39,7 +39,7 @@ namespace CapacityPlanning
             if (lstuserdetails.Count > 0)
             {
                 Session["UserDetails"] = lstuserdetails;
-                Response.Redirect("default.aspx");
+                Response.Redirect("Dashboard.aspx");
             }
 
 

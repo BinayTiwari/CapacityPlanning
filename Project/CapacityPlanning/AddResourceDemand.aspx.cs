@@ -45,12 +45,14 @@ namespace CapacityPlanning
                 resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
                 resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
                 resourceDemandDetails.ProcessName = processName.Text.Trim();
+                resourceDemandDetails.CityID = 20;
                 resourceDemandDetails.DateOfCreation = DateTime.Now;
                 resourceDemandDetails.DateOfModification = DateTime.Now;
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
+                resourceDemandDetails.StatusMasterID = 19;
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
-                insertResourceDemand.Insert(resourceDemandDetails);
+              //  insertResourceDemand.Insert(resourceDemandDetails);
 
                 if (ViewState["CurrentTable"] != null)
                 {
@@ -104,22 +106,29 @@ namespace CapacityPlanning
                     data = dtCurrentTable;
                 }
 
-                CPT_ResourceDetails demandDetails = new CPT_ResourceDetails();
-                ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
+                //  CPT_ResourceDetails demandDetails = new CPT_ResourceDetails();
+                //ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
+                List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
                 for(int i = 0; i < data.Rows.Count - 1; i++)
                 {
-                    demandDetails.RequestID = resourceDemandDetails.RequestID;
-                    demandDetails.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
-                    demandDetails.NoOfResources = Convert.ToInt32(data.Rows[i]["NoOfResources"]);
-                    demandDetails.SkillID = data.Rows[i]["SkillID"].ToString().Trim();
-                    demandDetails.StartDate = Convert.ToDateTime(data.Rows[i]["StartDate"]);
-                    demandDetails.EndDate = Convert.ToDateTime(data.Rows[i]["EndDate"]);
+                    CPT_ResourceDetails details = new CPT_ResourceDetails();
 
-                    insertDemandDetails.Insert(demandDetails);
+                    details.RequestID = resourceDemandDetails.RequestID;
+                    details.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
+                    details.NoOfResources = Convert.ToInt32(data.Rows[i]["NoOfResources"]);
+                    details.SkillID = data.Rows[i]["SkillID"].ToString().Trim();
+                    details.StartDate = Convert.ToDateTime(data.Rows[i]["StartDate"]);
+                    details.EndDate = Convert.ToDateTime(data.Rows[i]["EndDate"]);
+
+                    lstdetails.Add(details);
+                    resourceDemandDetails.CPT_ResourceDetails = lstdetails;
+
+                  //  
 
                 }
 
+                insertResourceDemand.Insert(resourceDemandDetails);
                 Response.Redirect("ResourceDemand.aspx");
 
             }
@@ -161,10 +170,11 @@ namespace CapacityPlanning
 
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
-            ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+            //ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
             //DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[4].FindControl("DropDownList2");
-            ClsCommon.ddlGetDesignation(ddl);
-            ClsCommon.ddlGetSkill(ddl1);
+            ClsCommon.ddlGetRole(ddl);
+            ClsCommon.ddlGetSkillDDL(ddl1);
             
 
         }
@@ -264,7 +274,7 @@ namespace CapacityPlanning
 
                         //Fill the DropDownList with Data 
                         
-                        ClsCommon.ddlGetDesignation(ddl);
+                        ClsCommon.ddlGetRole(ddl);
                         ClsCommon.ddlGetSkill(ddl1);
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
@@ -345,7 +355,7 @@ namespace CapacityPlanning
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            LinkButton lb = (LinkButton)sender;
+            Button lb = (Button)sender;
             GridViewRow gvRow = (GridViewRow)lb.NamingContainer;
             int rowID = gvRow.RowIndex;
             if (ViewState["CurrentTable"] != null)
