@@ -1,24 +1,16 @@
 ﻿<%@ Page Title="Add Resource Demand" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddResourceDemand.aspx.cs" Inherits="CapacityPlanning.AddResourceDemand" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-
     <div class="row">
-
         <div class="col-lg-12">
             <h1 class="page-header">Resource Demand</h1>
         </div>
         <!-- /.col-lg-12 -->
-
     </div>
 
     <div class="row">
-
-
         <div class="col-lg-12">
-
             <div class="panel panel-default">
-
                 <div class="panel-heading">
                     Resource Demand Status
                 </div>
@@ -27,7 +19,6 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-
                                 <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server"></asp:DropDownList>
                             </div>
                             <div class="col-lg-6">
@@ -39,31 +30,25 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-
                                 <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
                             </div>
                             <div class="col-lg-6">
                                 <asp:DropDownList ID="SalesStageMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
-
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-
                             <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- /.col-lg-6 (nested) -->
             </div>
 
             <div class="dataTable_wrapper">
-
                 <asp:GridView ID="GridviewResourceDetail" runat="server" ShowFooter="true" CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="false" OnRowCreated="GridviewResourceDetail_RowCreated">
                     <Columns>
                         <asp:BoundField DataField="RowNumber" HeaderText="#" />
@@ -100,33 +85,23 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
-
-
-
                             </ItemTemplate>
-
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
             </div>
         </div>
     </div>
+
     <div class="panel-body">
         <div class="col-md-10 panel-info">
             <div class="row">
-
                 <div class="content-box-large box-with-header">
-
-
-
                     <br />
-
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="col-sm-2 pull-right">
                                 <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
-
                             </div>
                             <div>
                                 <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
@@ -138,21 +113,6 @@
             </div>
         </div>
     </div>
-
-
-    <script type="text/javascript">
-        $(function () {
-            $('[id*=SkillID]').multiselect({
-                includeSelectAllOption: true
-            });
-            $("#NewJoinerButton").click(function () {
-                alert($(".multiselect-selected-text").html());
-            });
-        });
-    </script>
-
-
-
 
 </asp:Content>
 

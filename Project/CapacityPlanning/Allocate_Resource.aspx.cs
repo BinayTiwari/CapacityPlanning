@@ -15,63 +15,37 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
+                //AllocateResourceBL.AllocateResource(rptResourceAllocation);
                
+                    string id= Session["id"].ToString();
+                lblResourceAllocation.Text = id;
+                    AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
+                
+            }
+        }
 
-                AllocateResourceBL.AllocateResource(gdvAllocateResources);
-               
-               
-            }
-        }
-        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            gdvAllocateResources.PageIndex = e.NewPageIndex;
-            AllocateResourceBL.AllocateResource(gdvAllocateResources);
+           
         }
-        protected void gdvAllocateResources_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            //AllocateResourceBL.AllocateResource(gdvAllocateResources);
-        }
-        protected void btnAllocate_Resource_Click(object sender, EventArgs e)
-        {
-            
+        //protected void btnSave_Click(object sender,EventArgs e)
+        //{
+        //    try
+        //    {
+        //        foreach(RepeaterItem item in Repeat.Items)
+        //        {
+        //            CheckBox chk = (CheckBox)item.FindControl("chkRequired");
+        //            if (chk.Checked)
+        //            {
+        //                //insert here from ui
+        //            }
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
 
-            try
-            {
-                myDIV.Style.Add("display","block");
-                Button theButton = sender as Button;
-                if (theButton != null)
-                {
-                    AllocateResourceBL.getEmployeeNameByResourceType(Repeat, theButton.CommandArgument);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-            }
-        }
-        protected void btnSave_Click(object sender,EventArgs e)
-        {
-            try
-            {
-                foreach(RepeaterItem item in Repeat.Items)
-                {
-                    CheckBox chk = (CheckBox)item.FindControl("chkRequired");
-                    if (chk.Checked)
-                    {
-                        //insert here from ui
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        protected void gdvAllocateResources_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //gdvAllocateResources.PageIndex = e.NewPageIndex;
-            //AllocateResourceBL.AllocateResource(gdvAllocateResources);
-        }
     }
 }

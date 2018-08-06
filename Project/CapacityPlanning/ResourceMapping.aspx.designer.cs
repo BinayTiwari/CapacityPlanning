@@ -10,24 +10,15 @@
 namespace CapacityPlanning {
     
     
-    public partial class Allocate_Resource {
+    public partial class ResourceMapping {
         
         /// <summary>
-        /// lblResourceAllocation control.
+        /// rptResourceMapping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResourceAllocation;
-        
-        /// <summary>
-        /// rptResourceAllocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptResourceAllocation;
+        protected global::System.Web.UI.WebControls.Repeater rptResourceMapping;
     }
 }

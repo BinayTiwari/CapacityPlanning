@@ -13,8 +13,8 @@ namespace CapacityPlanning
 {
     public partial class AddResourceDemand : System.Web.UI.Page
     {
-        private List<string[]> id = new List<string[]>();
-        private string[] Skill;
+        //private List<string[]> id = new List<string[]>();
+        //private string[] Skill;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -52,7 +52,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.StatusMasterID = 19;
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
-              //  insertResourceDemand.Insert(resourceDemandDetails);
+                //  insertResourceDemand.Insert(resourceDemandDetails);
 
                 if (ViewState["CurrentTable"] != null)
                 {
@@ -73,23 +73,25 @@ namespace CapacityPlanning
                         {
                             //extract the DropDownList Selected Items   
                             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
+                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("SkillID");
                             //TextBox box1 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("TextBox1");
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
 
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                             dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                            ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
+                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
+                            //ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
 
                             // Update the DataRow with the DDL Selected Items   
-                            string message = "";
-                            foreach (var z in ddl1.GetSelectedIndices())
-                            {
-                                message += ddl1.Items[z].Value + ",";
-                            }
-                            message = message.Remove(message.Length - 1).Trim();
-                            dtCurrentTable.Rows[i]["SkillID"] = message;
-                            Skill = message.Split(',');
-                            id.Add(Skill);
+                            //string message = "";
+                            //foreach (var z in ddl1.GetSelectedIndices())
+                            //{
+                            //    message += ddl1.Items[z].Value + ",";
+                            //}
+                            //message = message.Remove(message.Length - 1).Trim();
+                            //dtCurrentTable.Rows[i]["SkillID"] = message;
+                            //Skill = message.Split(',');
+                            //id.Add(Skill);
 
                             //dtCurrentTable.Rows[i]["SkillID"] = id;
 
@@ -110,7 +112,7 @@ namespace CapacityPlanning
                 //ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
                 List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
-                for(int i = 0; i < data.Rows.Count - 1; i++)
+                for (int i = 0; i < data.Rows.Count - 1; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
@@ -124,7 +126,7 @@ namespace CapacityPlanning
                     lstdetails.Add(details);
                     resourceDemandDetails.CPT_ResourceDetails = lstdetails;
 
-                  //  
+                    //  
 
                 }
 
@@ -171,8 +173,7 @@ namespace CapacityPlanning
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
             //ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
-            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
-            //DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[4].FindControl("DropDownList2");
+            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[4].FindControl("SkillID");
             ClsCommon.ddlGetRole(ddl);
             ClsCommon.ddlGetSkillDDL(ddl1);
             
@@ -211,22 +212,23 @@ namespace CapacityPlanning
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         //dtCurrentTable.Rows[i]["Column1"] = box1.Text;
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("SkillID");
+                        //ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
 
-                        ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-                       
 
-                        // Update the DataRow with the DDL Selected Items   
-                        string message = "";
-                        
-                        foreach (var z in ddl1.GetSelectedIndices())
-                        {
-                            message += ddl1.Items[z].Value + ",";
-                        }
-                        message = message.Remove(message.Length - 1).Trim();
-                        dtCurrentTable.Rows[i]["SkillID"] = message;
-                        Skill = message.Split(',');
-                        id.Add(Skill);
-                        
+                        // Update the DataRow with the DDL Selected Items
+                        dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
+                        //string message = "";
+
+                        //foreach (var z in ddl1.GetSelectedIndices())
+                        //{
+                        //    message += ddl1.Items[z].Value + ",";
+                        //}
+                        //message = message.Remove(message.Length - 1).Trim();
+                        //dtCurrentTable.Rows[i]["SkillID"] = message;
+                        //Skill = message.Split(',');
+                        //id.Add(Skill);
+
                         //dtCurrentTable.Rows[i]["SkillID"] = id;
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
@@ -269,13 +271,13 @@ namespace CapacityPlanning
                         //TextBox box1 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("TextBox1");
                         TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
 
-                        ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
-                        //DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("DropDownList2");
+                        //ListBox ddl1 = (ListBox)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("SkillID");
 
                         //Fill the DropDownList with Data 
                         
                         ClsCommon.ddlGetRole(ddl);
-                        ClsCommon.ddlGetSkill(ddl1);
+                        ClsCommon.ddlGetSkillDDL(ddl1);
 
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("EndDate");
@@ -283,7 +285,7 @@ namespace CapacityPlanning
 
                         if (i < dt.Rows.Count - 1)
                         {
-                            string[] ids = id[i];
+                            //string[] ids = id[i];
                             ddl.ClearSelection();
                             ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
                             
@@ -294,27 +296,23 @@ namespace CapacityPlanning
                             //Set the Previous Selected Items on Each DropDownList on Postbacks
                             
                             ddl1.ClearSelection();
-                            
-                            for(int j = 0; j < ids.Count(); j++)
-                            {
-                                for (int i1 = 0; i1 < ddl1.Items.Count; i1++)
-                                {
-                                    if (ddl1.Items[i1].Value.Trim() == ids[j].ToString().Trim())
-                                    {
-                                        ListBox ddl2 = (ListBox)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
-                                        ddl2.Items[i1].Selected = true;
-                                        break;
-                                    }
-                                }
-                            }
-                                
-                               
-                            //ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
+                            ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
+                            //for(int j = 0; j < ids.Count(); j++)
+                            //{
+                            //    for (int i1 = 0; i1 < ddl1.Items.Count; i1++)
+                            //    {
+                            //        if (ddl1.Items[i1].Value.Trim() == ids[j].ToString().Trim())
+                            //        {
+                            //            ListBox ddl2 = (ListBox)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
+                            //            ddl2.Items[i1].Selected = true;
+                            //            break;
+                            //        }
+                            //    }
+                            //}
 
                             box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
                             box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
-                           
-                            
+                                                      
                         }
 
                         rowIndex++;

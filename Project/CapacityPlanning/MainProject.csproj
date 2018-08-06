@@ -314,6 +314,7 @@
     <Content Include="PriorityMaster.aspx" />
     <Content Include="RegionMaster.aspx" />
     <Content Include="ResourceDemand.aspx" />
+    <Content Include="ResourceMapping.aspx" />
     <Content Include="ResourceMaster.aspx" />
     <Content Include="RoleMaster.aspx" />
     <Content Include="SalesStageMaster.aspx" />
@@ -532,6 +533,13 @@
     </Compile>
     <Compile Include="ResourceDemand.aspx.designer.cs">
       <DependentUpon>ResourceDemand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceMapping.aspx.cs">
+      <DependentUpon>ResourceMapping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceMapping.aspx.designer.cs">
+      <DependentUpon>ResourceMapping.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResourceMaster.aspx.cs">
       <DependentUpon>ResourceMaster.aspx</DependentUpon>
