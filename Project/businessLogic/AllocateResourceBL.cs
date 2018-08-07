@@ -27,32 +27,32 @@ namespace businessLogic
         //    }
         //    return 1;
         //}
-        //public static void getEmployeeNameByResourceType(Repeater repeater,string RoleName)
-        //{
-        //    try
-        //    {
-        //        using (CPContext db = new CPContext())
-        //        {
-        //            var query = (from p in db.CPT_ResourceMaster
-        //                         join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-        //                         join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
-        //                         where (RoleName == r.RoleName) && (p.isMapped==0)
-        //                         select new
-        //                         {
-        //                             p.EmployeetName,
-        //                             q.StartDate,
-        //                             q.EndDate
-        //                         }).ToList();
-        //            repeater.DataSource = query;
-        //            repeater.DataBind();
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-      
+        public static void getEmployeeNameByResourceType(Repeater repeater, string RoleName)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
+                                 join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
+                                 where (r.RoleName == RoleName) && (p.isMapped == 0)
+                                 select new
+                                 {
+                                     p.EmployeetName,
+                                     q.StartDate,
+                                     q.EndDate
+                                 }).ToList();
+                    repeater.DataSource = query;
+                    repeater.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public static void AllocateResource(Repeater rpt)
         {
             try

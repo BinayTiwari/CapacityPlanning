@@ -16,17 +16,43 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 //AllocateResourceBL.AllocateResource(rptResourceAllocation);
-               
-                    string id= Session["id"].ToString();
+
+                string id = Session["id"].ToString();
                 lblResourceAllocation.Text = id;
-                    AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
-                
+                AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
+
             }
         }
+        protected void btnAllocate_Resource_Click(object sender, EventArgs e)
+        {
 
+
+            try
+            {
+                myDIV.Style.Add("display", "block");
+                Button theButton = sender as Button;
+                Session["role"] = theButton.CommandArgument;
+                string role = Session["role"].ToString();
+                if (role != null)
+                {
+                    string id = Session["id"].ToString();
+                    lblSuggestions.Text = id;
+                    AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions,role);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+        protected void rptSuggestions_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
         protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-           
+
         }
         //protected void btnSave_Click(object sender,EventArgs e)
         //{

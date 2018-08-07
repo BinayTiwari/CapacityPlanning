@@ -21,7 +21,7 @@ namespace Entity
 
         public int AccountID { get; set; }
 
-        public int CityID { get; set; }
+        public int? CityID { get; set; }
 
         public int OpportunityID { get; set; }
 

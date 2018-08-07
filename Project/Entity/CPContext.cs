@@ -53,11 +53,6 @@ namespace Entity
                 .HasForeignKey(e => e.AccountID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CPT_CityMaster>()
-                .HasMany(e => e.CPT_ResourceDemand)
-                .WithRequired(e => e.CPT_CityMaster)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<CPT_CountryMaster>()
                 .HasMany(e => e.CPT_CityMaster)
                 .WithRequired(e => e.CPT_CountryMaster)

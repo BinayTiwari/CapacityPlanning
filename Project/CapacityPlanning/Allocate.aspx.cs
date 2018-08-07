@@ -19,23 +19,12 @@ namespace CapacityPlanning
             {
 
                 AllocateBL.getResourceDemand(rptResourceAllocation);
-                
+
+                //DropDownList ddlPriorities = (FindControl("ddlPriorities") as DropDownList);
+                //AllocateBL.ddlGetPriority(ddlPriorities);
+
             }
         }
-        //protected void btnAllocate_Click(object sender, EventArgs e)
-        //{
-
-        //    try
-        //    {
-        //        Button theButton = sender as Button;
-        //        Response.Redirect("Allocate_Resource.aspx?RequestID=" + theButton.CommandArgument);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
         protected void btnSave_Click(object sender, EventArgs e)
         {
             
@@ -46,15 +35,28 @@ namespace CapacityPlanning
                 {
                     DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
                     string Priority = ddl.SelectedValue;
+
                     AllocateBL ABL = new AllocateBL();
 
                     CPT_ResourceDemand CRM = new CPT_ResourceDemand();
                     CRM.PriorityID = ABL.SelectID(Priority);
 
+
                     Label lblRequestID = (Label)item.FindControl("Request");
                     CRM.RequestID = lblRequestID.Text.Trim();
                    
                     ABL.UpdateData(CRM);
+                    //Response.Redirect("Allocate.aspx");
+                    //ddl.Text = ddl.SelectedItem.Value.ToString();
+                    //DataTable dt = new DataTable();
+                    //ddl.Items.FindByValue(dt.Rows[0]["PriorityName"].ToString()).Selected = true;
+
+                    //ddl.Items.FindByValue("PriorityName").Selected = true;
+                    //Label lbl = (Label)item.FindControl("lblPriority");
+                    //string priority = ddl.Text;
+                    ////// string priority = (FindControl("lblPriority") as Label).Text;
+
+                    //ddl.Items.FindByValue(Priority).Selected = true;
                 }
 
                 
@@ -72,6 +74,8 @@ namespace CapacityPlanning
             {
                  AllocateBL.ddlGetPriority(selectList);
             }
+            
         }
+        
     }
 }
