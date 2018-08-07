@@ -36,7 +36,9 @@
                                                 <th>Sales Stage </th>
                                                
                                                 <th>Priority </th>
+                                                <th>Change Priority</th>
                                                 <th></th>
+                                                
                                                 
                                               
                                             </tr>
@@ -50,10 +52,10 @@
                                                 <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                                 <td ><%#Eval("OpportunityType")%></td>
                                                 <td ><%#Eval("SalesStageName")%></td>
-                                                <td  ><asp:DropDownList ID="ddlPriorities" runat="server">
-                                    </asp:DropDownList></td>
-                                                <td class="center" ><ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></td>
-                                                
+                                                <td ><%#Eval("PriorityName")%></td>
+                                                <td ><asp:DropDownList ID="ddlPriorities" runat="server"></asp:DropDownList></td>
+                                                 <td class="center"><a href="ViewResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
+                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
                                             </tr>
                                              </ItemTemplate>
 
