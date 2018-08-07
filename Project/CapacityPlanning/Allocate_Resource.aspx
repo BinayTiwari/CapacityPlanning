@@ -153,7 +153,7 @@
                             <!-- /.table-responsive -->
                             <br />
                             <br />
-                            <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" />
+                            <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save"  OnClick="btnSave_Click" />
                             <br />
                             <br />
                         </div>
