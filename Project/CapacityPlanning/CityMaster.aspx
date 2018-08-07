@@ -1,14 +1,18 @@
 ﻿<%@ Page Title="City Master" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CityMaster.aspx.cs" Inherits="CapacityPlanning.CityMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="col-md-10">
-        <div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
-            <div class="panel-title ">City Master</div>
-        </div>
+
+    <div class="row">
+ 
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Manage City</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                     
+                </div>
         
-        <div class="content-box-large">
-            <div class="form-group form-inline">
-            <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
+               <div class="row">
+                   <div style="float: right;">        <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
                 DataTextField="RegionName" DataValueField="RegionID" AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1" required>
                 <asp:ListItem Value="">--Select Region--</asp:ListItem>
 
@@ -20,16 +24,26 @@
             </asp:DropDownList>
             <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server"  required AutoPostBack="True"></asp:TextBox>
 
-            <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />
-        </div>
-            <asp:GridView ID="gvCity" Width="100%" runat="server" DataKeyNames="CityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
-                CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
+            <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />       </div>
+             
+                       
+                    <div class="col-lg-12">
+                      
+                        <div class="panel panel-default">
+                                        
+                            <div class="panel-heading">
+                                Account Details
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                     
+                                <div class="dataTable_wrapper">
+                                           <asp:GridView ID="gvCity" Width="100%" runat="server" DataKeyNames="CityID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="5"
+                CssClass="table table-striped table-bordered table-hover" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
-                OnRowUpdating="update" BackColor="White" BorderColor="#919191" BorderStyle="Inset" EmptyDataText="No records to show" Font-Size="Medium" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
+                OnRowUpdating="update"  EmptyDataText="No records to show"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
 
-
-                <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
 
 
                 <Columns>
@@ -58,16 +72,17 @@
                 </Columns>
 
 
-                <FooterStyle BackColor="#DADEE5" />
-
-
-                <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
-
-
-                <PagerSettings Mode="NumericFirstLast" />
-
-                <PagerStyle HorizontalAlign="Right" />
+                
             </asp:GridView>
-        </div>
-    </div>
+                                </div>
+                                <!-- /.table-responsive -->
+                                
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+  
 </asp:Content>

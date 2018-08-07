@@ -349,6 +349,7 @@
     <Content Include="Site.Master" />
     <Content Include="SkillsMaster.aspx" />
     <Content Include="StatusMaster.aspx" />
+    <Content Include="ViewResourceDemand.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -596,6 +597,13 @@
     </Compile>
     <Compile Include="StatusMaster.aspx.designer.cs">
       <DependentUpon>StatusMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewResourceDemand.aspx.cs">
+      <DependentUpon>ViewResourceDemand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewResourceDemand.aspx.designer.cs">
+      <DependentUpon>ViewResourceDemand.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

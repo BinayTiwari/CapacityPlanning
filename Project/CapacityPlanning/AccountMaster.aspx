@@ -1,29 +1,39 @@
 ﻿<%@ Page Title="Account Master" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AccountMaster.aspx.cs" Inherits="CapacityPlanning.AccountMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="col-md-10">
-        <div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
-            <div class="panel-title ">Account Master</div>
-        </div>
 
-
-
-        <div class="content-box-large">
-            <div class="form-group form-inline">
-                <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
+     <div class="row">
+ 
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Manage Account</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                     
+                </div>
+        
+               <div class="row">
+                   <div style="float: right;">          <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
                 <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" CausesValidation="False" />
-            </div>
-            <asp:GridView ID="gvAccount" Width="100%" runat="server" DataKeyNames="AccountMasterID" CellPadding="8" OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
-                CssClass="pager rows header1 mygrdContent" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
+       </div>
+             
+                       
+                    <div class="col-lg-12">
+                      
+                        <div class="panel panel-default">
+                                        
+                            <div class="panel-heading">
+                                Account Details
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                     
+                                <div class="dataTable_wrapper">
+                                           <asp:GridView ID="dataTables"  runat="server" DataKeyNames="AccountMasterID"  OnPageIndexChanging="OnPageIndexChanging" PageSize="10"
+                CssClass="table table-striped table-bordered table-hover" AllowPaging="True" OnRowEditing="edit" ShowFooter="false" AutoGenerateColumns="False"
                 OnRowDeleting="delete"
                 OnRowCancelingEdit="canceledit"
-                OnRowUpdating="update" BackColor="White" BorderColor="#919191" BorderStyle="Inset" EmptyDataText="No records to show" Font-Size="Medium" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Names="Calibri" Font-Overline="False" ForeColor="#003300" GridLines="Horizontal">
-
-
-                <AlternatingRowStyle BackColor="#F9F9F9" CssClass="table table-striped" />
-
-
+                OnRowUpdating="update"  EmptyDataText="No records to show"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField ReadOnly="True" DataField="AccountMasterID" HeaderText="Account ID" />
                     <asp:BoundField DataField="AccountName" HeaderText="Account Name" />
@@ -49,19 +59,20 @@
                 </Columns>
 
 
-                <FooterStyle BackColor="White" />
-
-
-                <HeaderStyle BackColor="White" BorderColor="White" BorderStyle="None" />
-
-
                 <PagerSettings Mode="NumericFirstLast" NextPageImageUrl="~/images/126490.png" PageButtonCount="5" />
 
-
-                <SelectedRowStyle BorderStyle="Inset" />
-
-                <PagerStyle HorizontalAlign="Right" />
-            </asp:GridView>
-        </div>
-    </div>
+            </asp:GridView>   
+          
+                                   
+                                </div>
+                                <!-- /.table-responsive -->
+                                
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+    
 </asp:Content>

@@ -10,78 +10,69 @@
 namespace CapacityPlanning {
     
     
-    public partial class EditResourceDemand {
+    public partial class ViewResourceDemand {
         
         /// <summary>
-        /// OpportunityID control.
+        /// reqID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OpportunityID;
+        protected global::System.Web.UI.WebControls.Label reqID;
         
         /// <summary>
-        /// RegionMasterID control.
+        /// proccName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RegionMasterID;
+        protected global::System.Web.UI.WebControls.Label proccName;
         
         /// <summary>
-        /// AccountMasterID control.
+        /// oppTypeDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AccountMasterID;
+        protected global::System.Web.UI.WebControls.DropDownList oppTypeDD;
         
         /// <summary>
-        /// SalesStageMasterID control.
+        /// regionNameDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SalesStageMasterID;
+        protected global::System.Web.UI.WebControls.DropDownList regionNameDD;
         
         /// <summary>
-        /// processName control.
+        /// accNameDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox processName;
+        protected global::System.Web.UI.WebControls.DropDownList accNameDD;
         
         /// <summary>
-        /// GridviewResourceDetail control.
+        /// salesStageDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridviewResourceDetail;
+        protected global::System.Web.UI.WebControls.DropDownList salesStageDD;
         
         /// <summary>
-        /// cancel control.
+        /// rptResourceDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel;
-        
-        /// <summary>
-        /// save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button save;
+        protected global::System.Web.UI.WebControls.Repeater rptResourceDetails;
     }
 }

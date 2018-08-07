@@ -106,13 +106,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Start Date" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate") %>' SortExpression="StartDate" DataFormatString="{0:d}" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate","{0:dd-MM-yyyy}") %>' SortExpression="StartDate" DataFormatString="{0:d}" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="End Date" HeaderStyle-CssClass="text-center">
 
                             <ItemTemplate>
-                                <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate") %>' SortExpression="EndDate" DataFormatString="{0:d}" runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:dd-MM-yyyy}") %>' SortExpression="EndDate" DataFormatString="{0:d}" runat="server" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>

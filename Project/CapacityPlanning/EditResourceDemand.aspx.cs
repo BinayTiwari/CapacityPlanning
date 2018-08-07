@@ -76,6 +76,9 @@ namespace CapacityPlanning
 
                 ResourceDemandBL resource = new ResourceDemandBL();
                 List<CPT_ResourceDetails> lstDetail = resource.uiDataBindingDetails(GridviewResourceDetail, resourceDetails);
+                
+                //ViewState["CurrentTable"] = lstDetail;
+
                 for(int i =0; i< GridviewResourceDetail.Rows.Count; i++)
                 {
                     DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID");

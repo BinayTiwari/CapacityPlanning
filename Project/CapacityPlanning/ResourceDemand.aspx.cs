@@ -119,10 +119,10 @@ namespace CapacityPlanning
 
         }
 
-        protected void View_Resource_Demand(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-        }
+        //protected void View_Resource_Demand(object sender, EventArgs e)
+        //{
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+        //}
     }
 }
 

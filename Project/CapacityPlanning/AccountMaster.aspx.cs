@@ -32,8 +32,8 @@ namespace CapacityPlanning
             AccountMasterBL clsAccount = new AccountMasterBL();
             lstAccount = clsAccount.getAccount();
 
-            gvAccount.DataSource = lstAccount;
-            gvAccount.DataBind();
+            dataTables.DataSource = lstAccount;
+            dataTables.DataBind();
 
 
         }
@@ -81,14 +81,14 @@ namespace CapacityPlanning
         
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvAccount.PageIndex = e.NewPageIndex;
+            dataTables.PageIndex = e.NewPageIndex;
             this.BindGrid();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
             CPT_AccountMaster accountdetails = new CPT_AccountMaster();
-            int id = int.Parse(gvAccount.DataKeys[e.RowIndex].Value.ToString());
+            int id = int.Parse(dataTables.DataKeys[e.RowIndex].Value.ToString());
             accountdetails.AccountMasterID = id;
 
             AccountMasterBL deleteAccount = new AccountMasterBL();
@@ -106,13 +106,13 @@ namespace CapacityPlanning
             try
             {
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
-                int id = int.Parse(gvAccount.DataKeys[e.RowIndex].Value.ToString());
+                int id = int.Parse(dataTables.DataKeys[e.RowIndex].Value.ToString());
                 accountdetails.AccountMasterID = id;
-                string accountName = ((TextBox)gvAccount.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string accountName = ((TextBox)dataTables.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
                 accountdetails.AccountName = accountName;
                 AccountMasterBL updateAccount = new AccountMasterBL();
                 updateAccount.Update(accountdetails);
-                gvAccount.EditIndex = -1;
+                dataTables.EditIndex = -1;
                 BindGrid();
 
             }
@@ -126,13 +126,13 @@ namespace CapacityPlanning
 
         protected void edit(object sender, GridViewEditEventArgs e)
         {
-            gvAccount.EditIndex = e.NewEditIndex;
+            dataTables.EditIndex = e.NewEditIndex;
             BindGrid();
         }
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
 
-            gvAccount.EditIndex = -1;
+            dataTables.EditIndex = -1;
             BindGrid();
         }
 
