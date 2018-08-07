@@ -104,7 +104,12 @@ namespace CapacityPlanning
                 bLocation.Text = lst[0].BaseLocation;
                 phone.Text = Convert.ToString(lst[0].Mobile);
                 listDesignation.Text = Convert.ToString(lst[0].DesignationID);
-                //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
+
+                dojoining.Text = Convert.ToString(lst[0].JoiningDate);
+
+                dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToString());
+     //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
+
                 expText.Text = Convert.ToString(lst[0].PriorWorkExperience);
                 panNoTxt.Text = lst[0].PAN;
                 passportNum.Text = lst[0].PassportNo;
