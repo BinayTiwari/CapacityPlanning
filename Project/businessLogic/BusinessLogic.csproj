@@ -66,6 +66,7 @@
     <Compile Include="RegionMasterBL.cs" />
     <Compile Include="ResourceDemandBL.cs" />
     <Compile Include="ResourceDetailsBL.cs" />
+    <Compile Include="ResourceMappingBL.cs" />
     <Compile Include="ResourceMasterBL.cs" />
     <Compile Include="RoleMasterBL.cs" />
     <Compile Include="SalesStageMasterBL.cs" />

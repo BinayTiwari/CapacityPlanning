@@ -10,50 +10,50 @@ namespace businessLogic
 {
     public class AllocateResourceBL
     {
-        public int Insert(CPT_AllocateResource allocateDetails)
-        {
-            using (CPContext db = new CPContext())
-            {
-                try
-                {
-                    db.CPT_AllocateResource.Add(allocateDetails);
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+        //public int Insert(CPT_AllocateResource allocateDetails)
+        //{
+        //    using (CPContext db = new CPContext())
+        //    {
+        //        try
+        //        {
+        //            db.CPT_AllocateResource.Add(allocateDetails);
+        //            db.SaveChanges();
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e.Message);
+        //        }
 
-            }
-            return 1;
-        }
-        public static void getEmployeeNameByResourceType(Repeater repeater,string RoleName)
-        {
-            try
-            {
-                using (CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_ResourceMaster
-                                 join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-                                 join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
-                                 where (RoleName == r.RoleName) && (p.isMapped==0)
-                                 select new
-                                 {
-                                     p.EmployeetName,
-                                     q.StartDate,
-                                     q.EndDate
-                                 }).ToList();
-                    repeater.DataSource = query;
-                    repeater.DataBind();
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //    }
+        //    return 1;
+        //}
+        //public static void getEmployeeNameByResourceType(Repeater repeater,string RoleName)
+        //{
+        //    try
+        //    {
+        //        using (CPContext db = new CPContext())
+        //        {
+        //            var query = (from p in db.CPT_ResourceMaster
+        //                         join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
+        //                         join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
+        //                         where (RoleName == r.RoleName) && (p.isMapped==0)
+        //                         select new
+        //                         {
+        //                             p.EmployeetName,
+        //                             q.StartDate,
+        //                             q.EndDate
+        //                         }).ToList();
+        //            repeater.DataSource = query;
+        //            repeater.DataBind();
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
       
-        public static void AllocateResource(GridView GV)
+        public static void AllocateResource(Repeater rpt)
         {
             try
             {
@@ -62,26 +62,52 @@ namespace businessLogic
                 {
                    
                     var query =
-                (from p in db.CPT_ResourceDemand
-                 join q in db.CPT_PriorityMaster on p.PriorityID equals q.PriorityID
-                 join r in db.CPT_ResourceDetails on p.RequestID equals r.RequestID
-                 join u in db.CPT_RoleMaster on r.ResourceTypeID equals u.RoleMasterID
-                 join s in db.CPT_StatusMaster on p.StatusMasterID equals s.StatusMasterID
-                 join t in db.CPT_SkillsMaster on r.SkillID equals t.SkillsMasterID.ToString()
-                 where p.RequestID == r.RequestID
+                (from p in db.CPT_ResourceDetails
+                 join q in db.CPT_RoleMaster on p.ResourceTypeID equals q.RoleMasterID
+                 join r in db.CPT_SkillsMaster on p.SkillID equals r.SkillsMasterID.ToString()
                  select new
                  {
-                     u.RoleName,
-                     r.NoOfResources,
-                     t.SkillsName,
-                     r.StartDate,
-                     r.EndDate,
-                     s.StatusName,
-                     q.PriorityName
-                     
+                     p.RequestID,
+                     q.RoleName,
+                     r.SkillsName,
+                     p.NoOfResources,
+                     p.StartDate,
+                     p.EndDate
                  }).ToList();
-                    GV.DataSource = query;
-                    GV.DataBind();
+                    rpt.DataSource = query;
+                    rpt.DataBind();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+        }
+        public static void AllocateResourceByID(Repeater rpt, string reqID)
+        {
+            try
+            {
+                //clear here
+                using (CPContext db = new CPContext())
+                {
+
+                    var query =
+                (from p in db.CPT_ResourceDetails
+                 join q in db.CPT_RoleMaster on p.ResourceTypeID equals q.RoleMasterID
+                 join r in db.CPT_SkillsMaster on p.SkillID equals r.SkillsMasterID.ToString()
+                 where p.RequestID == reqID
+                 select new
+                 {
+                     p.RequestID,
+                     q.RoleName,
+                     r.SkillsName,
+                     p.NoOfResources,
+                     p.StartDate,
+                     p.EndDate
+                 }).ToList();
+                    rpt.DataSource = query;
+                    rpt.DataBind();
                 }
             }
             catch (Exception e)

@@ -98,6 +98,22 @@ namespace businessLogic
             return data;
         }
 
+        public List<CPT_ResourceDemand> ViewResourceDemand(CPT_ResourceDemand masterDetail)
+        {
+            List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_ResourceDemand
+                            where c.RequestID == masterDetail.RequestID
+                            select c;
+
+                foreach (var v in query)
+                {
+                    data.Add(v);
+                }
+            }
+            return data;
+        }
 
         public static void getResourceDemand(Repeater repeater, int employeeID)
         {

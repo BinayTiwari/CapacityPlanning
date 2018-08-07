@@ -9,64 +9,95 @@ using System.Web.UI.WebControls;
 using System.Data;
 namespace businessLogic
 {
-    public class AllocateBL
+    public class AllocateBL : ResourceDemandBL
     {
-        public static void AllocateGrid(GridView GV)
+        public static void getResourceDemand(Repeater repeater)
         {
-            try
+            using (CPContext db = new CPContext())
             {
-                //clear here
-                using (CPContext db = new CPContext())
-                {
-                    var qs =
-                (from p in db.CPT_ResourceDemand
-                 join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
-                 join r in db.CPT_SalesStageMaster on p.SalesStageID equals r.SalesStageMasterID
-                 join s in db.CPT_ResourceMaster on p.ResourceRequestBy equals s.EmployeeMasterID
-                 join t in db.CPT_PriorityMaster on p.PriorityID equals t.PriorityID
-                 join u in db.CPT_ResourceDetails on p.RequestID equals u.RequestID
-                 select new
-                 {
-                     p.RequestID,
-                     q.AccountName,
-                     p.ProcessName,
-                     u.StartDate,
-                     u.EndDate,
-                     r.SalesStageName,
-                     u.NoOfResources,
-                     t.PriorityName
-                 }).ToList();
-                    GV.DataSource = qs;
-                    GV.DataBind();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                var query1 = (from p in db.CPT_ResourceDemand
+                              join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
+                              join ct in db.CPT_CityMaster on p.CityID equals ct.CityID
+                              join c in db.CPT_CountryMaster on ct.CountryID equals c.CountryMasterID
+                              join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
+                              join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
+                              join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                              orderby p.DateOfCreation descending
+                             
+                              select new
+                              {
+                                  p.RequestID,
+                                  q.AccountName,
+                                  c.CountryName,
+                                  ct.CityName,
+                                  t.OpportunityType,
+                                  u.SalesStageName,
+                                  p.ProcessName,
+                                  v.StatusName,
+                                  p.DateOfCreation
 
+                              }).ToList();
+
+                repeater.DataSource = query1;
+                repeater.DataBind();
             }
         }
-        public static void ddlGetPriority(GridViewRowEventArgs e)
+        //public static void AllocateGrid(GridView GV)
+        //{
+        //    try
+        //    {
+        //        //clear here
+        //        using (CPContext db = new CPContext())
+        //        {
+        //            var qs =
+        //        (from p in db.CPT_ResourceDemand
+        //         join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
+        //         join r in db.CPT_SalesStageMaster on p.SalesStageID equals r.SalesStageMasterID
+        //         join s in db.CPT_ResourceMaster on p.ResourceRequestBy equals s.EmployeeMasterID
+        //         join t in db.CPT_PriorityMaster on p.PriorityID equals t.PriorityID
+        //         join u in db.CPT_ResourceDetails on p.RequestID equals u.RequestID
+        //         select new
+        //         {
+        //             p.RequestID,
+        //             q.AccountName,
+        //             p.ProcessName,
+        //             u.StartDate,
+        //             u.EndDate,
+        //             r.SalesStageName,
+        //             u.NoOfResources,
+        //             t.PriorityName
+        //         }).ToList();
+        //            GV.DataSource = qs;
+        //            GV.DataBind();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+
+        //    }
+        //}
+        public static void ddlGetPriority(DropDownList ddlPriorities)
         {
             using (CPContext db = new CPContext())
             {
                 var Priority =
                (from t in db.CPT_PriorityMaster where t.IsActive == true select t).ToList();
 
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    DropDownList ddlPriorities = (e.Row.FindControl("ddlPriorities") as DropDownList);
+                //if (e.Row.RowType == DataControlRowType.DataRow)
+                //{
+                    //DropDownList ddlPriorities = (e.Row.FindControl("ddlPriorities") as DropDownList);
                     ddlPriorities.DataSource = Priority;
                     ddlPriorities.DataTextField = "PriorityName";
                     ddlPriorities.DataValueField = "PriorityName";
                     ddlPriorities.DataBind();
-                    //ddlPriorities.Items.Insert(0, new ListItem("--Set Priority--"));
-                    string country = (e.Row.FindControl("lblPriority") as Label).Text;
-                    ddlPriorities.Items.FindByValue(country).Selected = true;
+                    ////ddlPriorities.Items.Insert(0, new ListItem("--Set Priority--"));
+                    //string country = (e.Row.FindControl("lblPriority") as Label).Text;
+                    //ddlPriorities.Items.FindByValue(country).Selected = true;
                 }
             }
-        }
-        public int Update(CPT_ResourceDemand details)
+      
+        public int UpdateData(CPT_ResourceDemand details)
         {
             try
             {

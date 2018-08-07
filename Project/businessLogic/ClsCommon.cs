@@ -242,7 +242,7 @@ namespace businessLogic
             using (var db = new CPContext())
             {
                 var query = from c in db.CPT_RoleMaster
-                            where c.IsActive == true
+                            where  c.IsActive == true && (c.RoleMasterID != 1 || c.RoleMasterID != 4 || c.RoleMasterID != 5)
                             select c;
                 foreach (var item in query)
                 {
@@ -278,6 +278,34 @@ namespace businessLogic
                 }
             }
         }
+
+
+        public static void ddlGetSkillDDL(DropDownList ddldropdownName)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            //li.Text = "Select Skills";
+            //li.Value = "0";
+            // ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_SkillsMaster
+                            where c.IsActive == true
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.SkillsMasterID.ToString();
+                    li.Text = item.SkillsName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
+
+
 
         public static void ddlGetSalesStage(DropDownList ddldropdownName)
         {
