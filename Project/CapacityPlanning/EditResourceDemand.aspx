@@ -83,92 +83,54 @@
             </div>
             <div class="dataTable_wrapper">
 
-                <table class="table table-bordered table-hover" id="tab_logic">
-                    <thead>
-                        <tr>
-                            <th class="text-center">#
-                            </th>
-                            <th class="text-center">Resource Type
-                            </th>
-                            <th class="text-center">No of Resources
-                            </th>
-                            <th class="text-center">Tool/Domain Knowledge
-                            </th>
-                            <th class="text-center">Start Date
-                            </th>
-                            <th class="text-center">End Date
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id='addr0'>
-                            <td>1
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ResourceType" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="0">Select ResourceType</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="NoOfResources0" runat="server" TextMode="Number" CssClass="form-control" placeholder='No of Resources'>
-                                </asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:ListBox ID="SkillList0" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="From0" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="To0" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr id='addr1'>
-                            <td>2
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ResourceType1" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="0">Select ResourceType</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="NoOfResources1" runat="server" TextMode="Number" CssClass="form-control" placeholder='No of Resources'>
-                                </asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:ListBox ID="SkillList1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="From1" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="To1" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr id='addr2'>
-                            <td>3
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ResourceType2" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="0">Select ResourceType</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="NoOfResources2" runat="server" TextMode="Number" CssClass="form-control" placeholder='No of Resources'>
-                                </asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:ListBox ID="SkillList2" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="From2" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="To2" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                
+
+
+                 <asp:GridView ID="GridviewResourceDetail" DataKeyNames="RequestDetailID" runat="server" ShowFooter="true" CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="false">
+                    <Columns>
+                        
+                        <asp:TemplateField   HeaderText="Resource Type">
+                            <ItemTemplate>
+                                <asp:DropDownList  ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="No of resources" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>'  TextMode="Number" placeholder='No of Resources' CssClass="form-control" runat="server" required></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Skills" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Start Date" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate") %>' SortExpression="StartDate" DataFormatString="{0:d}" CssClass="form-control" required></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="End Date" HeaderStyle-CssClass="text-center">
+
+                            <ItemTemplate>
+                                <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate") %>' SortExpression="EndDate" DataFormatString="{0:d}" runat="server" CssClass="form-control" required></asp:TextBox>
+                            </ItemTemplate>
+                            <FooterStyle HorizontalAlign="Right" />
+                            <FooterTemplate>
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
+                            </FooterTemplate>
+                            
+                        </asp:TemplateField>
+                       <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
+
+
+
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
             </div>
             </div>
 
