@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Resource Master" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResourceMaster.aspx.cs" Inherits="CapacityPlanning.ResourceMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <
     <div class="row">
 
         <div class="col-lg-12">
@@ -58,15 +60,25 @@
                                             <td><%#Eval("mgrName")%></td>
                                             <td><%#Eval("BaseLocation")%></td>
                                             <td><%#Eval("RoleName")%></td>
-                                            <td class="center"><a href="#">
-                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a>
+                                            <td class="center"><a href="viewEmployee.aspx?EmployeeID=<%#Eval("EmployeeMasterID")%>">
+                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
+                                            </a>
                                             </td>
                                             <td class="center"><a href="EditEmployee.aspx?EmployeeID=<%#Eval("EmployeeMasterID")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="Edit"></i></ul>
                                             </a></td>
-                                            <td class="center"><a onclick="delete" href="ResourceMaster.aspx?EmployeeID=<%#Eval("EmployeeMasterID")%>">
-                                                <ul><i class="fa fa-remove" aria-hidden="true" title="remove"></i></ul>
-                                            </a></td>
+                                            <td class="center-block">
+
+                                                <ul>
+                                                    <i class="" aria-hidden="true" title="remove">
+
+
+                                                        <asp:LinkButton ID="DeleteButton" OnClick="DeleteButton_Click" empID='<%#Eval("EmployeeMasterID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
+
+                                                    </i>
+
+                                                </ul>
+                                            </td>
 
 
                                         </tr>
