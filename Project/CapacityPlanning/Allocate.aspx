@@ -53,7 +53,7 @@
                                                 <td ><%#Eval("OpportunityType")%></td>
                                                 <td ><%#Eval("SalesStageName")%></td>
                                                 <td ><%#Eval("PriorityName")%></td>
-                                                <td ><asp:DropDownList ID="ddlPriorities" runat="server"></asp:DropDownList></td>
+                                                <td ><asp:DropDownList ID="ddlPriorities" CssClass="form-control" runat="server"></asp:DropDownList></td>
                                                  <td class="center"><a href="ViewResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
                                             </tr>
