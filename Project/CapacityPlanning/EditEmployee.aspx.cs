@@ -23,7 +23,7 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
-                ClsCommon.ddlGetSkill(listSkill);
+                ClsCommon.ddlGetSkillDDL(listSkillDD);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                 BindTextBoxvalues();
             }
@@ -42,15 +42,15 @@ namespace CapacityPlanning
                 {
                     employeeID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
                 }
-                string message = "";
-                foreach (ListItem item in listSkill.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += item.Value + ",";
-                    }
-                }
-                message = message.Remove(message.Length - 1).Trim();
+                //string message = "";
+                //foreach (ListItem item in listSkill.Items)
+                //{
+                //    if (item.Selected)
+                //    {
+                //        message += item.Value + ",";
+                //    }
+                //}
+                //message = message.Remove(message.Length - 1).Trim();
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID = employeeID;
                 employeeDetails.EmployeetName = fName.Text.Trim();
@@ -64,7 +64,7 @@ namespace CapacityPlanning
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.ToString());
                 employeeDetails.PriorWorkExperience =(float) Convert.ToDouble( expText.Text.Trim());
                 employeeDetails.PAN = panNoTxt.Text.Trim();
-                employeeDetails.Skillsid = message.Trim();
+                employeeDetails.Skillsid = listSkillDD.SelectedValue;
                 employeeDetails.Address = addressTxt.Text.Trim();
                 employeeDetails.PassportNo = passportNum.Text.Trim();
                 employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim().ToString());
@@ -108,7 +108,7 @@ namespace CapacityPlanning
                 dojoining.Text = Convert.ToString(lst[0].JoiningDate);
 
                 dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToString());
-     //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
+                //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
 
                 expText.Text = Convert.ToString(lst[0].PriorWorkExperience);
                 panNoTxt.Text = lst[0].PAN;
@@ -119,15 +119,15 @@ namespace CapacityPlanning
                 visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
+                listSkillDD.Text = lst[0].Skillsid.ToString();
 
+                //String skillCommaSeperated = lst[0].Skillsid;
+                //String[] lstSkillSingle = skillCommaSeperated.Split(',');
+                //foreach (var item in lstSkillSingle)
+                //{
 
-                String skillCommaSeperated = lst[0].Skillsid;
-                String[] lstSkillSingle = skillCommaSeperated.Split(',');
-                foreach (var item in lstSkillSingle)
-                {
-
-                    listSkill.Items.FindByValue(item).Selected = true;
-                }
+                //    listSkill.Items.FindByValue(item).Selected = true;
+                //}
 
             }
             catch (Exception ex)

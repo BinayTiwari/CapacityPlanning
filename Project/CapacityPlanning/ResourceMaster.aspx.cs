@@ -13,7 +13,7 @@ namespace CapacityPlanning
 {
     public partial class ResourceMaster : System.Web.UI.Page
     {
-        
+        int employeeID = 0;
 
         
         protected void Page_Load(object sender, EventArgs e)
@@ -60,12 +60,17 @@ namespace CapacityPlanning
 
         }
 
-        protected void delete(object sender, GridViewDeleteEventArgs e)
+        protected void delete()
         {
             CPT_ResourceMaster cPT_ResourceMaster = new CPT_ResourceMaster();
-           // int id = int.Parse(gvResource.DataKeys[e.RowIndex].Value.ToString());
-         //   cPT_ResourceMaster.EmployeeMasterID = id;
+            // int id = int.Parse(gvResource.DataKeys[e.RowIndex].Value.ToString());
+            //   cPT_ResourceMaster.EmployeeMasterID = id;
+            if (!string.IsNullOrEmpty(Request.QueryString["EmployeeId"]))
+            {
+                employeeID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
+            }
 
+            cPT_ResourceMaster.EmployeeMasterID = employeeID;
             ResourceMasterBL deleteresourceMasterBL = new ResourceMasterBL();
             deleteresourceMasterBL.Delete(cPT_ResourceMaster);
             BindGrid();

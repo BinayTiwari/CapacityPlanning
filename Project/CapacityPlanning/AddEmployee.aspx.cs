@@ -20,7 +20,7 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                  ClsCommon.ddlGetRole(listRole);
-                ClsCommon.ddlGetSkill(listSkill);
+                ClsCommon.ddlGetSkillDDL(listSkillDD);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                
             }
@@ -34,15 +34,15 @@ namespace CapacityPlanning
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 
 
-                string message = "";
-                foreach (ListItem item in listSkill.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += item.Value + ",";
-                    }
-                }
-                message = message.Remove(message.Length - 1).Trim();
+                //string message = "";
+                //foreach (ListItem item in listSkill.Items)
+                //{
+                //    if (item.Selected)
+                //    {
+                //        message += item.Value + ",";
+                //    }
+                //}
+                //message = message.Remove(message.Length - 1).Trim();
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text.Trim());
                 employeeDetails.EmployeetName = fName.Text;
@@ -56,7 +56,7 @@ namespace CapacityPlanning
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.Trim());
                 employeeDetails.PAN = panNoTxt.Text.Trim();
-                employeeDetails.Skillsid = message;
+                employeeDetails.Skillsid = listSkillDD.SelectedValue;
                 employeeDetails.Address = addressTxt.Text.Trim();
                 employeeDetails.PriorWorkExperience =(float) Convert.ToDouble( expText.Text.Trim());
                 employeeDetails.PassportNo = passportNum.Text;
