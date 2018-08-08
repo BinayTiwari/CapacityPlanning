@@ -120,7 +120,7 @@
                                             <th>Available From</th>
                                             <th>Available Till</th>
                                             <th>Align</th>
-                                            <th></th>
+                                          
 
 
                                         </tr>
@@ -139,7 +139,7 @@
                                                         <%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%>
                                                     </td>
                                                     <td>
-                                                        <asp:CheckBox ID="chkRequired" Text="Align" runat="server" />
+                                                        <asp:CheckBox ID="chkRequired" Text="Align" EmployeeName='<%#Eval("EmployeetName") %>' EndDate='<%#Eval("EndDate","{0:d}")%>' StartDate='<%#Eval("StartDate","{0:d}")%>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                     </td>
 
                                                 </tr>

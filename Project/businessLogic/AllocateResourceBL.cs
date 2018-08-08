@@ -10,23 +10,23 @@ namespace businessLogic
 {
     public class AllocateResourceBL
     {
-        //public int Insert(CPT_AllocateResource allocateDetails)
-        //{
-        //    using (CPContext db = new CPContext())
-        //    {
-        //        try
-        //        {
-        //            db.CPT_AllocateResource.Add(allocateDetails);
-        //            db.SaveChanges();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //        }
+        public int Insert(CPT_AllocateResource allocateDetails)
+        {
+            using (CPContext db = new CPContext())
+            {
+                try
+                {
+                    db.CPT_AllocateResource.Add(allocateDetails);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
-        //    }
-        //    return 1;
-        //}
+            }
+            return 1;
+        }
         public static void getEmployeeNameByResourceType(Repeater repeater, string RoleName)
         {
             try
@@ -52,7 +52,51 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
+        public static List<int> ResourceID(string[] name)
+        {
+            using (CPContext db = new CPContext())
+            {
+                List<int> query = new List<int>();
 
+                List<int> lst = new List<int>();
+                foreach(var item in name)
+                {
+                     query = (from p in db.CPT_ResourceMaster
+                                 where (p.EmployeetName == item)
+                                 select p.EmployeeMasterID).ToList();
+                    foreach(var it in query)
+                    {
+                        lst.Add(it);
+                    }
+                   
+                }
+                //var query = (from p in db.CPT_ResourceMaster
+                //             where (p.EmployeetName == name)
+                //             select p.EmployeeMasterID).ToList();
+               //int id = Convert.ToInt32(query);
+                //foreach(var i in query)
+                //{
+                //    lst.Add(i);
+                //}
+                return lst;
+            }
+        }
+         public static int getAccountID(string requestID)
+        {
+            using (CPContext db = new CPContext())
+            {
+                List<int> lst = new List<int>();
+                var query = (from p in db.CPT_ResourceDemand
+                             where (p.RequestID == requestID)
+                             select p.AccountID
+                             ).ToList();
+                foreach(var item in query)
+                {
+                    lst.Add(item);
+                }
+                return lst[0];
+            }
+        }
         public static void AllocateResource(Repeater rpt)
         {
             try

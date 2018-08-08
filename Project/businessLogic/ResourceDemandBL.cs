@@ -28,7 +28,6 @@ namespace businessLogic
             }
             return 1;
         }
-        
         public int Update(CPT_ResourceDemand resourceDemandDetails)
         {
             using (CPContext db = new CPContext())
