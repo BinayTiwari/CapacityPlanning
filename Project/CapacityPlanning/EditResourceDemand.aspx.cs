@@ -18,16 +18,14 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetOpportunity(OpportunityID);
+                ClsCommon.ddlGetRegion(RegionMasterID);                               
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
-                ClsCommon.ddlGetAccount(AccountMasterID);
-                //ClsCommon.ddlGetStatus(StatusMasterID);
+                ClsCommon.ddlGetStatus(StatusMasterID);
                 
                 BindTextBoxvalues();
                 bindDetailTextGrid();
-                
-              
+                             
             }
         }
 
@@ -39,27 +37,24 @@ namespace CapacityPlanning
                 {
                     requestID = Request.QueryString["RequestID"].Trim();
                 }
-                CPT_ResourceDemand cPT_ResourceDemand = new CPT_ResourceDemand();
-                cPT_ResourceDemand.RequestID = requestID;
-                ResourceDemandBL resource = new ResourceDemandBL();
-                List<CPT_ResourceDemand> lst = resource.uiDataBinding(cPT_ResourceDemand);
+                               
+                List<CPT_ResourceDemand> lst = ResourceDemandBL.uiDataBinding(requestID);
+                OpportunityID.Text = lst[0].OpportunityID.ToString();
                 List<int> regionIDs = ResourceDemandBL.getRegionID(lst[0].AccountID);
                 regionID = regionIDs[0];
                 RegionMasterID.Items.FindByValue(regionID.ToString()).Selected = true;
-                
-                OpportunityID.Text = lst[0].OpportunityID.ToString();
-                processName.Text = lst[0].ProcessName;
+                List<int> CityIDs = ResourceDemandBL.CityIDs(regionID);
+                ClsCommon.ddlGetAccountWithCity(AccountMasterID, CityIDs);
                 AccountMasterID.Text = lst[0].AccountID.ToString();
                 SalesStageMasterID.Text = lst[0].SalesStageID.ToString();
+                processName.Text = lst[0].ProcessName;               
+                StatusMasterID.Text = lst[0].StatusMasterID.ToString();
 
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
-
-
         }
 
         public void bindDetailTextGrid()
@@ -71,11 +66,7 @@ namespace CapacityPlanning
                     requestID = Request.QueryString["RequestID"].Trim();
                 }
 
-                CPT_ResourceDetails resourceDetails = new CPT_ResourceDetails();
-                resourceDetails.RequestID = requestID;
-
-                ResourceDemandBL resource = new ResourceDemandBL();
-                List<CPT_ResourceDetails> lstDetail = resource.uiDataBindingDetails(GridviewResourceDetail, resourceDetails);
+                List<CPT_ResourceDetails> lstDetail = ResourceDemandBL.uiDataBindingDetails(GridviewResourceDetail, requestID);
                 
                 //ViewState["CurrentTable"] = lstDetail;
 
@@ -90,16 +81,12 @@ namespace CapacityPlanning
                     ClsCommon.ddlGetSkillDDL(ddl1);
                     ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
 
-
                 }
                
-
-
 
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
@@ -115,15 +102,20 @@ namespace CapacityPlanning
                 CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
                 resourceDemandDetails.RequestID = requestID;
                 resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
+                int CityID = ResourceDemandBL.getCityID(Convert.ToInt32(AccountMasterID.SelectedValue));
+                resourceDemandDetails.CityID = CityID;
                 resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
                 resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
                 resourceDemandDetails.ProcessName = processName.Text;
-                //resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
+                resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
+
+                ResourceDetailsBL.deleteResourceDetails(requestID);
+                
 
                 ResourceDemandBL updateResourceDemand = new ResourceDemandBL();
-                //updateResourceDemand.Update(resourceDemandDetails);
-                CPT_ResourceDetails resourceDetails = new CPT_ResourceDetails();
-                
+                updateResourceDemand.UpdateResourceDemand(resourceDemandDetails);
+                //CPT_ResourceDetails resourceDetails = new CPT_ResourceDetails();
+
 
                 DataTable data = new DataTable();
                 if (ViewState["CurrentTable"] != null)
@@ -147,8 +139,8 @@ namespace CapacityPlanning
                             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
                             DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");                           
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
-                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
+                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
+                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                             dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
                             dtCurrentTable.Rows[i]["SkillID"] = ddl.SelectedValue;                           
@@ -163,22 +155,27 @@ namespace CapacityPlanning
                     data = dtCurrentTable;
                 }
 
-                List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
-                for (int i = 0; i < data.Rows.Count - 1; i++)
+                //List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
+               
+                for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
                     details.RequestID = resourceDemandDetails.RequestID;
-                    details.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
-                    details.NoOfResources = Convert.ToInt32(data.Rows[i]["NoOfResources"]);
-                    details.SkillID = data.Rows[i]["SkillID"].ToString().Trim();
-                    details.StartDate = Convert.ToDateTime(data.Rows[i]["StartDate"]);
-                    details.EndDate = Convert.ToDateTime(data.Rows[i]["EndDate"]);
 
-                    lstdetails.Add(details);
-                    resourceDemandDetails.CPT_ResourceDetails = lstdetails;
+                    details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID")).SelectedValue);
+                    details.NoOfResources = Convert.ToInt32(((TextBox)GridviewResourceDetail.Rows[i].FindControl("NoOfResources")).Text.Trim());
+                    details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].FindControl("SkillID")).SelectedValue;
+                    details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("StartDate")).Text.Trim());
+                    details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("EndDate")).Text.Trim());
+
+                    ResourceDetailsBL.Insert(details);
+                    //lstdetails.Add(details);
+                    //resourceDemandDetails.CPT_ResourceDetails = lstdetails;
                 }
-                updateResourceDemand.Update(resourceDemandDetails);
+
+                
+
                 Response.Redirect("ResourceDemand.aspx");
             }
 
@@ -203,7 +200,6 @@ namespace CapacityPlanning
 
             regionID = Convert.ToInt32(RegionMasterID.SelectedValue);
             List<int> CityIDs = ResourceDemandBL.CityIDs(regionID);
-
             ClsCommon.ddlGetAccountWithCity(AccountMasterID, CityIDs);
         }
 
@@ -213,8 +209,6 @@ namespace CapacityPlanning
         }
 
         
-
-
         private void AddNewRowToGrid()
         {
 
@@ -280,7 +274,7 @@ namespace CapacityPlanning
 
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
                         TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
                         //Fill the DropDownList with Data 
