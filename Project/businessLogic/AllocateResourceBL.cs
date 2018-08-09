@@ -59,21 +59,21 @@ namespace businessLogic
                 List<int> query = new List<int>();
 
                 List<int> lst = new List<int>();
-                foreach(var item in name)
+                foreach (var item in name)
                 {
-                     query = (from p in db.CPT_ResourceMaster
-                                 where (p.EmployeetName == item)
-                                 select p.EmployeeMasterID).ToList();
-                    foreach(var it in query)
+                    query = (from p in db.CPT_ResourceMaster
+                             where (p.EmployeetName == item)
+                             select p.EmployeeMasterID).ToList();
+                    foreach (var it in query)
                     {
                         lst.Add(it);
                     }
-                   
+
                 }
                 //var query = (from p in db.CPT_ResourceMaster
                 //             where (p.EmployeetName == name)
                 //             select p.EmployeeMasterID).ToList();
-               //int id = Convert.ToInt32(query);
+                //int id = Convert.ToInt32(query);
                 //foreach(var i in query)
                 //{
                 //    lst.Add(i);
@@ -81,7 +81,7 @@ namespace businessLogic
                 return lst;
             }
         }
-         public static int getAccountID(string requestID)
+        public static int getAccountID(string requestID)
         {
             using (CPContext db = new CPContext())
             {
@@ -90,7 +90,7 @@ namespace businessLogic
                              where (p.RequestID == requestID)
                              select p.AccountID
                              ).ToList();
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     lst.Add(item);
                 }
@@ -104,7 +104,7 @@ namespace businessLogic
                 //clear here
                 using (CPContext db = new CPContext())
                 {
-                   
+
                     var query =
                 (from p in db.CPT_ResourceDetails
                  join q in db.CPT_RoleMaster on p.ResourceTypeID equals q.RoleMasterID
