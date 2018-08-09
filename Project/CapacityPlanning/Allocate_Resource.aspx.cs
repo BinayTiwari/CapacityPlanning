@@ -87,7 +87,7 @@ namespace CapacityPlanning
         {
             try
             {
-                string[] items = new string[1000];
+                string[] items = new string[5];
                 CPT_AllocateResource details = new CPT_AllocateResource();
                 AllocateResourceBL rbl = new AllocateResourceBL();
                 for (int i = 0; i < name.Count; i++)
