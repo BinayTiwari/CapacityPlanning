@@ -11,8 +11,9 @@ namespace CapacityPlanning
 {
     public partial class Allocate_Resource : System.Web.UI.Page
     {
-        List<string> date = new List<string>();
+        List<string> dateSatrt = new List<string>();
         List<string> name = new List<string>();
+        List<string> dateEnd = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -70,8 +71,8 @@ namespace CapacityPlanning
                     string EmployeeName = chek.Attributes["EmployeeName"];
                     if (chk.Checked)
                     {
-                        date.Add(StarDate);
-                        date.Add(EndDate);
+                        dateSatrt.Add(StarDate);
+                        dateEnd.Add(EndDate);
                         name.Add(EmployeeName);
                         //insert here from ui
                     }
@@ -96,24 +97,33 @@ namespace CapacityPlanning
                 }
                 List<int> resourceID = new List<int>();
                 resourceID = AllocateResourceBL.ResourceID(items);
-                foreach(var item in resourceID)
+                for(int j=0;j<name.Count;j++)
                 {
-                    details.ResourceID = item;
+                    details.ResourceID = resourceID[j];
+                    details.RequestID = Session["id"].ToString();
+                    details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
+                    details.StartDate = Convert.ToDateTime(dateSatrt[j]);
+                    details.EndDate = Convert.ToDateTime(dateEnd[j]);
+                    rbl.Insert(details);
                 }
+                //foreach(var item in resourceID)
+                //{
+                //    details.ResourceID = item;
+                //}
                 //details.ResourceID = AllocateResourceBL.ResourceID(Session["name"].ToString());
-                details.RequestID = Session["id"].ToString();
-                details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
-                for (int i = 0; i < date.Count; i = i + 2)
-                {
-                    details.StartDate = Convert.ToDateTime(date[i]);
-                }
-                for (int i = 1; i < date.Count; i = i + 2)
-                {
-                    details.EndDate = Convert.ToDateTime(date[i]);
-                }
+                //details.RequestID = Session["id"].ToString();
+                //details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
+                //for (int i = 0; i < date.Count; i = i + 2)
+                //{
+                //    details.StartDate = Convert.ToDateTime(date[i]);
+                //}
+                //for (int i = 1; i < date.Count; i = i + 2)
+                //{
+                //    details.EndDate = Convert.ToDateTime(date[i]);
+                //}
 
 
-                rbl.Insert(details);
+                //rbl.Insert(details);
             }
             catch (Exception ex)
             {

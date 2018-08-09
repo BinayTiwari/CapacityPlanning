@@ -35,7 +35,7 @@ namespace businessLogic
                 {
                     var query = (from p in db.CPT_ResourceMaster
                                  join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-                                 join r in db.CPT_RoleMaster on p.RolesID equals r.RoleMasterID
+                                 join r in db.CPT_RoleMaster on q.ResourceTypeID equals r.RoleMasterID
                                  where (r.RoleName == RoleName) && (p.isMapped == 0)
                                  select new
                                  {
