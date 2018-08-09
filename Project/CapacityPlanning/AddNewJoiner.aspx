@@ -1,121 +1,101 @@
 ﻿<%@ Page Title="Add New Joiner" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddNewJoiner.aspx.cs" Inherits="CapacityPlanning.AddNewJoiner" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
-    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Default.aspx">Home</a></li>
-            <li class="breadcrumb-item"><a href="NewJoiners.aspx">New Joiners</a></li>
 
+    <div class="col-lg-12">
+        <h1 class="page-header">Manage New Joiner</h1>
+    </div>
+    <!-- /.col-lg-12 -->
 
-            <li class="breadcrumb-item active" aria-current="page">Add New Joiner</li>
-        </ol>
-    </nav>
-    <div class="col-md-10 panel-info">
-        <div class="row">
-            <div class="content-box-header panel-heading" style="color: white; background-color: #07838a">
+    <div class="row">
 
-                <div class="panel-title ">Add New Joiner</div>
+        <div class="col-lg-12">
 
+            <div class="panel panel-default">
 
-            </div>
-            <div class="content-box-large box-with-header">
-                <div>
+                <div class="panel-heading">
+                    Add New Joiner
+                </div>
+                <div class="panel-body">
 
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <asp:TextBox ID="firstNameTextBox" CssClass="form-control" placeholder="Name" runat="server" required></asp:TextBox>
+                            </div>
 
+                            <div class="col-lg-6">
+                                <asp:DropDownList ID="skillListDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
 
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <asp:TextBox ID="firstNameTextBox" CssClass="form-control" placeholder="Name" runat="server" required></asp:TextBox>
+                            </div>
 
                         </div>
-                       
-                    </div>
-                    <br>
-                    <div class="row">
-
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                <asp:ListItem>--Select Designation--</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="dojTextBox" CssClass="form-control" Placehplder="Date of Joining (DD/MM/YYYY)" runat="server" required></asp:TextBox>
-                        </div>
-
-                    </div>
-                    <br>
-
-                    <div class="row">
-
-
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="baseLocationTextBox" Placeholder="Base Location" CssClass="form-control" runat="server" required></asp:TextBox>
-
-                        </div>
-                        <div class="col-sm-4">
-
-                            <asp:TextBox ID="expTextBox" Placeholder="Experience" CssClass="form-control" runat="server" required></asp:TextBox>
-                        </div>
-
-
-
-
                     </div>
 
-                    <br />
 
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <asp:DropDownList ID="accountDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="">--Select Account--</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
+                                    <asp:ListItem>--Select Designation--</asp:ListItem>
+                                </asp:DropDownList>
+                             </div>
+                                <div class="col-lg-6">
+                                    <asp:TextBox ID="dojTextBox" ToolTip="Date of joining"  Placeholder="Date of Joining" CssClass="form-control" runat="server" required></asp:TextBox>
 
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="interviewedTextBox" Placeholder="Interviewed By" CssClass="form-control" runat="server" required></asp:TextBox>
-                        </div>
-
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <asp:Label ID="Label1" class="form-control" runat="server" Text="Select Skills: "></asp:Label>
-                        </div>
-                        <div class="col-sm-4">
-                            <asp:ListBox ID="skillList" class="form-control" runat="server" SelectionMode="Multiple"></asp:ListBox>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row">
-
-                        <div class="col-sm-8">
-                            <div class="col-md-2 pull-right" >
-                            <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click"/>
                                 </div>
-                            <div>
-                            <asp:Button ID="NewJoinerButton" Style="float: right;" CssClass="btn btn-success btn-md" OnClick="NewJoinerButton_Click" runat="server" Text="Save" />
+
+                            </div>
+                        
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <asp:TextBox ID="baseLocationTextBox" Placeholder="Base Location" CssClass="form-control" runat="server" required></asp:TextBox>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <asp:TextBox ID="expTextBox" Placeholder="Experience" CssClass="form-control" runat="server" required></asp:TextBox>
+
+                                </div>
+
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <asp:DropDownList ID="accountDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                    <asp:ListItem Value="">--Select Account--</asp:ListItem>
+                                </asp:DropDownList>
+                                </div>
+                                <div class="col-lg-6">
+                                    <asp:TextBox ID="interviewedTextBox" Placeholder="Interviewed By" CssClass="form-control" runat="server" required></asp:TextBox>
+                                </div>
+                            
+
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-3 pull-right">
+                            <div class="col-sm-2s pull-right">
+                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" />
+                            </div>
+                            <div class="col-sm-2s pull-left">
+                                <asp:Button ID="NewJoinerButton" Style="float: right;" CssClass="btn btn-success btn-md" OnClick="NewJoinerButton_Click" runat="server" Text="Save" />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $('[id*=skillList]').multiselect({
-                includeSelectAllOption: true
-            });
-            $("#NewJoinerButton").click(function () {
-                alert($(".multiselect-selected-text").html());
-            });
-        });
-    </script>
+
 </asp:Content>

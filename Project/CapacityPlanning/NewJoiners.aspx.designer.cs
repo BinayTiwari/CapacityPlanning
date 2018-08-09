@@ -13,12 +13,21 @@ namespace CapacityPlanning {
     public partial class NewJoiners {
         
         /// <summary>
-        /// GridView1 control.
+        /// AddnewJoiner control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button AddnewJoiner;
+        
+        /// <summary>
+        /// rptNewJoiner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptNewJoiner;
     }
 }

@@ -31,6 +31,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Label Name;
         
         /// <summary>
+        /// emplID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emplID;
+        
+        /// <summary>
         /// mailID control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,22 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Label mailID;
         
         /// <summary>
-        /// empIdText control.
+        /// crntAssign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox empIdText;
+        protected global::System.Web.UI.WebControls.Label crntAssign;
+        
+        /// <summary>
+        /// endDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label endDate;
         
         /// <summary>
         /// RManagerDropDownList control.

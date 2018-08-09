@@ -92,10 +92,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:Label ID="Label1" class="form-control" runat="server" Text="Select Skills: "></asp:Label>
+                                    <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+                                   <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Address"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                 <div class="col-lg-6">
 
                                     <asp:FileUpload ID="FileUploadControl" CssClass="form-control" runat="server" text="uploadPhoto" />
-
+                                    <asp:RequiredFieldValidator ErrorMessage="File format is not supported" ControlToValidate="FileUploadControl" runat="server" Display="Dynamic" ForeColor="Red" />
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$"
                                         ControlToValidate="FileUploadControl" runat="server" ForeColor="Red" ErrorMessage="Please select a Image"
                                         Display="Dynamic" />
@@ -118,15 +118,7 @@
 
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Address"></asp:TextBox>
-
-                                </div>
-
-                            </div>
-                        </div>
+                     
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">

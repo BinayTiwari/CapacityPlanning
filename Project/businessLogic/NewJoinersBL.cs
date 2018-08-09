@@ -121,6 +121,7 @@ namespace businessLogic
                 var query = (from p in db.CPT_NewJoiners
                              join q in db.CPT_AccountMaster on p.Account equals q.AccountMasterID
                              join r in db.CPT_DesignationMaster on p.DesignationID equals r.DesignationMasterID
+                             join s in db.CPT_SkillsMaster on  p.Skills equals s.SkillsMasterID.ToString()
                              select new
                              {
                                  p.NewJoinerID,
@@ -134,7 +135,8 @@ namespace businessLogic
                                  q.AccountName,
                                  r.DesignationName,
                                  p.Account,
-                                 p.DesignationID
+                                 p.DesignationID,
+                                 s.SkillsName
                              }).ToList();
 
                 foreach (var item in query)
@@ -146,7 +148,6 @@ namespace businessLogic
                     clsNewJoiners.Skills = item.Skills;
                     clsNewJoiners.InterviewedBy = item.InterviewedBy;
                     clsNewJoiners.Experience = item.Experience;
-                    
                     clsNewJoiners.JoiningDate = item.JoiningDate;
 
                     CPT_AccountMaster account = new CPT_AccountMaster();
@@ -158,6 +159,10 @@ namespace businessLogic
                     CPT_DesignationMaster designation = new CPT_DesignationMaster();
                     designation.DesignationName = item.DesignationName;
                     clsNewJoiners.CPT_DesignationMaster = designation;
+
+                    CPT_SkillsMaster skillsMaster = new CPT_SkillsMaster();
+                    skillsMaster.SkillsName = item.SkillsName;
+                    
                     
                    
                     

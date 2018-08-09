@@ -23,6 +23,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetRole(listRole);
                 ClsCommon.ddlGetSkillDDL(listSkillDD);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
+                empCurrentStatus();
                 BindTextBoxvalues();
             }
 
@@ -42,7 +43,7 @@ namespace CapacityPlanning
                 resourceMaster.EmployeeMasterID = employeeID;
                 ResourceMasterBL resourceMasterBL = new ResourceMasterBL();
                 List<CPT_ResourceMaster> lst = resourceMasterBL.uiDataBinding(resourceMaster);
-                empIdText.Text = lst[0].EmployeeMasterID.ToString();
+                emplID.Text = lst[0].EmployeeMasterID.ToString();                
                 Name.Text = lst[0].EmployeetName;
                 RManagerDropDownList.Text = lst[0].ReportingManagerID.ToString();
                 nameLBL.Text = lst[0].EmployeetName;
@@ -50,41 +51,49 @@ namespace CapacityPlanning
                 bLocation.Text = lst[0].BaseLocation;
                 phone.Text = Convert.ToString(lst[0].Mobile);
                 listDesignation.Text = Convert.ToString(lst[0].DesignationID);
-
                 dojoining.Text = Convert.ToString(lst[0].JoiningDate);
-
-                
-                //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
-
                 expText.Text = Convert.ToString(lst[0].PriorWorkExperience);
                 panNoTxt.Text = lst[0].PAN;
                 passportNum.Text = lst[0].PassportNo;
-
                 addressTxt.Text = lst[0].Address;
                 passExpDate.Text = Convert.ToString(lst[0].PassportExpiryDate);
                 visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
                 listSkillDD.Text = lst[0].Skillsid;
-
-                //String skillCommaSeperated = lst[0].Skillsid;
-                //String[] lstSkillSingle = skillCommaSeperated.Split(',');
-                //foreach (var item in lstSkillSingle)
-                //{
-
-                //    listSkill.Items.FindByValue(item).Selected = true;
-                //}
-
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine(ex.Message);
             }
+        }
 
+        private void empCurrentStatus()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["EmployeeId"]))
+                {
+                    employeeID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
+                }
+                CPT_ResourceMaster resourceMaster = new CPT_ResourceMaster();
+                resourceMaster.EmployeeMasterID = employeeID;
+                ResourceMasterBL resourceMasterBL = new ResourceMasterBL();
+                List<CPT_AllocateResource> lst = resourceMasterBL.assignmentBinding(resourceMaster);
+                int acntID = lst[0].AccountID;
+                String acName = resourceMasterBL.getAccountByID(acntID);
+                crntAssign.Text = acName;
+                endDate.Text = lst[0].EndDate.ToShortDateString().ToString();
+                
+                
+                
+            }
+            catch (Exception ex)
+            {
 
-
-
+                Console.WriteLine(ex);
+            }
         }
 
         protected void UnDoButton_Click(object sender, EventArgs e)

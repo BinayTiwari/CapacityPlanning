@@ -21,7 +21,7 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetAccount(accountDropDownList);
-                ClsCommon.ddlGetSkill(skillList);
+                ClsCommon.ddlGetSkillDDL(skillListDD);
 
             }
             
@@ -33,15 +33,7 @@ namespace CapacityPlanning
         {
             try
             {
-                string message = "";
-                foreach (ListItem item in skillList.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += item.Value + ",";
-                    }
-                }
-                message = message.Remove(message.Length - 1);
+                
 
                 CPT_NewJoiners cPT_NewJoiners = new CPT_NewJoiners();
                 cPT_NewJoiners.Account = Convert.ToInt32( accountDropDownList.SelectedValue);
@@ -51,7 +43,7 @@ namespace CapacityPlanning
             
                 cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text.Trim();
                 cPT_NewJoiners.JoiningDate = Convert.ToDateTime(dojTextBox.Text.Trim());
-                cPT_NewJoiners.Skills = message.Trim();
+                cPT_NewJoiners.Skills = skillListDD.SelectedValue;
                 cPT_NewJoiners.Location = baseLocationTextBox.Text.Trim();
 
                 NewJoinersBL newJoinersBL = new NewJoinersBL();

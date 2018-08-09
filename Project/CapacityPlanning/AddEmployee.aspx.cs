@@ -30,23 +30,16 @@ namespace CapacityPlanning
         {
             try
             {
+                if (FileUploadControl.HasFile)
+                {
+                    FileUploadControl.SaveAs(@"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName);
+                }
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
-                
-
-                //string message = "";
-                //foreach (ListItem item in listSkill.Items)
-                //{
-                //    if (item.Selected)
-                //    {
-                //        message += item.Value + ",";
-                //    }
-                //}
-                //message = message.Remove(message.Length - 1).Trim();
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text.Trim());
                 employeeDetails.EmployeetName = fName.Text;
-                employeeDetails.Photo = @"C:\Users\raian\Downloads\Data'" + FileUploadControl.FileName + "'";
+                employeeDetails.Photo = @"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName.ToString();
                 employeeDetails.ReportingManagerID =Convert.ToInt32( RManagerDropDownList.Text.Trim());
                 employeeDetails.Email = mail.Text.Trim();
                 employeeDetails.EmployeePassword = pass.Text.Trim();

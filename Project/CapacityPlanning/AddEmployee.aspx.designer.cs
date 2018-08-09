@@ -103,22 +103,22 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox dojoining;
         
         /// <summary>
-        /// Label1 control.
+        /// listSkillDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.DropDownList listSkillDD;
         
         /// <summary>
-        /// listSkill control.
+        /// addressTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listSkill;
+        protected global::System.Web.UI.WebControls.TextBox addressTxt;
         
         /// <summary>
         /// panNoTxt control.
@@ -146,15 +146,6 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-        
-        /// <summary>
-        /// addressTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox addressTxt;
         
         /// <summary>
         /// passportNum control.
