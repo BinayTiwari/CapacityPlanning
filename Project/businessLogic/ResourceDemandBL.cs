@@ -28,7 +28,8 @@ namespace businessLogic
             }
             return 1;
         }
-        public int Update(CPT_ResourceDemand resourceDemandDetails)
+
+        public int UpdateResourceDemand(CPT_ResourceDemand resourceDemandDetails)
         {
             using (CPContext db = new CPContext())
             {
@@ -41,10 +42,11 @@ namespace businessLogic
                     foreach (var detail in query)
                     {
                         detail.AccountID = resourceDemandDetails.AccountID;
-                        //detail.CityID = resourceDemandDetails.CityID;
+                        detail.CityID = resourceDemandDetails.CityID;
                         detail.OpportunityID = resourceDemandDetails.OpportunityID;
                         detail.SalesStageID = resourceDemandDetails.SalesStageID;
                         detail.ProcessName = resourceDemandDetails.ProcessName;
+                        detail.StatusMasterID = resourceDemandDetails.StatusMasterID;
                     }
                     db.SaveChanges();
                 }
@@ -56,45 +58,55 @@ namespace businessLogic
             return 1;
         }
 
-        
-        public List<CPT_ResourceDemand> uiDataBinding(CPT_ResourceDemand resourceDemand)
+
+        public static void getResourceDemand(Repeater repeater, int employeeID)
         {
-            List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
             using (CPContext db = new CPContext())
             {
-                var query = from c in db.CPT_ResourceDemand
-                            where c.RequestID == resourceDemand.RequestID
-                            select c;
-                foreach (var detail in query)
-                {
+             var query1 = (from p in db.CPT_ResourceDemand
+                          join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
+                          join ct in db.CPT_CityMaster on  p.CityID equals ct.CityID
+                          join c in db.CPT_CountryMaster on ct.CountryID equals c.CountryMasterID
+                          join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
+                          join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
+                          join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                          orderby p.DateOfCreation descending
+                          where p.ResourceRequestBy == employeeID & v.StatusName!= "closed"
+                          select new
+                          { p.RequestID, q.AccountName, c.CountryName, ct.CityName, t.OpportunityType, u.SalesStageName, p.ProcessName, v.StatusName,p.DateOfCreation
 
-                    data.Add(detail);
-                }
+                          }).ToList();
+
+                repeater.DataSource = query1;
+                repeater.DataBind();
             }
-            return data;
+        }
+        public static List<int> CityIDs(int regionID)
+        {
+            List<int> CityIDs;
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_CityMaster
+                             where p.RegionID == regionID & p.IsActive == true
+                             select p.CityID).ToList();
+                CityIDs = query;
+
+            }
+            return CityIDs;
         }
 
-        public List<CPT_ResourceDetails> uiDataBindingDetails(GridView gv, CPT_ResourceDetails resourceDetails)
+        public static int getCityID(int accountID)
         {
-            List<CPT_ResourceDetails> data = new List<CPT_ResourceDetails>();
+            int CityID = 0;
             using (CPContext db = new CPContext())
             {
-                var query = (from c in db.CPT_ResourceDetails 
-                              where c.RequestID == resourceDetails.RequestID
-                            select c).ToList();
-                foreach (var detail in query)
-                {
+                var query = (from p in db.CPT_AccountMaster
+                             where p.AccountMasterID == accountID & p.IsActive == true
+                             select p.CityID).ToList();
+                CityID = query[0].Value;
 
-                    data.Add(detail);
-
-
-                }
-
-                gv.DataSource = query;
-                gv.DataBind();
             }
-            
-            return data;
+            return CityID;
         }
 
         public List<CPT_ResourceDemand> ViewResourceDemand(CPT_ResourceDemand masterDetail)
@@ -102,6 +114,7 @@ namespace businessLogic
             List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
             using (CPContext db = new CPContext())
             {
+                
                 var query = from c in db.CPT_ResourceDemand
                             where c.RequestID == masterDetail.RequestID
                             select c;
@@ -112,38 +125,6 @@ namespace businessLogic
                 }
             }
             return data;
-        }
-
-        public static void getResourceDemand(Repeater repeater, int employeeID)
-        {
-            using (CPContext db = new CPContext())
-            {
-                var query1 = (from p in db.CPT_ResourceDemand
-                              join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
-                              join ct in db.CPT_CityMaster on p.CityID equals ct.CityID
-                              join c in db.CPT_CountryMaster on ct.CountryID equals c.CountryMasterID
-                              join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
-                              join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
-                              join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
-                              orderby p.DateOfCreation descending
-                              where p.ResourceRequestBy == employeeID
-                              select new
-                              {
-                                  p.RequestID,
-                                  q.AccountName,
-                                  c.CountryName,
-                                  ct.CityName,
-                                  t.OpportunityType,
-                                  u.SalesStageName,
-                                  p.ProcessName,
-                                  v.StatusName,
-                                  p.DateOfCreation
-
-                              }).ToList();
-
-                repeater.DataSource = query1;
-                repeater.DataBind();
-            }
         }
 
         public static List<int> getRegionID(int accountID)
@@ -161,18 +142,45 @@ namespace businessLogic
             }
 
         }
-        public static List<int> CityIDs(int regionID)
+
+        public static List<CPT_ResourceDemand> uiDataBinding(string requestID)
         {
-            List<int> CityIDs;
+            List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
             using (CPContext db = new CPContext())
             {
-                var query = (from p in db.CPT_CityMaster
-                             where p.RegionID == regionID & p.IsActive == true
-                             select p.CityID).ToList();
-                CityIDs = query;
+                var query = from c in db.CPT_ResourceDemand
+                            where c.RequestID == requestID
+                            select c;
+                foreach (var detail in query)
+                {
 
+                    data.Add(detail);
+                }
             }
-            return CityIDs;
+            return data;
+        }
+
+        public static List<CPT_ResourceDetails> uiDataBindingDetails(GridView gv, string requestID)
+        {
+            List<CPT_ResourceDetails> data = new List<CPT_ResourceDetails>();
+            using (CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_ResourceDetails
+                             where c.RequestID == requestID
+                             select c).ToList();
+                foreach (var detail in query)
+                {
+
+                    data.Add(detail);
+
+
+                }
+
+                gv.DataSource = query;
+                gv.DataBind();
+            }
+
+            return data;
         }
     }
 }
