@@ -40,7 +40,7 @@
 
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CssClass="center-block" CommandName="Edit" formnovalidate />
+                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" formnovalidate />
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
@@ -51,7 +51,7 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
 
-                                        <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" CssClass="center-block" ImageUrl="~/images/11.png"
+                                        <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" ImageUrl="~/images/11.png"
                                             CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
                                             AlternateText="Delete" formnovalidate />
                                     </ItemTemplate>
