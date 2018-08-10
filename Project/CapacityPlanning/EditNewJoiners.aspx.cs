@@ -39,7 +39,7 @@ namespace CapacityPlanning
             cPT_NewJoiners.DesignationID = Convert.ToInt32( listDesignation.SelectedValue);
             cPT_NewJoiners.JoiningDate = Convert.ToDateTime( dojTextBox.Text.Trim());
             cPT_NewJoiners.Location = baseLocationTextBox.Text.Trim();
-            cPT_NewJoiners.Skills = skillListDD.SelectedValue;
+            cPT_NewJoiners.Skills = Convert.ToInt32 (skillListDD.SelectedValue);
             cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text.Trim();
             cPT_NewJoiners.Experience = expTextBox.Text.Trim();
             cPT_NewJoiners.Account =Convert.ToInt32( accountDropDownList.SelectedValue);
@@ -69,7 +69,7 @@ namespace CapacityPlanning
                 interviewedTextBox.Text = lst[0].InterviewedBy;
                 expTextBox.Text = lst[0].Experience;
                 accountDropDownList.Text = lst[0].Account.ToString();
-                skillListDD.Text = lst[0].Skills;
+                skillListDD.Text = lst[0].Skills.ToString();
 
 
             }
