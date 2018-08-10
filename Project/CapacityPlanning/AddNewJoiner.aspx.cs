@@ -43,7 +43,7 @@ namespace CapacityPlanning
             
                 cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text.Trim();
                 cPT_NewJoiners.JoiningDate = Convert.ToDateTime(dojTextBox.Text.Trim());
-                cPT_NewJoiners.Skills = skillListDD.SelectedValue;
+                cPT_NewJoiners.Skills =Convert.ToInt32( skillListDD.SelectedValue);
                 cPT_NewJoiners.Location = baseLocationTextBox.Text.Trim();
 
                 NewJoinersBL newJoinersBL = new NewJoinersBL();
