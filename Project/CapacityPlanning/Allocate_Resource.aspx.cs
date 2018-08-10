@@ -66,17 +66,22 @@ namespace CapacityPlanning
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
                     var chek = (CheckBox)sender;
-                    string StarDate = chek.Attributes["StartDate"];
-                    string EndDate = chek.Attributes["EndDate"];
-                    string EmployeeName = chek.Attributes["EmployeeName"];
+
                     if (chk.Checked)
                     {
+                        string StarDate = chek.Attributes["StartDate"];
+                        string EndDate = chek.Attributes["EndDate"];
+                        string EmployeeName = chek.Attributes["EmployeeName"];
                         dateSatrt.Add(StarDate);
                         dateEnd.Add(EndDate);
                         name.Add(EmployeeName);
                         //insert here from ui
                     }
+
                 }
+                //dateSatrt = dateSatrt.Distinct().ToList();
+                //dateEnd = dateEnd.Distinct().ToList();
+                name = name.Distinct().ToList();
             }
             catch (Exception ex)
             {
@@ -88,17 +93,14 @@ namespace CapacityPlanning
         {
             try
             {
-                string[] items = new string[5];
+                
                 CPT_AllocateResource details = new CPT_AllocateResource();
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
-                for (int i = 0; i < name.Count; i++)
-                {
-                    items[i] = name[i];
-                }
+               
                 List<int> resourceID = new List<int>();
-                resourceID = AllocateResourceBL.ResourceID(items);
-                for(int j=0;j<name.Count;j++)
+                resourceID = AllocateResourceBL.ResourceID(name);
+                for (int j = 0; j < name.Count; j++)
                 {
                     details.ResourceID = resourceID[j];
                     details.RequestID = Session["id"].ToString();

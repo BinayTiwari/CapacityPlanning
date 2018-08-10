@@ -74,7 +74,7 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        public static List<int> ResourceID(string[] name)
+        public static List<int> ResourceID(List<string> name)
         {
             using (CPContext db = new CPContext())
             {
