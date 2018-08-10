@@ -132,49 +132,45 @@ namespace businessLogic
             }
             return data;
         }
-        //public List<CPT_ResourceMaster> getResource()
-        //{
 
-        //    List<CPT_ResourceMaster> lstResourceName = new List<CPT_ResourceMaster>();
-        //    using (CPContext db = new CPContext())
-        //    {
+       public List<CPT_AllocateResource> assignmentBinding( CPT_ResourceMaster resource)
+        {
+            List<CPT_AllocateResource> data = new List<CPT_AllocateResource>();
+            using(CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_AllocateResource
 
+                             where c.ResourceID == resource.EmployeeMasterID
+                             select c);
+                foreach(var detail in query)
+                {
+                    data.Add(detail);
+                }
+            }
 
+            return data;
+        }
 
-        //        var query = (from p in db.CPT_ResourceMaster
-        //                     join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
-        //                     let mgrName = p.EmployeetName
-        //                     select new
-        //                     {
-        //                         q.EmployeeMasterID,
-        //                         q.EmployeetName,
-        //                         q.ReportingManagerID,
-        //                         q.BaseLocation,
-        //                         q.Mobile,
-        //                         mgrName
-
-
-        //                     }).ToList();
-
-        //        foreach (var item in query)
-        //        {
-        //            CPT_ResourceMaster clsResource = new CPT_ResourceMaster();
-        //            clsResource.EmployeeMasterID = item.EmployeeMasterID;
-        //            clsResource.EmployeetName = item.EmployeetName;
-        //            clsResource.ReportingManagerID = item.ReportingManagerID;
-        //            clsResource.Mobile = item.Mobile;
-        //            clsResource.BaseLocation = item.BaseLocation;
-
-        //            lstResourceName.Add(clsResource);
-        //        }
-
-
-        //        return lstResourceName;
-
-        //    }
-
-        //}
-
+        public string getAccountByID(int accountID)
+        {
+            String accountName = "";
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_AccountMaster
+                            where c.AccountMasterID == accountID
+                            select new
+                            {
+                                c.AccountName
+                            }
+                                ;
+                foreach(var ac in query)
+                {
+                    accountName = ac.AccountName;
+                }
+            }
+            return accountName;
+        }
+       
     }
 
 }
