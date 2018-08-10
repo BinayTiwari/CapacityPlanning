@@ -90,6 +90,7 @@ namespace CapacityPlanning
             {
                 string[] items = new string[5];
                 CPT_AllocateResource details = new CPT_AllocateResource();
+                CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
                 for (int i = 0; i < name.Count; i++)
                 {
@@ -104,7 +105,9 @@ namespace CapacityPlanning
                     details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
                     details.StartDate = Convert.ToDateTime(dateSatrt[j]);
                     details.EndDate = Convert.ToDateTime(dateEnd[j]);
+                    empID.EmployeeMasterID = resourceID[j];
                     rbl.Insert(details);
+                    rbl.updateMap(empID);
                 }
                 //foreach(var item in resourceID)
                 //{

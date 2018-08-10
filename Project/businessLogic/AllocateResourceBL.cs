@@ -27,6 +27,28 @@ namespace businessLogic
             }
             return 1;
         }
+        public int updateMap(CPT_ResourceMaster employeeID)
+        {
+            using (CPContext db = new CPContext())
+            {
+                try
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 where p.EmployeeMasterID == employeeID.EmployeeMasterID
+                                 select p);
+                    foreach(var item in query)
+                    {
+                        item.isMapped = 1;
+                    }
+                    db.SaveChanges();
+                }
+                catch(Exception exe)
+                {
+                    Console.WriteLine(exe.Message);
+                }
+            }
+            return 1;
+        }
         public static void getEmployeeNameByResourceType(Repeater repeater, string RoleName)
         {
             try
