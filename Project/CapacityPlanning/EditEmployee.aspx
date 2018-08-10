@@ -26,7 +26,7 @@
 
                             <div class="col-lg-6">
                                 <label>Employee ID</label>
-                                <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" required></asp:TextBox>
+                                <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" Enabled="false" required></asp:TextBox>
 
                             </div>
 

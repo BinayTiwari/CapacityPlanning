@@ -54,7 +54,7 @@ namespace CapacityPlanning
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID = employeeID;
                 employeeDetails.EmployeetName = fName.Text.Trim();
-                employeeDetails.ReportingManagerID = Convert.ToInt32( RManagerDropDownList.Text.Trim());
+                employeeDetails.ReportingManagerID = Convert.ToInt32(RManagerDropDownList.Text.Trim());
                 employeeDetails.Email = mail.Text.Trim();
                 employeeDetails.EmployeePassword = pass.Text.Trim();
                 employeeDetails.BaseLocation = bLocation.Text.Trim();
@@ -62,14 +62,27 @@ namespace CapacityPlanning
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.ToString());
-                employeeDetails.PriorWorkExperience =(float) Convert.ToDouble( expText.Text.Trim());
+                if (employeeDetails.PriorWorkExperience != null)
+                {
+                    employeeDetails.PriorWorkExperience = (float)Convert.ToDouble(expText.Text.Trim());
+                }
+
                 employeeDetails.PAN = panNoTxt.Text.Trim();
                 employeeDetails.Skillsid = listSkillDD.SelectedValue;
                 employeeDetails.Address = addressTxt.Text.Trim();
                 employeeDetails.PassportNo = passportNum.Text.Trim();
-                employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim().ToString());
-                employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim().ToString());
-                employeeDetails.DateOfModification = Convert.ToDateTime( DateTime.Now.ToString());
+                if (employeeDetails.PassportExpiryDate != null)
+                {
+                    employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim().ToString());
+                }
+
+                if (employeeDetails.VisaExpiryDate != null)
+                {
+                    employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim().ToString());
+                }
+
+
+                employeeDetails.DateOfModification = Convert.ToDateTime(DateTime.Now.ToString());
                 employeeDetails.ModifiedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.LastLogin = Convert.ToDateTime(DateTime.Now.ToString());
                 ResourceMasterBL updateResource = new ResourceMasterBL();
@@ -119,7 +132,7 @@ namespace CapacityPlanning
                 visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
-                listSkillDD.Text = lst[0].Skillsid.ToString();
+                listSkillDD.Text = lst[0].Skillsid;
 
                 //String skillCommaSeperated = lst[0].Skillsid;
                 //String[] lstSkillSingle = skillCommaSeperated.Split(',');
@@ -135,10 +148,10 @@ namespace CapacityPlanning
 
                 Console.WriteLine(ex.Message);
             }
-            
-            
-            
-            
+
+
+
+
         }
 
         protected void UnDoButton_Click(object sender, EventArgs e)
