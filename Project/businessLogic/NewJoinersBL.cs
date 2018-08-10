@@ -121,7 +121,7 @@ namespace businessLogic
                 var query = (from p in db.CPT_NewJoiners
                              join q in db.CPT_AccountMaster on p.Account equals q.AccountMasterID
                              join r in db.CPT_DesignationMaster on p.DesignationID equals r.DesignationMasterID
-                             join s in db.CPT_SkillsMaster on  p.Skills equals s.SkillsMasterID.ToString()
+                             join s in db.CPT_SkillsMaster on  p.Skills equals s.SkillsMasterID
                              select new
                              {
                                  p.NewJoinerID,
@@ -162,6 +162,7 @@ namespace businessLogic
 
                     CPT_SkillsMaster skillsMaster = new CPT_SkillsMaster();
                     skillsMaster.SkillsName = item.SkillsName;
+                    clsNewJoiners.CPT_SkillsMaster = skillsMaster;
                     
                     
                    

@@ -64,7 +64,7 @@
                                             <td><%#Eval("JoiningDate")%> </td>
                                             <td><%#Eval("Location")%></td>
                                             <td><%#Eval("Experience")%></td>
-                                            <td><%#Eval("Skills")%></td>
+                                            <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>
                                             <td><%#Eval("CPT_AccountMaster.AccountName")%></td>
                                             <td><%#Eval("InterviewedBy")%></td>
 
