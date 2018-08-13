@@ -13,22 +13,31 @@ namespace CapacityPlanning
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserDetails"] != null)
+            try
             {
-                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
-                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                if (Session["UserDetails"] != null)
+                {
+                    List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                    lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
 
-                lblUserName.Text = lstdetils[0].EmployeetName;
-                ClsAuthentication authmenu = new ClsAuthentication();
-                rptMeanu.DataSource = authmenu.getMeanu(lstdetils[0].RolesID);
-                rptMeanu.DataBind();
-                
+                    lblUserName.Text = lstdetils[0].EmployeetName;
+                    ClsAuthentication authmenu = new ClsAuthentication();
+                    rptMeanu.DataSource = authmenu.getMeanu(lstdetils[0].RolesID);
+                    rptMeanu.DataBind();
 
+
+                }
+                else
+                {
+                    Response.Redirect("login.aspx");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Response.Redirect("login.aspx");
+
+                Console.WriteLine(ex.Message);
             }
+            
         }
 
         protected void rptMeanu_ItemCommand(object source, RepeaterCommandEventArgs e)

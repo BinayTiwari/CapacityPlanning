@@ -13,13 +13,13 @@ namespace CapacityPlanning {
     public partial class ResourceMaster {
         
         /// <summary>
-        /// Add Employee control.
+        /// AddEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-       // protected global::System.Web.UI.WebControls.Button Add Employee;
+        protected global::System.Web.UI.WebControls.Button AddEmployee;
         
         /// <summary>
         /// rptResourceMaster control.

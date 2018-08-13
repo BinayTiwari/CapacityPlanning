@@ -79,7 +79,7 @@
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click"  />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="panel-body">
-        <div class="col-md-10 panel-info">
+        <div class="col-md-12 panel-info">
             <div class="row">
                 <div class="content-box-large box-with-header">
                     <br />
@@ -104,7 +104,7 @@
                                 <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
                             </div>
                             <div>
-                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
+                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand" />
                             </div>
                         </div>
                     </div>

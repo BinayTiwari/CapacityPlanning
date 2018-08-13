@@ -1,19 +1,7 @@
 ﻿<%@ Page Title="Allocate Resource" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Allocate_Resource.aspx.cs" Inherits="CapacityPlanning.Allocate_Resource" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%--<script type="text/javascript">
-
-        function ToggleDiv(Flag) {
-            if (Flag == "first") {
-                document.getElementById('myDIV').style.display = 'block';
-                //document.getElementById('dvSecondDiv').style.display = 'none';
-            }
-            else {
-                document.getElementById('myDIV').style.display = 'none';
-                //document.getElementById('dvSecondDiv').style.display = 'block';
-            }
-        }
-    </script>--%>
+   
     <div class="col-md-10">
 
         <div class="row">
@@ -32,7 +20,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        Resource Allocation for Request ID :
+                        Allocate Resources for Request ID :
                         <asp:Label ID="lblResourceAllocation" runat="server" Text='<%#Eval("RequestID") %>'></asp:Label>
                     </div>
                     <!-- /.panel-heading -->
@@ -154,7 +142,9 @@
                                         <!-- /.table-responsive -->
                                         <br />
                                         <br />
-                                        <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save" OnClick="btnSave_Click" />
+                                        <div class="pull-right">
+                                        <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
+                                            </div>
                                         <br />
                                         <br />
                                     </div>

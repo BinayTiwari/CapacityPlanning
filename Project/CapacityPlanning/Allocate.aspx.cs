@@ -20,17 +20,16 @@ namespace CapacityPlanning
 
                 AllocateBL.getResourceDemand(rptResourceAllocation);
 
-                //DropDownList ddlPriorities = (FindControl("ddlPriorities") as DropDownList);
-                //AllocateBL.ddlGetPriority(ddlPriorities);
+
 
             }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
-                
+
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
@@ -44,22 +43,13 @@ namespace CapacityPlanning
 
                     Label lblRequestID = (Label)item.FindControl("Request");
                     CRM.RequestID = lblRequestID.Text.Trim();
-                   
+
                     ABL.UpdateData(CRM);
-                    //Response.Redirect("Allocate.aspx");
-                    //ddl.Text = ddl.SelectedItem.Value.ToString();
-                    //DataTable dt = new DataTable();
-                    //ddl.Items.FindByValue(dt.Rows[0]["PriorityName"].ToString()).Selected = true;
+                    Response.Redirect("Allocate.aspx");
 
-                    //ddl.Items.FindByValue("PriorityName").Selected = true;
-                    //Label lbl = (Label)item.FindControl("lblPriority");
-                    //string priority = ddl.Text;
-                    ////// string priority = (FindControl("lblPriority") as Label).Text;
-
-                    //ddl.Items.FindByValue(Priority).Selected = true;
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -72,10 +62,10 @@ namespace CapacityPlanning
             DropDownList selectList = e.Item.FindControl("ddlPriorities") as DropDownList;
             if (selectList != null)
             {
-                 AllocateBL.ddlGetPriority(selectList);
+                AllocateBL.ddlGetPriority(selectList);
             }
-            
+
         }
-        
+
     }
 }

@@ -40,10 +40,10 @@
                                     <th>Name</th>
 
                                     <th>Designation</th>
-                                    <th>DOJ</th>
+                                    <th>Joining Date</th>
 
                                     <th>Location </th>
-                                    <th>Experience</th>
+                                    <th>Experience (In Years)</th>
                                     <th>Skill</th>
                                     <th>Account</th>
                                     <th>Interviewed By</th>
@@ -61,7 +61,7 @@
                                             <td><%#Eval("NewJoinerID")%> </td>
                                             <td><%#Eval("Name")%> </td>
                                             <td><%#Eval("CPT_DesignationMaster.DesignationName")%></td>
-                                            <td><%#Eval("JoiningDate")%> </td>
+                                            <td><%#Eval("JoiningDate", "{0:d}")%> </td>
                                             <td><%#Eval("Location")%></td>
                                             <td><%#Eval("Experience")%></td>
                                             <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>
