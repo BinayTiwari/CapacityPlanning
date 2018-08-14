@@ -14,7 +14,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-table fa-5x"></i>
+                            <i class="fa fa-bar-chart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <%--<div class="huge">26</div>
@@ -24,7 +24,7 @@
                 </div>
                 <%--<a href="#">--%>
                     <div class="panel-footer" onclick="abcd">
-                        <span class="pull-left">Reporting Manager Vs Reporter</span>
+                        <span class="pull-left">Designation Vs No. Of Resources</span>
                         <span class="pull-right"><asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" />
                             <%--<i class="fa fa-arrow-circle-right"></i>--%></span>
 
@@ -38,7 +38,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-bar-chart fa-5x"></i>
+                            <i class="fa fa-table fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <%--<div class="huge">12</div>--%>
@@ -48,7 +48,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Designation Vs No. Of Resources</span>
+                        <span class="pull-left">Reporting Manager Vs Reporter</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                         <div class="clearfix"></div>
@@ -124,7 +124,7 @@
                             <ItemTemplate>
                                 <tr class="odd gradeX">
                                     <td>
-
+                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
                                     </td>
                                     <td>
                                         <%#Eval("Designation_Name")%>

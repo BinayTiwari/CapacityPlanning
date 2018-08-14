@@ -15,17 +15,16 @@ namespace businessLogic
             {
                 using (CPContext db = new CPContext())
                 {
+                   
+
                     var query = (from p in db.CPT_DesignationMaster
                                  join q in db.CPT_ResourceMaster on p.DesignationMasterID equals q.DesignationID
-                                 
+                                 group p by p.DesignationName into grp
                                  select new 
                                  {
-                                     Designation_Name = p.DesignationName,
-                                     NoOfResources = q.EmployeeMasterID
-
-                                 }
-
-                                 ).ToList();
+                                     Designation_Name = grp.Key,
+                                     NoOfResources = grp.Count()
+                                 }).ToList();
                     rpt.DataSource = query;
                     rpt.DataBind();
                 }
