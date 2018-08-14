@@ -35,5 +35,30 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
+        public static void showRMVsR(Repeater rpt)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 join q in db.CPT_ResourceMaster on p.ReportingManagerID equals q.EmployeeMasterID
+                                 group q by q.EmployeetName into grp
+                                 select new
+                                 {
+                                     ReportingManager = grp.Key,
+                                     NoOfReporter = grp.Count()
+                                 }
+                                 ).ToList();
+                    rpt.DataSource = query;
+                    rpt.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
     }
 }

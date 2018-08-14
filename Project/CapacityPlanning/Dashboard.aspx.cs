@@ -18,7 +18,23 @@ namespace CapacityPlanning
             try
             {
                 DsVsRes.Style.Add("display", "block");
+                RMVsR.Style.Add("display", "none");
                 DashboardBL.showDsVsRes(rptDsVsRes);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void btnClick1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RMVsR.Style.Add("display", "block");
+                DsVsRes.Style.Add("display", "none");
+                DashboardBL.showRMVsR(rptRMVsR);
             }
             catch (Exception ex)
             {
