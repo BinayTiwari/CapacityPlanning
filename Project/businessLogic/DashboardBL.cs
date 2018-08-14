@@ -57,7 +57,37 @@ namespace businessLogic
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+            }
+        }
+        public static void showAccVsNoR(Repeater rpt)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    //var query = (from p in db.CPT_AllocateResource 
+                    //              join  )
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                
+            }
+        }
+        public static void showCapVsResDem()
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                                  
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
             }
         }
     }

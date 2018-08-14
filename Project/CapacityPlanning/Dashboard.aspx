@@ -16,22 +16,13 @@
                         <div class="col-xs-3">
                             <i class="fa fa-bar-chart fa-5x"></i>
                         </div>
-                        <div class="col-xs-9 text-right">
-                            <%--<div class="huge">26</div>
-                                        <div>New Comments!</div>--%>
-                        </div>
                     </div>
                 </div>
-                <%--<a href="#">--%>
-                <div class="panel-footer" onclick="abcd">
-                    <span class="pull-left">Designation Vs No. Of Resources</span>
-                    <span class="pull-right">
-                        <asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" />
-                        <%--<i class="fa fa-arrow-circle-right"></i>--%></span>
-
+                <div class="panel-footer">
+                    <span class="pull-left">Designation Vs Resources</span>
+                    <span class="pull-right"><asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" /></span>
                     <div class="clearfix"></div>
                 </div>
-                <%--    </a>--%>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -41,15 +32,11 @@
                         <div class="col-xs-3">
                             <i class="fa fa-table fa-5x"></i>
                         </div>
-                        <div class="col-xs-9 text-right">
-                            <%--<div class="huge">12</div>--%>
-                            <%--<div>Designation Vs No. Of Resources</div>--%>
-                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Reporting Manager Vs Reporter</span>
+                        <span class="pull-left">Manager Vs Reporter</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick1" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick1_Click" runat="server" /></span>
 
@@ -65,16 +52,12 @@
                         <div class="col-xs-3">
                             <i class="fa fa-th-list fa-5x"></i>
                         </div>
-                        <div class="col-xs-9 text-right">
-                            <%--<div class="huge">124</div>
-                                        <div>New Orders!</div>--%>
-                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Account V/S No. of Resources</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <span class="pull-left">Account Vs Resources</span>
+                        <span class="pull-right"><asp:Button ID="btnClick2" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick2_Click" runat="server" /></span>
 
                         <div class="clearfix"></div>
                     </div>
@@ -88,27 +71,23 @@
                         <div class="col-xs-3">
                             <i class="fa fa-book fa-5x"></i>
                         </div>
-                        <div class="col-xs-9 text-right">
-                            <%--<div class="huge">13</div>
-                                        <div>Support Tickets!</div>--%>
-                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Capacity V/S Resource Demand</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <span class="pull-left">Capacity Vs Demand</span>
+                        <span class="pull-right"><asp:Button ID="btnClick3" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick3_Click" runat="server" /></span>
 
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        
+
     </div>
     <!-- /.row -->
 
-    <div id="DsVsRes"  style="display: none;" runat="server">
+    <div id="DsVsRes" style="display: none;" runat="server">
         <div class="panel-body">
 
             <div class="dataTable_wrapper">
@@ -150,7 +129,7 @@
 
     </div>
     <!-- designation vs resources -->
-     <div id="RMVsR"  style="display: none;" runat="server">
+    <div id="RMVsR" style="display: none;" runat="server">
         <div class="panel-body">
 
             <div class="dataTable_wrapper">
@@ -188,9 +167,59 @@
             </div>
             <!-- /.table-responsive -->
         </div>
+    </div><!-- Reporting managers vs reporters -->
+<div id="AccVsNoR" style="display: none;" runat="server">
+        <div class="panel-body">
+
+            <div class="dataTable_wrapper">
 
 
-    </div>
+                <table class="table table-striped table-bordered table-hover" id="dataTable2s">
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Account Name</th>
+                            <th>Bussiness Analyst</th>
+                            <th>SA</th>
+                            <th>Technical Consultant</th>
+                            <th>Technical Manager</th>
+                            <th>QA</th>
+                            <th>QA-Technical Manager</th>
+                            <th>QA-Tech Lead</th>
+                            <th>PM</th>
+                            <th>Grand Total</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptAccVsNoR" runat="server">
+                            <ItemTemplate>
+                                <tr class="odd gradeX">
+                                    <td>
+                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                    </td>
+                                    <td>
+                                        <%#Eval("AccountName")%>
+                                    </td>
+                                    <td>
+                                        <%#Eval("NoOfReporter")%>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
 
+                        </asp:Repeater>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+    </div><!-- Account vs No of resources -->
+    <div id="CapVsResDem" style="display: none;" runat="server">
+        <div class="panel-body">
+
+         <!-- graph here -->
+            <!-- /.table-responsive -->
+        </div>
+    </div><!-- Capacity Vs Resource Demand -->
 </asp:Content>

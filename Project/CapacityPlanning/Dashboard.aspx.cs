@@ -19,6 +19,8 @@ namespace CapacityPlanning
             {
                 DsVsRes.Style.Add("display", "block");
                 RMVsR.Style.Add("display", "none");
+                CapVsResDem.Style.Add("display", "none");
+                AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showDsVsRes(rptDsVsRes);
             }
             catch (Exception ex)
@@ -34,7 +36,42 @@ namespace CapacityPlanning
             {
                 RMVsR.Style.Add("display", "block");
                 DsVsRes.Style.Add("display", "none");
+                CapVsResDem.Style.Add("display", "none");
+                AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showRMVsR(rptRMVsR);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void btnClick2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AccVsNoR.Style.Add("display", "block");
+                CapVsResDem.Style.Add("display", "none");
+                RMVsR.Style.Add("display", "none");
+                DsVsRes.Style.Add("display", "none");
+                DashboardBL.showAccVsNoR(rptAccVsNoR);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+        protected void btnClick3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapVsResDem.Style.Add("display", "block");
+                AccVsNoR.Style.Add("display", "none");
+                RMVsR.Style.Add("display", "none");
+                DsVsRes.Style.Add("display", "none");
+                DashboardBL.showCapVsResDem();
             }
             catch (Exception ex)
             {

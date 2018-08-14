@@ -31,6 +31,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button btnClick1;
         
         /// <summary>
+        /// btnClick2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClick2;
+        
+        /// <summary>
+        /// btnClick3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClick3;
+        
+        /// <summary>
         /// DsVsRes control.
         /// </summary>
         /// <remarks>
@@ -65,5 +83,32 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptRMVsR;
+        
+        /// <summary>
+        /// AccVsNoR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AccVsNoR;
+        
+        /// <summary>
+        /// rptAccVsNoR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptAccVsNoR;
+        
+        /// <summary>
+        /// CapVsResDem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CapVsResDem;
     }
 }
