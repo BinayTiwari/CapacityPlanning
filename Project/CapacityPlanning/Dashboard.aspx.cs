@@ -5,13 +5,23 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using businessLogic;
+using System.Windows.Forms;
+
+
+using Entity;
+using System.Web.UI.DataVisualization.Charting;
+
 namespace CapacityPlanning
 {
     public partial class Dashboard : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            DsVsRes.Style.Add("display", "block");
+            DashboardBL.showDsVsRes(rptDsVsRes);
+            DashboardBL dashboardBL = new DashboardBL();
+            dashboardBL.displayDesigVsRes(myChart);
+
         }
         protected void btnClick_Click(object sender, EventArgs e)
         {
@@ -22,6 +32,9 @@ namespace CapacityPlanning
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showDsVsRes(rptDsVsRes);
+                DashboardBL dashboardBL = new DashboardBL();
+                dashboardBL.displayDesigVsRes(myChart);
+                
             }
             catch (Exception ex)
             {
@@ -39,6 +52,8 @@ namespace CapacityPlanning
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showRMVsR(rptRMVsR);
+                DashboardBL dashboardBL = new DashboardBL();
+                dashboardBL.displayMgrVsRpt(MgrVSRpt);
             }
             catch (Exception ex)
             {
@@ -79,5 +94,8 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
+
+    
+        
     }
 }

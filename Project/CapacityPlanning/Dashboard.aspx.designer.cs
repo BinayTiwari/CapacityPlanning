@@ -67,6 +67,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Repeater rptDsVsRes;
         
         /// <summary>
+        /// myChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart myChart;
+        
+        /// <summary>
         /// RMVsR control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptRMVsR;
+        
+        /// <summary>
+        /// MgrVSRpt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart MgrVSRpt;
         
         /// <summary>
         /// AccVsNoR control.

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using Entity;
 namespace businessLogic
 {
-    public static class DashboardBL
+    public class DashboardBL
     {
         public static void showDsVsRes(Repeater rpt)
         {
@@ -15,12 +16,12 @@ namespace businessLogic
             {
                 using (CPContext db = new CPContext())
                 {
-                   
+
 
                     var query = (from p in db.CPT_DesignationMaster
                                  join q in db.CPT_ResourceMaster on p.DesignationMasterID equals q.DesignationID
                                  group p by p.DesignationName into grp
-                                 select new 
+                                 select new
                                  {
                                      Designation_Name = grp.Key,
                                      NoOfResources = grp.Count()
@@ -59,6 +60,7 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
+
         public static void showAccVsNoR(Repeater rpt)
         {
             try
@@ -72,7 +74,7 @@ namespace businessLogic
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                
+
             }
         }
         public static void showCapVsResDem()
@@ -81,7 +83,7 @@ namespace businessLogic
             {
                 using (CPContext db = new CPContext())
                 {
-                                  
+
                 }
             }
             catch (Exception ex)
@@ -90,5 +92,126 @@ namespace businessLogic
 
             }
         }
+
+
+        public void displayDesigVsRes(Chart chart)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var acc = (from p in db.CPT_DesignationMaster
+                           join q in db.CPT_ResourceMaster on p.DesignationMasterID equals q.DesignationID
+                           group p by p.DesignationName into grp
+                           select new
+                           {
+                               Designation_Name = grp.Key,
+                               NoOfResources = grp.Count()
+                           }).ToList();
+
+
+
+                chart.Series[0].ToolTip = "#VALX : #VALY";
+                chart.Series[0].ChartType = SeriesChartType.Pie;
+
+                Title ty1 = chart.Titles.Add("ty1");
+                ty1.ForeColor = System.Drawing.Color.DarkRed;
+                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+
+                ty1.Text = "Designation V/S Number of Resources";
+                chart.Series[0]["PieLabelStyle"] = "Disabled";
+
+
+                if (acc.Count() > 0)
+                {
+
+                    string[] xValues = new string[acc.Count()];
+
+                    int[] yValues = new int[acc.Count()];
+
+
+                    int count = 0;
+
+                    foreach (var obj in acc)
+                    {
+                        xValues[count] = obj.Designation_Name;
+                        yValues[count] = obj.NoOfResources;
+
+                        count++;
+                    }
+
+                    // chart.Series[0].ChartType = SeriesChartType.SplineArea;
+
+                    chart.Series[0].Points.DataBindXY(xValues, yValues);
+
+
+                }
+
+
+
+            }
+        }
+
+
+        public void displayMgrVsRpt(Chart chart)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var acc = (from p in db.CPT_ResourceMaster
+                           join q in db.CPT_ResourceMaster on p.ReportingManagerID equals q.EmployeeMasterID
+                           group q by q.EmployeetName into grp
+                           select new
+                           {
+                               ReportingManager = grp.Key,
+                               NoOfReporter = grp.Count()
+                           }
+                             ).ToList();
+
+
+
+                chart.Series[0].ToolTip = "#VALX : #VALY";
+                chart.Series[0].ChartType = SeriesChartType.Bar;
+
+                Title ty1 = chart.Titles.Add("ty1");
+                ty1.ForeColor = System.Drawing.Color.DarkRed;
+                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+
+                ty1.Text = "Reporting Manager V/S Number of Reporters";
+                //chart.Series[0]["PieLabelStyle"] = "Disabled";
+
+
+                if (acc.Count() > 0)
+                {
+
+                    string[] xValues = new string[acc.Count()];
+
+                    int[] yValues = new int[acc.Count()];
+
+
+                    int count = 0;
+
+                    foreach (var obj in acc)
+                    {
+                        xValues[count] = obj.ReportingManager;
+                        yValues[count] = obj.NoOfReporter;
+
+                        count++;
+                    }
+
+                    chart.Series[0].ChartType = SeriesChartType.Column;
+
+                    chart.Series[0].Points.DataBindXY(xValues, yValues);
+
+
+                }
+
+
+
+
+
+            }
+
+        }
+
+
+
     }
 }

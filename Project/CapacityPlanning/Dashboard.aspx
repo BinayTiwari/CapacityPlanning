@@ -20,7 +20,8 @@
                 </div>
                 <div class="panel-footer">
                     <span class="pull-left">Designation Vs Resources</span>
-                    <span class="pull-right"><asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" /></span>
+                    <span class="pull-right">
+                        <asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" /></span>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -57,7 +58,8 @@
                 <a href="#">
                     <div class="panel-footer">
                         <span class="pull-left">Account Vs Resources</span>
-                        <span class="pull-right"><asp:Button ID="btnClick2" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick2_Click" runat="server" /></span>
+                        <span class="pull-right">
+                            <asp:Button ID="btnClick2" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick2_Click" runat="server" /></span>
 
                         <div class="clearfix"></div>
                     </div>
@@ -76,7 +78,8 @@
                 <a href="#">
                     <div class="panel-footer">
                         <span class="pull-left">Capacity Vs Demand</span>
-                        <span class="pull-right"><asp:Button ID="btnClick3" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick3_Click" runat="server" /></span>
+                        <span class="pull-right">
+                            <asp:Button ID="btnClick3" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick3_Click" runat="server" /></span>
 
                         <div class="clearfix"></div>
                     </div>
@@ -88,87 +91,149 @@
     <!-- /.row -->
 
     <div id="DsVsRes" style="display: none;" runat="server">
+        <hr />
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dataTable_wrapper">
 
-            <div class="dataTable_wrapper">
 
+                        <table class="table table-striped table-bordered table-hover" id="dataTable11s">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Designation</th>
+                                    <th>No. of Resources</th>
 
-                <table class="table table-striped table-bordered table-hover" id="dataTable11s">
-                    <thead>
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Designation</th>
-                            <th>No. of Resources</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <asp:Repeater ID="rptDsVsRes" runat="server">
-                            <ItemTemplate>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("Designation_Name")%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("NoOfResources")%>
-                                    </td>
                                 </tr>
-                            </ItemTemplate>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptDsVsRes" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("Designation_Name")%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("NoOfResources")%>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
 
-                        </asp:Repeater>
+                                </asp:Repeater>
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- /.table-responsive -->
+
+
+                <div class="col-md-3">
+                    <asp:Chart ID="myChart" runat="server" Height="550px" Width="750px">
+                        <Series>
+                            <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                                <AxisX LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisX>
+                                <AxisY LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisY>
+                                <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                            </asp:ChartArea>
+                        </ChartAreas>
+
+                        <Legends>
+                            <asp:Legend>
+                            </asp:Legend>
+                        </Legends>
+                    </asp:Chart>
+                </div>
+
             </div>
-            <!-- /.table-responsive -->
         </div>
 
 
     </div>
     <!-- designation vs resources -->
     <div id="RMVsR" style="display: none;" runat="server">
+        <hr />
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dataTable_wrapper">
 
-            <div class="dataTable_wrapper">
 
+                        <table class="table table-striped table-bordered table-hover" id="dataTable1s">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Reporting Managers</th>
+                                    <th>No. of Reporter</th>
 
-                <table class="table table-striped table-bordered table-hover" id="dataTable1s">
-                    <thead>
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Reporting Managers</th>
-                            <th>No. of Reporter</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <asp:Repeater ID="rptRMVsR" runat="server">
-                            <ItemTemplate>
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("ReportingManager")%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("NoOfReporter")%>
-                                    </td>
                                 </tr>
-                            </ItemTemplate>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptRMVsR" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("ReportingManager")%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("NoOfReporter")%>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
 
-                        </asp:Repeater>
+                                </asp:Repeater>
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+                <div class="col-md-3">
+                    <asp:Chart ID="MgrVSRpt" runat="server" Height="550px" Width="750px">
+                        <Series>
+                            <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                                <AxisX LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisX>
+                                <AxisY LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisY>
+                                <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                            </asp:ChartArea>
+                        </ChartAreas>
+
+                       
+                    </asp:Chart>
+                </div>
+
+
+
             </div>
-            <!-- /.table-responsive -->
         </div>
-    </div><!-- Reporting managers vs reporters -->
-<div id="AccVsNoR" style="display: none;" runat="server">
+    </div>
+    <!-- Reporting managers vs reporters -->
+    <div id="AccVsNoR" style="display: none;" runat="server">
         <div class="panel-body">
 
             <div class="dataTable_wrapper">
@@ -214,12 +279,14 @@
             </div>
             <!-- /.table-responsive -->
         </div>
-    </div><!-- Account vs No of resources -->
+    </div>
+    <!-- Account vs No of resources -->
     <div id="CapVsResDem" style="display: none;" runat="server">
         <div class="panel-body">
 
-         <!-- graph here -->
+            <!-- graph here -->
             <!-- /.table-responsive -->
         </div>
-    </div><!-- Capacity Vs Resource Demand -->
+    </div>
+    <!-- Capacity Vs Resource Demand -->
 </asp:Content>
