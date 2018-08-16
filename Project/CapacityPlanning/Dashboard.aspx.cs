@@ -17,10 +17,7 @@ namespace CapacityPlanning
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DsVsRes.Style.Add("display", "block");
-            DashboardBL.showDsVsRes(rptDsVsRes);
-            DashboardBL dashboardBL = new DashboardBL();
-            dashboardBL.displayDesigVsRes(myChart);
+            
 
         }
         protected void btnClick_Click(object sender, EventArgs e)
