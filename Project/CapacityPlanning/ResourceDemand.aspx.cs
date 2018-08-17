@@ -47,27 +47,7 @@ namespace CapacityPlanning
         //   this.BindGrid();
         // }
 
-        // protected void update(object sender, GridViewUpdateEventArgs e)
-        // {
-        //     try
-        //     {
-        //         CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
-        //         int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
-        //         resourceDemandDetails.RequestID = id.ToString();
-        //         string accountName = ((TextBox)GridView1.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
-        //         accountdetails.AccountName = accountName;
-        //         AccountMasterBL updateAccount = new AccountMasterBL();
-        //         updateAccount.Update(accountdetails);
-        //         GridView1.EditIndex = -1;
-        //         BindGrid();
-
-        //     }
-        //     catch (Exception ex)
-        //     {
-
-        //         Console.WriteLine(ex.Message);
-        //     }
-        // }
+        
 
         // protected void edit(object sender, GridViewEditEventArgs e)
         // {

@@ -12,8 +12,6 @@ namespace businessLogic
     {
         public int Insert( CPT_ResourceMaster resourcedetails)
         {
-
-
             using (CPContext db = new CPContext())
             {
                 try
@@ -24,32 +22,26 @@ namespace businessLogic
                 }
                 catch (Exception ex)
                 {
-
                     Console.WriteLine(ex);
                 }
                
             }
             return 1;
-
-
         }
 
         public int Delete(CPT_ResourceMaster resourceDetails)
         {
             using (CPContext db = new CPContext())
             {
-
                 try
                 {
-
                     CPT_ResourceMaster resourceMaster = new CPT_ResourceMaster();
                     var deleteResourceDetails = from details in db.CPT_ResourceMaster
                                                where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
                                                select details;
 
                     foreach (var detail in deleteResourceDetails)
-                    {
-                        
+                    {                        
                         db.CPT_ResourceMaster.Remove(detail);
                     }
                     db.SaveChanges();
@@ -57,29 +49,20 @@ namespace businessLogic
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-
                 }
-
-
-
             }
             return 1;
         }
 
         public int Update(CPT_ResourceMaster resourceDetails)
         {
-
             using (CPContext db = new CPContext())
             {
-                
-
-
                 try
                 {
                     var query = from details in db.CPT_ResourceMaster
                                 where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
                                 select details;
-
 
                     foreach (CPT_ResourceMaster detail in query)
                     {
@@ -161,8 +144,8 @@ namespace businessLogic
                             select new
                             {
                                 c.AccountName
-                            }
-                                ;
+                            };
+
                 foreach(var ac in query)
                 {
                     accountName = ac.AccountName;
@@ -170,7 +153,8 @@ namespace businessLogic
             }
             return accountName;
         }
-       
+
+
     }
 
 }

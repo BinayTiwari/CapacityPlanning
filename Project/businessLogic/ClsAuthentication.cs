@@ -60,6 +60,26 @@ namespace businessLogic
                 return lstMeanu;
             }
         }
+
+        public List<CPT_ResourceMaster> getDetailsforPasswordRecovery(string Email)
+        {
+            List<CPT_ResourceMaster> lstuserDetails = new List<CPT_ResourceMaster>();
+            using (CPContext db = new CPContext())
+            {
+                var query = from p in db.CPT_ResourceMaster
+                            where p.Email == Email
+                            select p;
+
+                foreach (var item in query)
+                {
+                    CPT_ResourceMaster EmailID = new CPT_ResourceMaster();
+
+                    //EmailID.Email = item;
+                    lstuserDetails.Add(item);
+                }
+            }
+            return lstuserDetails;
+        }
     }
 
 }

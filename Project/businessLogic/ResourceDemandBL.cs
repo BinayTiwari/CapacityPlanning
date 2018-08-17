@@ -71,7 +71,7 @@ namespace businessLogic
                           join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                           join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
                           orderby p.DateOfCreation descending
-                          where p.ResourceRequestBy == employeeID & v.StatusName!= "closed"
+                          where p.ResourceRequestBy == employeeID
                           select new
                           { p.RequestID, q.AccountName, c.CountryName, ct.CityName, t.OpportunityType, u.SalesStageName, p.ProcessName, v.StatusName,p.DateOfCreation
 

@@ -45,6 +45,9 @@
                         <input type="checkbox" name="remember" value="" id="remember" />
                         Remember me
                     </div>
+                    <div>
+                     <a href="../ResetPassword.aspx">Can't access your account?</a>   
+                        </div>
 
 
                     <div class="row">
