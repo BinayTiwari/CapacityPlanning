@@ -11,9 +11,9 @@ namespace businessLogic
 {
     public class AllocateBL : ResourceDemandBL
     {
-        public static int getResourceDemand(Repeater repeater)
+        public static List<int> getResourceDemand(Repeater repeater)
         {
-            int priorityID = 0;
+            List<int> priorityID = new List<int>();
             using (CPContext db = new CPContext())
             {
                 var query1 = (from p in db.CPT_ResourceDemand
@@ -25,7 +25,7 @@ namespace businessLogic
                               join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                               join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
                               orderby p.DateOfCreation descending
-                             
+
                               select new
                               {
                                   p.RequestID,
@@ -40,31 +40,32 @@ namespace businessLogic
                                   r.PriorityID
 
                               }).ToList();
-                
+
+                foreach (var item in query1)
+                {
+                    priorityID.Add(item.PriorityID);
+                }
 
                 repeater.DataSource = query1;
                 repeater.DataBind();
-                foreach(var item in query1)
-                {
-                    priorityID = item.PriorityID;
-                }
+                
             }
             return priorityID;
         }
-        
-        public static void ddlGetPriority(DropDownList ddlPriorities)
-        {
-            using (CPContext db = new CPContext())
-            {
-              var Priority =
-               (from t in db.CPT_PriorityMaster where t.IsActive == true select t).ToList();
-                    ddlPriorities.DataSource = Priority;
-                    ddlPriorities.DataTextField = "PriorityName";
-                    ddlPriorities.DataValueField = "PriorityName";
-                    ddlPriorities.DataBind();
-                }
-            }
-      
+
+        //public static void ddlGetPriority(DropDownList ddlPriorities)
+        //{
+        //    using (CPContext db = new CPContext())
+        //    {
+        //        var Priority =
+        //         (from t in db.CPT_PriorityMaster where t.IsActive == true select t).ToList();
+        //        ddlPriorities.DataSource = Priority;
+        //        ddlPriorities.DataTextField = "PriorityName";
+        //        ddlPriorities.DataValueField = "PriorityName";
+        //        ddlPriorities.DataBind();
+        //    }
+        //}
+
         public int UpdateData(CPT_ResourceDemand details)
         {
             try
@@ -82,46 +83,39 @@ namespace businessLogic
 
                     }
 
+                    db.SaveChanges();
 
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-
-                    }
                     return 1;
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return 1;
             }
         }
-        public int SelectID(string PriorityName)
-        {
-            try
-            {
-                using (CPContext db = new CPContext())
-                {
-                   var query =
-                       (from p in db.CPT_PriorityMaster
-                        where p.PriorityName == PriorityName
-                        select p.PriorityID).ToList();
-                    int val = query[0];
-                    return val;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return 1;
-            }
-            }
-        
+
+        //public int SelectID(string PriorityName)
+        //{
+        //    try
+        //    {
+        //        using (CPContext db = new CPContext())
+        //        {
+        //            var query =
+        //                (from p in db.CPT_PriorityMaster
+        //                 where p.PriorityName == PriorityName
+        //                 select p.PriorityID).ToList();
+        //            int val = query[0];
+        //            return val;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        return 1;
+        //    }
+        //}
+
     }
 }

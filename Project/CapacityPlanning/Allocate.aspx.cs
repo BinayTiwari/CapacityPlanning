@@ -17,15 +17,15 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                int priorityID = 0;
+                List<int> priorityID = new List<int>();
                 int i = 0;
                 priorityID = AllocateBL.getResourceDemand(rptResourceAllocation);
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     
-                    DropDownList ddl = (DropDownList)rptResourceAllocation.Items[i].FindControl("ddlPriorities");
+                    DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
                     ClsCommon.ddlGetPriority(ddl);
-                    ddl.Text = priorityID.ToString();
+                    ddl.Text = priorityID[i].ToString();
                     i++;
                 }
 
@@ -40,22 +40,24 @@ namespace CapacityPlanning
 
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
-                    DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
-                    string Priority = ddl.SelectedValue;
+                    DropDownList ddl1 = (DropDownList)item.FindControl("ddlPriorities");
+                    int PriorityID = Convert.ToInt32(ddl1.SelectedValue);
 
                     AllocateBL ABL = new AllocateBL();
 
                     CPT_ResourceDemand CRM = new CPT_ResourceDemand();
-                    CRM.PriorityID = ABL.SelectID(Priority);
+                    //CRM.PriorityID = ABL.SelectID(Priority);
 
 
                     Label lblRequestID = (Label)item.FindControl("Request");
                     CRM.RequestID = lblRequestID.Text.Trim();
+                    CRM.PriorityID = PriorityID;
 
                     ABL.UpdateData(CRM);
-                    Response.Redirect("Allocate.aspx");
+                    
 
                 }
+                Response.Redirect("Allocate.aspx");
 
 
             }
@@ -70,7 +72,7 @@ namespace CapacityPlanning
             DropDownList selectList = e.Item.FindControl("ddlPriorities") as DropDownList;
             if (selectList != null)
             {
-                AllocateBL.ddlGetPriority(selectList);
+                ClsCommon.ddlGetPriority(selectList);
             }
 
         }
