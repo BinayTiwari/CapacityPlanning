@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using Entity;
 
 
@@ -12,6 +13,8 @@ namespace businessLogic
     {
         public int Insert( CPT_ResourceMaster resourcedetails)
         {
+
+
             using (CPContext db = new CPContext())
             {
                 try
@@ -22,26 +25,32 @@ namespace businessLogic
                 }
                 catch (Exception ex)
                 {
+
                     Console.WriteLine(ex);
                 }
                
             }
             return 1;
+
+
         }
 
         public int Delete(CPT_ResourceMaster resourceDetails)
         {
             using (CPContext db = new CPContext())
             {
+
                 try
                 {
+
                     CPT_ResourceMaster resourceMaster = new CPT_ResourceMaster();
                     var deleteResourceDetails = from details in db.CPT_ResourceMaster
                                                where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
                                                select details;
 
                     foreach (var detail in deleteResourceDetails)
-                    {                        
+                    {
+                        
                         db.CPT_ResourceMaster.Remove(detail);
                     }
                     db.SaveChanges();
@@ -49,26 +58,35 @@ namespace businessLogic
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+
                 }
+
+
+
             }
             return 1;
         }
 
         public int Update(CPT_ResourceMaster resourceDetails)
         {
+
             using (CPContext db = new CPContext())
             {
+                
+
+
                 try
                 {
                     var query = from details in db.CPT_ResourceMaster
                                 where details.EmployeeMasterID == resourceDetails.EmployeeMasterID
                                 select details;
 
+
                     foreach (CPT_ResourceMaster detail in query)
                     {
                         detail.EmployeeMasterID = resourceDetails.EmployeeMasterID;
                         detail.EmployeetName = resourceDetails.EmployeetName;
-                        detail.EmployeePassword = resourceDetails.EmployeePassword;
+                       // detail.EmployeePassword = resourceDetails.EmployeePassword;
                         detail.ReportingManagerID = resourceDetails.ReportingManagerID;
                         detail.Email = resourceDetails.Email;
                         detail.BaseLocation = resourceDetails.BaseLocation;
@@ -144,8 +162,8 @@ namespace businessLogic
                             select new
                             {
                                 c.AccountName
-                            };
-
+                            }
+                                ;
                 foreach(var ac in query)
                 {
                     accountName = ac.AccountName;
@@ -154,7 +172,35 @@ namespace businessLogic
             return accountName;
         }
 
+        public void BindresRepeater(Repeater rptResourceMaster)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_ResourceMaster
+                             join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
+                             join r in db.CPT_RoleMaster on q.RolesID equals r.RoleMasterID
+                             let mgrName = p.EmployeetName
 
+                             select new
+
+                             {
+                                 q.EmployeeMasterID,
+                                 q.EmployeetName,
+                                 q.ReportingManagerID,
+                                 q.BaseLocation,
+                                 q.Mobile,
+                                 mgrName,
+                                 r.RoleName
+
+
+
+                             }).OrderBy(p => p.EmployeetName).ToList();
+                rptResourceMaster.DataSource = query;
+                rptResourceMaster.DataBind();
+            }
+
+        }
+       
     }
 
 }
