@@ -11,8 +11,9 @@ namespace businessLogic
 {
     public class AllocateBL : ResourceDemandBL
     {
-        public static void getResourceDemand(Repeater repeater)
+        public static int getResourceDemand(Repeater repeater)
         {
+            int priorityID = 0;
             using (CPContext db = new CPContext())
             {
                 var query1 = (from p in db.CPT_ResourceDemand
@@ -36,34 +37,31 @@ namespace businessLogic
                                   p.ProcessName,
                                   v.StatusName,
                                   p.DateOfCreation,
-                                  r.PriorityName
+                                  r.PriorityID
 
                               }).ToList();
+                
 
                 repeater.DataSource = query1;
                 repeater.DataBind();
+                foreach(var item in query1)
+                {
+                    priorityID = item.PriorityID;
+                }
             }
+            return priorityID;
         }
         
         public static void ddlGetPriority(DropDownList ddlPriorities)
         {
             using (CPContext db = new CPContext())
             {
-                //var qury = (from p in db.CPT_ResourceDemand
-                //            join q in db.CPT_PriorityMaster on p.PriorityID equals q.PriorityID
-                //            where p.PriorityID == q.PriorityID
-                //            select q.PriorityName).ToList();
-                var Priority =
+              var Priority =
                (from t in db.CPT_PriorityMaster where t.IsActive == true select t).ToList();
                     ddlPriorities.DataSource = Priority;
                     ddlPriorities.DataTextField = "PriorityName";
                     ddlPriorities.DataValueField = "PriorityName";
-                //string ddl = (FindControl("ddlPriorities") as DropDownList).Text;
-                //ddlPriorities.Items.FindByValue("PriorityName").Selected = true;
                     ddlPriorities.DataBind();
-                    ////ddlPriorities.Items.Insert(0, new ListItem("--Set Priority--"));
-                    //string country = (e.Row.FindControl("lblPriority") as Label).Text;
-                    //ddlPriorities.Items.FindByValue(country).Selected = true;
                 }
             }
       

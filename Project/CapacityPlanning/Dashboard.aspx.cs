@@ -6,8 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using businessLogic;
 using System.Windows.Forms;
-
-
 using Entity;
 using System.Web.UI.DataVisualization.Charting;
 

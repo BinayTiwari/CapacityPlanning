@@ -49,6 +49,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.DateOfModification = DateTime.Now;
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
                 resourceDemandDetails.StatusMasterID = 19;
+                resourceDemandDetails.PriorityID = 27;
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
                 //insertResourceDemand.Insert(resourceDemandDetails);

@@ -36,7 +36,7 @@
                                     <th>Sales Stage </th>
 
                                     <th>Priority </th>
-                                    <th>Change Priority</th>
+                                    <%--<th>Change Priority</th>--%>
                                     <th></th>
 
 
@@ -53,7 +53,7 @@
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("OpportunityType")%></td>
                                             <td><%#Eval("SalesStageName")%></td>
-                                            <td><%#Eval("PriorityName")%></td>
+                                            <%--<td><%#Eval("PriorityName")%></td>--%>
                                             <td>
                                                 <asp:DropDownList ID="ddlPriorities" CssClass="form-control" runat="server"></asp:DropDownList></td>
                                             <td class="center"><a href="ViewResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">

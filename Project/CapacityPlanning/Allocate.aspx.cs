@@ -17,9 +17,17 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-
-                AllocateBL.getResourceDemand(rptResourceAllocation);
-
+                int priorityID = 0;
+                int i = 0;
+                priorityID = AllocateBL.getResourceDemand(rptResourceAllocation);
+                foreach (RepeaterItem item in rptResourceAllocation.Items)
+                {
+                    
+                    DropDownList ddl = (DropDownList)rptResourceAllocation.Items[i].FindControl("ddlPriorities");
+                    ClsCommon.ddlGetPriority(ddl);
+                    ddl.Text = priorityID.ToString();
+                    i++;
+                }
 
 
             }

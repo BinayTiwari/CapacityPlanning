@@ -23,8 +23,7 @@ namespace Entity
         [StringLength(50)]
         public string Location { get; set; }
 
-        [StringLength(50)]
-        public string Skills { get; set; }
+        public int? Skills { get; set; }
 
         public int Account { get; set; }
 
@@ -39,5 +38,7 @@ namespace Entity
         public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
 
         public virtual CPT_DesignationMaster CPT_DesignationMaster { get; set; }
+
+        public virtual CPT_SkillsMaster CPT_SkillsMaster { get; set; }
     }
 }
