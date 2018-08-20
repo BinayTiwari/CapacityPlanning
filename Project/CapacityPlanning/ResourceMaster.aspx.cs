@@ -27,30 +27,10 @@ namespace CapacityPlanning
         }
         private void BindGrid()
         {
-            using (CPContext db = new CPContext())
-            {
-                var query = (from p in db.CPT_ResourceMaster
-                             join q in db.CPT_ResourceMaster on p.EmployeeMasterID equals q.ReportingManagerID
-                             join r in db.CPT_RoleMaster on q.RolesID equals r.RoleMasterID
-                             let mgrName = p.EmployeetName
+            
 
-                             select new
-
-                             {
-                                 q.EmployeeMasterID,
-                                 q.EmployeetName,
-                                 q.ReportingManagerID,
-                                 q.BaseLocation,
-                                 q.Mobile,
-                                 mgrName,
-                                 r.RoleName
-
-
-
-                             }).OrderBy(p => p.EmployeetName).ToList();
-                rptResourceMaster.DataSource = query;
-                rptResourceMaster.DataBind();
-            }
+            ResourceMasterBL rm = new ResourceMasterBL();
+            rm.BindresRepeater(rptResourceMaster);
 
         }
 

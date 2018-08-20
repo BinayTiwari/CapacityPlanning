@@ -41,9 +41,9 @@
                                 <asp:TextBox ID="mail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required></asp:TextBox>
                             </div>
 
-                            <div class="col-lg-6">
-                                <label>Password</label>
-                                <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" required />
+                           <div class="col-lg-6">
+                                <label>Skill</label>
+                                <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
                             </div>
 
                         </div>
@@ -104,27 +104,18 @@
 
                     <div class="form-group">
                         <div class="row">
+                            
                             <div class="col-lg-6">
-                                <label>Skill</label>
-                                <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+                                <label>Address</label>
+                                <asp:TextBox ID="addressTxt" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Address"></asp:TextBox>
                             </div>
-
                             <div class="col-lg-6">
                                 <label>PAN</label>
                                 <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label>Address</label>
-                                <asp:TextBox ID="addressTxt" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Address"></asp:TextBox>
-                            </div>
-
-
-                        </div>
-                    </div>
+                    
 
                     <div class="row">
                         <div class="col-sm-4">
@@ -163,6 +154,15 @@
 
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4>Experience details:</h4>
+
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">

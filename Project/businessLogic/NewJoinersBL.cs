@@ -112,6 +112,9 @@ namespace businessLogic
             }
             return data;
         }
+
+        
+
         public List<CPT_NewJoiners> getNewJoiners()
         {
 
@@ -122,6 +125,7 @@ namespace businessLogic
                              join q in db.CPT_AccountMaster on p.Account equals q.AccountMasterID
                              join r in db.CPT_DesignationMaster on p.DesignationID equals r.DesignationMasterID
                              join s in db.CPT_SkillsMaster on  p.Skills equals s.SkillsMasterID
+                             where p.HasJoined == false
                              select new
                              {
                                  p.NewJoinerID,
@@ -153,8 +157,6 @@ namespace businessLogic
                     CPT_AccountMaster account = new CPT_AccountMaster();
                     account.AccountName = item.AccountName;
                     clsNewJoiners.CPT_AccountMaster = account;
-                   
-                   
 
                     CPT_DesignationMaster designation = new CPT_DesignationMaster();
                     designation.DesignationName = item.DesignationName;
@@ -163,24 +165,35 @@ namespace businessLogic
                     CPT_SkillsMaster skillsMaster = new CPT_SkillsMaster();
                     skillsMaster.SkillsName = item.SkillsName;
                     clsNewJoiners.CPT_SkillsMaster = skillsMaster;
-                    
-                    
-                   
-                    
-
-
-
-
-
-
                     lstNewJoiners.Add(clsNewJoiners);
                 }
-
-
                 return lstNewJoiners;
 
             }
 
+        }
+
+        public void changeHasJoinedValue(int newJoinersDetails)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var qurey = from p in db.CPT_NewJoiners
+                                where p.NewJoinerID == newJoinersDetails
+                                select p;
+                    foreach(var detail in qurey)
+                    {
+                        detail.HasJoined = true;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
         }
     }
 }

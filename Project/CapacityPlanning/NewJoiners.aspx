@@ -46,7 +46,8 @@
                                     <th>Experience (In Years)</th>
                                     <th>Skill</th>
                                     <th>Account</th>
-                                    <th>Interviewed By</th>
+                                    
+                                    <th>Onboard</th>
                                     <th></th>
                                     <th></th>
 
@@ -66,8 +67,10 @@
                                             <td><%#Eval("Experience")%></td>
                                             <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>
                                             <td><%#Eval("CPT_AccountMaster.AccountName")%></td>
-                                            <td><%#Eval("InterviewedBy")%></td>
-
+                                            
+                                            <td class="center"><a href="OnboardNewJoiners.aspx?JoinerId=<%#Eval("NewJoinerID")%>">
+                                                <ul><i class="fa fa-user-plus" aria-hidden="true" title="Onboard"></i></ul>
+                                            </a></td>
                                             <td class="center"><a href="EditNewJoiners.aspx?JoinerId=<%#Eval("NewJoinerID")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="Edit"></i></ul>
                                             </a></td>

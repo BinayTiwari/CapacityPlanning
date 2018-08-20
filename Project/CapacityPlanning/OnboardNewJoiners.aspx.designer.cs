@@ -10,7 +10,7 @@
 namespace CapacityPlanning {
     
     
-    public partial class EditEmployee {
+    public partial class OnboardNewJoiners {
         
         /// <summary>
         /// fName control.
@@ -40,13 +40,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox mail;
         
         /// <summary>
-        /// listSkillDD control.
+        /// pass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listSkillDD;
+        protected global::System.Web.UI.WebControls.TextBox pass;
         
         /// <summary>
         /// RManagerDropDownList control.
@@ -103,6 +103,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox dojoining;
         
         /// <summary>
+        /// listSkillDD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList listSkillDD;
+        
+        /// <summary>
         /// addressTxt control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,24 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox panNoTxt;
+        
+        /// <summary>
+        /// FileUploadControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// passportNum control.

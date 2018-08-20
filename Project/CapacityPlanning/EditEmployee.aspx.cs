@@ -56,7 +56,7 @@ namespace CapacityPlanning
                 employeeDetails.EmployeetName = fName.Text.Trim();
                 employeeDetails.ReportingManagerID = Convert.ToInt32(RManagerDropDownList.Text.Trim());
                 employeeDetails.Email = mail.Text.Trim();
-                employeeDetails.EmployeePassword = pass.Text.Trim();
+                
                 employeeDetails.BaseLocation = bLocation.Text.Trim();
                 employeeDetails.Mobile = phone.Text.Trim();
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
@@ -112,7 +112,7 @@ namespace CapacityPlanning
                 empIdText.Text = lst[0].EmployeeMasterID.ToString();
                 fName.Text = lst[0].EmployeetName;
                 RManagerDropDownList.Text = lst[0].ReportingManagerID.ToString();
-                pass.Text = lst[0].EmployeePassword;
+                
                 mail.Text = lst[0].Email;
                 bLocation.Text = lst[0].BaseLocation;
                 phone.Text = Convert.ToString(lst[0].Mobile);
