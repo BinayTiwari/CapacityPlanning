@@ -169,6 +169,8 @@
     <Content Include="bin\EntityFramework.SqlServer.dll" />
     <Content Include="bin\EntityFramework.SqlServer.xml" />
     <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\MessageTemplate.dll" />
+    <Content Include="bin\MessageTemplate.pdb" />
     <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
@@ -193,6 +195,8 @@
     <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\roslyn\csc.exe" />
     <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\MessageTemplate.dll" />
+    <Content Include="bin\roslyn\MessageTemplate.pdb" />
     <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
     <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
     <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
@@ -235,6 +239,7 @@
     <Content Include="bin\System.Web.Optimization.dll" />
     <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="CityMaster.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -299,6 +304,56 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="obj\Debug\CapacityPlanning.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\CapacityPlanning.dll" />
+    <Content Include="obj\Debug\CapacityPlanning.pdb" />
+    <Content Include="obj\Debug\MainProject.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\MainProject.csproj.CopyComplete" />
+    <Content Include="obj\Release\MainProject.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Release\MainProject.csprojAssemblyReference.cache" />
+    <Content Include="obj\Release\Package\PackageTmp\ApplicationInsights.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\ApplicationInsights.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\CapacityPlanning.dll.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Entity.dll.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.exe.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.rsp" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.exe.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.rsp" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.exe.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.rsp" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Bundle.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.css.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.min.css.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.css.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.min.css.map" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.min.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="obj\Release\Package\PackageTmp\Site-Admin.Master" />
+    <Content Include="obj\Release\Package\PackageTmp\Site.Master" />
+    <Content Include="obj\Release\Package\PackageTmp\Site.Mobile.Master" />
+    <Content Include="obj\Release\Package\PackageTmp\Web.config" />
+    <Content Include="obj\Release\TransformWebConfig\assist\Web.config" />
+    <Content Include="obj\Release\TransformWebConfig\original\Web.config" />
+    <Content Include="obj\Release\TransformWebConfig\transformed\Web.config" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\CapacityPlanning.csproj.CopyComplete" />
+    <Content Include="obj\Debug\CapacityPlanning.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\CapacityPlanning.csprojAssemblyReference.cache" />
+    <Content Include="obj\Debug\CapacityPlanning.csprojResolveAssemblyReference.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\MainProject.csproj.CopyComplete" />
+    <Content Include="obj\Debug\MainProject.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\MainProject.csprojAssemblyReference.cache" />
+    <Content Include="obj\Debug\MainProject.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\ResourceMaster.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="GradeMaster.aspx" />
@@ -316,9 +371,195 @@
     <Content Include="images\yes.png" />
     <Content Include="Login.aspx" />
     <Content Include="NewJoiners.aspx" />
+    <Content Include="obj\Release\CapacityPlanning.dll" />
+    <Content Include="obj\Release\CapacityPlanning.pdb" />
+    <Content Include="obj\Release\MainProject.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Package\PackageTmp\About.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\AccountMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\AddEmployee.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\AddExperience.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\AddNewJoiner.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\AddResourceDemand.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Allocate.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Allocate_Resource.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Antlr3.Runtime.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Antlr3.Runtime.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\AspNet.ScriptManager.bootstrap.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\businessLogic.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\businessLogic.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\CapacityPlanning.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\CapacityPlanning.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Entity.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Entity.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\MessageTemplate.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\MessageTemplate.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.Web.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.FriendlyUrls.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Newtonsoft.Json.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csc.exe" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\csi.exe" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\MessageTemplate.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\MessageTemplate.pdb" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\Microsoft.Win32.Primitives.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.AppContext.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Console.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Diagnostics.Process.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.FileSystem.DriveInfo.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Threading.Thread.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.exe" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Optimization.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\WebGrease.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\CityMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Contact.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Content\Site.css" />
+    <Content Include="obj\Release\Package\PackageTmp\CountryMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Dashboard.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\dashboard.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Default.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\DesignationMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\bootstrap-social.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\bootstrap-theme.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\bootstrap.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\dataTables\dataTables.bootstrap.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\dataTables\dataTables.responsive.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\font-awesome.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\metisMenu.min.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\morris.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\startmin.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\css\timeline.css" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\blank.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\buttons.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\flot.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\forms.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\grid.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\icons.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\index.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\login.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\morris.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\notifications.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\panels-wells.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\tables.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Design\pages\typography.html" />
+    <Content Include="obj\Release\Package\PackageTmp\EditEmployee.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\EditNewJoiners.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\EditResourceDemand.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\favicon.ico" />
+    <Content Include="obj\Release\Package\PackageTmp\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="obj\Release\Package\PackageTmp\Global.asax" />
+    <Content Include="obj\Release\Package\PackageTmp\GradeMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\images\1.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\add.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\cross-red.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\download.jpg" />
+    <Content Include="obj\Release\Package\PackageTmp\images\error.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\facebook.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\info.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\pageunderconstruction.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\trash.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\user.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\user_edit.png" />
+    <Content Include="obj\Release\Package\PackageTmp\images\yes.png" />
+    <Content Include="obj\Release\Package\PackageTmp\Login.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\NewJoiners.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\OnboardNewJoiners.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\OpportunityMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\PriorityMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\RegionMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ResetPassword.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ResourceDemand.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ResourceMapping.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ResourceMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\RoleMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\SalesStageMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\bootstrap.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\bootstrap.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\modernizr-2.8.3.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\DetailsView.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\Focus.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\GridView.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\Menu.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MenuStandards.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\SmartNav.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\TreeView.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\WebForms.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\WebParts.js" />
+    <Content Include="obj\Release\Package\PackageTmp\Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="obj\Release\Package\PackageTmp\SkillsMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\StatusMaster.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\viewEmployee.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ViewResourceDemand.aspx" />
+    <Content Include="obj\Release\Package\PackageTmp\ViewSwitcher.ascx" />
+    <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
+    <Content Include="OnboardNewJoiners.aspx" />
     <Content Include="OpportunityMaster.aspx" />
     <Content Include="PriorityMaster.aspx" />
     <Content Include="RegionMaster.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="ResourceDemand.aspx" />
     <Content Include="ResourceMapping.aspx" />
     <Content Include="ResourceMaster.aspx" />
@@ -355,6 +596,7 @@
     <Content Include="Site.Master" />
     <Content Include="SkillsMaster.aspx" />
     <Content Include="StatusMaster.aspx" />
+    <Content Include="viewEmployee.aspx" />
     <Content Include="ViewResourceDemand.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -422,6 +664,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CityMaster.aspx.cs">
       <DependentUpon>CityMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -512,6 +761,16 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="OnboardNewJoiners.aspx.cs">
+      <DependentUpon>OnboardNewJoiners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OnboardNewJoiners.aspx.designer.cs">
+      <DependentUpon>OnboardNewJoiners.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OpportunityMaster.aspx.cs">
       <DependentUpon>OpportunityMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -533,6 +792,13 @@
     </Compile>
     <Compile Include="RegionMaster.aspx.designer.cs">
       <DependentUpon>RegionMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResourceDemand.aspx.cs">
       <DependentUpon>ResourceDemand.aspx</DependentUpon>
@@ -604,6 +870,13 @@
     <Compile Include="StatusMaster.aspx.designer.cs">
       <DependentUpon>StatusMaster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="viewEmployee.aspx.cs">
+      <DependentUpon>viewEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewEmployee.aspx.designer.cs">
+      <DependentUpon>viewEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewResourceDemand.aspx.cs">
       <DependentUpon>ViewResourceDemand.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -623,6 +896,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Design\fonts\" />
     <Folder Include="Design\js\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\ProfileTransformWebConfig\transformed\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -644,6 +920,10 @@
     <ProjectReference Include="..\Entity\EntityDataModel.csproj">
       <Project>{e20cad70-8de9-4d11-9636-d560bb9b9799}</Project>
       <Name>EntityDataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageTemplate\MessageTemplate.csproj">
+      <Project>{41d86228-2bae-4ada-b801-574e921d707a}</Project>
+      <Name>MessageTemplate</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

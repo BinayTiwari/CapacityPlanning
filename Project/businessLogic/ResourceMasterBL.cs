@@ -69,12 +69,8 @@ namespace businessLogic
 
         public int Update(CPT_ResourceMaster resourceDetails)
         {
-
             using (CPContext db = new CPContext())
             {
-                
-
-
                 try
                 {
                     var query = from details in db.CPT_ResourceMaster
@@ -199,6 +195,30 @@ namespace businessLogic
                 rptResourceMaster.DataBind();
             }
 
+        }
+
+        public static void updatePassword(CPT_ResourceMaster record)
+        {
+            using (CPContext db = new CPContext())
+            {
+                try
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 where p.EmployeeMasterID == record.EmployeeMasterID
+                                 select p).ToList();
+
+                    foreach (CPT_ResourceMaster item in query)
+                    {
+                        item.EmployeePassword = record.EmployeePassword;
+                    }
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+            }
         }
        
     }

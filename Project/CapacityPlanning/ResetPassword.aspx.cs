@@ -40,8 +40,10 @@ namespace CapacityPlanning
                         btnAccountRecovery.Visible = false;
                         lblMessage.Visible = true;
                         txtAccountRecovery.Text = string.Empty;
-                        lblMessage.Text = "If you have registered previously we have sent you a verification email. If you do not see it in your inbox please note that your email provider may have mistaken us as spam. If no email has arrived please try resetting your password again.";
-
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
+                        lblMessage.Text = "<strong>If you have registered previously we have sent you a verification email. If you do not see it in your inbox please note that your email provider may have mistaken us as spam. If no email has arrived please try resetting your password again.</strong>";
+                        
+                        //Response.Redirect("Login.aspx");
                     }
 
                     catch (Exception ex)
@@ -49,11 +51,14 @@ namespace CapacityPlanning
                         Console.WriteLine(ex.Message);
                     }
                 }
+                else
+                {
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Visible = true;
+                    lblMessage.Text = "EmailID not found...";
+                }
             }
-            else
-            {
-
-            }
+            
         }
     }
 }

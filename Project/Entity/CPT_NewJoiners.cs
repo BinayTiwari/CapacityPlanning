@@ -35,6 +35,8 @@ namespace Entity
         [StringLength(50)]
         public string Experience { get; set; }
 
+        public bool HasJoined { get; set; }
+
         public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
 
         public virtual CPT_DesignationMaster CPT_DesignationMaster { get; set; }

@@ -17,7 +17,6 @@ namespace Entity
         public virtual DbSet<CPT_CityMaster> CPT_CityMaster { get; set; }
         public virtual DbSet<CPT_CountryMaster> CPT_CountryMaster { get; set; }
         public virtual DbSet<CPT_DesignationMaster> CPT_DesignationMaster { get; set; }
-        public virtual DbSet<CPT_EmailTemplate> CPT_EmailTemplate { get; set; }
         public virtual DbSet<CPT_GradeMaster> CPT_GradeMaster { get; set; }
         public virtual DbSet<CPT_MenuMaster> CPT_MenuMaster { get; set; }
         public virtual DbSet<CPT_NewJoiners> CPT_NewJoiners { get; set; }

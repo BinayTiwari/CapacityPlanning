@@ -33,3 +33,17 @@ C:\Users\rahul\Desktop\Forum\MessageTemplate\obj\Debug\MessageTemplate.csproj.Co
 C:\Users\rahul\Desktop\Forum\MessageTemplate\obj\Debug\MessageTemplate.csproj.CopyComplete
 C:\Users\rahul\Desktop\Forum\MessageTemplate\obj\Debug\MessageTemplate.dll
 C:\Users\rahul\Desktop\Forum\MessageTemplate\obj\Debug\MessageTemplate.pdb
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\MessageTemplate.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\MessageTemplate.pdb
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\businessLogic.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\EntityFramework.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\businessLogic.pdb
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.pdb
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.dll.config
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\bin\Debug\EntityFramework.xml
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csprojAssemblyReference.cache
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csproj.CoreCompileInputs.cache
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csproj.CopyComplete
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.pdb

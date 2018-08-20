@@ -294,3 +294,7 @@ E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\Microsof
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\Microsoft.AI.Web.xml
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\obj\Debug\MainProject.csproj.CopyComplete
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\MessageTemplate.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\MessageTemplate.pdb
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\roslyn\MessageTemplate.dll
+E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\CapacityPlanning\bin\roslyn\MessageTemplate.pdb

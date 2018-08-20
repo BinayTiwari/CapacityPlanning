@@ -16,7 +16,7 @@
                 <tr>
                     <td style="width: 394px">
                         <strong>E-Mail</strong> :&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtAccountRecovery" runat="server" CssClass="Formlong"></asp:TextBox><br />
+                        <asp:TextBox ID="txtAccountRecovery" runat="server" CssClass="Formlong" required></asp:TextBox><br />
                         <br />
                     </td>
                     <td>&nbsp;</td>

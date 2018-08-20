@@ -48,11 +48,11 @@
     <Compile Include="TokenMessageTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="G:\Documents\Project\businessLogic\BusinessLogic.csproj">
+    <ProjectReference Include="..\businessLogic\BusinessLogic.csproj">
       <Project>{128b5e75-d84f-4d07-8a0e-9e1f4b73279f}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\Documents\Project\Entity\EntityDataModel.csproj">
+    <ProjectReference Include="..\Entity\EntityDataModel.csproj">
       <Project>{e20cad70-8de9-4d11-9636-d560bb9b9799}</Project>
       <Name>EntityDataModel</Name>
     </ProjectReference>
