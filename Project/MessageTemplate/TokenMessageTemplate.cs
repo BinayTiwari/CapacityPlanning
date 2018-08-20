@@ -66,7 +66,7 @@ namespace MessageTemplate
                         token = ReplaceTokens(valemail.Body, dict);
                         valemail.Body = token;
                        
-                        send(ConfigurationManager.AppSettings["CPContext"].ToString(), valemail.To[0], valemail.Subject, token);
+                        send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
             }
@@ -104,7 +104,7 @@ namespace MessageTemplate
 
        private void send(string fromAddress, string toAddress, string subject, string body)
         {
-           const string fromPassword = "9899938450@";
+           const string fromPassword = "ashish@12";
            
             var smtp = new System.Net.Mail.SmtpClient();
             {
@@ -118,7 +118,7 @@ namespace MessageTemplate
             }
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
-            mail.From = new MailAddress(fromAddress,"ForumTesting");
+            mail.From = new MailAddress(fromAddress,"CapacityPlanning");
             mail.To.Add(toAddress);
             mail.Subject = subject;
             mail.Body = body;
