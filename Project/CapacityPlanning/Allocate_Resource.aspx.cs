@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -93,11 +95,11 @@ namespace CapacityPlanning
         {
             try
             {
-                
+
                 CPT_AllocateResource details = new CPT_AllocateResource();
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
-               
+
                 List<int> resourceID = new List<int>();
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
@@ -110,7 +112,16 @@ namespace CapacityPlanning
                     empID.EmployeeMasterID = resourceID[j];
                     rbl.Insert(details);
                     rbl.updateMap(empID);
+                    String acnt = rbl.getAccountByID(details.AccountID);
+                    List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
+                    String name = lst[0].EmployeetName;
+                    String email = lst[0].Email;
+
+                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+
+
                 }
+               
                 //foreach(var item in resourceID)
                 //{
                 //    details.ResourceID = item;
@@ -136,5 +147,42 @@ namespace CapacityPlanning
             }
         }
 
+
+        public void sendConfirmation(String name, String mail, String account, DateTime startDate, DateTime endDate )
+        {
+            try
+            {
+
+                MailMessage msg = new MailMessage();
+
+                msg.To.Add(mail);
+                msg.IsBodyHtml = true;
+
+                MailAddress address = new MailAddress(mail);
+                msg.From = address;
+
+                msg.Subject = "Allocation details to " + account;
+                String body = "<html><head><body><p>Hi <b> "+name+",</b> </p>" +
+                    "<br /><p> You have been allocated to <b> "+account+" </b> from <b> "+startDate.ToShortDateString()+
+                    " </b> to <b> " + endDate.ToShortDateString()+".</b> </p>" +
+                    "<br /> Contact your project manager for further assistance."+
+                    "<br /><br /><b>Warm Regards<br /> Team Capacity Planning </b>" +
+                    "<br /><h6>This email is system generated, please do not respond to this email.</h6></body></head></html>";
+                
+                msg.Body = body;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true; 
+                NetworkCredential credentials = new NetworkCredential("resourceallocationgic@gmail.com", "incorrect@gic");
+                client.Credentials = credentials;
+                client.Send(msg);
+
+
+            }
+            catch
+            {
+                
+                //lblResult.Text = "Your message failed to send, please try again.";
+            }
+        }
     }
 }
