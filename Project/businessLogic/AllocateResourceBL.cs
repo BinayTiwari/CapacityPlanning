@@ -182,5 +182,43 @@ namespace businessLogic
 
             }
         }
+
+        public List<CPT_ResourceMaster> getMailDetails(int id)
+        {
+            List<CPT_ResourceMaster> data = new List<CPT_ResourceMaster>();
+
+            using(CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_ResourceMaster
+                            where c.EmployeeMasterID == id
+                            select c;
+                foreach(var detail in query)
+                {
+                    data.Add(detail);
+                }
+            }
+
+            return data;
+        }
+
+        public string getAccountByID(int accountID)
+        {
+            String accountName = "";
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_AccountMaster
+                            where c.AccountMasterID == accountID
+                            select new
+                            {
+                                c.AccountName
+                            }
+                                ;
+                foreach (var ac in query)
+                {
+                    accountName = ac.AccountName;
+                }
+            }
+            return accountName;
+        }
     }
 }
