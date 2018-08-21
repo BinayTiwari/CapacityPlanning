@@ -48,7 +48,7 @@ namespace MessageTemplate
                     int i = 0;
                     foreach (string address in valemail.To)
                     {                     
-                        dict.Add("FORUMNAME", "LetsConfirmIT");
+                        dict.Add("FORUMNAME", "Capacity Planning");
                         dict.Add("NAME", valemail.ToUserName[i].ToString());
                         dict.Add("EMAIL", address);
                         dict.Add("UID", valemail.UID);
@@ -59,7 +59,7 @@ namespace MessageTemplate
                     break;
               case "ForgetPassword" :
                         MessageTemplate(ref valemail);
-                        dict.Add("FORUMNAME", "LetsConfirmIT");
+                        dict.Add("FORUMNAME", "Capacity Planning");
                         dict.Add("NAME", valemail.ToUserName[0].ToString());
                         dict.Add("EMAIL", valemail.Name);
                         dict.Add("UID", valemail.UID);
@@ -92,8 +92,9 @@ namespace MessageTemplate
                        valemail.Body = Convert.ToString(reader["Body"]);
                       
                    }
-                   catch
+                   catch(Exception ex)
                    {
+                        Console.WriteLine(ex.Message);
                    }
                }
 
@@ -118,7 +119,7 @@ namespace MessageTemplate
             }
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
-            mail.From = new MailAddress(fromAddress,"CapacityPlanning");
+            mail.From = new MailAddress(fromAddress,"Capacity Planning");
             mail.To.Add(toAddress);
             mail.Subject = subject;
             mail.Body = body;

@@ -37,12 +37,12 @@ namespace CapacityPlanning
                         registrationEmail.UID = lstuserDetails[0].EmployeeMasterID.ToString();
                         TokenMessageTemplate valEmail = new TokenMessageTemplate();
                         valEmail.SendEmail(registrationEmail);
-                        btnAccountRecovery.Visible = false;
+                        //btnAccountRecovery.Visible = false;
                         lblMessage.Visible = true;
                         txtAccountRecovery.Text = string.Empty;
                         lblMessage.ForeColor = System.Drawing.Color.Green;
-                        lblMessage.Text = "<strong>If you have registered previously we have sent you a verification email. If you do not see it in your inbox please note that your email provider may have mistaken us as spam. If no email has arrived please try resetting your password again.</strong>";
-                        
+                        lblMessage.Text = "<strong  class='text - center'>If you have registered previously we have sent you a verification email, for password resetting click on that link. If you do not see it in your inbox please note that your email provider may have mistaken us as spam. If no email has arrived please try again.</strong>";
+                        Response.AppendHeader("Refresh", "10;url=Login.aspx");
                         //Response.Redirect("Login.aspx");
                     }
 
@@ -55,7 +55,7 @@ namespace CapacityPlanning
                 {
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                     lblMessage.Visible = true;
-                    lblMessage.Text = "EmailID not found...";
+                    lblMessage.Text = "   Email not found...";
                 }
             }
             

@@ -249,7 +249,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="CountryMaster.aspx" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="dashboard.html" />
     <Content Include="Default.aspx" />
     <Content Include="DesignationMaster.aspx" />
     <Content Include="Design\css\bootstrap-social.css" />
@@ -325,6 +324,7 @@
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\vbc.rsp" />
     <Content Include="obj\Release\Package\PackageTmp\bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="obj\Release\Package\PackageTmp\Bundle.config" />
+    <Content Include="obj\Release\Package\PackageTmp\ChangePassword.aspx" />
     <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.css.map" />
     <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap-theme.min.css.map" />
     <Content Include="obj\Release\Package\PackageTmp\Content\bootstrap.css.map" />
@@ -342,7 +342,6 @@
     <Content Include="obj\Release\TransformWebConfig\assist\Web.config" />
     <Content Include="obj\Release\TransformWebConfig\original\Web.config" />
     <Content Include="obj\Release\TransformWebConfig\transformed\Web.config" />
-    <Content Include="obj\Debug\build.force" />
     <Content Include="obj\Debug\CapacityPlanning.csproj.CopyComplete" />
     <Content Include="obj\Debug\CapacityPlanning.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\CapacityPlanning.csprojAssemblyReference.cache" />
@@ -464,7 +463,6 @@
     <Content Include="obj\Release\Package\PackageTmp\Content\Site.css" />
     <Content Include="obj\Release\Package\PackageTmp\CountryMaster.aspx" />
     <Content Include="obj\Release\Package\PackageTmp\Dashboard.aspx" />
-    <Content Include="obj\Release\Package\PackageTmp\dashboard.html" />
     <Content Include="obj\Release\Package\PackageTmp\Default.aspx" />
     <Content Include="obj\Release\Package\PackageTmp\DesignationMaster.aspx" />
     <Content Include="obj\Release\Package\PackageTmp\Design\css\bootstrap-social.css" />
