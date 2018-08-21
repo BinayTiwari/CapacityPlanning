@@ -19,7 +19,7 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
-                 ClsCommon.ddlGetRole(listRole);
+                ClsCommon.ddlGetRole(listRole);
                 ClsCommon.ddlGetSkillDDL(listSkillDD);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                
@@ -39,7 +39,11 @@ namespace CapacityPlanning
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID =Convert.ToInt32( empIdText.Text.Trim());
                 employeeDetails.EmployeetName = fName.Text;
-                employeeDetails.Photo = @"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName.ToString();
+                if(FileUploadControl.FileName.Trim() != "")
+                {
+                    employeeDetails.Photo = @"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName.ToString();
+                }
+                
                 employeeDetails.ReportingManagerID =Convert.ToInt32( RManagerDropDownList.Text.Trim());
                 employeeDetails.Email = mail.Text.Trim();
                 employeeDetails.EmployeePassword = pass.Text.Trim();
@@ -48,13 +52,34 @@ namespace CapacityPlanning
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.Trim());
-                employeeDetails.PAN = panNoTxt.Text.Trim();
+                if(panNoTxt.Text.Trim() != "")
+                {
+                    employeeDetails.PAN = panNoTxt.Text.Trim();
+                }
+                
                 employeeDetails.Skillsid = listSkillDD.SelectedValue;
-                employeeDetails.Address = addressTxt.Text.Trim();
-                employeeDetails.PriorWorkExperience =(float) Convert.ToDouble( expText.Text.Trim());
-                employeeDetails.PassportNo = passportNum.Text;
-                employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim());
-                employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim());
+                if(addressTxt.Text != "")
+                {
+                    employeeDetails.Address = addressTxt.Text.Trim();
+                }
+                if(expText.Text.Trim() != "")
+                {
+                    employeeDetails.PriorWorkExperience = (float)Convert.ToDouble(expText.Text.Trim());
+                }
+                
+                if(passportNum.Text != "")
+                {
+                    employeeDetails.PassportNo = passportNum.Text;
+                }
+               if(passExpDate.Text.Trim() != "")
+                {
+                    employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim());
+                }
+                if(visExpDate.Text.Trim() != "")
+                {
+                    employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim());
+                }
+                
                 employeeDetails.DateOfCreation = DateTime.Now;
                 employeeDetails.DateOfModification = DateTime.Now;
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;

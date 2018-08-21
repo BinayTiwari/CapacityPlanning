@@ -66,11 +66,25 @@ namespace CapacityPlanning
                 {
                     employeeDetails.PriorWorkExperience = (float)Convert.ToDouble(expText.Text.Trim());
                 }
+                if(employeeDetails.PAN != "")
+                {
+                    employeeDetails.PAN = panNoTxt.Text.Trim();
+                }
+                if(employeeDetails.Skillsid != "")
+                {
+                    employeeDetails.Skillsid = listSkillDD.SelectedValue;
+                }
+                if(employeeDetails.Address != "")
+                {
+                    employeeDetails.Address = addressTxt.Text.Trim();
 
-                employeeDetails.PAN = panNoTxt.Text.Trim();
-                employeeDetails.Skillsid = listSkillDD.SelectedValue;
-                employeeDetails.Address = addressTxt.Text.Trim();
-                employeeDetails.PassportNo = passportNum.Text.Trim();
+                }
+                if(employeeDetails.PassportNo != "")
+                {
+                    employeeDetails.PassportNo = passportNum.Text.Trim();
+
+                }
+                
                 if (employeeDetails.PassportExpiryDate != null)
                 {
                     employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim().ToString());
