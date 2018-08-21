@@ -104,7 +104,7 @@ namespace MessageTemplate
 
        private void send(string fromAddress, string toAddress, string subject, string body)
         {
-           const string fromPassword = "ashish@12";
+           const string fromPassword = "incorrect@gic";
            
             var smtp = new System.Net.Mail.SmtpClient();
             {
