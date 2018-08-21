@@ -220,5 +220,28 @@ namespace businessLogic
             }
             return accountName;
         }
+
+        public static void viewResourceMaping(Repeater rpt, String requestID)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_AllocateResource
+                             join d in db.CPT_ResourceMaster on c.ResourceID equals d.EmployeeMasterID
+                             join e in db.CPT_RoleMaster on d.RolesID equals e.RoleMasterID
+                             where c.RequestID == requestID
+                             select new
+                             {
+                                 c.ResourceID,
+                                 c.StartDate,
+                                 c.EndDate,
+                                 d.EmployeetName,
+                                 e.RoleName
+                             }).ToList();
+                 rpt.DataSource = query;
+                rpt.DataBind();
+
+            }
+        }
+        
     }
 }
