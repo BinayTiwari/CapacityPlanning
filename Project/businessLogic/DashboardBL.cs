@@ -298,7 +298,7 @@ namespace businessLogic
                         count++;
                     }
 
-                    chart.Series[0].ChartType = SeriesChartType.SplineArea;
+                    chart.Series[0].ChartType = SeriesChartType.Column;
 
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
 
@@ -319,7 +319,7 @@ namespace businessLogic
                                       NoOfResources = grp.Count()
                                   }).ToList();
                 chart.Series[0].ToolTip = "#VALX : #VALY";
-                chart.Series[0].ChartType = SeriesChartType.Bar;
+                //chart.Series[0].ChartType = SeriesChartType.Bar;
                 Title ty1 = chart.Titles.Add("ty1");
                 ty1.ForeColor = System.Drawing.Color.DarkRed;
                 ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
@@ -343,7 +343,7 @@ namespace businessLogic
                         count++;
                     }
 
-                    chart.Series[0].ChartType = SeriesChartType.Column;
+                    chart.Series[0].ChartType = SeriesChartType.Line;
 
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
 

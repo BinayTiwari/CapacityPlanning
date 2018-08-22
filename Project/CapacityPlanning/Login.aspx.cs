@@ -44,7 +44,9 @@ namespace CapacityPlanning
 
             else
             {
-
+                lblErrorMsg.Visible = true;
+                lblErrorMsg.ForeColor = System.Drawing.Color.Red;
+                lblErrorMsg.Text = "Your email or password is incorrect!";
             }
         }
     }

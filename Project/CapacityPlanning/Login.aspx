@@ -31,7 +31,8 @@
                     <img src="images/logo.png" width="250" height="100" alt="" />
                 </div>
                 <div class="login-box-body">
-                    <p class="login-box-msg">Sign in to your account</p>
+                    <p class="login-box-msg"><b>Sign in to your account</b></p>
+                    <p class="text-center"><asp:Label ID="lblErrorMsg" runat="server" Visible="false"></asp:Label></p><br />
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required ></asp:TextBox>
                         <span class="fa fa-user form-control-feedback"></span><span><font color="red"></font></span>
