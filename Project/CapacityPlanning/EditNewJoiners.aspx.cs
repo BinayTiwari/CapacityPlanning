@@ -64,7 +64,7 @@ namespace CapacityPlanning
 
                 firstNameTextBox.Text = lst[0].Name;
                 listDesignation.Text = (lst[0].DesignationID.ToString());
-                dojTextBox.Text = lst[0].JoiningDate.ToString();
+                dojTextBox.Text = lst[0].JoiningDate.ToString().Replace(" 12:00:00 AM","");
                 baseLocationTextBox.Text = lst[0].Location;                
                 interviewedTextBox.Text = lst[0].InterviewedBy;
                 expTextBox.Text = lst[0].Experience;

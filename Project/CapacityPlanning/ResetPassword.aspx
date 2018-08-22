@@ -36,6 +36,7 @@
                     <div class="row">
                         <div class="col-12 text-right">
                             <asp:Button CssClass="btn btn-primary signup" ID="btnAccountRecovery" runat="server" Text="Submit" OnClick="btnAccountRecovery_Click" />
+                            <asp:Button CssClass="btn btn-danger" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" formnovalidate />
                         </div>
                     </div>
                     <br />

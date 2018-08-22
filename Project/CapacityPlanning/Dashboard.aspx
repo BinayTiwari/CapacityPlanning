@@ -403,7 +403,7 @@
                                 <AxisY LineColor="DarkGray">
                                     <MajorGrid LineColor="LightGray" />
                                 </AxisY>
-                                <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                <Area3DStyle Enable3D="false" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
                             </asp:ChartArea>
                         </ChartAreas>
 

@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Date of Joining</label>
-                                <asp:TextBox ID="dojTextBox" ToolTip="Date of joining" Placeholder="Date of Joining" CssClass="form-control" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="dojTextBox" ToolTip="Date of joining" CssClass="form-control" runat="server" required></asp:TextBox>
 
                             </div>
 
