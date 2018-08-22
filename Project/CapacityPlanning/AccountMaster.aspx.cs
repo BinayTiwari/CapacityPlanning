@@ -13,13 +13,12 @@ namespace CapacityPlanning
 {
     public partial class AccountMaster : System.Web.UI.Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-
+                AccountNameTextBox.Enabled = false;
+                ClsCommon.ddlGetCity(CityList);
                 BindGrid();
 
             }
@@ -62,6 +61,7 @@ namespace CapacityPlanning
             {
 
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
+                accountdetails.CityID = Convert.ToInt32(CityList.SelectedValue);
                 accountdetails.AccountName = AccountNameTextBox.Text.Trim();
                 accountdetails.IsActive = true;
 
@@ -95,9 +95,7 @@ namespace CapacityPlanning
             deleteAccount.Delete(accountdetails);
             BindGrid();
 
-
         }
-
 
 
         protected void update(object sender, GridViewUpdateEventArgs e)
@@ -108,7 +106,7 @@ namespace CapacityPlanning
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
                 int id = int.Parse(gvAccount.DataKeys[e.RowIndex].Value.ToString());
                 accountdetails.AccountMasterID = id;
-                string accountName = ((TextBox)gvAccount.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
+                string accountName = ((TextBox)gvAccount.Rows[e.RowIndex].Cells[2].Controls[0]).Text;
                 accountdetails.AccountName = accountName;
                 AccountMasterBL updateAccount = new AccountMasterBL();
                 updateAccount.Update(accountdetails);
@@ -138,6 +136,20 @@ namespace CapacityPlanning
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        protected void CityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (CityList.SelectedItem.Text == "Select City")
+            {
+                AccountNameTextBox.Enabled = false;
+            }
+            else
+            {
+                AccountNameTextBox.Enabled = true;
+            }
 
         }
     }

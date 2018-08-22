@@ -13,12 +13,8 @@ namespace businessLogic
     {
         public int Insert(CPT_AccountMaster accountDetails)
         {
-
-
             using (CPContext db = new CPContext())
             {
-
-
                 var query = (from c in db.CPT_AccountMaster
                             where c.AccountName == accountDetails.AccountName & c.IsActive == false
                             select c).ToList();
@@ -75,10 +71,8 @@ namespace businessLogic
         {
             using (CPContext db = new CPContext())
             {
-
                 try
                 {
-
                     CPT_AccountMaster accountMaster = new CPT_AccountMaster();
                     var deleteAccountDetails = from details in db.CPT_AccountMaster
                                                where details.AccountMasterID == accountDetails.AccountMasterID
@@ -93,12 +87,9 @@ namespace businessLogic
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(e.Message);
                     
                 }
-
-
-
             }
             return 1;
         }
@@ -111,13 +102,14 @@ namespace businessLogic
             {
                 //GridView1.DataSource = db.CPT_AccountMaster.ToList();
                 var query = (from p in db.CPT_AccountMaster
+                             join q in db.CPT_CityMaster on p.CityID equals q.CityID
                              orderby p.AccountMasterID descending
                              where p.IsActive == true
                              select new
                              {
                                  p.AccountMasterID,
                                  p.AccountName,
-                                 
+                                 q.CityName
                              }).ToList();
 
                 foreach (var item in query)
@@ -126,13 +118,12 @@ namespace businessLogic
                     clsAccount.AccountMasterID = item.AccountMasterID;
                     clsAccount.AccountName = item.AccountName;
 
-                    
-                    
-
+                    CPT_CityMaster city = new CPT_CityMaster();
+                    city.CityName = item.CityName;
+                    clsAccount.CPT_CityMaster = city;
 
                     lstAccountName.Add(clsAccount);
                 }
-
 
                 return lstAccountName;
 

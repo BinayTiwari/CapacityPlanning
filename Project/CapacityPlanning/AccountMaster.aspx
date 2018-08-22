@@ -12,6 +12,10 @@
 
     <div class="row">
         <div class="form-group form-inline col-lg-12">
+            <asp:DropDownList ID="CityList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
+                DataTextField="CityName" DataValueField="CityID" OnSelectedIndexChanged="CityList_SelectedIndexChanged" AutoPostBack="True" required>
+                <asp:ListItem Value="">--Select City--</asp:ListItem>
+            </asp:DropDownList>
             <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" CausesValidation="False" />
@@ -36,6 +40,7 @@
                             OnRowUpdating="update" EmptyDataText="No records to show" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField ReadOnly="True" DataField="AccountMasterID" HeaderText="Account ID" />
+                                <asp:BoundField ReadOnly="true" DataField="CPT_CityMaster.CityName" HeaderText="City Name" />
                                 <asp:BoundField DataField="AccountName" HeaderText="Account Name" />
 
                                 <asp:TemplateField>
