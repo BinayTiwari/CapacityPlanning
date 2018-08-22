@@ -8,6 +8,7 @@ using Entity;
 using businessLogic;
 using System.Data;
 using System.Collections;
+using MessageTemplate;
 
 namespace CapacityPlanning
 {
@@ -114,9 +115,11 @@ namespace CapacityPlanning
                     //insertDemandDetails.Insert(demandDetails);
 
                 }
-
+                Email();
                 insertResourceDemand.Insert(resourceDemandDetails);
+                
                 Response.Redirect("ResourceDemand.aspx");
+
 
             }
             catch (Exception ex)
@@ -354,6 +357,32 @@ namespace CapacityPlanning
         protected void UnDoButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("ResourceDemand.aspx");
+        }
+
+        public void Email()
+        {
+            try
+            {
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                string employeeEmailID = lstdetils[0].Email;
+
+                CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
+                registrationEmail.Name = "ResourceDemand";
+                registrationEmail.To = new List<string>();
+                registrationEmail.To.Add(employeeEmailID);
+                registrationEmail.ToUserName = new List<string>();
+                registrationEmail.ToUserName.Add(lstdetils[0].EmployeetName);
+                //registrationEmail.UID = lstdetils[0].EmployeeMasterID.ToString();
+                TokenMessageTemplate valEmail = new TokenMessageTemplate();
+                valEmail.SendEmail(registrationEmail);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 

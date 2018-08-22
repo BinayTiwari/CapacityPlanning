@@ -27,6 +27,7 @@ namespace businessLogic
                     activeUser.EmployeetName = item.EmployeetName;
                     activeUser.RolesID = item.RolesID;
                     activeUser.EmployeeMasterID = item.EmployeeMasterID;
+                    activeUser.Email = item.Email;
                     
 
                     lstUserDetails.Add(activeUser);

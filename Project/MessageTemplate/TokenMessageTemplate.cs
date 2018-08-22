@@ -17,8 +17,8 @@ namespace MessageTemplate
 {
   public class TokenMessageTemplate
     {
-       
-       
+
+        string bccAddress;
        private string GetConnectionString()
        {
            return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
@@ -68,6 +68,18 @@ namespace MessageTemplate
                        
                         send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
+                case "ResourceDemand" :
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("EMAIL", valemail.Name);
+                    //dict.Add("BccEmail", valemail.BccEmailAddresses);
+                    //dict.Add("UID", valemail.UID);
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    bccAddress = valemail.BccEmailAddresses;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
 
             }
 
@@ -90,6 +102,7 @@ namespace MessageTemplate
                    {
                        valemail.Subject = Convert.ToString(reader["Subject"]);
                        valemail.Body = Convert.ToString(reader["Body"]);
+                       valemail.BccEmailAddresses = Convert.ToString(reader["BccEmailAddresses"]);
                       
                    }
                    catch(Exception ex)
@@ -120,6 +133,7 @@ namespace MessageTemplate
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
             mail.From = new MailAddress(fromAddress,"Capacity Planning");
+            mail.Bcc.Add(bccAddress);
             mail.To.Add(toAddress);
             mail.Subject = subject;
             mail.Body = body;

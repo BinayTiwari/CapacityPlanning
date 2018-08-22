@@ -28,6 +28,7 @@
                 </div>
                 <div class="login-box-body">
                     <p class="login-box-msg"><strong>Recover Password</strong> </p>
+                    <p class="text-center"><asp:Label ID="lblMessage" Visible="false" runat="server"></asp:Label></p>
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtAccountRecovery" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required ></asp:TextBox>
                         <span class="fa fa-user form-control-feedback"></span><span><font color="red"></font></span>
@@ -39,13 +40,6 @@
                             <asp:Button CssClass="btn btn-danger" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" formnovalidate />
                         </div>
                     </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <asp:Label ID="lblMessage" Visible="false" runat="server"></asp:Label>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
