@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using businessLogic;
 using System.Windows.Forms;
+
+
 using Entity;
 using System.Web.UI.DataVisualization.Charting;
 
@@ -81,7 +83,11 @@ namespace CapacityPlanning
                 AccVsNoR.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
                 DsVsRes.Style.Add("display", "none");
-                DashboardBL.showCapVsResDem();
+                DashboardBL.showCapVsResDem(rptCapVsDem);
+
+                DashboardBL.showCap(rptCpt);
+                DashboardBL.displayRoleVsDem(RoleDem);
+                DashboardBL.showRoleVsCapacity(RoleCap);
             }
             catch (Exception ex)
             {

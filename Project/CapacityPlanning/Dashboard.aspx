@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="CapacityPlanning.Dashboard" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
@@ -133,7 +134,7 @@
 
 
                 <div class="col-md-3">
-                    <asp:Chart ID="myChart" runat="server" Height="550px" Width="750px">
+                    <asp:Chart ID="myChart" runat="server" Height="500px" Width="700px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
@@ -205,7 +206,7 @@
                 <!-- /.table-responsive -->
 
                 <div class="col-md-3">
-                    <asp:Chart ID="MgrVSRpt" runat="server" Height="550px" Width="750px">
+                    <asp:Chart ID="MgrVSRpt" runat="server" Height="500px" Width="700px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
@@ -222,7 +223,7 @@
                             </asp:ChartArea>
                         </ChartAreas>
 
-                       
+
                     </asp:Chart>
                 </div>
 
@@ -281,10 +282,135 @@
     </div>
     <!-- Account vs No of resources -->
     <div id="CapVsResDem" style="display: none;" runat="server">
+        <hr />
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dataTable_wrapper">
 
-            <!-- graph here -->
-            <!-- /.table-responsive -->
+
+                        <table class="table table-striped table-bordered table-hover" id="dataTable3s">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Role</th>
+                                    <th>Demand</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptCapVsDem" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("role")%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("noOfRes")%>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+
+                                </asp:Repeater>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <asp:Chart ID="RoleDem" runat="server" Height="500px" Width="700px">
+                        <Series>
+                            <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                                <AxisX LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisX>
+                                <AxisY LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisY>
+                                <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                            </asp:ChartArea>
+                        </ChartAreas>
+
+
+                    </asp:Chart>
+                </div>
+
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" id="dataTable4s">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Role</th>
+                                    <th>Capacity</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptCpt" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("Role_Name")%>
+                                            </td>
+                                            <td>
+                                                <%#Eval("NoOfResources")%>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+
+                                </asp:Repeater>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- graph here -->
+                <!-- /.table-responsive -->
+
+
+
+                <div class="col-md-3">
+                    <asp:Chart ID="RoleCap" runat="server" Height="500px" Width="700px">
+                        <Series>
+                            <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                                <AxisX LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisX>
+                                <AxisY LineColor="DarkGray">
+                                    <MajorGrid LineColor="LightGray" />
+                                </AxisY>
+                                <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                            </asp:ChartArea>
+                        </ChartAreas>
+
+
+                    </asp:Chart>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Capacity Vs Resource Demand -->
