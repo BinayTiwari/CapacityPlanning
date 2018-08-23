@@ -80,7 +80,7 @@
                                                     <i class="" aria-hidden="true" title="remove">
 
 
-                                                        <asp:LinkButton ID="DeleteButton" OnClick="DeleteButton_Click" joinerID='<%#Eval("NewJoinerID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
+                                                        <asp:LinkButton ID="DeleteButton" OnClick="DeleteButton_Click" JoinerName= '<%#Eval("Name") %>' joinerID='<%#Eval("NewJoinerID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
 
                                                     </i>
 
