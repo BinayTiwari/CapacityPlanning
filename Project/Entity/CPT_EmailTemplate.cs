@@ -32,5 +32,9 @@ namespace Entity
         public List<string> Bcc { get; set; }
         public List<string> ToUserName { get; set; }
         public string UID { get; set; }
+        public string JOINER { get; set; }
+        public string ACCOUNT { get; set; }
+        public string STARTDATE { get; set; }
+        public string ENDDATE { get; set; }
     }
 }

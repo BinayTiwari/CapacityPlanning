@@ -343,7 +343,7 @@ namespace businessLogic
                         count++;
                     }
 
-                    chart.Series[0].ChartType = SeriesChartType.Line;
+                    chart.Series[0].ChartType = SeriesChartType.Bar;
 
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
 
