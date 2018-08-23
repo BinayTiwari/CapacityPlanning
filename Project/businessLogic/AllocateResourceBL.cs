@@ -49,21 +49,19 @@ namespace businessLogic
             }
             return 1;
         }
-        public static void getEmployeeNameByResourceType(Repeater repeater, string RoleName)
+        public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
         {
             try
             {
                 using (CPContext db = new CPContext())
                 {
                     var query = (from p in db.CPT_ResourceMaster
-                                 join q in db.CPT_ResourceDetails on p.RolesID equals q.ResourceTypeID
-                                 join r in db.CPT_RoleMaster on q.ResourceTypeID equals r.RoleMasterID
-                                 where (r.RoleName == RoleName) && (p.isMapped == 0)
+                                 join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
+                                 into t from rt in t.DefaultIfEmpty()
+                                 where p.RolesID == RoleID
                                  select new
                                  {
                                      p.EmployeetName,
-                                     q.StartDate,
-                                     q.EndDate
                                  }).ToList();
                     repeater.DataSource = query;
                     repeater.DataBind();
@@ -166,6 +164,7 @@ namespace businessLogic
                  select new
                  {
                      p.RequestID,
+                     q.RoleMasterID,
                      q.RoleName,
                      r.SkillsName,
                      p.NoOfResources,
@@ -220,7 +219,29 @@ namespace businessLogic
             }
             return accountName;
         }
+        public static void UpdateStatus(string reqID)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceDemand
+                                 where p.RequestID == reqID
+                                 select p).ToList();
+                    foreach(var item in query)
+                    {
+                        item.StatusMasterID = 20;
+                    }
+                    db.SaveChanges();
+                }
+                
+            }
+            catch (Exception e)
+            {
 
+                Console.WriteLine(e.Message);
+            }
+        }
         public static void viewResourceMaping(Repeater rpt, String requestID)
         {
             using (CPContext db = new CPContext())

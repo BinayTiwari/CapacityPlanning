@@ -18,6 +18,10 @@ namespace CapacityPlanning
         List<string> dateSatrt = new List<string>();
         List<string> name = new List<string>();
         List<string> dateEnd = new List<string>();
+        static string StartDate;
+        static string EndDate;
+        //int RoleID = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -35,14 +39,13 @@ namespace CapacityPlanning
             {
                 myDIV.Style.Add("display", "block");
                 Button theButton = sender as Button;
-                Session["role"] = theButton.CommandArgument;
-                string role = Session["role"].ToString();
-                if (role != null)
-                {
-                    string id = Session["id"].ToString();
-                    lblSuggestions.Text = id;
-                    AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, role);
-                }
+                StartDate = theButton.Attributes["StartDate"];
+                EndDate = theButton.Attributes["EndDate"];
+                ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
+                lblStartDate.Text = StartDate;
+                lblEndDate.Text = EndDate;
+                Search(Convert.ToInt32(theButton.CommandArgument));
+
             }
             catch (Exception ex)
             {
@@ -70,19 +73,20 @@ namespace CapacityPlanning
 
                     if (chk.Checked)
                     {
-                        string StarDate = chek.Attributes["StartDate"];
-                        string EndDate = chek.Attributes["EndDate"];
+                        //string StarDate = chek.Attributes["StartDate"];
+                        //string EndDate = chek.Attributes["EndDate"];
+
                         string EmployeeName = chek.Attributes["EmployeeName"];
-                        dateSatrt.Add(StarDate);
+                        dateSatrt.Add(StartDate);
                         dateEnd.Add(EndDate);
                         name.Add(EmployeeName);
-                        //insert here from ui
+
                     }
 
                 }
                 //dateSatrt = dateSatrt.Distinct().ToList();
                 //dateEnd = dateEnd.Distinct().ToList();
-                name = name.Distinct().ToList();
+                //name = name.Distinct().ToList();
             }
             catch (Exception ex)
             {
@@ -103,7 +107,7 @@ namespace CapacityPlanning
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
                 {
-                    
+
                     details.ResourceID = resourceID[j];
                     details.RequestID = Session["id"].ToString();
                     details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
@@ -117,16 +121,17 @@ namespace CapacityPlanning
                     sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
                     rbl.Insert(details);
                     rbl.updateMap(empID);
+                    AllocateResourceBL.UpdateStatus(details.RequestID);
                 }
-               
-               
+
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        public void sendConfirmation(String name, String mail, String account, DateTime startDate, DateTime endDate )
+        public void sendConfirmation(String name, String mail, String account, DateTime startDate, DateTime endDate)
         {
             try
             {
@@ -144,11 +149,60 @@ namespace CapacityPlanning
                 valEmail.SendEmail(registrationEmail);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 //lblResult.Text = "Your message failed to send, please try again.";
             }
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Search(Convert.ToInt32(ViewState["RoleID"]));
+                StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
+                lblStartDate.Text = StartDate;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
+        protected void btnPreviousWeek_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Search(Convert.ToInt32(ViewState["RoleID"]));
+                EndDate = ((Convert.ToDateTime(EndDate)).AddDays(-7)).ToShortDateString();
+                lblEndDate.Text = EndDate;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
+
+        private void Search(int RoleID)
+        {
+            try
+            {
+                string id = Session["id"].ToString();
+                lblSuggestions.Text = id;
+                AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, RoleID);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Allocate Resource" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Allocate_Resource.aspx.cs" Inherits="CapacityPlanning.Allocate_Resource" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   
+
     <div class="col-md-10">
 
         <div class="row">
@@ -54,7 +54,7 @@
                                                 <td><%#Eval("StartDate","{0:d}")%></td>
                                                 <td><%#Eval("EndDate","{0:d}") %></td>
                                                 <td>
-                                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" CommandArgument='<%#Eval("RoleName")%>' OnClick="btnAllocate_Resource_Click" /></td>
+                                                    <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" /></td>
 
                                             </tr>
                                         </ItemTemplate>
@@ -98,7 +98,21 @@
                                     <div class="panel-heading">
                                         Suggestion for Request ID :
                         <asp:Label ID="lblSuggestions" runat="server" Text='<%#Eval("RequestID") %>'></asp:Label>
+
                                     </div>
+                                    <br />
+                                    <div class="pull-right">
+
+                                       <b>Start Date:</b> <asp:Label ID="lblStartDate" runat="server" Text=""></asp:Label>&nbsp;&nbsp;&nbsp;
+                                       <b>End Date:</b> <asp:Label ID="lblEndDate" runat="server" Text=""></asp:Label>&nbsp;&nbsp;
+
+                                        <asp:Button ID="btnPreviousWeek" runat="server" Class="btn btn-success btn-md" Text="<< Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
+                                        &nbsp;
+                                       <asp:Button ID="btnNext" runat="server" Class="btn btn-success btn-md" Text=" Availability in Next Week >>" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+              
+                                    </div>
+                                    <br />
+                                    <br />
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
 
@@ -109,8 +123,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
-                                                        <th>Available From</th>
-                                                        <th>Available Till</th>
                                                         <th>Align</th>
                                                     </tr>
                                                 </thead>
@@ -121,14 +133,9 @@
                                                                 <td>
                                                                     <%#DataBinder.Eval(Container,"DataItem.EmployeetName")%>
                                                                 </td>
+
                                                                 <td>
-                                                                    <%#DataBinder.Eval(Container,"DataItem.StartDate","{0:d}")%>
-                                                                </td>
-                                                                <td>
-                                                                    <%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:CheckBox ID="chkRequired" Text="Align" EmployeeName='<%#Eval("EmployeetName") %>' EndDate='<%#Eval("EndDate","{0:d}")%>' StartDate='<%#Eval("StartDate","{0:d}")%>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+                                                                    <asp:CheckBox ID="chkRequired" Text="Align" OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                                 </td>
 
                                                             </tr>
@@ -143,8 +150,8 @@
                                         <br />
                                         <br />
                                         <div class="pull-right">
-                                        <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
-                                            </div>
+                                            <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
+                                        </div>
                                         <br />
                                         <br />
                                     </div>
