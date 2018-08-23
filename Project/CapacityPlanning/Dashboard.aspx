@@ -134,13 +134,13 @@
 
 
                 <div class="col-md-3">
-                    <asp:Chart ID="myChart" runat="server" Height="500px" Width="700px">
+                    <asp:Chart ID="myChart" runat="server" Height="400px" Width="600px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
                         </Series>
                         <ChartAreas>
-                            <asp:ChartArea Name="ChartArea1">
+                            <asp:ChartArea Name="ChartArea1"> 
                                 <AxisX LineColor="DarkGray">
                                     <MajorGrid LineColor="LightGray" />
                                 </AxisX>
