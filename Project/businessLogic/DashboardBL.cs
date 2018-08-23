@@ -299,7 +299,9 @@ namespace businessLogic
                     }
 
                     chart.Series[0].ChartType = SeriesChartType.Line;
-
+                    chart.Series[0].MarkerStyle = MarkerStyle.Circle;
+                    chart.Series[0].MarkerSize = 10;
+                    chart.Series[0].MarkerColor = System.Drawing.Color.Blue;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
 
 
@@ -344,6 +346,9 @@ namespace businessLogic
                     }
 
                     chart.Series[0].ChartType = SeriesChartType.Line;
+                    chart.Series[0].MarkerStyle = MarkerStyle.Circle;
+                    chart.Series[0].MarkerSize = 10;
+                    chart.Series[0].MarkerColor = System.Drawing.Color.Blue;
 
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
 
