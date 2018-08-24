@@ -74,7 +74,8 @@ namespace CapacityPlanning
                         //string StarDate = chek.Attributes["StartDate"];
                         //string EndDate = chek.Attributes["EndDate"];
 
-                        string EmployeeName = chek.Attributes["EmployeeName"];                     
+                        string EmployeeName = chek.Text;
+                            //chek.Attributes["EmployeeName"];                     
                         name.Add(EmployeeName);
 
                     }
@@ -82,7 +83,7 @@ namespace CapacityPlanning
                 }
                 //dateSatrt = dateSatrt.Distinct().ToList();
                 //dateEnd = dateEnd.Distinct().ToList();
-                //name = name.Distinct().ToList();
+                name = name.Distinct().ToList();
             }
             catch (Exception ex)
             {
