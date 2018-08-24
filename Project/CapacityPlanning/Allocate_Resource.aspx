@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="col-md-10">
+   
 
         <div class="row">
 
@@ -72,18 +72,18 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-    </div>
+    
     <div class="row">
         <div class="col-lg-12">
 
             <div class="panel panel-default">
                 <div id="myDIV" style="display: none;" runat="server">
-                    <div class="col-md-10">
+                   
 
                         <div class="row">
 
                             <div class="col-lg-12">
-                                <h1 class="page-header">Suggestion</h1>
+                                <h1 class="page-header">&nbsp;&nbsp;Suggestion</h1>
                             </div>
                             <!-- /.col-lg-12 -->
 
@@ -164,7 +164,7 @@
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>
