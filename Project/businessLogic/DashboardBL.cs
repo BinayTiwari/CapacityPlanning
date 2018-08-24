@@ -85,26 +85,15 @@ namespace businessLogic
                 {
                     var query = (from c in db.CPT_ResourceDetails
                                  join d in db.CPT_RoleMaster on c.ResourceTypeID equals d.RoleMasterID
-                                
+
                                  group d by d.RoleName into grp
                                  select new
                                  {
                                      role = grp.Key,
                                      noOfRes = grp.Count()
-                                     
-
-
                                  }).ToList();
-
-
-                    
-
-                    
                     rpt.DataSource = query;
                     rpt.DataBind();
-
-
-
                 }
             }
             catch (Exception ex)
@@ -154,29 +143,52 @@ namespace businessLogic
                                NoOfResources = grp.Count()
                            }).ToList();
 
-
-
                 chart.Series[0].ToolTip = "#VALX : #VALY";
                 chart.Series[0].ChartType = SeriesChartType.Pie;
-
-                Title ty1 = chart.Titles.Add("ty1");
-                ty1.ForeColor = System.Drawing.Color.Blue;
-                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
-
-                ty1.Text = "Designation V/S Number of Resources";
+                //Title ty1 = chart.Titles.Add("ty1");
+                //ty1.ForeColor = System.Drawing.Color.Blue;
+                //ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+                //ty1.Text = "Designation V/S Number of Resources";
                 chart.Series[0]["PieLabelStyle"] = "Disabled";
-
-
                 if (acc.Count() > 0)
                 {
 
                     string[] xValues = new string[acc.Count()];
 
                     int[] yValues = new int[acc.Count()];
-
-
                     int count = 0;
+                    foreach (var obj in acc)
+                    {
+                        xValues[count] = obj.Designation_Name;
+                        yValues[count] = obj.NoOfResources;
+                        count++;
+                    }
+                    // chart.Series[0].ChartType = SeriesChartType.SplineArea;
+                    chart.Series[0].Points.DataBindXY(xValues, yValues);
+                }
+            }
+        }
 
+
+        public void displayDesigVsResBar(Chart chart)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var acc = (from p in db.CPT_DesignationMaster
+                           join q in db.CPT_ResourceMaster on p.DesignationMasterID equals q.DesignationID
+                           group p by p.DesignationName into grp
+                           select new
+                           {
+                               Designation_Name = grp.Key,
+                               NoOfResources = grp.Count()
+                           }).ToList();
+                chart.Series[0].ToolTip = "#VALX : #VALY";
+                chart.Series[0].ChartType = SeriesChartType.Bar;
+                if (acc.Count() > 0)
+                {
+                    string[] xValues = new string[acc.Count()];
+                    int[] yValues = new int[acc.Count()];
+                    int count = 0;
                     foreach (var obj in acc)
                     {
                         xValues[count] = obj.Designation_Name;
@@ -184,19 +196,11 @@ namespace businessLogic
 
                         count++;
                     }
-
-                    // chart.Series[0].ChartType = SeriesChartType.SplineArea;
-
+                    chart.Series[0].ChartType = SeriesChartType.Column;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
-
-
                 }
-
-
-
             }
         }
-
 
         public void displayMgrVsRpt(Chart chart)
         {
@@ -217,11 +221,11 @@ namespace businessLogic
                 chart.Series[0].ToolTip = "#VALX : #VALY";
                 chart.Series[0].ChartType = SeriesChartType.Bar;
 
-                Title ty1 = chart.Titles.Add("ty1");
-                ty1.ForeColor = System.Drawing.Color.Blue;
-                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+                //Title ty1 = chart.Titles.Add("ty1");
+                //ty1.ForeColor = System.Drawing.Color.Blue;
+                //ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
 
-                ty1.Text = "Reporting Manager V/S Number of Reporters";
+                //ty1.Text = "Reporting Manager V/S Number of Reporters";
                 //chart.Series[0]["PieLabelStyle"] = "Disabled";
 
 
@@ -242,18 +246,9 @@ namespace businessLogic
 
                         count++;
                     }
-
                     chart.Series[0].ChartType = SeriesChartType.Column;
-
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
-
-
                 }
-
-
-
-
-
             }
 
         }
@@ -269,17 +264,14 @@ namespace businessLogic
                                   {
                                       role = grp.Key,
                                       noOfRes = grp.Count()
-
-
-
                                   }).ToList();
                 chart.Series[0].ToolTip = "#VALX : #VALY";
                 chart.Series[0].ChartType = SeriesChartType.Bar;
-                Title ty1 = chart.Titles.Add("ty1");
-                ty1.ForeColor = System.Drawing.Color.Blue;
-                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+                //Title ty1 = chart.Titles.Add("ty1");
+                //ty1.ForeColor = System.Drawing.Color.Blue;
+                //ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
 
-                ty1.Text = "Role Vs Demand";
+                //ty1.Text = "Role Vs Demand";
                 if (RoleDemand.Count() > 0)
                 {
 
@@ -313,20 +305,20 @@ namespace businessLogic
             using (CPContext db = new CPContext())
             {
                 var RoleCap = (from p in db.CPT_RoleMaster
-                                  join q in db.CPT_ResourceMaster on p.RoleMasterID equals q.RolesID
-                                  group p by p.RoleName into grp
-                                  select new
-                                  {
-                                      Role_Name = grp.Key,
-                                      NoOfResources = grp.Count()
-                                  }).ToList();
+                               join q in db.CPT_ResourceMaster on p.RoleMasterID equals q.RolesID
+                               group p by p.RoleName into grp
+                               select new
+                               {
+                                   Role_Name = grp.Key,
+                                   NoOfResources = grp.Count()
+                               }).ToList();
                 chart.Series[0].ToolTip = "#VALX : #VALY";
                 //chart.Series[0].ChartType = SeriesChartType.Bar;
-                Title ty1 = chart.Titles.Add("ty1");
-                ty1.ForeColor = System.Drawing.Color.Blue;
-                ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
+                //Title ty1 = chart.Titles.Add("ty1");
+                //ty1.ForeColor = System.Drawing.Color.Blue;
+                //ty1.Font = new System.Drawing.Font("Arial", 18, System.Drawing.FontStyle.Underline);
 
-                ty1.Text = "Role Vs Capacity";
+                // ty1.Text = "Role Vs Capacity";
                 if (RoleCap.Count() > 0)
                 {
 
