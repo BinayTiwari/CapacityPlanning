@@ -165,6 +165,7 @@ namespace businessLogic
                     }
                     // chart.Series[0].ChartType = SeriesChartType.SplineArea;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
+                    
                 }
             }
         }
@@ -196,6 +197,9 @@ namespace businessLogic
 
                         count++;
                     }
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
+                    chart.Series[0].SmartLabelStyle.Enabled = true;
                     chart.Series[0].ChartType = SeriesChartType.Column;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
                 }
@@ -246,6 +250,8 @@ namespace businessLogic
 
                         count++;
                     }
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
                     chart.Series[0].ChartType = SeriesChartType.Column;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
                 }
@@ -289,7 +295,8 @@ namespace businessLogic
 
                         count++;
                     }
-
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
                     chart.Series[0].ChartType = SeriesChartType.Line;
                     chart.Series[0].MarkerStyle = MarkerStyle.Circle;
                     chart.Series[0].MarkerSize = 10;
@@ -313,6 +320,7 @@ namespace businessLogic
                                    NoOfResources = grp.Count()
                                }).ToList();
                 chart.Series[0].ToolTip = "#VALX : #VALY";
+                
                 //chart.Series[0].ChartType = SeriesChartType.Bar;
                 //Title ty1 = chart.Titles.Add("ty1");
                 //ty1.ForeColor = System.Drawing.Color.Blue;
@@ -336,7 +344,10 @@ namespace businessLogic
 
                         count++;
                     }
-
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45; 
+                    //chart.Series[0].Label = "Y = #VALY\nX = #VALX";
+                    //chart.Series[0].SmartLabelStyle.Enabled = true;
                     chart.Series[0].ChartType = SeriesChartType.Line;
                     chart.Series[0].MarkerStyle = MarkerStyle.Circle;
                     chart.Series[0].MarkerSize = 10;

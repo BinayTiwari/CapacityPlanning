@@ -95,6 +95,7 @@ namespace CapacityPlanning
                 DashboardBL.showCap(rptCpt);
                 DashboardBL.displayRoleVsDem(RoleDem1);
                 DashboardBL.showRoleVsCapacity(RoleCap1);
+                
             }
             catch (Exception ex)
             {
