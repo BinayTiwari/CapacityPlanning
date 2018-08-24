@@ -100,5 +100,10 @@ namespace CapacityPlanning
         {
             Response.Redirect("ResourceMaster.aspx");
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ResourceMaster.aspx");
+        }
     }
 }

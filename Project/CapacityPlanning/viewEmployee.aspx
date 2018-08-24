@@ -2,12 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style>
-    
-    </style>
-
     <div class="col-lg-12">
-        <h1 class="page-header">Manage Employee</h1>
+        <h1 class="page-header">View Resource</h1>
+        <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" OnClick="btnBack_Click" />
     </div>
     <!-- /.col-lg-12 -->
 
@@ -24,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <asp:Image ImageUrl='<%#Eval("Photo") %>' runat="server" />
-                           <img src="images/user_icon.png" class="rounded-circle" width="100px" height="100px">
+                            <img src="images/user_icon.png" class="rounded-circle" width="100px" height="100px">
                         </div>
                         <div class="col-md-9">
                             <h4>
@@ -52,8 +49,10 @@
 
                                 <tr>
                                     <td><b>Current Assignment</b></td>
-                                    <td><asp:Label ID="crntAssign" runat="server" Text="" ></asp:Label></td>
-                                    <td><strong>Release Date: </strong><asp:Label ID="endDate" Text="" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="crntAssign" runat="server" Text=""></asp:Label></td>
+                                    <td><strong>Release Date: </strong>
+                                        <asp:Label ID="endDate" Text="" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <td><b>Next Assignment</b></td>
