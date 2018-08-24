@@ -264,7 +264,7 @@
                     <div class="panel-body">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-bar-chart">
-                                <asp:Chart ID="myChartBar" runat="server" Height="400px" Width="400px">
+                                <asp:Chart ID="myChartBar" runat="server" Height="400px" Width="550px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
