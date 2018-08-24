@@ -49,6 +49,60 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button btnClick3;
         
         /// <summary>
+        /// graphBlock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl graphBlock;
+        
+        /// <summary>
+        /// RoleCap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleCap;
+        
+        /// <summary>
+        /// myChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart myChart;
+        
+        /// <summary>
+        /// MgrVSRpt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart MgrVSRpt;
+        
+        /// <summary>
+        /// RoleDem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleDem;
+        
+        /// <summary>
+        /// myChartBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart myChartBar;
+        
+        /// <summary>
         /// DsVsRes control.
         /// </summary>
         /// <remarks>
@@ -67,13 +121,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Repeater rptDsVsRes;
         
         /// <summary>
-        /// myChart control.
+        /// myChart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart myChart;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart myChart1;
         
         /// <summary>
         /// RMVsR control.
@@ -94,13 +148,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Repeater rptRMVsR;
         
         /// <summary>
-        /// MgrVSRpt control.
+        /// MgrVSRpt1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart MgrVSRpt;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart MgrVSRpt1;
         
         /// <summary>
         /// AccVsNoR control.
@@ -139,13 +193,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Repeater rptCapVsDem;
         
         /// <summary>
-        /// RoleDem control.
+        /// RoleDem1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleDem;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleDem1;
         
         /// <summary>
         /// rptCpt control.
@@ -157,12 +211,12 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Repeater rptCpt;
         
         /// <summary>
-        /// RoleCap control.
+        /// RoleCap1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleCap;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart RoleCap1;
     }
 }

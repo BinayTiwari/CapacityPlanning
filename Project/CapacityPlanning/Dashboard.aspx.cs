@@ -17,20 +17,25 @@ namespace CapacityPlanning
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
+            DashboardBL dashboardBL = new DashboardBL();
+            dashboardBL.displayDesigVsRes(myChart);
+            DashboardBL.showRoleVsCapacity(RoleCap);
+            DashboardBL.displayRoleVsDem(RoleDem);
+            dashboardBL.displayMgrVsRpt(MgrVSRpt);
+            dashboardBL.displayDesigVsResBar(myChartBar);
         }
         protected void btnClick_Click(object sender, EventArgs e)
         {
             try
             {
+                graphBlock.Style.Add("display", "none");
                 DsVsRes.Style.Add("display", "block");
                 RMVsR.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showDsVsRes(rptDsVsRes);
                 DashboardBL dashboardBL = new DashboardBL();
-                dashboardBL.displayDesigVsRes(myChart);
+                dashboardBL.displayDesigVsRes(myChart1);
                 
             }
             catch (Exception ex)
@@ -44,13 +49,14 @@ namespace CapacityPlanning
         {
             try
             {
+                graphBlock.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "block");
                 DsVsRes.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showRMVsR(rptRMVsR);
                 DashboardBL dashboardBL = new DashboardBL();
-                dashboardBL.displayMgrVsRpt(MgrVSRpt);
+                dashboardBL.displayMgrVsRpt(MgrVSRpt1);
             }
             catch (Exception ex)
             {
@@ -63,6 +69,7 @@ namespace CapacityPlanning
         {
             try
             {
+                graphBlock.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "block");
                 CapVsResDem.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
@@ -79,15 +86,15 @@ namespace CapacityPlanning
         {
             try
             {
+                graphBlock.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "block");
                 AccVsNoR.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
                 DsVsRes.Style.Add("display", "none");
                 DashboardBL.showCapVsResDem(rptCapVsDem);
-
                 DashboardBL.showCap(rptCpt);
-                DashboardBL.displayRoleVsDem(RoleDem);
-                DashboardBL.showRoleVsCapacity(RoleCap);
+                DashboardBL.displayRoleVsDem(RoleDem1);
+                DashboardBL.showRoleVsCapacity(RoleCap1);
             }
             catch (Exception ex)
             {

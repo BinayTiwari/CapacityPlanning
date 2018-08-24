@@ -90,15 +90,223 @@
     </div>
     <!-- /.row -->
 
+
+    <div id="graphBlock" style="display: block;" runat="server">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-center">Graphs and Charts</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Role V/S Capacity
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-line-chart">
+                                <asp:Chart ID="RoleCap" runat="server" Width="1000px" Height="400px">
+                                    <Series>
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="false" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+
+                                </asp:Chart>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Designation V/S No. of Resources
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-pie-chart">
+
+                                <asp:Chart ID="myChart" runat="server" Height="400px" Width="450px">
+                                    <Series>
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="True" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+                                    <Legends>
+                                        <asp:Legend>
+                                        </asp:Legend>
+                                    </Legends>
+                                </asp:Chart>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Reporting Manager V/S No. of Reporters
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-line-chart-multi">
+
+                                <asp:Chart ID="MgrVSRpt" runat="server" Height="400px" Width="450px">
+                                    <Series>
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="false" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+
+                                </asp:Chart>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Role V/S Demand
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-line-chart-moving">
+
+
+                                <asp:Chart ID="RoleDem" runat="server" Height="400px" Width="450px">
+                                    <Series>
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="false" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+
+                                </asp:Chart>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Designation V/S No. of Resources
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-bar-chart">
+                                <asp:Chart ID="myChartBar" runat="server" Height="400px" Width="400px">
+                                    <Series>
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="false" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+                                   
+                                </asp:Chart>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+           
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+    </div>
     <div id="DsVsRes" style="display: none;" runat="server">
-        <hr />
-        <div class="panel-body">
+        <div class="col-lg-12">
+                <h1 class="page-header text-center">Designation V/S No. of Resources</h1>
+            </div>
+        <div class="panel-body" >
             <div class="row">
-                <div class="col-md-3">
-                    <div class="dataTable_wrapper">
+                <div class="col-md-5">
+                    <div class="dataTable_wrapper" style="overflow-y:scroll; height:400px">
 
 
-                        <table class="table table-striped table-bordered table-hover" id="dataTable11s">
+                        <table class="table table-striped table-bordered table-hover" id="dataTable111s">
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
@@ -134,13 +342,13 @@
 
 
                 <div class="col-md-3">
-                    <asp:Chart ID="myChart" runat="server" Height="400px" Width="600px">
+                    <asp:Chart ID="myChart1" runat="server" Height="400px" Width="600px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
                         </Series>
                         <ChartAreas>
-                            <asp:ChartArea Name="ChartArea1"> 
+                            <asp:ChartArea Name="ChartArea1">
                                 <AxisX LineColor="DarkGray">
                                     <MajorGrid LineColor="LightGray" />
                                 </AxisX>
@@ -165,11 +373,13 @@
     </div>
     <!-- designation vs resources -->
     <div id="RMVsR" style="display: none;" runat="server">
-        <hr />
+        <div class="col-lg-12">
+                <h1 class="page-header text-center">Reporting Manager V/S No. of Reporters</h1>
+            </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="dataTable_wrapper">
+                <div class="col-md-4">
+                    <div class="dataTable_wrapper" style="overflow-y:scroll; height:400px">
 
 
                         <table class="table table-striped table-bordered table-hover" id="dataTable1s">
@@ -206,7 +416,7 @@
                 <!-- /.table-responsive -->
 
                 <div class="col-md-3">
-                    <asp:Chart ID="MgrVSRpt" runat="server" Height="500px" Width="700px">
+                    <asp:Chart ID="MgrVSRpt1" runat="server" Height="500px" Width="700px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
@@ -236,7 +446,7 @@
     <div id="AccVsNoR" style="display: none;" runat="server">
         <div class="panel-body">
 
-            <div class="dataTable_wrapper">
+            <div class="dataTable_wrapper" >
 
 
                 <table class="table table-striped table-bordered table-hover" id="dataTable2s">
@@ -282,10 +492,12 @@
     </div>
     <!-- Account vs No of resources -->
     <div id="CapVsResDem" style="display: none;" runat="server">
-        <hr />
+        <div class="col-lg-12">
+                <h1 class="page-header text-center">Capacity V/S Demand</h1>
+            </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="dataTable_wrapper">
 
 
@@ -323,7 +535,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:Chart ID="RoleDem" runat="server" Height="500px" Width="700px">
+                    <asp:Chart ID="RoleDem1" runat="server" Height="500px" Width="700px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
@@ -348,8 +560,8 @@
             <hr />
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="dataTable_wrapper">
+                <div class="col-md-4">
+                    <div class="dataTable_wrapper" style="overflow-y:scroll; height:400px">
                         <table class="table table-striped table-bordered table-hover" id="dataTable4s">
                             <thead>
                                 <tr>
@@ -390,7 +602,7 @@
 
 
                 <div class="col-md-3">
-                    <asp:Chart ID="RoleCap" runat="server" Height="500px" Width="700px">
+                    <asp:Chart ID="RoleCap1" runat="server" Height="500px" Width="700px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                             </asp:Series>
