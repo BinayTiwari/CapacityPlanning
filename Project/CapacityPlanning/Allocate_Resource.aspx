@@ -135,7 +135,7 @@
                                                                 </td>
 
                                                                 <td>
-                                                                    <asp:CheckBox ID="chkRequired" Text="Align" OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+                                                                    <asp:CheckBox ID="chkRequired" Text="Align" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                                 </td>
 
                                                             </tr>

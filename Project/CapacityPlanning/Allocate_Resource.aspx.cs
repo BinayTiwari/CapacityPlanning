@@ -15,9 +15,7 @@ namespace CapacityPlanning
 {
     public partial class Allocate_Resource : System.Web.UI.Page
     {
-        List<string> dateSatrt = new List<string>();
         List<string> name = new List<string>();
-        List<string> dateEnd = new List<string>();
         static string StartDate;
         static string EndDate;
         //int RoleID = 0;
@@ -76,9 +74,7 @@ namespace CapacityPlanning
                         //string StarDate = chek.Attributes["StartDate"];
                         //string EndDate = chek.Attributes["EndDate"];
 
-                        string EmployeeName = chek.Attributes["EmployeeName"];
-                        dateSatrt.Add(StartDate);
-                        dateEnd.Add(EndDate);
+                        string EmployeeName = chek.Attributes["EmployeeName"];                     
                         name.Add(EmployeeName);
 
                     }
@@ -111,8 +107,8 @@ namespace CapacityPlanning
                     details.ResourceID = resourceID[j];
                     details.RequestID = Session["id"].ToString();
                     details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
-                    details.StartDate = Convert.ToDateTime(dateSatrt[j]);
-                    details.EndDate = Convert.ToDateTime(dateEnd[j]);
+                    details.StartDate = Convert.ToDateTime(StartDate);
+                    details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
                     String acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
