@@ -74,8 +74,7 @@ namespace CapacityPlanning
                         //string StarDate = chek.Attributes["StartDate"];
                         //string EndDate = chek.Attributes["EndDate"];
 
-                        string EmployeeName = chek.Text;
-                            //chek.Attributes["EmployeeName"];                     
+                        string EmployeeName = chek.Attributes["EmployeeName"];                     
                         name.Add(EmployeeName);
 
                     }
@@ -174,8 +173,8 @@ namespace CapacityPlanning
             try
             {
                 Search(Convert.ToInt32(ViewState["RoleID"]));
-                EndDate = ((Convert.ToDateTime(EndDate)).AddDays(-7)).ToShortDateString();
-                lblEndDate.Text = EndDate;
+                StartDate = ((Convert.ToDateTime(StartDate)).AddDays(-7)).ToShortDateString();
+                lblStartDate.Text = StartDate;
             }
             catch (Exception ex)
             {
