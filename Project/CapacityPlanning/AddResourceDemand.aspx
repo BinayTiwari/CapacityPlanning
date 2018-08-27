@@ -93,12 +93,12 @@
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" formnovalidate/>
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click"/>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" formnovalidate/>
+                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" CausesValidation="false" formnovalidate/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -115,10 +115,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="col-sm-2 pull-right">
-                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
+                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
                             </div>
                             <div>
-                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand" />
+                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand"  />
                             </div>
                         </div>
                     </div>
