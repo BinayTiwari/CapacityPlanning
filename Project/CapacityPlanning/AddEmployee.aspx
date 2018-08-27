@@ -46,9 +46,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                        <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
+                                    <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                     </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorRManager" runat="server" ControlToValidate="RManagerDropDownList" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="col-lg-6">
@@ -60,10 +61,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                        <asp:ListItem Value="">--Select Designation--</asp:ListItem>
+                                    <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                     </asp:DropDownList>
-
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDesignation" runat="server" ControlToValidate="listDesignation" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
 
                                 </div>
@@ -77,12 +78,12 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                        <asp:ListItem Value="0">--Select Role--</asp:ListItem>
                                     </asp:DropDownList>
-
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ControlToValidate="listRole" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)" required></asp:TextBox>
+                                    <asp:TextBox ID="dojoining" TextMode="Date" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)" required></asp:TextBox>
 
                                 </div>
 
@@ -92,7 +93,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+                                    <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" AppendDataBoundItems="true">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-lg-6">
                                    <asp:TextBox ID="addressTxt" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Address"></asp:TextBox>
@@ -125,14 +129,14 @@
                                     <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                                    <asp:TextBox ID="passExpDate" TextMode="Date" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                                    <asp:TextBox ID="visExpDate" TextMode="Date" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-6">
                                     <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
@@ -162,14 +166,5 @@
             </div>
         </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('[id*=listSkill]').multiselect({
-                includeSelectAllOption: true
-            });
-            $("#Button1").click(function () {
-                alert($(".multiselect-selected-text").html());
-            });
-        });
-    </script>
+    
 </asp:Content>

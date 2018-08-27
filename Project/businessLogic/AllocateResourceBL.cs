@@ -58,7 +58,7 @@ namespace businessLogic
                     var query = (from p in db.CPT_ResourceMaster
                                  join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
                                  into t from rt in t.DefaultIfEmpty()
-                                 where p.RolesID == RoleID
+                                 where (p.RolesID == RoleID && p.isMapped == 0)
                                  select new
                                  {
                                      p.EmployeetName,

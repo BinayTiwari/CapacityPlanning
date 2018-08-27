@@ -44,7 +44,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
-                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" OnClientClick = "javascript:return false;" Text="Cancel"  CommandName="Cancel" formnovalidate />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>

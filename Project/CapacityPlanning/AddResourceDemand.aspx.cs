@@ -303,7 +303,7 @@ namespace CapacityPlanning
                 DataTable dt = (DataTable)ViewState["CurrentTable"];
                 if (dt.Rows.Count > 1)
                 {
-                    if (gvRow.RowIndex < dt.Rows.Count - 1)
+                    if (gvRow.RowIndex <= dt.Rows.Count - 1)
                     {
                         //Remove the Selected Row data and reset row number  
                         dt.Rows.Remove(dt.Rows[rowID]);
@@ -385,6 +385,8 @@ namespace CapacityPlanning
             }
             
         }
+
+        
     }
 
 }

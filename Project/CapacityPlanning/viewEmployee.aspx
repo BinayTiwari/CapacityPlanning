@@ -4,12 +4,12 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">View Resource</h1>
-        <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" OnClick="btnBack_Click" />
+        
     </div>
     <!-- /.col-lg-12 -->
 
     <div class="row">
-
+        <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" OnClick="btnBack_Click" />
         <div class="col-lg-12">
 
             <div class="panel panel-default">

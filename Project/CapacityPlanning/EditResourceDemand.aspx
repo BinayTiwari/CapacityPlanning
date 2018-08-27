@@ -61,6 +61,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Priority</label>
+                                <asp:DropDownList ID="PriorityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -115,7 +125,7 @@
                         <br />
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="col-sm-1.5 pull-right">
+                                <div class="col-sm-2 pull-right">
                                     <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
                                 </div>
                                 <div>

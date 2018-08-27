@@ -12,15 +12,17 @@
 
     <div class="row">
         <div class="form-group form-inline col-lg-12">
-            <asp:DropDownList ID="CityList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="CityName" DataValueField="CityID" OnSelectedIndexChanged="CityList_SelectedIndexChanged" AutoPostBack="True" required>
-                <asp:ListItem Value="">--Select City--</asp:ListItem>
+            <asp:DropDownList ID="CityList" AppendDataBoundItems="true" runat="server" CssClass="form-control" AutoPostBack="true"
+                OnSelectedIndexChanged="CityList_SelectedIndexChanged">
             </asp:DropDownList>
+            
             <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
-            <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" CausesValidation="False" />
+            <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="CityList" ForeColor="Red" Display="Dynamic"
+                ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
         </div>
-
+        
 
         <div class="col-lg-12">
 

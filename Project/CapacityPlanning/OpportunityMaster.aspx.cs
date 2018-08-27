@@ -131,6 +131,8 @@ namespace CapacityPlanning
         {
 
             gvOpportunity.EditIndex = -1;
+            //Button btn=(Button)gvOpportunity.FindControl("ButtonCancel");
+            //btn.d
             BindGrid();
         }
 

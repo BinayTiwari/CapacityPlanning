@@ -58,6 +58,7 @@ namespace CapacityPlanning
                 }
                 
                 employeeDetails.Skillsid = listSkillDD.SelectedValue;
+
                 if(addressTxt.Text != "")
                 {
                     employeeDetails.Address = addressTxt.Text.Trim();

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Resource Demand</h1>
+            <h1 class="page-header">Add Resource Demand</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,18 +12,25 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Resource Demand Status
+                    Add Resource Demand
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpportunity" runat="server" ControlToValidate="OpportunityID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
+
                             <div class="col-lg-6">
                                 <asp:DropDownList ID="RegionMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="RegionMasterID_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -32,16 +39,20 @@
                             <div class="col-lg-6">
                                 <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorAccount" runat="server" ControlToValidate="AccountMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
                                 <asp:DropDownList ID="SalesStageMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSalesStage" runat="server" ControlToValidate="SalesStageMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
+                            <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name" required></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -55,6 +66,8 @@
                         <asp:TemplateField HeaderText="Resource Type">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorResourceType" runat="server" ControlToValidate="ResourceTypeID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources" HeaderStyle-CssClass="text-center">
@@ -65,7 +78,8 @@
                         <asp:TemplateField HeaderText="Skills" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
-                                <%--<asp:ListBox ID="SkillID" CssClass="form-control" AppendDataBoundItems="true" runat="server"></asp:ListBox>--%>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Start Date" HeaderStyle-CssClass="text-center">
@@ -79,12 +93,12 @@
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click"  />
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" formnovalidate/>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
+                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" formnovalidate/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

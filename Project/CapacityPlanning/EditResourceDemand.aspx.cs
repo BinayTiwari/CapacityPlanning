@@ -22,6 +22,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetRegion(RegionMasterID);                               
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
                 ClsCommon.ddlGetStatus(StatusMasterID);
+                ClsCommon.ddlGetPriority(PriorityID);
                 
                 BindTextBoxvalues();
                 bindDetailTextGrid();
@@ -49,6 +50,7 @@ namespace CapacityPlanning
                 SalesStageMasterID.Text = lst[0].SalesStageID.ToString();
                 processName.Text = lst[0].ProcessName;               
                 StatusMasterID.Text = lst[0].StatusMasterID.ToString();
+                PriorityID.Text = lst[0].PriorityID.ToString();
 
             }
             catch (Exception ex)

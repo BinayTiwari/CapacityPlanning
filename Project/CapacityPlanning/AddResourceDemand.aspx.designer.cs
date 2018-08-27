@@ -22,6 +22,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList OpportunityID;
         
         /// <summary>
+        /// RequiredFieldValidatorOpportunity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorOpportunity;
+        
+        /// <summary>
         /// RegionMasterID control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList RegionMasterID;
+        
+        /// <summary>
+        /// RequiredFieldValidatorRegion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRegion;
         
         /// <summary>
         /// AccountMasterID control.
@@ -40,6 +58,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList AccountMasterID;
         
         /// <summary>
+        /// RequiredFieldValidatorAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorAccount;
+        
+        /// <summary>
         /// SalesStageMasterID control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SalesStageMasterID;
+        
+        /// <summary>
+        /// RequiredFieldValidatorSalesStage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSalesStage;
         
         /// <summary>
         /// processName control.
