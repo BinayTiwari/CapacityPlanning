@@ -421,9 +421,7 @@ namespace CapacityPlanning
                                 ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
                                 box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
                                 box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
-
                             
-
                             rowIndex++;
                         }
                     }

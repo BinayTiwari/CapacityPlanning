@@ -15,14 +15,15 @@
             <asp:DropDownList ID="CityList" AppendDataBoundItems="true" runat="server" CssClass="form-control" AutoPostBack="true"
                 OnSelectedIndexChanged="CityList_SelectedIndexChanged">
             </asp:DropDownList>
+
             
             <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="CityList" ForeColor="Red" Display="Dynamic"
-                ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+            
         </div>
-        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="CityList" ForeColor="Red" Display="Dynamic"
+                ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
         <div class="col-lg-12">
 
@@ -47,11 +48,11 @@
 
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" formnovalidate />
+                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" CausesValidation="false" formnovalidate />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
-                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" CausesValidation="false" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" CausesValidation="false" formnovalidate />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
@@ -59,7 +60,7 @@
                                     <ItemTemplate>
                                         <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" ImageUrl="~/images/11.png"
                                             CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
-                                            AlternateText="Delete" formnovalidate />
+                                            AlternateText="Delete" CausesValidation="false" formnovalidate />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

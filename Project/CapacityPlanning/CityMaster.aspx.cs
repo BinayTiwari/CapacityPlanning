@@ -18,6 +18,8 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 ClsCommon.ddlGetRegion(RegionList);
+                ClsCommon.ddlGetCountry(CountryList);
+
                 CountryList.Enabled = false;
                 CityNameTextBox.Enabled = false;
                 

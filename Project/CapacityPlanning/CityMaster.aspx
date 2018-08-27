@@ -12,20 +12,21 @@
     <div class="row">
         <div class="form-group form-inline col-lg-12">
             <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="RegionName" DataValueField="RegionID" AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1" required>
-                <asp:ListItem Value="">--Select Region--</asp:ListItem>
-
+                AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1">
             </asp:DropDownList>
-            <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
-                DataTextField="CountryName" DataValueField="CountryID" OnSelectedIndexChanged="CountryList_SelectedIndexChanged" AutoPostBack="True" required>
-                <asp:ListItem Value="">--Select Country--</asp:ListItem>
 
+            <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
+                OnSelectedIndexChanged="CountryList_SelectedIndexChanged" AutoPostBack="True" >
             </asp:DropDownList>
             <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server" required AutoPostBack="True"></asp:TextBox>
 
             <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />
         </div>
 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionList" ForeColor="Red" Display="Dynamic"
+            ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorCountry" runat="server" ControlToValidate="CountryList" ForeColor="Red" Display="Dynamic"
+            ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
         <div class="col-lg-12">
 
@@ -51,17 +52,17 @@
                                 <asp:BoundField DataField="CityName" HeaderText="City" />
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" formnovalidate />
+                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" CausesValidation="false" formnovalidate />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
-                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" CausesValidation="false" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" CausesValidation="false" formnovalidate />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" ImageUrl="~/images/11.png"
+                                        <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" ImageUrl="~/images/11.png" CausesValidation="false"
                                             CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
                                             AlternateText="Delete" formnovalidate />
                                     </ItemTemplate>
