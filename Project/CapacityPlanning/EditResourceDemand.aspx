@@ -79,7 +79,7 @@
                     CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False"
                     OnRowCreated="GridviewResourceDetail_RowCreated">
                     <Columns>
-                        <asp:BoundField DataField="RowNumber" HeaderText="#" />
+                        <%--<asp:BoundField DataField="RowNumber" HeaderText="#" />--%>
                         <asp:TemplateField HeaderText="Resource Type">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>

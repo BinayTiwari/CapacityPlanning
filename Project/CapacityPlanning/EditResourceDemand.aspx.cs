@@ -152,7 +152,7 @@ namespace CapacityPlanning
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                             dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                            dtCurrentTable.Rows[i]["SkillID"] = ddl.SelectedValue;                           
+                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                           
                             dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
                             dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
                         }
@@ -166,15 +166,14 @@ namespace CapacityPlanning
 
                 //List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
                
-                for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
+                for (int i = 0; i < data.Rows.Count - 1; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
                     details.RequestID = resourceDemandDetails.RequestID;
-
-                    details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID")).SelectedValue);
+                    details.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
                     details.NoOfResources = Convert.ToInt32(((TextBox)GridviewResourceDetail.Rows[i].FindControl("NoOfResources")).Text.Trim());
-                    details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].FindControl("SkillID")).SelectedValue;
+                    details.SkillID = (data.Rows[i]["SkillID"]).ToString();
                     details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("StartDate")).Text.Trim());
                     details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("EndDate")).Text.Trim());
 
