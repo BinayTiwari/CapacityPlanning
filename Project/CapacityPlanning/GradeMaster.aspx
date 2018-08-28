@@ -16,7 +16,10 @@
 
             <asp:Button ID="GradeAddButton" runat="server" Text="Add Grade" CssClass="btn btn-md btn-success" OnClick="GradeAddButton_Click" CausesValidation="False" />
         </div>
-
+        <asp:RegularExpressionValidator ID="RegularExpressionValidatorGrade" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="GradeNameTextBox"
+            ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorGrade" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="GradeNameTextBox" 
+    ErrorMessage="*Only Alphabets are allowed." />
 
         <div class="col-lg-12">
 

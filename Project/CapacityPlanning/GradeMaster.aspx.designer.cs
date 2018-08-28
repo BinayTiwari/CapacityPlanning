@@ -31,6 +31,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button GradeAddButton;
         
         /// <summary>
+        /// RegularExpressionValidatorGrade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorGrade;
+        
+        /// <summary>
+        /// RequiredFieldValidatorGrade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorGrade;
+        
+        /// <summary>
         /// gvGrade control.
         /// </summary>
         /// <remarks>

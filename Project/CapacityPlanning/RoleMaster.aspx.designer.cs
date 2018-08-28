@@ -31,6 +31,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button RoleAddButton;
         
         /// <summary>
+        /// RegularExpressionValidatorRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorRole;
+        
+        /// <summary>
+        /// RequiredFieldValidatorRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRole;
+        
+        /// <summary>
         /// gvRole control.
         /// </summary>
         /// <remarks>

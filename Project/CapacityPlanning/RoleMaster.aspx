@@ -14,9 +14,12 @@
         <div class="form-group form-inline col-lg-12">
             <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server" required></asp:TextBox>
 
-            <asp:Button ID="RoleAddButton" runat="server" Text="Add Role" CssClass="btn btn-md btn-success" OnClick="RoleAddButton_Click" CausesValidation="False" />
+            <asp:Button ID="RoleAddButton" runat="server" Text="Add Role" CssClass="btn btn-md btn-success" OnClick="RoleAddButton_Click" />
         </div>
-
+        <asp:RegularExpressionValidator ID="RegularExpressionValidatorRole" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox"
+            ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox" 
+    ErrorMessage="*Only Alphabets are allowed." />
 
         <div class="col-lg-12">
 
@@ -40,11 +43,11 @@
 
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" formnovalidate />
+                                        <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" CausesValidation="false" formnovalidate />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" formnovalidate />
-                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/yes.png" Width="25px" Height="25px" ID="ButtonUpdate" runat="server" CommandName="Update" CausesValidation="false" formnovalidate />
+                                        <asp:ImageButton ImageUrl="~/images/cross-red.png" Width="25px" Height="25px" ID="ButtonCancel" runat="server" Text="Cancel" CommandName="Cancel" CausesValidation="false" formnovalidate />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Image" DeleteImageUrl="~/images/trash.png" HeaderText="" />--%>
@@ -52,7 +55,7 @@
                                     <ItemTemplate>
                                         <asp:ImageButton ID="DeleteButton" runat="server" CssClass="center-block" ImageUrl="~/images/11.png"
                                             CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this Account?');"
-                                            AlternateText="Delete" formnovalidate />
+                                            AlternateText="Delete" CausesValidation="false" formnovalidate />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

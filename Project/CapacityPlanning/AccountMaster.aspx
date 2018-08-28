@@ -23,7 +23,7 @@
         </div>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidatorAccount" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="AccountNameTextBox"
             ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
-        <asp:RequiredFieldValidator ID="rfv" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="AccountNameTextBox" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorAccount" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="AccountNameTextBox" 
     ErrorMessage="*Only Alphabets are allowed." />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="CityList" ForeColor="Red" Display="Dynamic"
             ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>

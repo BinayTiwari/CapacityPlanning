@@ -31,6 +31,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button PriorityAddButton;
         
         /// <summary>
+        /// RegularExpressionValidatorPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorPriority;
+        
+        /// <summary>
+        /// RequiredFieldValidatorPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPriority;
+        
+        /// <summary>
         /// gvPriority control.
         /// </summary>
         /// <remarks>

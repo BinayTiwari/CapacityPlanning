@@ -59,11 +59,11 @@ namespace CapacityPlanning
         {
             try
             {
-                if (AccountNameTextBox.Text.Trim().Length == 0)
-                {
-                    System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form { TopMost = true }, "Don't accept Space char in your name");
-                    Focus();
-                }
+                //if (AccountNameTextBox.Text.Trim().Length == 0)
+                //{
+                //    System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form { TopMost = true }, "Don't accept Space char in your name");
+                //    Focus();
+                //}
                 CPT_AccountMaster accountdetails = new CPT_AccountMaster();
                 accountdetails.CityID = Convert.ToInt32(CityList.SelectedValue);
                 accountdetails.AccountName = AccountNameTextBox.Text.Trim();

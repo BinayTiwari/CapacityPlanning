@@ -24,6 +24,8 @@
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidatorCity" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="CityNameTextBox"
             ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="CityNameTextBox" 
+    ErrorMessage="*Only Alphabets are allowed." />
         &nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionList" ForeColor="Red" Display="Dynamic"
             ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCountry" runat="server" ControlToValidate="CountryList" ForeColor="Red" Display="Dynamic"

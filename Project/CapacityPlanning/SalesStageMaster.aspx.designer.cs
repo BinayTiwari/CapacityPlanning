@@ -31,6 +31,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button SalesStageAddButton;
         
         /// <summary>
+        /// RegularExpressionValidatorSalesStage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorSalesStage;
+        
+        /// <summary>
+        /// RequiredFieldValidatorSalesStage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSalesStage;
+        
+        /// <summary>
         /// gvSalesStage control.
         /// </summary>
         /// <remarks>
