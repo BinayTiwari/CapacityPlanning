@@ -51,13 +51,13 @@ namespace CapacityPlanning
                 bLocation.Text = lst[0].BaseLocation;
                 phone.Text = Convert.ToString(lst[0].Mobile);
                 listDesignation.Text = Convert.ToString(lst[0].DesignationID);
-                dojoining.Text = Convert.ToString(lst[0].JoiningDate);
+                dojoining.Text = (Convert.ToString(Convert.ToDateTime(lst[0].JoiningDate).ToShortDateString()));
                 expText.Text = Convert.ToString(lst[0].PriorWorkExperience);
                 panNoTxt.Text = lst[0].PAN;
                 passportNum.Text = lst[0].PassportNo;
                 addressTxt.Text = lst[0].Address;
-                passExpDate.Text = Convert.ToString(lst[0].PassportExpiryDate);
-                visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
+                passExpDate.Text = Convert.ToString(Convert.ToDateTime(lst[0].PassportExpiryDate).ToShortDateString());
+                visExpDate.Text = Convert.ToString(Convert.ToDateTime(lst[0].VisaExpiryDate).ToShortDateString());
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
                 listSkillDD.Text = lst[0].Skillsid;
@@ -97,11 +97,6 @@ namespace CapacityPlanning
         }
 
         protected void UnDoButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ResourceMaster.aspx");
-        }
-
-        protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("ResourceMaster.aspx");
         }

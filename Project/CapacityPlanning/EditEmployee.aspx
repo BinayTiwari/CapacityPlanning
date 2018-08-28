@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Edit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditEmployee.aspx.cs" Inherits="CapacityPlanning.EditEmployee" %>
+﻿<%@ Page Title="Edit Employee" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditEmployee.aspx.cs" Inherits="CapacityPlanning.EditEmployee" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="col-lg-12">
-        <h1 class="page-header">Manage Employee</h1>
+        <h1 class="page-header">Manage Resources</h1>
     </div>
     <!-- /.col-lg-12 -->
 
@@ -20,12 +20,12 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Name</label>
+                                <label>Employee Name<span style="color:red;"> *</span></label>
                                 <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Employee Name" required></asp:TextBox>
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Employee ID</label>
+                                 <label>Employee ID<span style="color:red;"> *</span></label>
                                 <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" Enabled="false" required></asp:TextBox>
 
                             </div>
@@ -37,13 +37,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Email</label>
+                                 <label>Email<span style="color:red;"> *</span></label>
                                 <asp:TextBox ID="mail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required></asp:TextBox>
                             </div>
 
                            <div class="col-lg-6">
-                                <label>Skill</label>
+                                <label>Skill<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+                               <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                         </div>
@@ -52,14 +54,16 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Reporting Manager</label>
+                                 <label>Reporting Manager<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" equired>
                                     <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorRManager" runat="server" ControlToValidate="RManagerDropDownList" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Reporting Manager!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Base Location</label>
+                                <label>Base Location<span style="color:red;"> *</span></label>
                                 <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location" required></asp:TextBox>
 
                             </div>
@@ -69,15 +73,16 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Designation</label>
+                                <label>Designation<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
                                     <asp:ListItem Value="">--Select Designation--</asp:ListItem>
                                 </asp:DropDownList>
-
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorDesignation" runat="server" ControlToValidate="listDesignation" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Designation !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Mobile No.</label>
+                               <label>Mobile No.<span style="color:red;"> *</span></label>
                                 <asp:TextBox ID="phone" TextMode="Phone" runat="server" CssClass="form-control" placeholder="Mobile Number" required></asp:TextBox>
 
                             </div>
@@ -86,16 +91,18 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Role</label>
+                                <label>Role<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
                                     <asp:ListItem Value="">--Select Role--</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ControlToValidate="listRole" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Role !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Date of Joining</label>
-                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" placeholder="Date of joining (DD/MM/YYYY)" required></asp:TextBox>
+                                <label>Date of Joining<span style="color:red;"> *</span></label>
+                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" required></asp:TextBox>
 
                             </div>
                         </div>

@@ -134,7 +134,7 @@ namespace CapacityPlanning
 
                 dojoining.Text = Convert.ToString(lst[0].JoiningDate);
 
-                dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToString());
+                dojoining.Text = (Convert.ToString(Convert.ToDateTime( lst[0].JoiningDate).ToShortDateString()));
                 //dojoining.Text = Convert.ToString(lst[0].JoiningDate.ToShortDateString());
 
                 expText.Text = Convert.ToString(lst[0].PriorWorkExperience);
@@ -142,8 +142,8 @@ namespace CapacityPlanning
                 passportNum.Text = lst[0].PassportNo;
 
                 addressTxt.Text = lst[0].Address;
-                passExpDate.Text = Convert.ToString(lst[0].PassportExpiryDate);
-                visExpDate.Text = Convert.ToString(lst[0].VisaExpiryDate);
+                passExpDate.Text = Convert.ToString(Convert.ToDateTime( lst[0].PassportExpiryDate).ToShortDateString());
+                visExpDate.Text = Convert.ToString(Convert.ToDateTime( lst[0].VisaExpiryDate).ToShortDateString());
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
                 listSkillDD.Text = lst[0].Skillsid;

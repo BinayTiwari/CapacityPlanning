@@ -49,6 +49,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList listSkillDD;
         
         /// <summary>
+        /// RequiredFieldValidatorSkill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSkill;
+        
+        /// <summary>
         /// RManagerDropDownList control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList RManagerDropDownList;
+        
+        /// <summary>
+        /// RequiredFieldValidatorRManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRManager;
         
         /// <summary>
         /// bLocation control.
@@ -76,6 +94,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList listDesignation;
         
         /// <summary>
+        /// RequiredFieldValidatorDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDesignation;
+        
+        /// <summary>
         /// phone control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listRole;
+        
+        /// <summary>
+        /// RequiredFieldValidatorRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRole;
         
         /// <summary>
         /// dojoining control.
