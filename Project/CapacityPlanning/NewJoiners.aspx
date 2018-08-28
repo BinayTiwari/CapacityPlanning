@@ -46,7 +46,7 @@
                                     <th>Experience (In Years)</th>
                                     <th>Skill</th>
                                     <th>Account</th>
-                                    
+
                                     <th>Onboard</th>
                                     <th></th>
                                     <th></th>
@@ -67,7 +67,7 @@
                                             <td><%#Eval("Experience")%></td>
                                             <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>
                                             <td><%#Eval("CPT_AccountMaster.AccountName")%></td>
-                                            
+
                                             <td class="center"><a href="OnboardNewJoiners.aspx?JoinerId=<%#Eval("NewJoinerID")%>">
                                                 <ul><i class="fa fa-user-plus" aria-hidden="true" title="Onboard"></i></ul>
                                             </a></td>
@@ -80,7 +80,7 @@
                                                     <i class="" aria-hidden="true" title="remove">
 
 
-                                                        <asp:LinkButton ID="DeleteButton" OnClick="DeleteButton_Click" JoinerName= '<%#Eval("Name") %>' joinerID='<%#Eval("NewJoinerID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
+                                                        <asp:LinkButton ID="DeleteButton" runat="server" OnClientClick="return confirm('Do you want to delete this New Joiner?');" OnClick="DeleteButton_Click" JoinerName='<%#Eval("Name") %>' joinerID='<%#Eval("NewJoinerID") %>'><img src="images/11.png" /></asp:LinkButton>
 
                                                     </i>
 

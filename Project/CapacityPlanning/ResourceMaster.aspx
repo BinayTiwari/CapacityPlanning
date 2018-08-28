@@ -73,7 +73,7 @@
                                                     <i class="" aria-hidden="true" title="remove">
 
 
-                                                        <asp:LinkButton ID="DeleteButton" OnClick="DeleteButton_Click" empID='<%#Eval("EmployeeMasterID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
+                                                        <asp:LinkButton ID="DeleteButton" OnClientClick="return confirm('Do you want to delete this Employee?');" OnClick="DeleteButton_Click" empID='<%#Eval("EmployeeMasterID") %>' runat="server"><img src="images/11.png" /></asp:LinkButton>
 
                                                     </i>
 
