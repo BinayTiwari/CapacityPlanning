@@ -17,7 +17,7 @@ namespace Entity
 
         public int ResourceTypeID { get; set; }
 
-        public int NoOfResources { get; set; }
+        public float NoOfResources { get; set; }
 
         [Required]
         [StringLength(50)]
