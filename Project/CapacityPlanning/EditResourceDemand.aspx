@@ -75,9 +75,11 @@
             </div>
 
             <div class="dataTable_wrapper">
-                <asp:GridView ID="GridviewResourceDetail" DataKeyNames="RequestDetailID" runat="server" ShowFooter="True" CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False">
+                <asp:GridView ID="GridviewResourceDetail" runat="server" ShowFooter="True"
+                    CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False"
+                    OnRowCreated="GridviewResourceDetail_RowCreated">
                     <Columns>
-
+                        <asp:BoundField DataField="RowNumber" HeaderText="#" />
                         <asp:TemplateField HeaderText="Resource Type">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
@@ -103,16 +105,16 @@
                                 <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:dd-MM-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
-                            <%--<FooterTemplate>
+                            <FooterTemplate>
                                 <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
-                            </FooterTemplate>--%>
+                            </FooterTemplate>
 
                         </asp:TemplateField>
-                        <%--<asp:TemplateField>
+                        <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
@@ -139,5 +141,5 @@
 
         </div>
     </div>
-    
+
 </asp:Content>

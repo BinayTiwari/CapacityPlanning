@@ -10,6 +10,7 @@
     </div>
 
     <div class="row">
+        <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceDemand.aspx" />
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">

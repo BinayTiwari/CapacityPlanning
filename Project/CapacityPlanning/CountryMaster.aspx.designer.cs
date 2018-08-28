@@ -40,6 +40,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button CountryAddButton;
         
         /// <summary>
+        /// RequiredFieldValidatorRegion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRegion;
+        
+        /// <summary>
         /// gvCountry control.
         /// </summary>
         /// <remarks>

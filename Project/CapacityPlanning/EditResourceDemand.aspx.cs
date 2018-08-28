@@ -69,20 +69,27 @@ namespace CapacityPlanning
                 }
 
                 List<CPT_ResourceDetails> lstDetail = ResourceDemandBL.uiDataBindingDetails(GridviewResourceDetail, requestID);
-                
+
                 //ViewState["CurrentTable"] = lstDetail;
-
-                for(int i =0; i< GridviewResourceDetail.Rows.Count; i++)
+                if (GridviewResourceDetail.Rows.Count > 0)
                 {
-                    DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID");
-                    ClsCommon.ddlGetRole(ddl);
-                    ddl.SelectedValue = lstDetail[i].ResourceTypeID.ToString();
-                    //ddl.Items.FindByValue(lstDetail[0].ResourceTypeID.ToString()).Selected = true;
-                   
-                    DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("SkillID");
-                    ClsCommon.ddlGetSkillDDL(ddl1);
-                    ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
+                    for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
+                    {
+                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID");
+                        ClsCommon.ddlGetRole(ddl);
+                        ddl.SelectedValue = lstDetail[i].ResourceTypeID.ToString();
+                        //ddl.Items.FindByValue(lstDetail[0].ResourceTypeID.ToString()).Selected = true;
 
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("SkillID");
+                        ClsCommon.ddlGetSkillDDL(ddl1);
+                        ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
+
+                    }
+                }
+
+                else
+                {
+                    SetInitialRow();
                 }
                
 
@@ -210,7 +217,44 @@ namespace CapacityPlanning
             Response.Redirect("ResourceDemand.aspx");
         }
 
-        
+        private void SetInitialRow()
+        {
+
+            DataTable dt = new DataTable();
+            DataRow dr = null;
+            dt.Columns.Add(new DataColumn("RowNumber", typeof(string)));
+            dt.Columns.Add(new DataColumn("ResourceTypeID", typeof(Int32)));//for DropDownList selected item   
+            dt.Columns.Add(new DataColumn("NoOfResources", typeof(Int32)));//for TextBox value   
+            dt.Columns.Add(new DataColumn("SkillID", typeof(string)));//for List selected item   
+            dt.Columns.Add(new DataColumn("StartDate", typeof(string)));//for Start Date 
+            dt.Columns.Add(new DataColumn("EndDate", typeof(string)));//for End Date 
+            //Set the Default value.
+            dt.Columns["NoOfResources"].DefaultValue = 5;
+
+            dr = dt.NewRow();
+            dr["RowNumber"] = 1;
+
+            dr["NoOfResources"] = 5;
+            dr["StartDate"] = string.Empty;
+            dr["EndDate"] = string.Empty;
+            dt.Rows.Add(dr);
+
+            //Store the DataTable in ViewState for future reference   
+            ViewState["CurrentTable"] = dt;
+
+            //Bind the Gridview   
+            GridviewResourceDetail.DataSource = dt;
+            GridviewResourceDetail.DataBind();
+
+            //After binding the gridview, we can then extract and fill the DropDownList with Data   
+            DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
+            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+            ClsCommon.ddlGetRole(ddl);
+            ClsCommon.ddlGetSkillDDL(ddl1);
+
+        }
+
+
         private void AddNewRowToGrid()
         {
 
