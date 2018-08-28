@@ -109,7 +109,7 @@
                     <div class="panel-body">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-line-chart">
-                                <asp:Chart ID="RoleCap" runat="server" Width="1000px" Height="400px">
+                                <asp:Chart ID="RoleCap" runat="server" Width="1020px" Height="400px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
@@ -136,7 +136,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-12 -->
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Designation V/S No. of Resources
@@ -146,7 +146,7 @@
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-pie-chart">
 
-                                <asp:Chart ID="myChart" runat="server" Height="400px" Width="450px">
+                                <asp:Chart ID="myChart" runat="server" Height="400px" Width="1020px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
@@ -178,7 +178,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-6 -->
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Reporting Manager V/S No. of Reporters
@@ -188,7 +188,7 @@
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-line-chart-multi">
 
-                                <asp:Chart ID="MgrVSRpt" runat="server" Height="400px" Width="450px">
+                                <asp:Chart ID="MgrVSRpt" runat="server" Height="400px" Width="1020px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
@@ -216,7 +216,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-6 -->
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Role V/S Demand
@@ -227,7 +227,7 @@
                             <div class="flot-chart-content" id="flot-line-chart-moving">
 
 
-                                <asp:Chart ID="RoleDem" runat="server" Height="400px" Width="450px">
+                                <asp:Chart ID="RoleDem" runat="server" Height="400px" Width="1020px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
@@ -255,7 +255,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-6 -->
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Designation V/S No. of Resources
@@ -264,7 +264,7 @@
                     <div class="panel-body">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-bar-chart">
-                                <asp:Chart ID="myChartBar" runat="server" Height="400px" Width="550px">
+                                <asp:Chart ID="myChartBar" runat="server" Height="400px" Width="1020px">
                                     <Series>
                                         <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
