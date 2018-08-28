@@ -31,6 +31,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.DropDownList skillListDD;
         
         /// <summary>
+        /// RequiredFieldValidatorSkill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSkill;
+        
+        /// <summary>
         /// listDesignation control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listDesignation;
+        
+        /// <summary>
+        /// RequiredFieldValidatorlistDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorlistDesignation;
         
         /// <summary>
         /// dojTextBox control.
@@ -74,6 +92,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList accountDropDownList;
+        
+        /// <summary>
+        /// RequiredFieldValidatoraccountDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatoraccountDropDownList;
         
         /// <summary>
         /// interviewedTextBox control.
