@@ -17,6 +17,8 @@
 
             <asp:Button ID="CountryAddButton" runat="server" Text="Add Country " CssClass="btn btn-md btn-success" OnClick="CountryAddButton_Click" />
         </div>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidatorCountry" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="CountryNameTextBox"
+            ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
         <asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionList" ForeColor="Red" Display="Dynamic"
             ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
         <div class="col-lg-12">

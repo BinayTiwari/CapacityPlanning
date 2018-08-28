@@ -61,6 +61,11 @@ namespace CapacityPlanning
         {
             try
             {
+                if (CityNameTextBox.Text.Trim().Length == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form { TopMost = true }, "Don't accept Space char in your name");
+                    Focus();
+                }
                 CPT_CityMaster Citydetails = new CPT_CityMaster();
                 Citydetails.RegionID = Convert.ToInt32(RegionList.SelectedValue);
                 Citydetails.CountryID = Convert.ToInt32(CountryList.SelectedValue);

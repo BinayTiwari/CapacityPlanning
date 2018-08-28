@@ -49,6 +49,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button CityAddButton;
         
         /// <summary>
+        /// RegularExpressionValidatorCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorCity;
+        
+        /// <summary>
         /// RequiredFieldValidatorRegion control.
         /// </summary>
         /// <remarks>

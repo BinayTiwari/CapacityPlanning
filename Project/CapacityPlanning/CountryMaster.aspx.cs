@@ -57,7 +57,11 @@ namespace CapacityPlanning
         {
             try
             {
-
+                if (CountryNameTextBox.Text.Trim().Length == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form { TopMost = true }, "Don't accept Space char in your name");
+                    Focus();
+                }
                 CPT_CountryMaster Countrydetails = new CPT_CountryMaster();
                 Countrydetails.RegionID = Convert.ToInt32(RegionList.SelectedValue);
                 Countrydetails.CountryName = CountryNameTextBox.Text.Trim();

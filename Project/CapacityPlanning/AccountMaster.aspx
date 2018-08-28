@@ -16,14 +16,15 @@
                 OnSelectedIndexChanged="CityList_SelectedIndexChanged">
             </asp:DropDownList>
 
-            
-            <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
 
+            <asp:TextBox ID="AccountNameTextBox" placeholder="Account Name" CssClass="form-control" runat="server" required></asp:TextBox>
             <asp:Button ID="AccountAddButton" runat="server" Text="Add Account" CssClass="btn btn-md btn-success" OnClick="AccountAddButton_Click" />
-            
+
         </div>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidatorAccount" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="AccountNameTextBox"
+            ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCity" runat="server" ControlToValidate="CityList" ForeColor="Red" Display="Dynamic"
-                ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+            ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
         <div class="col-lg-12">
 

@@ -18,11 +18,12 @@
             <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
                 OnSelectedIndexChanged="CountryList_SelectedIndexChanged" AutoPostBack="True" >
             </asp:DropDownList>
-            <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server" required AutoPostBack="True"></asp:TextBox>
+            <asp:TextBox ID="CityNameTextBox" placeholder="Enter City" CssClass="form-control" runat="server" required></asp:TextBox>
 
             <asp:Button ID="CityAddButton" runat="server" Text="Add City " CssClass="btn btn-md btn-success" OnClick="CityAddButton_Click" />
         </div>
-
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidatorCity" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="CityNameTextBox"
+            ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
         &nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionList" ForeColor="Red" Display="Dynamic"
             ErrorMessage="Value Required!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorCountry" runat="server" ControlToValidate="CountryList" ForeColor="Red" Display="Dynamic"
