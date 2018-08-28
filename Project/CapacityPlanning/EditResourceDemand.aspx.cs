@@ -182,13 +182,10 @@ namespace CapacityPlanning
                     //resourceDemandDetails.CPT_ResourceDetails = lstdetails;
                 }
 
-                
-
                 Response.Redirect("ResourceDemand.aspx");
             }
 
             
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -368,7 +365,7 @@ namespace CapacityPlanning
                 DataTable dt = (DataTable)ViewState["CurrentTable"];
                 if (dt.Rows.Count > 1)
                 {
-                    if (gvRow.RowIndex < dt.Rows.Count - 1)
+                    if (gvRow.RowIndex <= dt.Rows.Count - 1)
                     {
                         //Remove the Selected Row data and reset row number  
                         dt.Rows.Remove(dt.Rows[rowID]);
@@ -385,7 +382,7 @@ namespace CapacityPlanning
             }
 
             //Set Previous Data on Postbacks  
-            SetPreviousData();
+            SetPreviousDataforRemove();
         }
 
         private void ResetRowID(DataTable dt)
@@ -424,5 +421,52 @@ namespace CapacityPlanning
             }
         }
 
-    }
+        private void SetPreviousDataforRemove()
+        {
+            try
+            {
+                int rowIndex = 0;
+                if (ViewState["CurrentTable"] != null)
+                {
+
+                    DataTable dt = (DataTable)ViewState["CurrentTable"];
+                    if (dt.Rows.Count > 0)
+                    {
+
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+
+                            DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[1].FindControl("ResourceTypeID");
+                            TextBox box2 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[2].FindControl("NoOfResources");
+                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
+                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
+                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
+
+                            //Fill the DropDownList with Data 
+                            ClsCommon.ddlGetRole(ddl);
+                            ClsCommon.ddlGetSkillDDL(ddl1);
+
+
+                            ddl.ClearSelection();
+
+                            ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
+                            box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
+
+                            ddl1.ClearSelection();
+                            ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
+                            box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
+                            box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
+
+                            rowIndex++;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
+        }
 }
