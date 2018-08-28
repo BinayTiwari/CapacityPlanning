@@ -19,14 +19,14 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 ClsCommon.ddlGetOpportunity(OpportunityID);
-                ClsCommon.ddlGetRegion(RegionMasterID);                               
+                ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
                 ClsCommon.ddlGetStatus(StatusMasterID);
                 ClsCommon.ddlGetPriority(PriorityID);
-                
+
                 BindTextBoxvalues();
                 bindDetailTextGrid();
-                             
+
             }
         }
 
@@ -38,7 +38,7 @@ namespace CapacityPlanning
                 {
                     requestID = Request.QueryString["RequestID"].Trim();
                 }
-                               
+
                 List<CPT_ResourceDemand> lst = ResourceDemandBL.uiDataBinding(requestID);
                 OpportunityID.Text = lst[0].OpportunityID.ToString();
                 List<int> regionIDs = ResourceDemandBL.getRegionID(lst[0].AccountID);
@@ -48,7 +48,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetAccountWithCity(AccountMasterID, CityIDs);
                 AccountMasterID.Text = lst[0].AccountID.ToString();
                 SalesStageMasterID.Text = lst[0].SalesStageID.ToString();
-                processName.Text = lst[0].ProcessName;               
+                processName.Text = lst[0].ProcessName;
                 StatusMasterID.Text = lst[0].StatusMasterID.ToString();
                 PriorityID.Text = lst[0].PriorityID.ToString();
 
@@ -91,7 +91,7 @@ namespace CapacityPlanning
                 {
                     SetInitialRow();
                 }
-               
+
 
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
 
                 ResourceDetailsBL.deleteResourceDetails(requestID);
-                
+
 
                 ResourceDemandBL updateResourceDemand = new ResourceDemandBL();
                 updateResourceDemand.UpdateResourceDemand(resourceDemandDetails);
@@ -146,13 +146,13 @@ namespace CapacityPlanning
                         {
                             //extract the DropDownList Selected Items   
                             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
-                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");                           
+                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
                             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                             dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                           
+                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
                             dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
                             dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
                         }
@@ -165,7 +165,7 @@ namespace CapacityPlanning
                 }
 
                 //List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
-               
+
                 for (int i = 0; i < data.Rows.Count - 1; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
@@ -185,7 +185,7 @@ namespace CapacityPlanning
                 Response.Redirect("ResourceDemand.aspx");
             }
 
-            
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -469,4 +469,5 @@ namespace CapacityPlanning
             }
 
         }
+    }
 }
