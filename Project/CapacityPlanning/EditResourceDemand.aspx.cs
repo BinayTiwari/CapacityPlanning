@@ -22,7 +22,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
                 ClsCommon.ddlGetStatus(StatusMasterID);
-                ClsCommon.ddlGetPriority(PriorityID);
+                //ClsCommon.ddlGetPriority(PriorityID);
 
                 BindTextBoxvalues();
                 bindDetailTextGrid();
@@ -50,7 +50,7 @@ namespace CapacityPlanning
                 SalesStageMasterID.Text = lst[0].SalesStageID.ToString();
                 processName.Text = lst[0].ProcessName;
                 StatusMasterID.Text = lst[0].StatusMasterID.ToString();
-                PriorityID.Text = lst[0].PriorityID.ToString();
+                //PriorityID.Text = lst[0].PriorityID.ToString();
                 ViewState["dateOfCreation"] = lst[0].DateOfCreation.ToString();
 
             }
@@ -143,7 +143,7 @@ namespace CapacityPlanning
 
                     details.RequestID = resourceDemandDetails.RequestID;
                     details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID")).SelectedValue);
-                    details.NoOfResources = Convert.ToInt32(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
+                    details.NoOfResources = (float)Convert.ToDouble(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
                     details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID")).SelectedValue;
                     details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate")).Text.Trim());
                     details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim());
@@ -193,7 +193,7 @@ namespace CapacityPlanning
             DataRow dr = null;
             dt.Columns.Add(new DataColumn("RowNumber", typeof(string)));
             dt.Columns.Add(new DataColumn("ResourceTypeID", typeof(Int32)));//for DropDownList selected item   
-            dt.Columns.Add(new DataColumn("NoOfResources", typeof(Int32)));//for TextBox value   
+            dt.Columns.Add(new DataColumn("NoOfResources", typeof(float)));//for TextBox value   
             dt.Columns.Add(new DataColumn("SkillID", typeof(string)));//for List selected item   
             dt.Columns.Add(new DataColumn("StartDate", typeof(string)));//for Start Date 
             dt.Columns.Add(new DataColumn("EndDate", typeof(string)));//for End Date 
@@ -218,7 +218,7 @@ namespace CapacityPlanning
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
             DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
-            ClsCommon.ddlGetRole(ddl);
+            ClsCommon.ddlGetRoleforDemand(ddl);
             ClsCommon.ddlGetSkillDDL(ddl1);
 
         }
@@ -246,12 +246,12 @@ namespace CapacityPlanning
                     for (int i = 0; i < dtCurrentTable.Rows.Count - 1; i++)
                     {
                         //extract the DropDownList Selected Items   
-                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
+                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
 
-                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
+                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
+                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
                         dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
@@ -287,14 +287,14 @@ namespace CapacityPlanning
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
 
-                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
-                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
+                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
+                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
+                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
                         //Fill the DropDownList with Data 
 
-                        ClsCommon.ddlGetRole(ddl);
+                        ClsCommon.ddlGetRoleforDemand(ddl);
                         ClsCommon.ddlGetSkillDDL(ddl1);
 
                         if (i < dt.Rows.Count - 1)
@@ -322,7 +322,7 @@ namespace CapacityPlanning
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-
+            //SetInitialRow();
             AddNewRowToGrid();
 
         }
@@ -416,7 +416,7 @@ namespace CapacityPlanning
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
 
                             //Fill the DropDownList with Data 
-                            ClsCommon.ddlGetRole(ddl);
+                            ClsCommon.ddlGetRoleforDemand(ddl);
                             ClsCommon.ddlGetSkillDDL(ddl1);
 
 

@@ -62,15 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label>Priority</label>
-                                <asp:DropDownList ID="PriorityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -87,7 +79,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>' TextMode="Number" placeholder='No of Resources' CssClass="form-control" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>' TextMode="Number" placeholder='No of Resources' CssClass="form-control" step="0.5" runat="server" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Skills" HeaderStyle-CssClass="text-center">
