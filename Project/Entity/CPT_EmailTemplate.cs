@@ -36,5 +36,11 @@ namespace Entity
         public string ACCOUNT { get; set; }
         public string STARTDATE { get; set; }
         public string ENDDATE { get; set; }
+        public string DESIGNATION { get; set; }
+        public string DOJ { get; set; }
+        public string BASELOCATION { get; set; }
+        public string REPORTINGMGR { get; set; }
+        public string EMAIL { get; set; }
+        public string PHONE { get; set; }
     }
 }
