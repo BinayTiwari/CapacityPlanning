@@ -76,7 +76,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="NoOfResources" TextMode="Number" placeholder='No of Resources' CssClass="form-control" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="NoOfResources" TextMode="Number" placeholder='No of Resources' CssClass="form-control" runat="server" step="0.5" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
