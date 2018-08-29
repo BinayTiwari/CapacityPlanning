@@ -86,6 +86,7 @@ namespace CapacityPlanning
                         ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
 
                     }
+                    //ViewState["Table"] = GridviewResourceDetail;
                 }
 
                 else
@@ -198,12 +199,12 @@ namespace CapacityPlanning
             dt.Columns.Add(new DataColumn("StartDate", typeof(string)));//for Start Date 
             dt.Columns.Add(new DataColumn("EndDate", typeof(string)));//for End Date 
             //Set the Default value.
-            dt.Columns["NoOfResources"].DefaultValue = 5;
+            //dt.Columns["NoOfResources"].DefaultValue = 5.00;
 
             dr = dt.NewRow();
             dr["RowNumber"] = 1;
 
-            dr["NoOfResources"] = 5;
+            //dr["NoOfResources"] = 5;
             dr["StartDate"] = string.Empty;
             dr["EndDate"] = string.Empty;
             dt.Rows.Add(dr);
@@ -327,49 +328,49 @@ namespace CapacityPlanning
 
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Button lb = (Button)sender;
-            GridViewRow gvRow = (GridViewRow)lb.NamingContainer;
-            int rowID = gvRow.RowIndex;
-            if (ViewState["CurrentTable"] != null)
-            {
+        //protected void LinkButton1_Click(object sender, EventArgs e)
+        //{
+        //    Button lb = (Button)sender;
+        //    GridViewRow gvRow = (GridViewRow)lb.NamingContainer;
+        //    int rowID = gvRow.RowIndex;
+        //    if (ViewState["CurrentTable"] != null)
+        //    {
 
-                DataTable dt = (DataTable)ViewState["CurrentTable"];
-                if (dt.Rows.Count > 1)
-                {
-                    if (gvRow.RowIndex <= dt.Rows.Count - 1)
-                    {
-                        //Remove the Selected Row data and reset row number  
-                        dt.Rows.Remove(dt.Rows[rowID]);
-                        ResetRowID(dt);
-                    }
-                }
+        //        DataTable dt = (DataTable)ViewState["CurrentTable"];
+        //        if (dt.Rows.Count > 1)
+        //        {
+        //            if (gvRow.RowIndex <= dt.Rows.Count - 1)
+        //            {
+        //                //Remove the Selected Row data and reset row number  
+        //                dt.Rows.Remove(dt.Rows[rowID]);
+        //                ResetRowID(dt);
+        //            }
+        //        }
 
-                //Store the current data in ViewState for future reference  
-                ViewState["CurrentTable"] = dt;
+        //        //Store the current data in ViewState for future reference  
+        //        ViewState["CurrentTable"] = dt;
 
-                //Re bind the GridView for the updated data  
-                GridviewResourceDetail.DataSource = dt;
-                GridviewResourceDetail.DataBind();
-            }
+        //        //Re bind the GridView for the updated data  
+        //        GridviewResourceDetail.DataSource = dt;
+        //        GridviewResourceDetail.DataBind();
+        //    }
 
-            //Set Previous Data on Postbacks  
-            SetPreviousDataforRemove();
-        }
+        //    //Set Previous Data on Postbacks  
+        //    SetPreviousDataforRemove();
+        //}
 
-        private void ResetRowID(DataTable dt)
-        {
-            int rowNumber = 1;
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow row in dt.Rows)
-                {
-                    row[0] = rowNumber;
-                    rowNumber++;
-                }
-            }
-        }
+        //private void ResetRowID(DataTable dt)
+        //{
+        //    int rowNumber = 1;
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow row in dt.Rows)
+        //        {
+        //            row[0] = rowNumber;
+        //            rowNumber++;
+        //        }
+        //    }
+        //}
 
         protected void GridviewResourceDetail_RowCreated(object sender, GridViewRowEventArgs e)
         {
@@ -394,53 +395,54 @@ namespace CapacityPlanning
             }
         }
 
-        private void SetPreviousDataforRemove()
-        {
-            try
-            {
-                int rowIndex = 0;
-                if (ViewState["CurrentTable"] != null)
-                {
+        //private void SetPreviousDataforRemove()
+        //{
+        //    try
+        //    {
+        //        int rowIndex = 0;
+        //        if (ViewState["CurrentTable"] != null)
+        //        {
 
-                    DataTable dt = (DataTable)ViewState["CurrentTable"];
-                    if (dt.Rows.Count > 0)
-                    {
+        //            DataTable dt = (DataTable)ViewState["CurrentTable"];
+        //            if (dt.Rows.Count > 0)
+        //            {
 
-                        for (int i = 0; i < dt.Rows.Count; i++)
-                        {
+        //                for (int i = 0; i < dt.Rows.Count; i++)
+        //                {
 
-                            DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[1].FindControl("ResourceTypeID");
-                            TextBox box2 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[2].FindControl("NoOfResources");
-                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
-                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
-                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
+        //                    DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[1].FindControl("ResourceTypeID");
+        //                    TextBox box2 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[2].FindControl("NoOfResources");
+        //                    DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
+        //                    TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
+        //                    TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
 
-                            //Fill the DropDownList with Data 
-                            ClsCommon.ddlGetRoleforDemand(ddl);
-                            ClsCommon.ddlGetSkillDDL(ddl1);
+        //                    //Fill the DropDownList with Data 
+        //                    ClsCommon.ddlGetRoleforDemand(ddl);
+        //                    ClsCommon.ddlGetSkillDDL(ddl1);
 
 
-                            ddl.ClearSelection();
+        //                    ddl.ClearSelection();
 
-                            ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
-                            box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
+        //                    ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
+        //                    box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
 
-                            ddl1.ClearSelection();
-                            ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
-                            box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
-                            box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
+        //                    ddl1.ClearSelection();
+        //                    ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
+        //                    box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
+        //                    box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
 
-                            rowIndex++;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
+        //                    rowIndex++;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                Console.WriteLine(ex.Message);
-            }
+        //        Console.WriteLine(ex.Message);
+        //    }
 
-        }
+        //}
+
     }
 }
