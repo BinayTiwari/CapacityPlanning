@@ -47,3 +47,17 @@ E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\Mes
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csproj.CopyComplete
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.dll
 E:\Vinay\CapacityPlanning\20-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.pdb
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\MessageTemplate.dll
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\MessageTemplate.pdb
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\businessLogic.dll
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.dll
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\EntityFramework.dll
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\businessLogic.pdb
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.pdb
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\Entity.dll.config
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\bin\Debug\EntityFramework.xml
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csprojAssemblyReference.cache
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csproj.CoreCompileInputs.cache
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.csproj.CopyComplete
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.dll
+D:\CP\09-08-2018\trunk\Project\MessageTemplate\obj\Debug\MessageTemplate.pdb

@@ -103,6 +103,24 @@ namespace MessageTemplate
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
+
+                case "Onboard":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("JOINER", valemail.JOINER);
+                    dict.Add("DESIGNATION", valemail.DESIGNATION);
+                    dict.Add("BASELOCATION", valemail.BASELOCATION);
+                    dict.Add("DOJ", valemail.DOJ);
+                    dict.Add("EMAIL", valemail.EMAIL);
+                    dict.Add("PHONE", valemail.PHONE);
+                    dict.Add("REPORTINGMGR", valemail.REPORTINGMGR);
+                    
+                    
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
+
             }
 
         }
