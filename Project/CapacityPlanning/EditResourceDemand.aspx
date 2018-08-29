@@ -110,11 +110,11 @@
                             </FooterTemplate>
 
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <%--<asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
                     </Columns>
                 </asp:GridView>
             </div>

@@ -51,6 +51,7 @@ namespace CapacityPlanning
                 processName.Text = lst[0].ProcessName;
                 StatusMasterID.Text = lst[0].StatusMasterID.ToString();
                 PriorityID.Text = lst[0].PriorityID.ToString();
+                ViewState["dateOfCreation"] = lst[0].DateOfCreation.ToString();
 
             }
             catch (Exception ex)
@@ -108,6 +109,10 @@ namespace CapacityPlanning
                 {
                     requestID = Request.QueryString["RequestId"].Trim();
                 }
+
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+
                 CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
                 resourceDemandDetails.RequestID = requestID;
                 resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
@@ -117,70 +122,38 @@ namespace CapacityPlanning
                 resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
                 resourceDemandDetails.ProcessName = processName.Text;
                 resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
+                resourceDemandDetails.DateOfCreation = Convert.ToDateTime(ViewState["dateOfCreation"]);
+                resourceDemandDetails.DateOfModification = DateTime.Now;
+                resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
+               // resourceDemandDetails.StatusMasterID = 19;
+                resourceDemandDetails.PriorityID = 27;
 
-                ResourceDetailsBL.deleteResourceDetails(requestID);
+                // ResourceDetailsBL.deleteResourceDetails(requestID);
+
+                ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
+                
 
 
-                ResourceDemandBL updateResourceDemand = new ResourceDemandBL();
-                updateResourceDemand.UpdateResourceDemand(resourceDemandDetails);
-                //CPT_ResourceDetails resourceDetails = new CPT_ResourceDetails();
+                ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
+                List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
-
-                DataTable data = new DataTable();
-                if (ViewState["CurrentTable"] != null)
-                {
-                    DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-                    DataRow drCurrentRow = null;
-
-                    if (dtCurrentTable.Rows.Count > 0)
-                    {
-                        drCurrentRow = dtCurrentTable.NewRow();
-                        drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
-
-                        //add new row to DataTable   
-                        dtCurrentTable.Rows.Add(drCurrentRow);
-                        //Store the current data to ViewState for future reference   
-                        ViewState["CurrentTable"] = dtCurrentTable;
-
-                        for (int i = 0; i < dtCurrentTable.Rows.Count - 1; i++)
-                        {
-                            //extract the DropDownList Selected Items   
-                            DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
-                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-                            TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
-                            dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
-                            dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
-                            dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
-                            dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
-                        }
-
-                        //Rebind the Grid with the current data to reflect changes   
-                        GridviewResourceDetail.DataSource = dtCurrentTable;
-                        GridviewResourceDetail.DataBind();
-                    }
-                    data = dtCurrentTable;
-                }
-
-                //List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
-
-                for (int i = 0; i < data.Rows.Count - 1; i++)
+                for (int i = 0; i < GridviewResourceDetail.Rows.Count ; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
                     details.RequestID = resourceDemandDetails.RequestID;
-                    details.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
-                    details.NoOfResources = Convert.ToInt32(((TextBox)GridviewResourceDetail.Rows[i].FindControl("NoOfResources")).Text.Trim());
-                    details.SkillID = (data.Rows[i]["SkillID"]).ToString();
-                    details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("StartDate")).Text.Trim());
-                    details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].FindControl("EndDate")).Text.Trim());
+                    details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID")).SelectedValue);
+                    details.NoOfResources = Convert.ToInt32(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
+                    details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID")).SelectedValue;
+                    details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate")).Text.Trim());
+                    details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim());
 
-                    ResourceDetailsBL.Insert(details);
-                    //lstdetails.Add(details);
-                    //resourceDemandDetails.CPT_ResourceDetails = lstdetails;
+                    lstdetails.Add(details);
+                    resourceDemandDetails.CPT_ResourceDetails = lstdetails;
                 }
+
+                insertResourceDemand.Update(resourceDemandDetails);
+               // Email();
 
                 Response.Redirect("ResourceDemand.aspx");
             }
