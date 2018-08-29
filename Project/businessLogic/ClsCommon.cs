@@ -459,7 +459,8 @@ namespace businessLogic
             using (var db = new CPContext())
             {
                 var query = from c in db.CPT_RoleMaster
-                            where c.IsActive == true && (c.RoleMasterID != 1 && c.RoleMasterID != 4 && c.RoleMasterID != 16 && c.RoleMasterID !=15)
+                            where c.IsActive == true && (c.RoleMasterID != 1 && c.RoleMasterID != 4 && c.RoleMasterID != 16 
+                            && c.RoleMasterID !=15 && c.RoleMasterID != 5 && c.RoleMasterID != 11 && c.RoleMasterID != 20)
                             select c;
                 foreach (var item in query)
                 {
