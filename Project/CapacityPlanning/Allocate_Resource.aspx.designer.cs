@@ -85,6 +85,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button btnNext;
         
         /// <summary>
+        /// lblShowMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblShowMsg;
+        
+        /// <summary>
         /// rptSuggestions control.
         /// </summary>
         /// <remarks>

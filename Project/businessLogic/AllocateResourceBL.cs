@@ -49,6 +49,32 @@ namespace businessLogic
             }
             return 1;
         }
+        public static void getFreeEmployee(Repeater rpt,int RoleID,string StartDate)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    DateTime dateStart = Convert.ToDateTime(StartDate);
+                    var query = (from p in db.CPT_ResourceMaster
+                                 join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
+                                 into t
+                                 from rt in t.DefaultIfEmpty()
+                                 where (p.RolesID == RoleID && !(rt.StartDate <= dateStart))
+                                 select new
+                                 {
+                                     p.EmployeetName,
+                                 }).ToList();
+                    rpt.DataSource = query;
+                    rpt.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
         public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
         {
             try
@@ -90,14 +116,6 @@ namespace businessLogic
                     }
 
                 }
-                //var query = (from p in db.CPT_ResourceMaster
-                //             where (p.EmployeetName == name)
-                //             select p.EmployeeMasterID).ToList();
-                //int id = Convert.ToInt32(query);
-                //foreach(var i in query)
-                //{
-                //    lst.Add(i);
-                //}
                 return lst;
             }
         }

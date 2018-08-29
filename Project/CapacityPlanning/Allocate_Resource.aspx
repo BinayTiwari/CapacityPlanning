@@ -115,7 +115,7 @@
                                     <br />
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
-
+                                        <asp:Label ID ="lblShowMsg" CssClass="text-center" runat="server"></asp:Label>
                                         <div class="dataTable_wrapper">
 
 
