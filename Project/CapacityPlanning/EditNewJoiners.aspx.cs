@@ -37,7 +37,7 @@ namespace CapacityPlanning
             cPT_NewJoiners.NewJoinerID = NewJoinerID;
             cPT_NewJoiners.Name = firstNameTextBox.Text.Trim();  
             cPT_NewJoiners.DesignationID = Convert.ToInt32( listDesignation.SelectedValue);
-            cPT_NewJoiners.JoiningDate = Convert.ToDateTime( dojTextBox.Text.Trim());
+            cPT_NewJoiners.JoiningDate = (Convert.ToDateTime(dojTextBox.Text.Trim()));
             cPT_NewJoiners.Location = baseLocationTextBox.Text.Trim();
             cPT_NewJoiners.Skills = Convert.ToInt32 (skillListDD.SelectedValue);
             cPT_NewJoiners.InterviewedBy = interviewedTextBox.Text.Trim();
@@ -64,7 +64,7 @@ namespace CapacityPlanning
 
                 firstNameTextBox.Text = lst[0].Name;
                 listDesignation.Text = (lst[0].DesignationID.ToString());
-                dojTextBox.Text = lst[0].JoiningDate.ToString().Replace(" 12:00:00 AM","");
+                dojTextBox.Text = (Convert.ToDateTime( lst[0].JoiningDate).ToShortDateString()).ToString();
                 baseLocationTextBox.Text = lst[0].Location;                
                 interviewedTextBox.Text = lst[0].InterviewedBy;
                 expTextBox.Text = lst[0].Experience;

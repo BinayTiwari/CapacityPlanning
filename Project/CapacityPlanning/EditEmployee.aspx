@@ -56,7 +56,7 @@
                             <div class="col-lg-6">
                                  <label>Reporting Manager<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" equired>
-                                    <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
+                                   
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorRManager" runat="server" ControlToValidate="RManagerDropDownList" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Reporting Manager!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -93,7 +93,7 @@
                             <div class="col-lg-6">
                                 <label>Role<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                    <asp:ListItem Value="">--Select Role--</asp:ListItem>
+                                   
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ControlToValidate="listRole" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Role !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -186,7 +186,7 @@
                     <div class="row">
                         <div class="col-sm-3 pull-right">
                             <div class="col-sm-2s pull-right">
-                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
+                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
                             </div>
                             <div class="col-sm-2s pull-left">
                                 <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Update" OnClick="AddEmployeeDetail_Click" />
