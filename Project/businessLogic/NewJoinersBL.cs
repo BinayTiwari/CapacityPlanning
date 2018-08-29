@@ -195,5 +195,48 @@ namespace businessLogic
                 Console.WriteLine(ex);
             }
         }
+
+        public string getdesignationByID(int ID)
+        {
+            String dsnName = "";
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_DesignationMaster
+                            where c.DesignationMasterID == ID
+                            select new
+                            {
+                                c.DesignationName
+                            }
+                                ;
+                foreach (var ac in query)
+                {
+                    dsnName = ac.DesignationName;
+                }
+            }
+            return dsnName;
+        }
+
+
+
+        public string getManagerByID(int ID)
+        {
+            String mgrName = "";
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_ResourceMaster
+                            where c.EmployeeMasterID == ID
+                            select new
+                            {
+                                c.EmployeetName
+                            }
+                                ;
+                foreach (var ac in query)
+                {
+                    mgrName = ac.EmployeetName;
+                }
+            }
+            return mgrName;
+        }
+
     }
 }

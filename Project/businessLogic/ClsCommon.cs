@@ -343,7 +343,7 @@ namespace businessLogic
             {
                 var query = (from p in db.CPT_ResourceMaster
                              join q in db.CPT_RoleMaster on p.RolesID equals q.RoleMasterID
-                             where q.RoleMasterID !=2
+                             where q.RoleMasterID !=7 
 
                              select new
                              {
