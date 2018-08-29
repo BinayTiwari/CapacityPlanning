@@ -446,5 +446,30 @@ namespace businessLogic
                 
             }
         }
+
+
+        public static void ddlGetRoleforDemand(DropDownList ddldropdownName)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Role";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_RoleMaster
+                            where c.IsActive == true && (c.RoleMasterID != 1 && c.RoleMasterID != 4 && c.RoleMasterID != 16 && c.RoleMasterID !=15)
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.RoleMasterID.ToString();
+                    li.Text = item.RoleName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
     }
 }
