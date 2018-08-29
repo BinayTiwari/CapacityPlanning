@@ -97,9 +97,9 @@
                                 <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:MM-dd-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
-                            <FooterTemplate>
+                            <%--<FooterTemplate>
                                 <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
-                            </FooterTemplate>
+                            </FooterTemplate>--%>
 
                         </asp:TemplateField>
                         <%--<asp:TemplateField>

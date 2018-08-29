@@ -237,15 +237,15 @@ namespace CapacityPlanning
 
             //    if (dtCurrentTable.Rows.Count > 0)
               //  {
-                    drCurrentRow = dtCurrentTable.NewRow();
-                    drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
+                 //   drCurrentRow = dtCurrentTable.NewRow();
+                   // drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
                     //add new row to DataTable   
-                    dtCurrentTable.Rows.Add(drCurrentRow);
+                    //dtCurrentTable.Rows.Add(drCurrentRow);
                     //Store the current data to ViewState for future reference   
 
                     ViewState["CurrentTable"] = dtCurrentTable;
 
-                    for (int i = 0; i < dtCurrentTable.Rows.Count - 1; i++)
+                    for (int i = 0; i < GridviewResourceDetail.Rows.Count - 1; i++)
                     {
                         //extract the DropDownList Selected Items   
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
