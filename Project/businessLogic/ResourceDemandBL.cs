@@ -17,7 +17,8 @@ namespace businessLogic
             {
                 try
                 {
-                    db.CPT_ResourceDemand.Add(resourceDemandDetails);
+                    db.CPT_ResourceDemand.Add (resourceDemandDetails);
+                   // db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
                 catch (Exception e)
@@ -29,6 +30,25 @@ namespace businessLogic
             return 1;
         }
 
+        public int Update(CPT_ResourceDemand resourceDemandDetails)
+        {
+            Delete(resourceDemandDetails.RequestID);
+            using (CPContext db = new CPContext())
+            {
+                try
+                {
+                    db.CPT_ResourceDemand.Add(resourceDemandDetails);
+                    db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
+            return 1;
+        }
         public int UpdateResourceDemand(CPT_ResourceDemand resourceDemandDetails)
         {
             using (CPContext db = new CPContext())
@@ -181,6 +201,29 @@ namespace businessLogic
             }
 
             return data;
+        }
+
+        public static void Delete(string requestID)
+        {
+            try
+            {
+                using (CPContext db=  new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceDetails
+                                 where p.RequestID == requestID
+                                 select p);
+                    foreach (var item in query)
+                    {
+                        db.CPT_ResourceDetails.Remove(item);
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
