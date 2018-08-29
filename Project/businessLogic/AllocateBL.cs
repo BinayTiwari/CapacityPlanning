@@ -25,13 +25,14 @@ namespace businessLogic
                               join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                               join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
                               orderby p.DateOfCreation descending
-
+                              join x in db.CPT_ResourceMaster on p.ResourceRequestBy equals x.EmployeeMasterID
                               select new
                               {
                                   p.RequestID,
                                   q.AccountName,
                                   c.CountryName,
                                   ct.CityName,
+                                  x.EmployeetName,
                                   t.OpportunityType,
                                   u.SalesStageName,
                                   p.ProcessName,

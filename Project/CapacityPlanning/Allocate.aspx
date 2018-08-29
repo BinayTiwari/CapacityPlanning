@@ -31,7 +31,7 @@
                                     <th>Request Id</th>
                                     <th>Request Date </th>
                                     <th>Account Name</th>
-
+                                    <th>Requested By</th>
                                     <th>Opportunity Type</th>
                                     <th>Sales Stage </th>
 
@@ -51,6 +51,7 @@
                                                 <asp:Label ID="Request" Text='<%#Eval("RequestId")%>' runat="server" /></td>
                                             <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
+                                            <td><%#Eval("EmployeetName") %></td>
                                             <td><%#Eval("OpportunityType")%></td>
                                             <td><%#Eval("SalesStageName")%></td>
                                             <%--<td><%#Eval("PriorityName")%></td>--%>

@@ -110,6 +110,9 @@
                         <asp:TemplateField HeaderText="End Date (MM-dd-YYYY) *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:MM-dd-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
+                                    runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
+                                    Operator="LessThan" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <%--<FooterTemplate>
