@@ -20,15 +20,20 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Opportunity Type</label>
+                                <label>Opportunity Type<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpportunity" runat="server" ControlToValidate="OpportunityID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Opportunity!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Region</label>
+                                <label>Region<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="RegionMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="RegionMasterID_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Region!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+
                             </div>
                         </div>
                     </div>
@@ -36,14 +41,18 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Account</label>
+                                <label>Account<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorAccount" runat="server" ControlToValidate="AccountMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Account!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
-                                <label>Sales Stage</label>
+                                <label>Sales Stage<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="SalesStageMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSalesStage" runat="server" ControlToValidate="SalesStageMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Sales Stage!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -51,13 +60,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Process Name</label>
-                                <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
+                                <label>Process Name<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name" required></asp:TextBox>
                             </div>
                             <div class="col-lg-6">
-                                <label>Status</label>
+                                <label>Status<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="StatusMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorStatus" runat="server" ControlToValidate="StatusMasterID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Status!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -72,27 +83,31 @@
                     OnRowCreated="GridviewResourceDetail_RowCreated">
                     <Columns>
                         <%--<asp:BoundField DataField="RowNumber" HeaderText="#" />--%>
-                        <asp:TemplateField HeaderText="Resource Type">
+                        <asp:TemplateField HeaderText="Resource Type *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorResourceType" runat="server" ControlToValidate="ResourceTypeID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Resource Type!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="No of resources" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="No of resources *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>' TextMode="Number" placeholder='No of Resources' CssClass="form-control" step="0.5" runat="server" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Skills" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Start Date (MM-dd-YYYY)" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="Start Date (MM-dd-YYYY) *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate","{0:MM-dd-yyyy}") %> ' CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="End Date (MM-dd-YYYY)" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="End Date (MM-dd-YYYY) *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:MM-dd-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>

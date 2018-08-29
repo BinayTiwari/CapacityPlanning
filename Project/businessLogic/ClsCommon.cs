@@ -471,5 +471,30 @@ namespace businessLogic
                 }
             }
         }
+
+        public static void ddlGetStatusNew(DropDownList ddldropdownName, int statusID)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Status";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_StatusMaster
+                            where c.IsActive == true && (c.StatusMasterID == 23 || c.StatusMasterID == statusID)
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.StatusMasterID.ToString();
+                    li.Text = item.StatusName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetOpportunity(OpportunityID);
                 ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
-                ClsCommon.ddlGetStatus(StatusMasterID);
+                //ClsCommon.ddlGetStatus(StatusMasterID);
                 //ClsCommon.ddlGetPriority(PriorityID);
-
+                //ClsCommon.ddlGetStatusNew(StatusMasterID);
                 BindTextBoxvalues();
                 bindDetailTextGrid();
 
@@ -40,6 +40,8 @@ namespace CapacityPlanning
                 }
 
                 List<CPT_ResourceDemand> lst = ResourceDemandBL.uiDataBinding(requestID);
+                ClsCommon.ddlGetStatusNew(StatusMasterID, lst[0].StatusMasterID.Value);
+
                 OpportunityID.Text = lst[0].OpportunityID.ToString();
                 List<int> regionIDs = ResourceDemandBL.getRegionID(lst[0].AccountID);
                 regionID = regionIDs[0];
