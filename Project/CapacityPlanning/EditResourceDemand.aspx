@@ -87,14 +87,14 @@
                                 <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Start Date" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="Start Date (MM-dd-YYYY)" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate","{0:dd-MM-yyyy}") %>' CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate","{0:MM-dd-yyyy}") %> ' CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="End Date" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="End Date (MM-dd-YYYY)" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:dd-MM-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:MM-dd-yyyy}") %>' runat="server" CssClass="form-control" required></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>

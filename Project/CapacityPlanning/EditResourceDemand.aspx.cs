@@ -147,7 +147,8 @@ namespace CapacityPlanning
                     details.NoOfResources = (float)Convert.ToDouble(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
                     details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID")).SelectedValue;
                     details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate")).Text.Trim());
-                    details.EndDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim());
+                    string endDate = ((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim();
+                    details.EndDate = DateTime.Parse(endDate);
 
                     lstdetails.Add(details);
                     resourceDemandDetails.CPT_ResourceDetails = lstdetails;
@@ -228,14 +229,14 @@ namespace CapacityPlanning
         private void AddNewRowToGrid()
         {
 
-            if (ViewState["CurrentTable"] != null)
-            {
+           // if (ViewState["CurrentTable"] != null)
+            //{
 
                 DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
                 DataRow drCurrentRow = null;
 
-                if (dtCurrentTable.Rows.Count > 0)
-                {
+            //    if (dtCurrentTable.Rows.Count > 0)
+              //  {
                     drCurrentRow = dtCurrentTable.NewRow();
                     drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
                     //add new row to DataTable   
@@ -263,13 +264,13 @@ namespace CapacityPlanning
                     //Rebind the Grid with the current data to reflect changes   
                     GridviewResourceDetail.DataSource = dtCurrentTable;
                     GridviewResourceDetail.DataBind();
-                }
-            }
-            else
-            {
-                Response.Write("ViewState is null");
+             //   }
+//            }
+  //          else
+    //        {
+           //     Response.Write("ViewState is null");
 
-            }
+      //      }
             //Set Previous Data on Postbacks   
             SetPreviousData();
         }
