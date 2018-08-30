@@ -58,7 +58,7 @@
                             <label>Process Name<span style="color: red;"> *</span></label>
                             <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name" required></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorProcessName" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
-                                ValidationExpression="^[A-Za-z][A-Za-z0-9 ]+$" ErrorMessage="*Only Alphabets are allowed." />
+                                ValidationExpression="^[A-Za-z][A-Za-z0-9. ]*$" ErrorMessage="*Only Alphabets are allowed." />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
                                 ErrorMessage="*Only Alphabets are allowed." />
                         </div>
@@ -100,7 +100,7 @@
                                 <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" required></asp:TextBox>
                                 <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
-                                    Operator="LessThan" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
+                                    Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
