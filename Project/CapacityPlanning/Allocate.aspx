@@ -34,7 +34,6 @@
                                     <th>Requested By</th>
                                     <th>Opportunity Type</th>
                                     <th>Sales Stage </th>
-
                                     <th>Action </th>
                                     <%--<th>Change Priority</th>--%>
                                     <th></th>

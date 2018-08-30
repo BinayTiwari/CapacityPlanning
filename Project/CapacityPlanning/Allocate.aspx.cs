@@ -17,15 +17,15 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                List<int> priorityID = new List<int>();
+                List<int> statusID = new List<int>();
                 int i = 0;
-                priorityID = AllocateBL.getResourceDemand(rptResourceAllocation);
+                statusID = AllocateBL.getResourceDemand(rptResourceAllocation);
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     
                     DropDownList ddl = (DropDownList)item.FindControl("ddlPriorities");
-                    ClsCommon.ddlGetPriority(ddl);
-                    ddl.Text = priorityID[i].ToString();
+                    ClsCommon.ddlGetAction(ddl);
+                    ddl.Text = statusID[i].ToString();
                     i++;
                 }
 
@@ -41,20 +41,18 @@ namespace CapacityPlanning
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     DropDownList ddl1 = (DropDownList)item.FindControl("ddlPriorities");
-                    int PriorityID = Convert.ToInt32(ddl1.SelectedValue);
+                    int statusID = Convert.ToInt32(ddl1.SelectedValue);
+                    //string PriorityName = ddl1.SelectedItem.Text;
 
                     AllocateBL ABL = new AllocateBL();
-
                     CPT_ResourceDemand CRM = new CPT_ResourceDemand();
-                    //CRM.PriorityID = ABL.SelectID(Priority);
-
 
                     Label lblRequestID = (Label)item.FindControl("Request");
                     CRM.RequestID = lblRequestID.Text.Trim();
-                    CRM.PriorityID = PriorityID;
+                    CRM.StatusMasterID = statusID;
 
                     ABL.UpdateData(CRM);
-                    
+                    //AllocateBL.updateStatus(PriorityName, CRM);
 
                 }
                 Response.Redirect("Allocate.aspx");

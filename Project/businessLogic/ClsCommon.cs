@@ -389,7 +389,7 @@ namespace businessLogic
         {
             ddldropdownName.Items.Clear();
             ListItem li = new ListItem();
-            li.Text = "Select Priority";
+            li.Text = "Select Action";
             li.Value = "0";
             ddldropdownName.Items.Add(li);
 
@@ -495,7 +495,30 @@ namespace businessLogic
 
                 }
             }
+        }
 
+        public static void ddlGetAction(DropDownList ddldropdownName)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select Action";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_StatusMaster
+                            where c.IsActive == true && (c.StatusMasterID == 19 || c.StatusMasterID ==26 || c.StatusMasterID == 27 || c.StatusMasterID == 31)
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.StatusMasterID.ToString();
+                    li.Text = item.StatusName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
         }
     }
 }

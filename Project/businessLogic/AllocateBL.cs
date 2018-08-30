@@ -13,7 +13,7 @@ namespace businessLogic
     {
         public static List<int> getResourceDemand(Repeater repeater)
         {
-            List<int> priorityID = new List<int>();
+            List<int> statusID = new List<int>();
             using (CPContext db = new CPContext())
             {
                 var query1 = (from p in db.CPT_ResourceDemand
@@ -24,6 +24,7 @@ namespace businessLogic
                               join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
                               join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                               join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                              where p.PriorityID!=37
                               orderby p.DateOfCreation descending
                               join x in db.CPT_ResourceMaster on p.ResourceRequestBy equals x.EmployeeMasterID
                               select new
@@ -38,34 +39,21 @@ namespace businessLogic
                                   p.ProcessName,
                                   v.StatusName,
                                   p.DateOfCreation,
-                                  r.PriorityID
+                                  v.StatusMasterID
 
                               }).ToList();
 
                 foreach (var item in query1)
                 {
-                    priorityID.Add(item.PriorityID);
+                    statusID.Add(item.StatusMasterID);
                 }
 
                 repeater.DataSource = query1;
                 repeater.DataBind();
                 
             }
-            return priorityID;
+            return statusID;
         }
-
-        //public static void ddlGetPriority(DropDownList ddlPriorities)
-        //{
-        //    using (CPContext db = new CPContext())
-        //    {
-        //        var Priority =
-        //         (from t in db.CPT_PriorityMaster where t.IsActive == true select t).ToList();
-        //        ddlPriorities.DataSource = Priority;
-        //        ddlPriorities.DataTextField = "PriorityName";
-        //        ddlPriorities.DataValueField = "PriorityName";
-        //        ddlPriorities.DataBind();
-        //    }
-        //}
 
         public int UpdateData(CPT_ResourceDemand details)
         {
@@ -80,7 +68,7 @@ namespace businessLogic
 
                     foreach (CPT_ResourceDemand detail in query)
                     {
-                        detail.PriorityID = details.PriorityID;
+                        detail.StatusMasterID = details.StatusMasterID;
 
                     }
 
@@ -96,6 +84,37 @@ namespace businessLogic
                 return 1;
             }
         }
+
+        //public static void updateStatus(string priorityName, CPT_ResourceDemand details)
+        //{
+        //    int StatusID = 0;
+        //    try
+        //    {
+        //        using(CPContext db = new CPContext())
+        //        {
+        //            var query = (from p in db.CPT_StatusMaster
+        //                        where p.StatusName == priorityName
+        //                        select p.StatusMasterID).ToList();
+                   
+        //            StatusID = query[0];
+                    
+        //            var query1 = from p in db.CPT_ResourceDemand
+        //                         where p.RequestID == details.RequestID
+        //                         select p;
+
+        //            foreach(CPT_ResourceDemand item in query1)
+        //            {
+        //                item.StatusMasterID = StatusID;
+        //            }
+        //            db.SaveChanges();
+        //        }                
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
+            
+        //}
 
         //public int SelectID(string PriorityName)
         //{
