@@ -57,6 +57,7 @@ namespace MessageTemplate
                         send(ConfigurationManager.AppSettings["FromEmail"].ToString(), address, valemail.Subject, token);
                     }
                     break;
+
                 case "ForgetPassword":
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Capacity Planning");
@@ -65,9 +66,9 @@ namespace MessageTemplate
                     dict.Add("UID", valemail.UID);
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
-
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
+
                 case "ResourceDemand":
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Capacity Planning");
@@ -80,6 +81,20 @@ namespace MessageTemplate
                     ccAddress = valemail.BccEmailAddresses;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
+
+                case "UpdateResourceDemand":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("EMAIL", valemail.Name);
+                    //dict.Add("BccEmail", valemail.BccEmailAddresses);
+                    //dict.Add("UID", valemail.UID);
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    ccAddress = valemail.BccEmailAddresses;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
+
                 case "DeclinedOffer":
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Capacity Planning");
@@ -89,8 +104,8 @@ namespace MessageTemplate
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
-
                     break;
+
                 case "AlignedResource" :
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Capacity Planning");
@@ -103,7 +118,6 @@ namespace MessageTemplate
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
-
                 case "Onboard":
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Capacity Planning");
@@ -113,9 +127,7 @@ namespace MessageTemplate
                     dict.Add("DOJ", valemail.DOJ);
                     dict.Add("EMAIL", valemail.EMAIL);
                     dict.Add("PHONE", valemail.PHONE);
-                    dict.Add("REPORTINGMGR", valemail.REPORTINGMGR);
-                    
-                    
+                    dict.Add("REPORTINGMGR", valemail.REPORTINGMGR);                   
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
