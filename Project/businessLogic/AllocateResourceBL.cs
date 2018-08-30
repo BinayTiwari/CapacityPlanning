@@ -69,7 +69,7 @@ namespace businessLogic
                                  join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
                                  into t
                                  from rt in t.DefaultIfEmpty()
-                                 where (p.RolesID == RoleID && rt.StartDate <= StartDate)
+                                 where (p.RolesID == RoleID && rt.StartDate < StartDate)
                                  select new
                                  {
                                      p.EmployeetName,
