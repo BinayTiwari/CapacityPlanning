@@ -62,6 +62,10 @@
                             <div class="col-lg-6">
                                 <label>Process Name<span style="color: red;"> *</span></label>
                                 <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name" required></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorProcessName" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
+                                ValidationExpression="^[A-Za-z][A-Za-z0-9 ]+$" ErrorMessage="*Only Alphabets are allowed." />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
+                                ErrorMessage="*Only Alphabets are allowed." />
                             </div>
                             <div class="col-lg-6">
                                 <label>Status<span style="color: red;"> *</span></label>
