@@ -28,8 +28,10 @@
                                 <tr>
                                     <th>Request Id</th>
                                     <th>Request Date </th>
-                                    <th>Account Name</th>
                                     <th>Opportunity Type</th>
+                                    <th>Account Name</th>
+                                    <th>Process Name</th>
+                                    
                                     <th>Sales Stage </th>
                                     <th>Status </th>
                                     <th></th>
@@ -42,8 +44,10 @@
                                         <tr class="odd gradeX">
                                             <td><%#Eval("RequestId")%></td>
                                             <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
-                                            <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("OpportunityType")%></td>
+                                            <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
+                                            <td><%#Eval("ProcessName")%></td>
+                                            
                                             <td><%#Eval("SalesStageName")%></td>
                                             <td><%#Eval("StatusName")%></td>
                                             <td class="center"><a href="ViewResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
