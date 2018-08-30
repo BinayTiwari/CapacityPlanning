@@ -115,9 +115,9 @@ namespace CapacityPlanning
                     String name = lst[0].EmployeetName;
                     String email = lst[0].Email;
                     rbl.Insert(details);
-                    // rbl.updateMap(empID);
-                    // sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-                    // AllocateResourceBL.UpdateStatus(details.RequestID);
+                    rbl.updateMap(empID);
+                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                    AllocateResourceBL.UpdateStatus(details.RequestID);
                 }
 
 
@@ -157,7 +157,7 @@ namespace CapacityPlanning
             lblSuggestions.Text = id;
             int roleID = Convert.ToInt32(ViewState["RoleID"]);
             DateTime dateStart = Convert.ToDateTime(StartDate);
-            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart, id);
+            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
