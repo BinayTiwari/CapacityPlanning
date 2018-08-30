@@ -75,7 +75,7 @@ namespace CapacityPlanning
                         //string StarDate = chek.Attributes["StartDate"];
                         //string EndDate = chek.Attributes["EndDate"];
 
-                        string EmployeeName = chek.Attributes["EmployeeName"];                     
+                        string EmployeeName = chek.Attributes["EmployeeName"];
                         name.Add(EmployeeName);
 
                     }
@@ -100,7 +100,7 @@ namespace CapacityPlanning
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
-                
+
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
                 {
@@ -116,9 +116,9 @@ namespace CapacityPlanning
                     String name = lst[0].EmployeetName;
                     String email = lst[0].Email;
                     rbl.Insert(details);
-                    rbl.updateMap(empID);
-                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-                    AllocateResourceBL.UpdateStatus(details.RequestID);
+                   // rbl.updateMap(empID);
+                   // sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                   // AllocateResourceBL.UpdateStatus(details.RequestID);
                 }
 
 
@@ -160,12 +160,12 @@ namespace CapacityPlanning
             using (CPContext db = new CPContext())
             {
                 var dateS = (from p in db.CPT_AllocateResource
-                            select p.StartDate
+                             select p.StartDate
                             ).ToList();
-                var dateE = (from q in db.CPT_AllocateResource
-                             select q.EndDate).ToList();
+                //var dateE = (from q in db.CPT_AllocateResource
+                //             select q.EndDate).ToList();
                 DateTime dateStart = Convert.ToDateTime(StartDate);
-                DateTime dateEnd = Convert.ToDateTime(EndDate);
+                //DateTime dateEnd = Convert.ToDateTime(EndDate);
                 //for(int i =0; i<=dateE.Count(); i++)
                 //{
                 //    if (dateStart <= dateS[i])
@@ -173,10 +173,9 @@ namespace CapacityPlanning
                 //        AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, StartDate);
                 //    }
                 //}
-                if (dateStart <= dateS[0])
-                    {
-                        AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, StartDate);
-                    }
+
+                AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, StartDate);
+
 
 
 
@@ -189,23 +188,27 @@ namespace CapacityPlanning
             {
                 SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
-               // EndDate = ((Convert.ToDateTime(EndDate)).AddDays(7)).ToShortDateString();
+                // EndDate = ((Convert.ToDateTime(EndDate)).AddDays(7)).ToShortDateString();
                 lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
-                if(dtstart >= dtEnd)
+                if (dtstart >= dtEnd)
                 {
                     btnNext.Enabled = false;
                 }
-                
-                
+                else
+                {
+                    btnNext.Enabled = true;
+                }
+
+
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
         protected void btnPreviousWeek_Click(object sender, EventArgs e)
@@ -222,6 +225,10 @@ namespace CapacityPlanning
                 {
                     btnNext.Enabled = true;
                 }
+                else
+                {
+                    btnNext.Enabled = false;
+                }
 
             }
             catch (Exception ex)
@@ -229,7 +236,7 @@ namespace CapacityPlanning
 
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
 
@@ -243,13 +250,13 @@ namespace CapacityPlanning
                 AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, RoleID);
 
             }
-        
+
             catch (Exception ex)
             {
 
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
     }
 }

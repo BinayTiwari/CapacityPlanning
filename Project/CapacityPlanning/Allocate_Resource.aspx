@@ -13,7 +13,7 @@
 
         </div>
         <div class="row">
-
+            <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceMapping.aspx" />
 
             <div class="col-lg-12">
 
