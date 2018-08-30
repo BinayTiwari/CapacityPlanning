@@ -24,7 +24,7 @@ namespace businessLogic
                               join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
                               join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                               join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
-                              where p.PriorityID!=37
+                              where p.StatusMasterID !=26
                               orderby p.DateOfCreation descending
                               join x in db.CPT_ResourceMaster on p.ResourceRequestBy equals x.EmployeeMasterID
                               select new
