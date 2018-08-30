@@ -4,7 +4,7 @@
     <div class="row">
 
         <div class="col-lg-12">
-            <h1 class="page-header">Resource Mapping</h1>
+            <h1 class="page-header">Resource Allocation</h1>
         </div>
         <!-- /.col-lg-12 -->
 
@@ -17,7 +17,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                   Resource Mapping
+                   Resource Allocation
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -31,7 +31,7 @@
                                     <th>Request Id</th>
                                     <th>Request Date </th>
                                     <th>Account Name</th>
-
+                                    <th>Process Name</th>
                                     <th>Opportunity Type</th>
                                     <th>Sales Stage </th>
 
@@ -50,6 +50,7 @@
                                                 <asp:Label ID="Request" Text='<%#Eval("RequestId")%>' runat="server" /></td>
                                             <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
+                                            <td><%#Eval("ProcessName") %></td>
                                             <td><%#Eval("OpportunityType")%></td>
                                             <td><%#Eval("SalesStageName")%></td>
                                            
