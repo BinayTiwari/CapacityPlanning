@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-        <asp:Button ID="btnBack" Text="Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceDemand.aspx" />
+        <asp:Button ID="btnBack" Text="&#8617; Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceDemand.aspx" />
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -63,8 +63,15 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                       
+                    </div>
+
+                    <div class="form-group">
+                         <div class="row">
                             <div class="col-lg-6">
+                                <label>Status</label>
+                                <asp:DropDownList ID="StatusMasterID" AppendDataBoundItems="true" Enabled="false" CssClass="form-control" runat="server">
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>

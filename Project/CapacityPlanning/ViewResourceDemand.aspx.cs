@@ -21,6 +21,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetAccount(accNameDD);
                 ClsCommon.ddlGetOpportunity(oppTypeDD);
                 ClsCommon.ddlGetRegion(regionNameDD);
+                ClsCommon.ddlGetStatus(StatusMasterID);
 
                 BindValue();
             }
@@ -54,7 +55,7 @@ namespace CapacityPlanning
             List<int> regionIDs = ResourceDemandBL.getRegionID(lst[0].AccountID);
             regionID = regionIDs[0];
             regionNameDD.Items.FindByValue(regionID.ToString()).Selected = true;
-            
+            StatusMasterID.Text = lst[0].StatusMasterID.ToString();
 
             ResourceDetailsBL.ViewResourceDetails(rptResourceDetails, requestID);
         }
