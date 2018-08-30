@@ -1,10 +1,10 @@
-﻿<%@ Page Title="Allocate" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Allocate.aspx.cs" Inherits="CapacityPlanning.Allocate" %>
+﻿<%@ Page Title="Pending Approval" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Allocate.aspx.cs" Inherits="CapacityPlanning.Allocate" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
 
         <div class="col-lg-12">
-            <h1 class="page-header">Project Prioritization</h1>
+            <h1 class="page-header">Pending Approval</h1>
         </div>
         <!-- /.col-lg-12 -->
 
@@ -17,7 +17,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    Project Prioritization
+                    Pending Approval
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -35,7 +35,7 @@
                                     <th>Opportunity Type</th>
                                     <th>Sales Stage </th>
 
-                                    <th>Priority </th>
+                                    <th>Action </th>
                                     <%--<th>Change Priority</th>--%>
                                     <th></th>
 
