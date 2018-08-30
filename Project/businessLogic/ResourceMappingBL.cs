@@ -29,7 +29,7 @@ namespace businessLogic
                                   join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                                   join z in db.CPT_PriorityMaster on p.PriorityID equals z.PriorityID
                                   join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
-                                  where z.PriorityID == 34
+                                  where z.PriorityID == 37
                                   orderby p.DateOfCreation descending
 
                                   select new

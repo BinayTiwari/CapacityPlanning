@@ -49,22 +49,32 @@ namespace businessLogic
             }
             return 1;
         }
-        public static void getFreeEmployee(Repeater rpt,int RoleID,string StartDate)
+        public static void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate, string requestID)
         {
             try
             {
                 using (CPContext db = new CPContext())
                 {
-                    DateTime dateStart = Convert.ToDateTime(StartDate);
-                    var query = (from p in db.CPT_ResourceMaster
+                    
+                    var query1 = (from p in db.CPT_ResourceMaster
                                  join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
                                  into t
                                  from rt in t.DefaultIfEmpty()
-                                 where (p.RolesID == RoleID && !(rt.StartDate <= dateStart))
+                                 where (p.RolesID == RoleID)
                                  select new
                                  {
                                      p.EmployeetName,
                                  }).ToList();
+                    var query2 = (from p in db.CPT_ResourceMaster
+                                 join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
+                                 into t
+                                 from rt in t.DefaultIfEmpty()
+                                 where (p.RolesID == RoleID && rt.StartDate <= StartDate && rt.RequestID == requestID)
+                                 select new
+                                 {
+                                     p.EmployeetName,
+                                 }).ToList();
+                    var query = query1.Except(query2).ToList();
                     rpt.DataSource = query;
                     rpt.DataBind();
                 }
@@ -75,29 +85,29 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
-        {
-            try
-            {
-                using (CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_ResourceMaster
-                                 join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
-                                 into t from rt in t.DefaultIfEmpty()
-                                 where (p.RolesID == RoleID && p.isMapped == 0)
-                                 select new
-                                 {
-                                     p.EmployeetName,
-                                 }).ToList();
-                    repeater.DataSource = query;
-                    repeater.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
+        //{
+        //    try
+        //    {
+        //        using (CPContext db = new CPContext())
+        //        {
+        //            var query = (from p in db.CPT_ResourceMaster
+        //                         join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
+        //                         into t from rt in t.DefaultIfEmpty()
+        //                         where (p.RolesID == RoleID && p.isMapped == 0)
+        //                         select new
+        //                         {
+        //                             p.EmployeetName,
+        //                         }).ToList();
+        //            repeater.DataSource = query;
+        //            repeater.DataBind();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
         public static List<int> ResourceID(List<string> name)
         {
             using (CPContext db = new CPContext())

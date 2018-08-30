@@ -43,8 +43,7 @@ namespace CapacityPlanning
                 ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
-                Search(Convert.ToInt32(theButton.CommandArgument));
-
+                SearchAvailability(Convert.ToInt32(theButton.CommandArgument));
             }
             catch (Exception ex)
             {
@@ -116,9 +115,9 @@ namespace CapacityPlanning
                     String name = lst[0].EmployeetName;
                     String email = lst[0].Email;
                     rbl.Insert(details);
-                   // rbl.updateMap(empID);
-                   // sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-                   // AllocateResourceBL.UpdateStatus(details.RequestID);
+                    // rbl.updateMap(empID);
+                    // sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                    // AllocateResourceBL.UpdateStatus(details.RequestID);
                 }
 
 
@@ -157,30 +156,8 @@ namespace CapacityPlanning
             string id = Session["id"].ToString();
             lblSuggestions.Text = id;
             int roleID = Convert.ToInt32(ViewState["RoleID"]);
-            using (CPContext db = new CPContext())
-            {
-                var dateS = (from p in db.CPT_AllocateResource
-                             select p.StartDate
-                            ).ToList();
-                //var dateE = (from q in db.CPT_AllocateResource
-                //             select q.EndDate).ToList();
-                DateTime dateStart = Convert.ToDateTime(StartDate);
-                //DateTime dateEnd = Convert.ToDateTime(EndDate);
-                //for(int i =0; i<=dateE.Count(); i++)
-                //{
-                //    if (dateStart <= dateS[i])
-                //    {
-                //        AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, StartDate);
-                //    }
-                //}
-
-                AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, StartDate);
-
-
-
-
-
-            }
+            DateTime dateStart = Convert.ToDateTime(StartDate);
+            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart, id);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -188,7 +165,6 @@ namespace CapacityPlanning
             {
                 SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
-                // EndDate = ((Convert.ToDateTime(EndDate)).AddDays(7)).ToShortDateString();
                 lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
@@ -217,7 +193,6 @@ namespace CapacityPlanning
             {
                 SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(-7)).ToShortDateString();
-                //EndDate = ((Convert.ToDateTime(EndDate)).AddDays(-7)).ToShortDateString();
                 lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
@@ -240,23 +215,23 @@ namespace CapacityPlanning
         }
 
 
-        private void Search(int RoleID)
-        {
-            try
-            {
+        //private void Search(int RoleID)
+        //{
+        //    try
+        //    {
 
-                string id = Session["id"].ToString();
-                lblSuggestions.Text = id;
-                AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, RoleID);
+        //        string id = Session["id"].ToString();
+        //        lblSuggestions.Text = id;
+        //        AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, RoleID);
 
-            }
+        //    }
 
-            catch (Exception ex)
-            {
+        //    catch (Exception ex)
+        //    {
 
-                Console.WriteLine(ex.Message);
-            }
+        //        Console.WriteLine(ex.Message);
+        //    }
 
-        }
+        //}
     }
 }

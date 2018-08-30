@@ -106,9 +106,9 @@
                                        <b>Start Date:</b> <asp:Label ID="lblStartDate" runat="server" Text=""></asp:Label>&nbsp;&nbsp;&nbsp;
                                        <b>End Date:</b> <asp:Label ID="lblEndDate" runat="server" Text=""></asp:Label>&nbsp;&nbsp;
 
-                                        <asp:Button ID="btnPreviousWeek" runat="server" Class="btn btn-success btn-md" Text="<< Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
+                                        <asp:Button ID="btnPreviousWeek" runat="server" Class="btn btn-success btn-md" Text="&#8678; Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
                                         &nbsp;
-                                       <asp:Button ID="btnNext" runat="server" Class="btn btn-success btn-md" Text=" Availability in Next Week >>" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <asp:Button ID="btnNext" runat="server" Class="btn btn-success btn-md" Text=" Availability in Next Week &#8680;" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
               
                                     </div>
                                     <br />
@@ -135,7 +135,7 @@
                                                                 </td>
 
                                                                 <td>
-                                                                    <asp:CheckBox ID="chkRequired" Text="Align" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+                                                                    <asp:CheckBox ID="chkRequired"  EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                                 </td>
 
                                                             </tr>
