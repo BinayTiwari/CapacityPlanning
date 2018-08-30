@@ -163,8 +163,8 @@ namespace CapacityPlanning
         {
             try
             {
-                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
+                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));                
                 lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
@@ -191,8 +191,8 @@ namespace CapacityPlanning
         {
             try
             {
-                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(-7)).ToShortDateString();
+                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
