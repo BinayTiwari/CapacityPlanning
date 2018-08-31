@@ -11,6 +11,7 @@ namespace Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CPT_RoleMaster()
         {
+            CPT_AllocateResource = new HashSet<CPT_AllocateResource>();
             CPT_ResourceMaster = new HashSet<CPT_ResourceMaster>();
         }
 
@@ -24,6 +25,9 @@ namespace Entity
         public string Description { get; set; }
 
         public bool IsActive { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_ResourceMaster> CPT_ResourceMaster { get; set; }
