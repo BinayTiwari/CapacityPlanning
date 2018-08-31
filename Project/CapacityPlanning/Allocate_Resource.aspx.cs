@@ -18,6 +18,7 @@ namespace CapacityPlanning
         List<string> name = new List<string>();
         static string StartDate;
         static string EndDate;
+        int skillID;
         List<int> resourceID = new List<int>();
         //int RoleID = 0;
 
@@ -43,6 +44,15 @@ namespace CapacityPlanning
                 Button theButton = sender as Button;
                 StartDate = theButton.Attributes["StartDate"];
                 EndDate = theButton.Attributes["EndDate"];
+                string skillName =  theButton.Attributes["SkillsName"];
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_SkillsMaster
+                                 where p.SkillsName == skillName
+                                 select p.SkillsMasterID).ToList();
+                      skillID = query[0];
+                }
+                
                 ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
@@ -169,7 +179,7 @@ namespace CapacityPlanning
             int roleID = Convert.ToInt32(ViewState["RoleID"]);
             DateTime dateStart = Convert.ToDateTime(StartDate);
             // DateTime dateEnd = Convert.ToDateTime(EndDate);
-            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart);
+            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart, skillID.ToString());
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {

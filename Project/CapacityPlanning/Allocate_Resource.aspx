@@ -61,7 +61,7 @@
                                             </a></td>
 
                                             <td>
-                                                <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />
+                                                <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" SkillsName='<%#Eval("SkillsName") %>' StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />
                                             </td>
 
                                         </tr>

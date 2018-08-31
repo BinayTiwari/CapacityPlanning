@@ -59,7 +59,7 @@ namespace businessLogic
             }
             return 1;
         }
-        public static void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate)
+        public static void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate, string SkillID)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace businessLogic
                                   join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
                                   into t
                                   from rt in t.DefaultIfEmpty()
-                                  where (p.RolesID == RoleID)
+                                  where (p.RolesID == RoleID && p.Skillsid == SkillID)
                                   select new
                                   {
                                       p.EmployeetName,
