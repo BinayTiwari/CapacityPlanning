@@ -135,6 +135,7 @@
                                                             </td>
 
                                                             <td>
+                                                                <%--<asp:HiddenField ID="employeeID" runat="server" Value='<%# Eval("EmployeeMasterID") %>' />--%>
                                                                 <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                             </td>
 

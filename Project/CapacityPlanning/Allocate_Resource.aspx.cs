@@ -26,12 +26,12 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                string id = Session["id"].ToString();
+                string id = Request.QueryString["RequestID"];
                 lblResourceAllocation.Text = id;
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
-               // AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
-               // AllocateResourceBL.NoOfAllocated(rptResourceAllocation,id);
+                // AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
+                // AllocateResourceBL.NoOfAllocated(rptResourceAllocation,id);
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -44,16 +44,16 @@ namespace CapacityPlanning
                 Button theButton = sender as Button;
                 StartDate = theButton.Attributes["StartDate"];
                 EndDate = theButton.Attributes["EndDate"];
-                string skillName =  theButton.Attributes["SkillsName"];
+                string skillName = theButton.Attributes["SkillsName"];
                 using (CPContext db = new CPContext())
                 {
                     var query = (from p in db.CPT_SkillsMaster
                                  where p.SkillsName == skillName
                                  select p.SkillsMasterID).ToList();
-                      skillID = query[0];
+                    skillID = query[0];
 
                 }
-                
+
                 ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
@@ -82,15 +82,15 @@ namespace CapacityPlanning
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
                     var chek = (CheckBox)sender;
-                    
+                    //var reminderHiddenField = (HiddenField)chek.NamingContainer.FindControl("employeeID");
                     if (chk.Checked)
                     {
-                        //string StarDate = chek.Attributes["StartDate"];
-                        //string EndDate = chek.Attributes["EndDate"];
-
+                        //var empID = reminderHiddenField.Value;
+                        //name.Add(empID);
                         string EmployeeName = chek.Attributes["EmployeeName"];
                         name.Add(EmployeeName);
-                        /*count++*/;
+                        /*count++*/
+
                     }
 
                 }
@@ -120,8 +120,8 @@ namespace CapacityPlanning
                 {
 
                     details.ResourceID = resourceID[j];
-                    details.RequestID = Session["id"].ToString();
-                    details.AccountID = AllocateResourceBL.getAccountID(Session["id"].ToString());
+                    details.RequestID = Request.QueryString["RequestID"]; 
+                    details.AccountID = AllocateResourceBL.getAccountID(details.RequestID.ToString());
                     details.StartDate = Convert.ToDateTime(StartDate);
                     details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
@@ -131,8 +131,8 @@ namespace CapacityPlanning
                     String email = lst[0].Email;
                     rbl.Insert(details);
                     rbl.updateMap(empID);
-                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-                   
+                    //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+
                 }
                 Response.Redirect("ResourceMapping.aspx");
                 //foreach (Repeater row in rptSuggestions.Items)
@@ -175,12 +175,13 @@ namespace CapacityPlanning
         }
         public void SearchAvailability(int RoleID)
         {
-            string id = Session["id"].ToString();
+            string id = Request.QueryString["RequestID"];
             lblSuggestions.Text = id;
             int roleID = Convert.ToInt32(ViewState["RoleID"]);
             DateTime dateStart = Convert.ToDateTime(StartDate);
-            // DateTime dateEnd = Convert.ToDateTime(EndDate);
-            AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart, skillID.ToString());
+             DateTime dateEnd = Convert.ToDateTime(EndDate);
+            AllocateResourceBL rbl = new AllocateResourceBL();
+            rbl.getFreeEmployee(rptSuggestions, roleID, dateStart, skillID.ToString(), dateEnd);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -192,12 +193,12 @@ namespace CapacityPlanning
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
                 if (dtstart >= dtEnd)
                 {
-                    
+
                     btnNext.Enabled = false;
                 }
                 else
                 {
-                    
+
                     btnNext.Enabled = true;
                     lblStartDate.Text = StartDate;
                     SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
@@ -223,7 +224,7 @@ namespace CapacityPlanning
                 if (dtstart <= dtEnd)
                 {
                     btnNext.Enabled = true;
-                    
+
                     SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                     lblStartDate.Text = StartDate;
                 }
