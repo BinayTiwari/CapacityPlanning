@@ -59,35 +59,51 @@ namespace businessLogic
             }
             return 1;
         }
-        public static void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate, string SkillID)
+        public void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate, string SkillID, DateTime EndDate)
         {
             try
             {
-                using (CPContext db = new CPContext())
-                {
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "SELECT CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
+                    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
+                     " Where CPT_ResourceMaster.RolesID = 7 and CPT_ResourceMaster.Skillsid = 15 AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
+                    " (CPT_AllocateResource.StartDate BETWEEN '" +StartDate+"' AND  '"+ EndDate + "') OR(CPT_AllocateResource.EndDate BETWEEN '" + StartDate + "' AND  '" + EndDate + "'))";
 
-                    var query1 = (from p in db.CPT_ResourceMaster
-                                  join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                                  into t
-                                  from rt in t.DefaultIfEmpty()
-                                  where (p.RolesID == RoleID && p.Skillsid == SkillID)
-                                  select new
-                                  {
-                                      p.EmployeetName,
-                                  }).ToList();
-                    var query2 = (from p in db.CPT_ResourceMaster
-                                  join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                                  into t
-                                  from rt in t.DefaultIfEmpty()
-                                  where (p.RolesID == RoleID && rt.StartDate <= StartDate)
-                                  select new
-                                  {
-                                      p.EmployeetName,
-                                  }).ToList();
-                    var query = query1.Except(query2).ToList();
-                    rpt.DataSource = query;
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    SqlDataReader reader = SqlCom.ExecuteReader();
+                    rpt.DataSource = reader;
                     rpt.DataBind();
                 }
+                //using (CPContext db = new CPContext())
+                //{
+
+                //    //var query1 = (from p in db.CPT_ResourceMaster
+                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
+                //    //              into t
+                //    //              from rt in t.DefaultIfEmpty()
+                //    //              where (p.RolesID == RoleID && p.Skillsid == SkillID)
+                //    //              select new
+                //    //              {
+                //    //                  p.EmployeetName,
+                //    //                  p.EmployeeMasterID
+                //    //              }).ToList();
+                //    //var query2 = (from p in db.CPT_ResourceMaster
+                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
+                //    //              into t
+                //    //              from rt in t.DefaultIfEmpty()
+                //    //              where (p.RolesID == RoleID && rt.StartDate <= StartDate)
+                //    //              select new
+                //    //              {
+                //    //                  p.EmployeetName,
+                //    //                  p.EmployeeMasterID
+                //    //              }).ToList();
+                //    //var query = query1.Except(query2).ToList();
+                //    //rpt.DataSource = query;
+                //    //rpt.DataBind();
+                //}
             }
             catch (Exception ex)
             {
@@ -186,41 +202,16 @@ namespace businessLogic
 
             }
         }
-        //public static void NoOfAllocated(Repeater rpt, string requestID)
-        //{
-        //    try
-        //    {
-        //        using (CPContext db = new CPContext())
-        //        {
-        //            var query = (from p in db.CPT_AllocateResource
-        //                         where p.RequestID == requestID
-        //                         group p by p.RoleID into grp
-        //                         select new
-        //                         {
-        //                             Allocated = grp.Count()
-        //                         }
 
-        //                ).ToList();
-        //            rpt.DataSource = query;
-        //            rpt.DataBind();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
-       
-        public  void AllocateResourceByID(Repeater rpt, string reqID)
+        public void AllocateResourceByID(Repeater rpt, string reqID)
         {
             try
             {
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString =" SELECT CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName,"+
-                                  " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID,"+reqID+ ") As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
-                                  " FROM CPT_SkillsMaster INNER JOIN CPT_ResourceDetails INNER JOIN CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON "+
+                string SqlString = " SELECT CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName," +
+                                  " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID," + reqID + ") As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
+                                  " FROM CPT_SkillsMaster INNER JOIN CPT_ResourceDetails INNER JOIN CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
                                   "  CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID WHERE CPT_ResourceDetails.RequestID = " + reqID + "";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
@@ -229,21 +220,7 @@ namespace businessLogic
                     SqlDataReader reader = SqlCom.ExecuteReader();
                     rpt.DataSource = reader;
                     rpt.DataBind();
-                    //while (reader.Read())
-                    //{
-                    //    try
-                    //    {
-                            
-
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        Console.WriteLine(ex.Message);
-                    //    }
-                    }
-              //  }
-                    //rpt.DataBind();
-            
+                }
             }
             catch (Exception e)
             {
@@ -289,7 +266,7 @@ namespace businessLogic
             }
             return accountName;
         }
-        public  void UpdateStatus(string reqID)
+        public void UpdateStatus(string reqID)
         {
             int status = 0;
             try
@@ -297,13 +274,13 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = " SELECT [dbo].[IsAllResourcesAreMapped]("+ reqID + ") AS IsMapped ";                                 
+                string SqlString = " SELECT [dbo].[IsAllResourcesAreMapped](" + reqID + ") AS IsMapped ";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
                     SqlConn.Open();
                     status = Convert.ToInt32(SqlCom.ExecuteScalar());
-                   
+
                 }
 
                 if (status == 1)
