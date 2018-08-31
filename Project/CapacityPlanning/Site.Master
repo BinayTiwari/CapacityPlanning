@@ -129,7 +129,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <asp:LinkButton ID="SignOutLink" runat="server" OnClick="LogOut"><i class="fa fa-sign-out fa-fw"></i> Logout</asp:LinkButton>
+                                <asp:LinkButton ID="SignOutLink" runat="server" CausesValidation="false" OnClick="LogOut"><i class="fa fa-sign-out fa-fw"></i> Logout</asp:LinkButton>
 
                             </li>
                         </ul>
