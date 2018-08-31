@@ -144,11 +144,12 @@ namespace CapacityPlanning
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.ModifiedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.LastLogin = DateTime.Now;
-                Email();
+               
                 ResourceMasterBL insertResource = new ResourceMasterBL();
                 insertResource.Insert(employeeDetails);
                 //NewJoinersBL newJoinersBL = new NewJoinersBL();
                 newJoinersBL.changeHasJoinedValue(NewJoinerID);
+                Email();
                 Response.Redirect("NewJoiners.aspx");
             }
             catch (Exception ex)
