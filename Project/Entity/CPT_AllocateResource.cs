@@ -13,7 +13,7 @@ namespace Entity
 
         public int ResourceID { get; set; }
 
-        public int? RoleID { get; set; }
+        public int? RoleMasterID { get; set; }
 
         [Required]
         [StringLength(50)]
