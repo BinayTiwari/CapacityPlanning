@@ -27,7 +27,10 @@ namespace CapacityPlanning
             {
                 string id = Session["id"].ToString();
                 lblResourceAllocation.Text = id;
-                AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
+                AllocateResourceBL displaydemand = new AllocateResourceBL();
+                displaydemand.AllocateResourceByID(rptResourceAllocation, id);
+               // AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
+               // AllocateResourceBL.NoOfAllocated(rptResourceAllocation,id);
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -63,12 +66,12 @@ namespace CapacityPlanning
         {
             try
             {
-
+                //int count = 0;
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
                     var chek = (CheckBox)sender;
-
+                    
                     if (chk.Checked)
                     {
                         //string StarDate = chek.Attributes["StartDate"];
@@ -76,10 +79,11 @@ namespace CapacityPlanning
 
                         string EmployeeName = chek.Attributes["EmployeeName"];
                         name.Add(EmployeeName);
-
+                        /*count++*/;
                     }
 
                 }
+                //if(count>0)
                 //dateSatrt = dateSatrt.Distinct().ToList();
                 //dateEnd = dateEnd.Distinct().ToList();
                 name = name.Distinct().ToList();
@@ -117,9 +121,16 @@ namespace CapacityPlanning
                     rbl.Insert(details);
                     rbl.updateMap(empID);
                     sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-                    AllocateResourceBL.UpdateStatus(details.RequestID);
+                   
                 }
+                Response.Redirect("ResourceMapping.aspx");
+                //foreach (Repeater row in rptSuggestions.Items)
+                //{
+                //    var cb = row.FindControl("chkRequired") as CheckBox;
+                //    if (cb != null)
+                //        cb.Checked = false;
 
+                //}
 
             }
             catch (Exception ex)
@@ -157,24 +168,28 @@ namespace CapacityPlanning
             lblSuggestions.Text = id;
             int roleID = Convert.ToInt32(ViewState["RoleID"]);
             DateTime dateStart = Convert.ToDateTime(StartDate);
+            // DateTime dateEnd = Convert.ToDateTime(EndDate);
             AllocateResourceBL.getFreeEmployee(rptSuggestions, roleID, dateStart);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
+
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
-                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));                
-                lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
                 if (dtstart >= dtEnd)
                 {
+                    
                     btnNext.Enabled = false;
                 }
                 else
                 {
+                    
                     btnNext.Enabled = true;
+                    lblStartDate.Text = StartDate;
+                    SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                 }
 
 
@@ -192,13 +207,14 @@ namespace CapacityPlanning
             try
             {
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(-7)).ToShortDateString();
-                SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
-                lblStartDate.Text = StartDate;
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
                 if (dtstart <= dtEnd)
                 {
                     btnNext.Enabled = true;
+                    
+                    SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
+                    lblStartDate.Text = StartDate;
                 }
                 else
                 {

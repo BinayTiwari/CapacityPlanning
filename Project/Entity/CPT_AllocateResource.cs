@@ -13,6 +13,8 @@ namespace Entity
 
         public int ResourceID { get; set; }
 
+        public int? RoleID { get; set; }
+
         [Required]
         [StringLength(50)]
         public string RequestID { get; set; }
@@ -32,5 +34,7 @@ namespace Entity
         public virtual CPT_ResourceDemand CPT_ResourceDemand { get; set; }
 
         public virtual CPT_ResourceMaster CPT_ResourceMaster { get; set; }
+
+        public virtual CPT_RoleMaster CPT_RoleMaster { get; set; }
     }
 }
