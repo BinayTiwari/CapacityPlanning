@@ -23,7 +23,7 @@
                                 <asp:DropDownList ID="OpportunityID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpportunity" runat="server" ControlToValidate="OpportunityID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Opportunity!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select Opportunity !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
@@ -31,7 +31,7 @@
                                 <asp:DropDownList ID="RegionMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="RegionMasterID_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorRegion" runat="server" ControlToValidate="RegionMasterID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Region!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select Region !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -42,25 +42,25 @@
                                 <asp:DropDownList ID="AccountMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorAccount" runat="server" ControlToValidate="AccountMasterID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Account!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select an Account !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
                                 <label>Sales Stage<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="SalesStageMasterID" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSalesStage" runat="server" ControlToValidate="SalesStageMasterID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Sales Stage!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select Sales Stage !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <label>Process Name<span style="color: red;"> *</span></label>
-                            <asp:TextBox ID="processName" runat="server" CssClass="form-control" placeholder="Process Name" required></asp:TextBox>
+                            <asp:TextBox ID="processName" runat="server"  MaxLength="50" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorProcessName" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
-                                ValidationExpression="^[A-Za-z][A-Za-z0-9. ]*$" ErrorMessage="*Only Alphabets are allowed." />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
-                                ErrorMessage="*Only Alphabets are allowed." />
+                                ValidationExpression="^[A-Za-z][A-Za-z0-9- ]*$" ErrorMessage="Invalid Process Name !" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorProcess" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
+                                ErrorMessage="Invalid Process Name !" />
                         </div>
                     </div>
                 </div>
@@ -75,41 +75,47 @@
                             <ItemTemplate>
                                 <asp:DropDownList ID="ResourceTypeID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorResourceType" runat="server" ControlToValidate="ResourceTypeID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Resource Type!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select Resource Type !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="NoOfResources" TextMode="Number" placeholder='No of Resources' min="0" CssClass="form-control" runat="server" step="0.5" required></asp:TextBox>
+                                <asp:TextBox ID="NoOfResources" TextMode="Number" max="50" placeholder='No of Resources' min="0" CssClass="form-control" runat="server" step="0.5"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorNoOfResources" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="NoOfResources"
+                                ErrorMessage="No of Resources can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Skill!" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Start Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorStartDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="StartDate"
+                                ErrorMessage="Start Date can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="End Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
+                                ErrorMessage="End Date can't be blank !" />
                                 <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
-                                    Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
+                                    Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date !"></asp:CompareValidator>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" CausesValidation="false" OnClick="ButtonAdd_Click" />
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" CausesValidation="false" formnovalidate />
+                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" CausesValidation="false" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -126,7 +132,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="col-sm-2 pull-right">
-                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
+                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />
                             </div>
                             <div>
                                 <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand" />
