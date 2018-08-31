@@ -51,6 +51,7 @@ namespace CapacityPlanning
                                  where p.SkillsName == skillName
                                  select p.SkillsMasterID).ToList();
                       skillID = query[0];
+
                 }
                 
                 ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
