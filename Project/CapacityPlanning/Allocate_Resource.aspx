@@ -32,6 +32,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables1">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Request Id</th>
                                     <th>Role</th>
                                     <th>Skills</th>
@@ -49,6 +50,7 @@
                                 <asp:Repeater ID="rptResourceAllocation" runat="server" OnItemDataBound="rptResourceAllocation_ItemDataBound">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
+                                            <td><asp:Label ID="lbId" runat="server" Text='<%#Eval("RequestDetailID")%>' /></td>
                                             <td><%#Eval("RequestId")%></td>
                                             <td><%#Eval("RoleName")%> </td>
                                             <td><%#Eval("SkillsName")%></td>
@@ -123,6 +125,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Current Assignment</th>
+                                                    <th>Owner</th>
+                                                    <th>Release Date</th>
                                                     <th>Align</th>
                                                 </tr>
                                             </thead>
@@ -133,7 +138,10 @@
                                                             <td>
                                                                 <%#DataBinder.Eval(Container,"DataItem.EmployeetName")%>
                                                             </td>
-
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            
                                                             <td>
                                                                 <%--<asp:HiddenField ID="employeeID" runat="server" Value='<%# Eval("EmployeeMasterID") %>' />--%>
                                                                 <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />

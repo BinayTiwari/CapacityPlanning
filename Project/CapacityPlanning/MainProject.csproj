@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapacityPlanning</RootNamespace>
     <AssemblyName>CapacityPlanning</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -155,6 +155,7 @@
     <Content Include="AddResourceDemand.aspx" />
     <Content Include="Allocate.aspx" />
     <Content Include="Allocate_Resource.aspx" />
+    <Content Include="AllTickets.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
@@ -598,6 +599,7 @@
     <Content Include="StatusMaster.aspx" />
     <Content Include="viewEmployee.aspx" />
     <Content Include="ViewResourceDemand.aspx" />
+    <Content Include="ViewResourceMapping.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -654,6 +656,13 @@
     </Compile>
     <Compile Include="Allocate_Resource.aspx.designer.cs">
       <DependentUpon>Allocate_Resource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllTickets.aspx.cs">
+      <DependentUpon>AllTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllTickets.aspx.designer.cs">
+      <DependentUpon>AllTickets.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -883,6 +892,13 @@
     </Compile>
     <Compile Include="ViewResourceDemand.aspx.designer.cs">
       <DependentUpon>ViewResourceDemand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewResourceMapping.aspx.cs">
+      <DependentUpon>ViewResourceMapping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewResourceMapping.aspx.designer.cs">
+      <DependentUpon>ViewResourceMapping.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

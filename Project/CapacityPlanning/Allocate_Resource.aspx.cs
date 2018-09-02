@@ -125,14 +125,19 @@ namespace CapacityPlanning
                     details.StartDate = Convert.ToDateTime(StartDate);
                     details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
+                    details.RoleMasterID = Convert.ToInt32(ViewState["RoleID"]);
                     String acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
                     String name = lst[0].EmployeetName;
                     String email = lst[0].Email;
                     rbl.Insert(details);
                     rbl.updateMap(empID);
-                    //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
 
+                 //   sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                   
+             //       sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                   
+                    //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
                 }
                 Response.Redirect("ResourceMapping.aspx");
                 //foreach (Repeater row in rptSuggestions.Items)
