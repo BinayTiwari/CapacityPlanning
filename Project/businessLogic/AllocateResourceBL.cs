@@ -65,10 +65,10 @@ namespace businessLogic
             {
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
+                string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
                     " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
-                     " Where CPT_ResourceMaster.RolesID = 7 and CPT_ResourceMaster.Skillsid = 15 AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
-                    " (CPT_AllocateResource.StartDate BETWEEN '" +StartDate+"' AND  '"+ EndDate + "') OR(CPT_AllocateResource.EndDate BETWEEN '" + StartDate + "' AND  '" + EndDate + "'))";
+                     " Where CPT_ResourceMaster.RolesID = "+RoleID+ "  and CPT_ResourceMaster.Skillsid = "+ SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
+                    " (CPT_AllocateResource.StartDate <= '" +StartDate+"') OR (CPT_AllocateResource.EndDate >= '" + EndDate + "'))";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
@@ -209,7 +209,7 @@ namespace businessLogic
             {
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = " SELECT CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName," +
+                string SqlString = " SELECT CPT_ResourceDetails.RequestDetailID,CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName," +
                                   " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID," + reqID + ") As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
                                   " FROM CPT_SkillsMaster INNER JOIN CPT_ResourceDetails INNER JOIN CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
                                   "  CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID WHERE CPT_ResourceDetails.RequestID = " + reqID + "";
@@ -221,6 +221,8 @@ namespace businessLogic
                     rpt.DataSource = reader;
                     rpt.DataBind();
                 }
+              
+
             }
             catch (Exception e)
             {
