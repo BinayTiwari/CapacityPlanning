@@ -11,7 +11,7 @@
         <!-- /.col-lg-12 -->
 
     </div>
-
+    
     <div class="row">
         <div style="float: right;">
             <asp:Button ID="AddnewJoiner" runat="server" Text="Add New Joiner" class="btn btn-primary"
@@ -47,7 +47,7 @@
                                     <th>Skill</th>
                                     <th>Account</th>
 
-                                    <th>Onboard</th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
 

@@ -43,9 +43,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Email<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="mail" runat="server" TextMode="Email" MaxLength="100" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                                <asp:TextBox ID="mail" runat="server" MaxLength="100" CssClass="form-control" placeholder="Email"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="mail"
                                     ErrorMessage="Email can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="mail"
+                                    ValidationExpression="^\w.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" ErrorMessage="Invalid Email !" />
                             </div>
                             <div class="col-lg-6">
                                 <label>Password<span style="color: red;"> *</span></label>
@@ -156,7 +158,7 @@
                                 <asp:TextBox ID="passportNum" runat="server" MaxLength="8" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
 
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator4" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="passportNum"
-                                    ValidationExpression="^[A-Za-z][A-Za-z0-9]*$" ErrorMessage="*Only Alphabets are allowed." />
+                                    ValidationExpression="^[A-Za-z][A-Za-z0-9]*$" ErrorMessage="Invalid Passport No. !" />
                             </div>
                             <div class="col-lg-6">
                                 <label>Passport Expiry Date</label>
@@ -171,10 +173,12 @@
                                 <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
                             <div class="col-lg-6">
-                                <label>Experience</label>
-                                <asp:TextBox ID="expText" runat="server" TextMode="Number" step="0.01" min="0" max="100" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
+                                <label>Experience<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="expText" runat="server" MaxLength="4" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
                                     ErrorMessage="Experience can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator6" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
+                                    ValidationExpression="^(?:50(?:\.0)?|[0-9](?:\.[0-9])?|0?\.[1-9])$" ErrorMessage="Invalid Experience !" />
                             </div>
                         </div>
                     </div>
