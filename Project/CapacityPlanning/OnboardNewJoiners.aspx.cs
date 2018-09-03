@@ -99,11 +99,7 @@ namespace CapacityPlanning
                 phn = phone.Text;
 
                 employeeDetails.EmployeeMasterID = Convert.ToInt32(empIdText.Text.Trim());
-                int flag = newJoinersBL.checkDuplicateID(Convert.ToInt32(empIdText.Text.Trim()));
-                if(flag > 0)
-                {
-                    RequiredFieldValidator2.Text = "Employee ID already exists !";
-                }
+                
                 employeeDetails.EmployeetName = fName.Text;
                 employeeDetails.Photo = @"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName.ToString();
                 employeeDetails.ReportingManagerID = Convert.ToInt32(RManagerDropDownList.Text.Trim());
@@ -149,13 +145,24 @@ namespace CapacityPlanning
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.ModifiedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.LastLogin = DateTime.Now;
-               
+
                 ResourceMasterBL insertResource = new ResourceMasterBL();
-                insertResource.Insert(employeeDetails);
+                int flag = newJoinersBL.checkDuplicateID(Convert.ToInt32(empIdText.Text.Trim()));
+                if (flag > 0)
+                {
+                    lblEmpID.Text = "Employee ID already exists !";
+                }
+                else
+                {
+                    insertResource.Insert(employeeDetails);
+                    newJoinersBL.changeHasJoinedValue(NewJoinerID);
+                    Email();
+                    Response.Redirect("NewJoiners.aspx");
+                }
+                
                 //NewJoinersBL newJoinersBL = new NewJoinersBL();
-                newJoinersBL.changeHasJoinedValue(NewJoinerID);
-                Email();
-                Response.Redirect("NewJoiners.aspx");
+                
+                
             }
             catch (Exception ex)
             {

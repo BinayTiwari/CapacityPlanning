@@ -35,6 +35,7 @@
                                     ValidationExpression="^[0-9]+$" ErrorMessage="*Invalid Employee ID !" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="empIdText"
                                     ErrorMessage="Invalid Employee ID !" />
+                                <asp:Label ID="lblEmpID" runat="server" ForeColor="Red"></asp:Label>
                             </div>
 
                         </div>
@@ -108,8 +109,8 @@
                                     ErrorMessage="Please select Role !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
-                                <label>Date of Joining<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <label>Date of Joining(MM/DD/YYYY)<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojoining"
                                     ErrorMessage="Date of Joining can't be blank !" />
                             </div>
