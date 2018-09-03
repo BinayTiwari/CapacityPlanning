@@ -102,7 +102,7 @@
 
                             <div class="col-lg-6">
                                 <label>Date of Joining<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" MaxLength="10" required></asp:TextBox>
 
                             </div>
                         </div>
@@ -142,8 +142,8 @@
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Passport Expiry Date</label>
-                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" placeholder="Passport Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                                <label>Passport Expiry Date(MM/DD/YYYY)</label>
+                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" MaxLength="10"></asp:TextBox>
 
                             </div>
                         </div>
@@ -152,8 +152,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Visa Expiry Date</label>
-                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" placeholder="Visa Expiry Date (DD/MM/YYYY)"></asp:TextBox>
+                                <label>Visa Expiry Date(MM/DD/YYYY)</label>
+                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" MaxLength="10"></asp:TextBox>
 
 
                             </div>

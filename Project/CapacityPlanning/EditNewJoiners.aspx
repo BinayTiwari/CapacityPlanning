@@ -54,8 +54,8 @@
                                     ErrorMessage="Please select Designation !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
-                                <label>Date of Joining<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="dojTextBox" ToolTip="Date of joining" Placeholder="Date of Joining" CssClass="form-control" runat="server" ></asp:TextBox>
+                                <label>Date of Joining(MM/DD/YYYY)<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="dojTextBox" ToolTip="Date of joining" MaxLength="10" CssClass="form-control" runat="server" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojTextBox"
                                     ErrorMessage="Date of Joining can't be blank !" />
                             </div>

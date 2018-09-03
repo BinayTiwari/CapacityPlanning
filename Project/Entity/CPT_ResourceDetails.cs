@@ -8,6 +8,12 @@ namespace Entity
 
     public partial class CPT_ResourceDetails
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CPT_ResourceDetails()
+        {
+            CPT_AllocateResource = new HashSet<CPT_AllocateResource>();
+        }
+
         [Key]
         public int RequestDetailID { get; set; }
 
@@ -28,6 +34,9 @@ namespace Entity
 
         [Column(TypeName = "date")]
         public DateTime EndDate { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 
         public virtual CPT_ResourceDemand CPT_ResourceDemand { get; set; }
     }

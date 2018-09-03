@@ -29,11 +29,15 @@ namespace Entity
 
         public bool? Released { get; set; }
 
+        public int? RequestDetailID { get; set; }
+
         public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
 
         public virtual CPT_ResourceDemand CPT_ResourceDemand { get; set; }
 
         public virtual CPT_ResourceMaster CPT_ResourceMaster { get; set; }
+
+        public virtual CPT_ResourceDetails CPT_ResourceDetails { get; set; }
 
         public virtual CPT_RoleMaster CPT_RoleMaster { get; set; }
     }
