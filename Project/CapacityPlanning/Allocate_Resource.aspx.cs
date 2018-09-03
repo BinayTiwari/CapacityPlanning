@@ -18,7 +18,7 @@ namespace CapacityPlanning
         List<string> name = new List<string>();
         static string StartDate;
         static string EndDate;
-        int skillID;
+        static int skillID;
         List<int> resourceID = new List<int>();
         //int RoleID = 0;
 
@@ -109,23 +109,25 @@ namespace CapacityPlanning
         {
             try
             {
-
+                string RequestID = Request.QueryString["RequestID"];
                 CPT_AllocateResource details = new CPT_AllocateResource();
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
-
+                int RequestDetailID = AllocateResourceBL.GetRequestDetailID(RequestID, skillID);
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
                 {
 
                     details.ResourceID = resourceID[j];
-                    details.RequestID = Request.QueryString["RequestID"]; 
+                    details.RequestDetailID = RequestDetailID;
+                    details.RequestID = RequestID;
                     details.AccountID = AllocateResourceBL.getAccountID(details.RequestID.ToString());
                     details.StartDate = Convert.ToDateTime(StartDate);
                     details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
                     details.RoleMasterID = Convert.ToInt32(ViewState["RoleID"]);
+                    
                     String acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
                     String name = lst[0].EmployeetName;

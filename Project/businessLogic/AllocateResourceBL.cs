@@ -18,6 +18,27 @@ namespace businessLogic
 
 
         }
+        public static int GetRequestDetailID(string RequestID, int SkillID)
+        {
+            int RequestDetailID = 0;
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceDetails
+                                where p.RequestID == RequestID && p.SkillID == SkillID.ToString()
+                                select p.RequestDetailID).ToList();
+
+                    RequestDetailID = query[0];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            return RequestDetailID;
+        }
 
         public int Insert(CPT_AllocateResource allocateDetails)
         {
