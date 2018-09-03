@@ -364,13 +364,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
         
         /// <summary>
-        /// UnDoButton control.
+        /// backButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UnDoButton;
+        protected global::System.Web.UI.WebControls.Button backButton;
         
         /// <summary>
         /// AddEmployeeDetail control.

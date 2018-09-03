@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label>Process Name<span style="color: red;"> *</span></label>
-                            <asp:TextBox ID="processName" runat="server"  MaxLength="50" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
+                            <asp:TextBox ID="processName" runat="server" MaxLength="50" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorProcessName" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
                                 ValidationExpression="^[A-Za-z][A-Za-z0-9- ]*$" ErrorMessage="Invalid Process Name !" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorProcess" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
@@ -82,7 +82,7 @@
                             <ItemTemplate>
                                 <asp:TextBox ID="NoOfResources" TextMode="Number" max="50" placeholder='No of Resources' min="0" CssClass="form-control" runat="server" step="0.5"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorNoOfResources" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="NoOfResources"
-                                ErrorMessage="No of Resources can't be blank !" />
+                                    ErrorMessage="No of Resources can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
@@ -96,14 +96,14 @@
                             <ItemTemplate>
                                 <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorStartDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="StartDate"
-                                ErrorMessage="Start Date can't be blank !" />
+                                    ErrorMessage="Start Date can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="End Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
-                                ErrorMessage="End Date can't be blank !" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
+                                    ErrorMessage="End Date can't be blank !" />
                                 <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
                                     Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date !"></asp:CompareValidator>
@@ -132,7 +132,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="col-sm-2 pull-right">
-                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />
+                                <%--<asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />--%>
+                                <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
+                                    OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
                             </div>
                             <div>
                                 <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand" />

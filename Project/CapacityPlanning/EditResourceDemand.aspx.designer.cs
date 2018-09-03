@@ -139,13 +139,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.GridView GridviewResourceDetail;
         
         /// <summary>
-        /// cancel control.
+        /// backButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel;
+        protected global::System.Web.UI.WebControls.Button backButton;
         
         /// <summary>
         /// save control.

@@ -44,8 +44,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Designation<span style="color: red;"> *</span></label>
-                                <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" >
-                                    
+                                <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorlistDesignation" runat="server" ControlToValidate="listDesignation" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Designation !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -91,7 +90,6 @@
                             <div class="col-lg-6">
                                 <label>Account<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="accountDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                   
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatoraccountDropDownList" runat="server" ControlToValidate="accountDropDownList" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select an Account !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -113,7 +111,9 @@
                     <div class="row">
                         <div class="col-sm-3 pull-right">
                             <div class="col-sm-2s pull-right">
-                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
+                                <%--                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />--%>
+                                <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
+                                    OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
                             </div>
                             <div class="col-sm-2s pull-left">
                                 <asp:Button ID="NewJoinerButton" Style="float: right;" CssClass="btn btn-success btn-md" OnClick="NewJoinerButton_Click" runat="server" Text="Save" />

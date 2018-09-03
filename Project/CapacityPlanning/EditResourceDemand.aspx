@@ -149,7 +149,9 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="col-sm-2 pull-right">
-                                    <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" CausesValidation="false" OnClick="UnDoButton_Click" />
+                                    <%--<asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" CausesValidation="false" OnClick="UnDoButton_Click" />--%>
+                                    <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
+            OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
                                 </div>
                                 <div>
                                     <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Update" OnClick="Update_Resource_Demand" />

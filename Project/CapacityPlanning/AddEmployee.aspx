@@ -110,6 +110,8 @@
                             <div class="col-lg-6">
                                 <label>Skill<span style="color:red;"> *</span></label>
                                 <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+
+                                <%--<asp:ListBox ID="listSkill" runat="server" CssClass="from-control" AppendDataBoundItems="true" SelectionMode="Multiple"></asp:ListBox>--%>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
@@ -170,7 +172,9 @@
                     <div class="row">
                         <div class="col-sm-3 pull-right">
                             <div class="col-sm-2s pull-right">
-                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
+<%--                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />--%>
+                                <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
+            OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
                             </div>
                             <div class="col-sm-2s pull-left">
                                 <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Submit" OnClick="AddEmployee_Click" />
@@ -187,14 +191,16 @@
         </div>
     </div>
 
+
+    <link href="http://cdn.rawqit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.rawqit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         $(function () {
             $('[id*=listSkill]').multiselect({
                 includeSelectAllOption: true
             });
-            $("#Button1").click(function () {
-                alert($(".multiselect-selected-text").html());
-            });
+            
         });
     </script>
 </asp:Content>

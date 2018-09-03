@@ -9,7 +9,9 @@
     </div>
 
     <div class="row">
-                <asp:Button ID="btnBack" Text="&#8617; Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceMapping.aspx" />
+
+        <asp:Button ID="backButton" runat="server" CssClass="btn btn-primary pull-right" Text="&#8617; Back"
+            OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -71,74 +73,74 @@
                 </div>
             </div>
         </div>
-    
 
-    <div>
-        <h3>
-            <label>Resources Required</label>
 
-        </h3>
+        <div>
+            <h3>
+                <label>Resources Required</label>
+
+            </h3>
+        </div>
+
+        <table class="table table-striped table-bordered table-hover" id="dataTables1">
+            <thead>
+                <tr>
+                    <th>Resource Type</th>
+                    <th>No of Resources </th>
+                    <th>Skills</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="rptResourceDetails" runat="server">
+                    <ItemTemplate>
+                        <tr class="odd gradeX">
+                            <td><%#Eval("RoleName")%></td>
+                            <td><%#Eval("NoOfResources")%> </td>
+                            <td><%#Eval("SkillsName")%></td>
+                            <td><%#Eval("StartDate", "{0:d}") %></td>
+                            <td><%#Eval("EndDate", "{0:d}")%></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
+
+
+        <div>
+            <h3>
+                <label>Resources Mapped</label>
+
+            </h3>
+        </div>
+
+        <table class="table table-striped table-bordered table-hover" id="dataTables12">
+            <thead>
+                <tr>
+                    <th>Resource ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Utilization</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="rptMapping" runat="server">
+                    <ItemTemplate>
+                        <tr class="odd gradeX">
+                            <td><%#Eval("ResourceID")%></td>
+                            <td><%#Eval("EmployeetName")%></td>
+                            <td><%#Eval("RoleName")%></td>
+                            <td><%#Eval("StartDate", "{0:d}") %></td>
+                            <td><%#Eval("EndDate", "{0:d}")%></td>
+                            <td></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
     </div>
-
-    <table class="table table-striped table-bordered table-hover" id="dataTables1">
-        <thead>
-            <tr>
-                <th>Resource Type</th>
-                <th>No of Resources </th>
-                <th>Skills</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="rptResourceDetails" runat="server">
-                <ItemTemplate>
-                    <tr class="odd gradeX">
-                        <td><%#Eval("RoleName")%></td>
-                        <td><%#Eval("NoOfResources")%> </td>
-                        <td><%#Eval("SkillsName")%></td>
-                        <td><%#Eval("StartDate", "{0:d}") %></td>
-                        <td><%#Eval("EndDate", "{0:d}")%></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
-
-    
-    <div>
-        <h3>
-            <label>Resources Mapped</label>
-
-        </h3>
-    </div>
-
-    <table class="table table-striped table-bordered table-hover" id="dataTables12">
-        <thead>
-            <tr>
-                <th>Resource ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Utilization</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="rptMapping" runat="server">
-                <ItemTemplate>
-                    <tr class="odd gradeX">
-                        <td><%#Eval("ResourceID")%></td>
-                        <td> <%#Eval("EmployeetName")%></td>
-                        <td> <%#Eval("RoleName")%></td>
-                        <td><%#Eval("StartDate", "{0:d}") %></td>
-                        <td><%#Eval("EndDate", "{0:d}")%></td>
-                        <td></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
-</div>
 
 </asp:Content>
