@@ -84,14 +84,14 @@ namespace businessLogic
         {
             try
             {
+                string dtS = String.Format("{0:yyyy-dd-MM HH:mm:ss}", StartDate);
+                string dtE = String.Format("{0:yyyy-dd-MM HH:mm:ss}", EndDate);
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
                     " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
                      " Where CPT_ResourceMaster.RolesID = "+ RoleID + "  and CPT_ResourceMaster.Skillsid = "+ SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
-                    " (CPT_AllocateResource.StartDate <= '" + StartDate +"'))";
-                    //+
-                   // " OR (CPT_AllocateResource.EndDate >= '" + EndDate + "'))";
+                    " (CPT_AllocateResource.StartDate <= '" + dtS + "')" + " OR (CPT_AllocateResource.EndDate >= '" + dtE + "'))";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
