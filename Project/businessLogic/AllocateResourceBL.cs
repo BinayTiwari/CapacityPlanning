@@ -344,6 +344,8 @@ namespace businessLogic
                 var query = (from c in db.CPT_AllocateResource
                              join d in db.CPT_ResourceMaster on c.ResourceID equals d.EmployeeMasterID
                              join e in db.CPT_RoleMaster on d.RolesID equals e.RoleMasterID
+                             join f in db.CPT_ResourceDetails on c.RequestDetailID equals f.RequestDetailID
+                             join g in db.CPT_SkillsMaster on f.SkillID equals g.SkillsMasterID.ToString()
                              where c.RequestID == requestID
                              select new
                              {
@@ -351,7 +353,8 @@ namespace businessLogic
                                  c.StartDate,
                                  c.EndDate,
                                  d.EmployeetName,
-                                 e.RoleName
+                                 e.RoleName,
+                                 g.SkillsName
                              }).ToList();
                 rpt.DataSource = query;
                 rpt.DataBind();
