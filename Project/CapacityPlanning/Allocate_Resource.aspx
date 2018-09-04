@@ -135,15 +135,12 @@
                                                 <asp:Repeater ID="rptSuggestions" runat="server" OnItemDataBound="rptSuggestions_ItemDataBound">
                                                     <ItemTemplate>
                                                         <tr class="odd gradeX">
-                                                            <td>
-                                                                <%#DataBinder.Eval(Container,"DataItem.EmployeetName")%>
-                                                            </td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.EmployeetName")%> </td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.ResourceRequestBy")%></td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
                                                             
-                                                            <td>
-                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+                                                            <td><asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                             </td>
 
                                                         </tr>
