@@ -220,7 +220,24 @@ namespace businessLogic
                 
             }
         }
-       
+
+        public int checkDuplicateID(int id)
+        {
+            int flag = 0;
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_ResourceMaster
+                            where c.EmployeeMasterID == id
+                            select c;
+                if (query.Count() > 0)
+                {
+                    flag = 1;
+                }
+
+                return flag;
+            }
+        }
+
     }
 
 }
