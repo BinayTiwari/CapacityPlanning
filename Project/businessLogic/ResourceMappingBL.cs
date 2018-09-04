@@ -29,6 +29,7 @@ namespace businessLogic
                                   join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
                                   join z in db.CPT_PriorityMaster on p.PriorityID equals z.PriorityID
                                   join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                                  join w in db.CPT_ResourceMaster on p.ResourceRequestBy equals w.EmployeeMasterID
                                   where v.StatusMasterID == 26
                                   orderby p.DateOfCreation descending
 
@@ -43,7 +44,8 @@ namespace businessLogic
                                       p.ProcessName,
                                       v.StatusName,
                                       p.DateOfCreation,
-                                      z.PriorityName
+                                      z.PriorityName,
+                                      w.EmployeetName
 
                                   }).ToList();
 
