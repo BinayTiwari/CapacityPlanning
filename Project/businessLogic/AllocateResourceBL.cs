@@ -88,7 +88,7 @@ namespace businessLogic
                 string dtE = String.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ProcessName,CPT_ResourceDemand.ResourceRequestBy, CPT_AllocateResource.EndDate" + 
+                string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy,CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, CPT_AllocateResource.EndDate" + 
                     " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN" +
                     " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" + 
                     " Where CPT_ResourceMaster.RolesID = " + RoleID + "   and CPT_ResourceMaster.Skillsid = " + SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT"

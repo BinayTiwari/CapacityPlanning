@@ -198,7 +198,7 @@ namespace CapacityPlanning
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
-                if (dtstart >= dtEnd)
+                if (dtstart > dtEnd)
                 {
 
                     btnNext.Enabled = false;

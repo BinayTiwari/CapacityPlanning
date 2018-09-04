@@ -137,7 +137,7 @@
                                                         <tr class="odd gradeX">
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EmployeetName")%> </td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
-                                                            <td><%#DataBinder.Eval(Container,"DataItem.ResourceRequestBy")%></td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
                                                             
                                                             <td><asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
