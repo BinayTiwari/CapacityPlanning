@@ -38,10 +38,6 @@ namespace CapacityPlanning
             CPT_ResourceDemand cPT_ResourceDemand = new CPT_ResourceDemand();
             cPT_ResourceDemand.RequestID = requestID;
             ResourceDemandBL resource = new ResourceDemandBL();
-
-
-
-
             CPT_ResourceDemand demand = new CPT_ResourceDemand();
             demand.RequestID = requestID;
             List<CPT_ResourceDemand> lst = resource.ViewResourceDemand(demand);
