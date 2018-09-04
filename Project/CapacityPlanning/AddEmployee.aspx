@@ -2,7 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
 
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
 
     <div class="col-lg-12">
         <h1 class="page-header">Manage Resources</h1>
@@ -130,11 +132,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Skill<span style="color: red;"> *</span></label>
-                                <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
+                                <%--<asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>--%>
 
-                                <%--<asp:ListBox ID="listSkill" runat="server" CssClass="from-control" AppendDataBoundItems="true" SelectionMode="Multiple"></asp:ListBox>--%>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                <%--<asp:listbox id="listSkill" runat="server" cssclass="from-control" appenddatabounditems="true" selectionmode="Multiple"></asp:listbox>--%>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>--%>
+                                <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple"></asp:ListBox>
+
+
                             </div>
                             <div class="col-lg-6">
                                 <label>Address</label>
@@ -220,15 +225,13 @@
     </div>
 
 
-    <link href="http://cdn.rawqit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
-    <script src="http://cdn.rawqit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+
 
     <script type="text/javascript">
         $(function () {
             $('[id*=listSkill]').multiselect({
                 includeSelectAllOption: true
             });
-
         });
     </script>
 </asp:Content>

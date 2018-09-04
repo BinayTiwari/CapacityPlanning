@@ -23,7 +23,8 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
-                ClsCommon.ddlGetSkillDDL(listSkillDD);
+                //ClsCommon.ddlGetSkillDDL(listSkillDD);
+                ClsCommon.ddlGetSkill(listSkill);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                 BindTextBoxvalues();
             }
@@ -42,15 +43,14 @@ namespace CapacityPlanning
                 {
                     employeeID = Convert.ToInt32(Request.QueryString["EmployeeId"]);
                 }
-                //string message = "";
-                //foreach (ListItem item in listSkill.Items)
-                //{
-                //    if (item.Selected)
-                //    {
-                //        message += item.Value + ",";
-                //    }
-                //}
-                //message = message.Remove(message.Length - 1).Trim();
+                string message = "";
+                foreach (ListItem item in listSkill.Items)
+                {
+                    if (item.Selected)
+                    {
+                        message += item.Value + ",";
+                    }
+                }
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID = employeeID;
                 employeeDetails.EmployeetName = fName.Text.Trim();
@@ -62,7 +62,8 @@ namespace CapacityPlanning
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.ToString());
-                employeeDetails.Skillsid = listSkillDD.SelectedValue;
+                //employeeDetails.Skillsid = listSkillDD.SelectedValue;
+                employeeDetails.Skillsid = message;
                 if (expText.Text.Trim() != "")
                 {
                     employeeDetails.PriorWorkExperience = (float)Convert.ToDouble(expText.Text.Trim());
@@ -165,15 +166,15 @@ namespace CapacityPlanning
                
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
-                listSkillDD.Text = lst[0].Skillsid;
+                //listSkillDD.Text = lst[0].Skillsid;
 
-                //String skillCommaSeperated = lst[0].Skillsid;
-                //String[] lstSkillSingle = skillCommaSeperated.Split(',');
-                //foreach (var item in lstSkillSingle)
-                //{
+                String skillCommaSeperated = lst[0].Skillsid;
+                String[] lstSkillSingle = skillCommaSeperated.Split(',');
+                foreach (var item in lstSkillSingle)
+                {
 
-                //    listSkill.Items.FindByValue(item).Selected = true;
-                //}
+                    listSkill.Items.FindByValue(item).Selected = true;
+                }
 
             }
             catch (Exception ex)

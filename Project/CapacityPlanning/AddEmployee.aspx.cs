@@ -20,8 +20,8 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
-                ClsCommon.ddlGetSkillDDL(listSkillDD);
-                //ClsCommon.ddlGetSkill(listSkill);
+                //ClsCommon.ddlGetSkillDDL(listSkillDD);
+                ClsCommon.ddlGetSkill(listSkill);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                
             }
@@ -35,6 +35,15 @@ namespace CapacityPlanning
                 {
                     FileUploadControl.SaveAs(@"C:\Users\raian\Downloads\Data\" + FileUploadControl.FileName);
                 }
+                string message = "";
+                foreach (ListItem item in listSkill.Items)
+                {
+                    if (item.Selected)
+                    {
+                        message += item.Value + ",";
+                    }
+                }
+                message = message.Remove(message.Length - 1).Trim();
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
@@ -57,8 +66,9 @@ namespace CapacityPlanning
                 {
                     employeeDetails.PAN = panNoTxt.Text.Trim();
                 }
-                
-                employeeDetails.Skillsid = listSkillDD.SelectedValue;
+
+                //employeeDetails.Skillsid = listSkillDD.SelectedValue;
+                employeeDetails.Skillsid = message;
 
                 if(addressTxt.Text != "")
                 {
