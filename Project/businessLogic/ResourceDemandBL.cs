@@ -1,54 +1,25 @@
 ﻿using Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace businessLogic
 {
-    public class AllocateResourceBL
+    public class ResourceDemandBL
     {
-        private string GetConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
-
-
-        }
-        public static int GetRequestDetailID(string RequestID, int SkillID)
-        {
-            int RequestDetailID = 0;
-            try
-            {
-                using(CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_ResourceDetails
-                                where p.RequestID == RequestID && p.SkillID == SkillID.ToString()
-                                select p.RequestDetailID).ToList();
-
-                    RequestDetailID = query[0];
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-            }
-            return RequestDetailID;
-        }
-
-        public int Insert(CPT_AllocateResource allocateDetails)
+        public int Insert(CPT_ResourceDemand resourceDemandDetails)
         {
             using (CPContext db = new CPContext())
             {
                 try
                 {
-                    db.CPT_AllocateResource.Add(allocateDetails);
+                    db.CPT_ResourceDemand.Add (resourceDemandDetails);
+                   // db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    UpdateStatus(allocateDetails.RequestID);
                 }
                 catch (Exception e)
                 {
@@ -58,82 +29,195 @@ namespace businessLogic
             }
             return 1;
         }
-        public int updateMap(CPT_ResourceMaster employeeID)
+
+        public int Update(CPT_ResourceDemand resourceDemandDetails)
+        {
+            Delete(resourceDemandDetails.RequestID);
+            using (CPContext db = new CPContext())
+            {
+                try
+                {
+                    db.CPT_ResourceDemand.Add(resourceDemandDetails);
+                    db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
+            return 1;
+        }
+        public int UpdateResourceDemand(CPT_ResourceDemand resourceDemandDetails)
         {
             using (CPContext db = new CPContext())
             {
                 try
                 {
-                    var query = (from p in db.CPT_ResourceMaster
-                                 where p.EmployeeMasterID == employeeID.EmployeeMasterID
-                                 select p);
-                    foreach (var item in query)
+                    var query = from details in db.CPT_ResourceDemand
+                                where details.RequestID == resourceDemandDetails.RequestID
+                                select details;
+
+                    foreach (var detail in query)
                     {
-                        item.isMapped = 1;
+                        detail.AccountID = resourceDemandDetails.AccountID;
+                        detail.CityID = resourceDemandDetails.CityID;
+                        detail.OpportunityID = resourceDemandDetails.OpportunityID;
+                        detail.SalesStageID = resourceDemandDetails.SalesStageID;
+                        detail.ProcessName = resourceDemandDetails.ProcessName;
+                        detail.StatusMasterID = resourceDemandDetails.StatusMasterID;
                     }
                     db.SaveChanges();
                 }
-                catch (Exception exe)
+                catch (Exception e)
                 {
-                    Console.WriteLine(exe.Message);
+                    Console.WriteLine(e.Message);
                 }
             }
             return 1;
         }
-        public void getFreeEmployee(Repeater rpt, int RoleID, DateTime StartDate, string SkillID, DateTime EndDate)
+
+
+        public static void getResourceDemand(Repeater repeater, int employeeID)
+        {
+            using (CPContext db = new CPContext())
+            {
+             var query1 = (from p in db.CPT_ResourceDemand
+                          join q in db.CPT_AccountMaster on p.AccountID equals q.AccountMasterID
+                          join ct in db.CPT_CityMaster on  p.CityID equals ct.CityID
+                          join c in db.CPT_CountryMaster on ct.CountryID equals c.CountryMasterID
+                          join t in db.CPT_OpportunityMaster on p.OpportunityID equals t.OpportunityID
+                          join u in db.CPT_SalesStageMaster on p.SalesStageID equals u.SalesStageMasterID
+                          join v in db.CPT_StatusMaster on p.StatusMasterID equals v.StatusMasterID
+                          orderby p.DateOfCreation descending
+                          where p.ResourceRequestBy == employeeID
+                          select new
+                          { p.RequestID, q.AccountName, c.CountryName, ct.CityName, t.OpportunityType, u.SalesStageName, p.ProcessName, v.StatusName,p.DateOfCreation
+
+                          }).ToList();
+
+                repeater.DataSource = query1;
+                repeater.DataBind();
+            }
+        }
+        public static List<int> CityIDs(int regionID)
+        {
+            List<int> CityIDs;
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_CityMaster
+                             where p.RegionID == regionID & p.IsActive == true
+                             select p.CityID).ToList();
+                CityIDs = query;
+
+            }
+            return CityIDs;
+        }
+
+        public static int getCityID(int accountID)
+        {
+            int CityID = 0;
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_AccountMaster
+                             where p.AccountMasterID == accountID & p.IsActive == true
+                             select p.CityID).ToList();
+                CityID = query[0].Value;
+
+            }
+            return CityID;
+        }
+
+        public List<CPT_ResourceDemand> ViewResourceDemand(CPT_ResourceDemand masterDetail)
+        {
+            List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
+            using (CPContext db = new CPContext())
+            {
+                
+                var query = from c in db.CPT_ResourceDemand
+                            where c.RequestID == masterDetail.RequestID
+                            select c;
+
+                foreach (var v in query)
+                {
+                    data.Add(v);
+                }
+            }
+            return data;
+        }
+
+        public static List<int> getRegionID(int accountID)
+        {
+
+            using (CPContext db = new CPContext())
+            {
+                var query = (from p in db.CPT_AccountMaster
+                             join q in db.CPT_CityMaster on p.CityID equals q.CityID
+                             where p.AccountMasterID == accountID
+                             select q.RegionID).ToList();
+
+
+                return query;
+            }
+
+        }
+
+        public static List<CPT_ResourceDemand> uiDataBinding(string requestID)
+        {
+            List<CPT_ResourceDemand> data = new List<CPT_ResourceDemand>();
+            using (CPContext db = new CPContext())
+            {
+                var query = from c in db.CPT_ResourceDemand
+                            where c.RequestID == requestID
+                            select c;
+                foreach (var detail in query)
+                {
+
+                    data.Add(detail);
+                }
+            }
+            return data;
+        }
+
+        public static List<CPT_ResourceDetails> uiDataBindingDetails(GridView gv, string requestID)
+        {
+            List<CPT_ResourceDetails> data = new List<CPT_ResourceDetails>();
+            using (CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_ResourceDetails
+                             where c.RequestID == requestID
+                             select c).ToList();
+                foreach (var detail in query)
+                {
+
+                    data.Add(detail);
+
+
+                }
+
+                gv.DataSource = query;
+                gv.DataBind();
+            }
+
+            return data;
+        }
+
+        public static void Delete(string requestID)
         {
             try
             {
-                string dtS = String.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
-                string dtE = String.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
-                SqlConnection SqlConn = new SqlConnection();
-                SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy,CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, CPT_AllocateResource.EndDate" + 
-                    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN" +
-                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" + 
-                    " Where CPT_ResourceMaster.RolesID = " + RoleID + "   and CPT_ResourceMaster.Skillsid = " + SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT"
-                    + " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE" +
-                    " (CPT_AllocateResource.EndDate >= '" + dtS + "'))";
-
-                //string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
-                //    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
-                //     " Where CPT_ResourceMaster.RolesID = "+ RoleID + "  and CPT_ResourceMaster.Skillsid = "+ SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
-                //    " (CPT_AllocateResource.StartDate <= '" + dtS + "')" + " OR (CPT_AllocateResource.EndDate >= '" + dtE + "'))";
-
-                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                using (CPContext db=  new CPContext())
                 {
-                    SqlConn.Open();
-                    SqlDataReader reader = SqlCom.ExecuteReader();
-                    rpt.DataSource = reader;
-                    rpt.DataBind();
+                    var query = (from p in db.CPT_ResourceDetails
+                                 where p.RequestID == requestID
+                                 select p);
+                    foreach (var item in query)
+                    {
+                        db.CPT_ResourceDetails.Remove(item);
+                    }
+                    db.SaveChanges();
                 }
-                //using (CPContext db = new CPContext())
-                //{
-
-                //    //var query1 = (from p in db.CPT_ResourceMaster
-                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                //    //              into t
-                //    //              from rt in t.DefaultIfEmpty()
-                //    //              where (p.RolesID == RoleID && p.Skillsid == SkillID)
-                //    //              select new
-                //    //              {
-                //    //                  p.EmployeetName,
-                //    //                  p.EmployeeMasterID
-                //    //              }).ToList();
-                //    //var query2 = (from p in db.CPT_ResourceMaster
-                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                //    //              into t
-                //    //              from rt in t.DefaultIfEmpty()
-                //    //              where (p.RolesID == RoleID && rt.StartDate <= StartDate)
-                //    //              select new
-                //    //              {
-                //    //                  p.EmployeetName,
-                //    //                  p.EmployeeMasterID
-                //    //              }).ToList();
-                //    //var query = query1.Except(query2).ToList();
-                //    //rpt.DataSource = query;
-                //    //rpt.DataBind();
-                //}
             }
             catch (Exception ex)
             {
@@ -141,226 +225,5 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        //public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
-        //{
-        //    try
-        //    {
-        //        using (CPContext db = new CPContext())
-        //        {
-        //            var query = (from p in db.CPT_ResourceMaster
-        //                         join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
-        //                         into t from rt in t.DefaultIfEmpty()
-        //                         where (p.RolesID == RoleID && p.isMapped == 0)
-        //                         select new
-        //                         {
-        //                             p.EmployeetName,
-        //                         }).ToList();
-        //            repeater.DataSource = query;
-        //            repeater.DataBind();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-        public static List<int> ResourceID(List<string> name)
-        {
-            using (CPContext db = new CPContext())
-            {
-                List<int> query = new List<int>();
-
-                List<int> lst = new List<int>();
-                foreach (var item in name)
-                {
-                    query = (from p in db.CPT_ResourceMaster
-                             where (p.EmployeetName == item)
-                             select p.EmployeeMasterID).ToList();
-                    foreach (var it in query)
-                    {
-                        lst.Add(it);
-                    }
-
-                }
-                return lst;
-            }
-        }
-        public static int getAccountID(string requestID)
-        {
-            using (CPContext db = new CPContext())
-            {
-                List<int> lst = new List<int>();
-                var query = (from p in db.CPT_ResourceDemand
-                             where (p.RequestID == requestID)
-                             select p.AccountID
-                             ).ToList();
-                foreach (var item in query)
-                {
-                    lst.Add(item);
-                }
-                return lst[0];
-            }
-        }
-        public static void AllocateResource(Repeater rpt)
-        {
-            try
-            {
-                //clear here
-                using (CPContext db = new CPContext())
-                {
-
-                    var query =
-                (from p in db.CPT_ResourceDetails
-                 join q in db.CPT_RoleMaster on p.ResourceTypeID equals q.RoleMasterID
-                 join r in db.CPT_SkillsMaster on p.SkillID equals r.SkillsMasterID.ToString()
-                 select new
-                 {
-                     p.RequestID,
-                     q.RoleName,
-                     r.SkillsName,
-                     p.NoOfResources,
-                     p.StartDate,
-                     p.EndDate
-                 }).ToList();
-                    rpt.DataSource = query;
-                    rpt.DataBind();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-
-            }
-        }
-
-        public void AllocateResourceByID(Repeater rpt, string reqID)
-        {
-            try
-            {
-                SqlConnection SqlConn = new SqlConnection();
-                SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = " SELECT CPT_ResourceDetails.RequestDetailID,CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName," +
-                                  " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID,CPT_ResourceDetails.RequestDetailID) As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
-                                  " FROM CPT_SkillsMaster INNER JOIN CPT_ResourceDetails INNER JOIN CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
-                                  "  CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID WHERE CPT_ResourceDetails.RequestID = " + reqID + "";
-
-                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
-                {
-                    SqlConn.Open();
-                    SqlDataReader reader = SqlCom.ExecuteReader();
-                    rpt.DataSource = reader;
-                    rpt.DataBind();
-                }
-              
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-
-            }
-        }
-
-        public List<CPT_ResourceMaster> getMailDetails(int id)
-        {
-            List<CPT_ResourceMaster> data = new List<CPT_ResourceMaster>();
-
-            using (CPContext db = new CPContext())
-            {
-                var query = from c in db.CPT_ResourceMaster
-                            where c.EmployeeMasterID == id
-                            select c;
-                foreach (var detail in query)
-                {
-                    data.Add(detail);
-                }
-            }
-
-            return data;
-        }
-
-        public string getAccountByID(int accountID)
-        {
-            String accountName = "";
-            using (CPContext db = new CPContext())
-            {
-                var query = from c in db.CPT_AccountMaster
-                            where c.AccountMasterID == accountID
-                            select new
-                            {
-                                c.AccountName
-                            }
-                                ;
-                foreach (var ac in query)
-                {
-                    accountName = ac.AccountName;
-                }
-            }
-            return accountName;
-        }
-        public void UpdateStatus(string reqID)
-        {
-            int status = 0;
-            try
-            {
-
-                SqlConnection SqlConn = new SqlConnection();
-                SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = " SELECT [dbo].[IsAllResourcesAreMapped](" + reqID + ") AS IsMapped ";
-
-                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
-                {
-                    SqlConn.Open();
-                    status = Convert.ToInt32(SqlCom.ExecuteScalar());
-
-                }
-
-                if (status == 1)
-                {
-                    using (CPContext db = new CPContext())
-                    {
-                        var query = (from p in db.CPT_ResourceDemand
-                                     where p.RequestID == reqID
-                                     select p).ToList();
-                        foreach (var item in query)
-                        {
-                            item.StatusMasterID = 20;
-                        }
-                        db.SaveChanges();
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-            }
-        }
-        public static void viewResourceMaping(Repeater rpt, String requestID)
-        {
-            using (CPContext db = new CPContext())
-            {
-                var query = (from c in db.CPT_AllocateResource
-                             join d in db.CPT_ResourceMaster on c.ResourceID equals d.EmployeeMasterID
-                             join e in db.CPT_RoleMaster on d.RolesID equals e.RoleMasterID
-                             join f in db.CPT_ResourceDetails on c.RequestDetailID equals f.RequestDetailID
-                             join g in db.CPT_SkillsMaster on f.SkillID equals g.SkillsMasterID.ToString()
-                             where c.RequestID == requestID
-                             select new
-                             {
-                                 c.ResourceID,
-                                 c.StartDate,
-                                 c.EndDate,
-                                 d.EmployeetName,
-                                 e.RoleName,
-                                 g.SkillsName
-                             }).ToList();
-                rpt.DataSource = query;
-                rpt.DataBind();
-
-            }
-        }
-
     }
 }
