@@ -21,6 +21,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
                 ClsCommon.ddlGetSkillDDL(listSkillDD);
+                //ClsCommon.ddlGetSkill(listSkill);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                
             }
@@ -87,8 +88,17 @@ namespace CapacityPlanning
                 employeeDetails.ModifiedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.LastLogin = DateTime.Now;
                 ResourceMasterBL insertResource = new ResourceMasterBL();
-                insertResource.Insert(employeeDetails);
-                Response.Redirect("ResourceMaster.aspx");
+                int flag = insertResource.checkDuplicateID(Convert.ToInt32(empIdText.Text.Trim()));
+                if(flag > 0)
+                {
+                    lblEmpID.Text = "Employee ID already exists !";
+                }
+                else
+                {
+                    insertResource.Insert(employeeDetails);
+                    Response.Redirect("ResourceMaster.aspx");
+                }
+                
             }
             catch (Exception ex)
             {

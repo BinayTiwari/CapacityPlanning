@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="Add Employee" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddEmployee.aspx.cs" Inherits="CapacityPlanning.AddEmployee" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-    
-   
+
+
+
     <div class="col-lg-12">
         <h1 class="page-header">Manage Resources</h1>
     </div>
@@ -22,14 +22,23 @@
 
                     <div class="form-group">
                         <div class="row">
-                            
+
                             <div class="col-lg-6">
-                                <label>Employee Name<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="fName" runat="server" CssClass="form-control" placeholder="Employee" required></asp:TextBox>
+                                <label>Employee Name<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="fName" runat="server" MaxLength="50" CssClass="form-control" placeholder="Employee"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorfirstNameTextBox" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="fName"
+                                    ValidationExpression="^[A-Za-z][A-Za-z. ]*$" ErrorMessage="Invalid Employee Name !" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="fName"
+                                    ErrorMessage="Invalid Employee Name !" />
                             </div>
-                            <label>Employee ID<span style="color:red;"> *</span></label>
+                            <label>Employee ID<span style="color: red;"> *</span></label>
                             <div class="col-lg-6">
-                                <asp:TextBox ID="empIdText" runat="server" CssClass="form-control" placeholder="Employee ID" required></asp:TextBox>
+                                <asp:TextBox ID="empIdText" runat="server" TextMode="Number" step="1" min="10000" max="100000" CssClass="form-control" placeholder="Employee ID"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="empIdText"
+                                    ValidationExpression="^[0-9]+$" ErrorMessage="*Invalid Employee ID !" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="empIdText"
+                                    ErrorMessage="Invalid Employee ID !" />
+                                <asp:Label ID="lblEmpID" runat="server" ForeColor="Red"></asp:Label>
 
                             </div>
 
@@ -38,41 +47,49 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Email<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="mail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required></asp:TextBox>
-
+                                <label>Email<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="mail" runat="server" MaxLength="100" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="mail"
+                                    ErrorMessage="Email can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="mail"
+                                    ValidationExpression="^\w.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" ErrorMessage="Invalid Email !" />
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Password<span style="color:red;"> *</span></label>
-                                <asp:TextBox TextMode="Password" ID="pass" CssClass="form-control" runat="server" placeholder="Password" required />
+                                <label>Password<span style="color: red;"> *</span></label>
+
+                                <asp:TextBox TextMode="Password" ID="pass" MaxLength="15" CssClass="form-control" runat="server" placeholder="Password" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="pass"
+                                    ErrorMessage="Password can't be blank !" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Reporting Manager<span style="color:red;"> *</span></label>
-                                <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                    <asp:ListItem Value="">--Select Reporting Manager--</asp:ListItem>
+                                <label>Reporting Manager<span style="color: red;"> *</span></label>
+                                <asp:DropDownList ID="RManagerDropDownList" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
+
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorRManager" runat="server" ControlToValidate="RManagerDropDownList" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Reporting Manager !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Base Location<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="bLocation" runat="server" CssClass="form-control" placeholder="Base Location" required></asp:TextBox>
-
+                                <label>Base Location<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="bLocation" runat="server" MaxLength="50" CssClass="form-control" placeholder="Base Location"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="bLocation"
+                                    ValidationExpression="^[A-Za-z][A-Za-z-. ]*$" ErrorMessage="Invalid Base Location !" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="bLocation"
+                                    ErrorMessage="Invalid Base Location !" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Designation<span style="color:red;"> *</span></label>
-                                <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server" required>
-                                    <asp:ListItem Value="">--Select Designation--</asp:ListItem>
+                                <label>Designation<span style="color: red;"> *</span></label>
+                                <asp:DropDownList ID="listDesignation" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                 </asp:DropDownList>
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorDesignation" runat="server" ControlToValidate="listDesignation" ForeColor="Red" Display="Dynamic"
@@ -80,35 +97,39 @@
 
                             </div>
                             <div class="col-lg-6">
-                                <label>Mobile No.<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="phone" TextMode="Phone" runat="server" CssClass="form-control" placeholder="Mobile Number"></asp:TextBox>
-
+                                <label>Mobile No.<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="phone" MaxLength="15" placeholder="+91-9990331845" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorphoneTextBox" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="phone"
+                                    ValidationExpression="^(\+\d{1,3}[- ]?)?\d{10}$" ErrorMessage="Invalid Mobile number !" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="phone"
+                                    ErrorMessage="Invalid Mobile number !" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Role<span style="color:red;"> *</span></label>
+                                <label>Role<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="listRole" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="0">--Select Role--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ControlToValidate="listRole" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Role !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-lg-6">
-                                <label>Date of Joining<span style="color:red;"> *</span></label>
-                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" TextMode="Date" required></asp:TextBox>
-
+                                <label>Date of Joining<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojoining"
+                                    ErrorMessage="Date of Joining can't be blank !" />
                             </div>
 
 
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Skill<span style="color:red;"> *</span></label>
+                                <label>Skill<span style="color: red;"> *</span></label>
                                 <asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>
 
                                 <%--<asp:ListBox ID="listSkill" runat="server" CssClass="from-control" AppendDataBoundItems="true" SelectionMode="Multiple"></asp:ListBox>--%>
@@ -126,7 +147,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>PAN</label>
-                                <asp:TextBox ID="panNoTxt" runat="server" CssClass="form-control" placeholder="PAN"></asp:TextBox>
+                                <asp:TextBox ID="panNoTxt" runat="server" MaxLength="10" CssClass="form-control" placeholder="PAN"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="panNoTxt"
+                                    ValidationExpression="^[A-Za-z][A-Za-z0-9]*$" ErrorMessage="Only Alphabets and numbers are allowed !" />
 
                             </div>
 
@@ -146,11 +169,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Passport No.</label>
-                                <asp:TextBox ID="passportNum" runat="server" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
+                                <asp:TextBox ID="passportNum" runat="server" MaxLength="8" CssClass="form-control" placeholder="Passport No"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator6" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="passportNum"
+                                    ValidationExpression="^[A-Za-z][A-Za-z0-9]*$" ErrorMessage="Invalid Passport No. !" />
                             </div>
                             <div class="col-lg-6">
                                 <label>Passport Expiry Date</label>
-                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control"  TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -158,12 +183,15 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Visa Expiry Date</label>
-                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
+                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
                             <div class="col-lg-6">
-                                <label>Previous Experience</label>
-                                <asp:TextBox ID="expText" runat="server" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
-
+                                <label>Previous Experience<span style="color: red;"> *</span></label>
+                                <asp:TextBox ID="expText" runat="server" CssClass="form-control" MaxLength="4" placeholder="Experience in years"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
+                                    ErrorMessage="Experience can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator7" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
+                                    ValidationExpression="^(?:50(?:\.0)?|[0-9](?:\.[0-9])?|0?\.[1-9])$" ErrorMessage="Invalid Experience !" />
                             </div>
                         </div>
                     </div>
@@ -172,9 +200,8 @@
                     <div class="row">
                         <div class="col-sm-3 pull-right">
                             <div class="col-sm-2s pull-right">
-<%--                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />--%>
-                                <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
-            OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
+                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" formnovalidate />
+
                             </div>
                             <div class="col-sm-2s pull-left">
                                 <asp:Button ID="AddEmployeeDetail" runat="server" Style="float: right;" CssClass="btn btn-success btn-md" Text="Submit" OnClick="AddEmployee_Click" />
@@ -185,10 +212,11 @@
                 </div>
 
 
-
             </div>
+
             <!-- /.col-lg-12 -->
         </div>
+
     </div>
 
 
@@ -200,7 +228,7 @@
             $('[id*=listSkill]').multiselect({
                 includeSelectAllOption: true
             });
-            
+
         });
     </script>
 </asp:Content>
