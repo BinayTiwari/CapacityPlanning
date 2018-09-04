@@ -13,6 +13,15 @@ namespace CapacityPlanning {
     public partial class Dashboard {
         
         /// <summary>
+        /// lblStregth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStregth;
+        
+        /// <summary>
         /// btnClick control.
         /// </summary>
         /// <remarks>
@@ -101,33 +110,6 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart myChartBar;
-        
-        /// <summary>
-        /// DsVsRes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DsVsRes;
-        
-        /// <summary>
-        /// rptDsVsRes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptDsVsRes;
-        
-        /// <summary>
-        /// myChart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart myChart1;
         
         /// <summary>
         /// RMVsR control.

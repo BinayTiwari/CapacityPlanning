@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using Entity;
+using System.Data.SqlClient;
+using System.Configuration;
 namespace businessLogic
 {
     public class DashboardBL
@@ -165,12 +167,12 @@ namespace businessLogic
                     }
                     // chart.Series[0].ChartType = SeriesChartType.SplineArea;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
-                    
+
                 }
             }
         }
 
-
+        
         public void displayDesigVsResBar(Chart chart)
         {
             using (CPContext db = new CPContext())
@@ -203,6 +205,37 @@ namespace businessLogic
                     chart.Series[0].ChartType = SeriesChartType.Column;
                     chart.Series[0].Points.DataBindXY(xValues, yValues);
                 }
+            }
+        }
+        private static string GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
+
+
+        }
+        public static void TotalStregth(Label NumberOfResources)
+        {
+            try
+            {
+
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "Select COUNT(EmployeetName) AS Total FROM CPT_ResourceMaster Where DesignationID Not IN(36,37,38,42)";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    NumberOfResources.Text = SqlCom.ExecuteScalar().ToString();
+                    //  t = reader["Total"].ToString();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -320,7 +353,7 @@ namespace businessLogic
                                    NoOfResources = grp.Count()
                                }).ToList();
                 chart.Series[0].ToolTip = "#VALX : #VALY";
-                
+
                 //chart.Series[0].ChartType = SeriesChartType.Bar;
                 //Title ty1 = chart.Titles.Add("ty1");
                 //ty1.ForeColor = System.Drawing.Color.Blue;
@@ -345,7 +378,7 @@ namespace businessLogic
                         count++;
                     }
                     chart.ChartAreas[0].AxisX.Interval = 1;
-                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45; 
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = 45;
                     //chart.Series[0].Label = "Y = #VALY\nX = #VALX";
                     //chart.Series[0].SmartLabelStyle.Enabled = true;
                     chart.Series[0].ChartType = SeriesChartType.Line;

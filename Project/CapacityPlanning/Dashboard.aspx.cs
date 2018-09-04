@@ -23,19 +23,22 @@ namespace CapacityPlanning
             DashboardBL.displayRoleVsDem(RoleDem);
             dashboardBL.displayMgrVsRpt(MgrVSRpt);
             dashboardBL.displayDesigVsResBar(myChartBar);
+            DashboardBL.TotalStregth(lblStregth);
+
         }
         protected void btnClick_Click(object sender, EventArgs e)
         {
             try
             {
                 graphBlock.Style.Add("display", "none");
-                DsVsRes.Style.Add("display", "block");
+                Response.Redirect("TotalStrengths.aspx");
+                //DsVsRes.Style.Add("display", "block");
                 RMVsR.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
-                DashboardBL.showDsVsRes(rptDsVsRes);
-                DashboardBL dashboardBL = new DashboardBL();
-                dashboardBL.displayDesigVsRes(myChart1);
+                //DashboardBL.showDsVsRes(rptDsVsRes);
+                //DashboardBL.displayTotalStrength(rptDsVsRes);
+                //
                 
             }
             catch (Exception ex)
@@ -51,7 +54,7 @@ namespace CapacityPlanning
             {
                 graphBlock.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "block");
-                DsVsRes.Style.Add("display", "none");
+                //DsVsRes.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "none");
                 AccVsNoR.Style.Add("display", "none");
                 DashboardBL.showRMVsR(rptRMVsR);
@@ -73,7 +76,7 @@ namespace CapacityPlanning
                 AccVsNoR.Style.Add("display", "block");
                 CapVsResDem.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
-                DsVsRes.Style.Add("display", "none");
+                //DsVsRes.Style.Add("display", "none");
                 DashboardBL.showAccVsNoR(rptAccVsNoR);
             }
             catch (Exception ex)
@@ -90,7 +93,7 @@ namespace CapacityPlanning
                 CapVsResDem.Style.Add("display", "block");
                 AccVsNoR.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
-                DsVsRes.Style.Add("display", "none");
+               // DsVsRes.Style.Add("display", "none");
                 DashboardBL.showCapVsResDem(rptCapVsDem);
                 DashboardBL.showCap(rptCpt);
                 DashboardBL.displayRoleVsDem(RoleDem1);

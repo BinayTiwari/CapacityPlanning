@@ -14,12 +14,13 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-bar-chart fa-5x"></i>
+                            <i class="fa fa-bar-chart fa-5x">
+                                <asp:Label ID="lblStregth" runat="server" Text=""></asp:Label></i>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <span class="pull-left">Designation Vs Resources</span>
+                    <span class="pull-left">Total Stregth</span>
                     <span class="pull-right">
                         <asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" /></span>
                     <div class="clearfix"></div>
@@ -296,7 +297,7 @@
         </div>
         <!-- /.row -->
     </div>
-    <div id="DsVsRes" style="display: none;" runat="server">
+    <%--<div id="DsVsRes" style="display: none;" runat="server">
         <div class="col-lg-12">
                 <h1 class="page-header text-center">Designation V/S No. of Resources</h1>
             </div>
@@ -310,8 +311,13 @@
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Designation</th>
-                                    <th>No. of Resources</th>
+                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Designation Name</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Process Name</th>
+                                    <th>Account Name</th>
 
                                 </tr>
                             </thead>
@@ -323,11 +329,16 @@
                                                 <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
                                             </td>
                                             <td>
-                                                <%#Eval("Designation_Name")%>
+                                                <%#Eval("EmployeeMasterID")%>
                                             </td>
                                             <td>
-                                                <%#Eval("NoOfResources")%>
+                                                <%#Eval("EmployeetName")%>
                                             </td>
+                                            <td><%#Eval("DesignationName")%></td>
+                                            <td><%#Eval("StartDate")%></td>
+                                            <td><%#Eval("EndDate")%></td>
+                                            <td><%#Eval("ProcessName")%></td>
+                                            <td><%#Eval("AccountName")%></td>
                                         </tr>
                                     </ItemTemplate>
 
@@ -336,12 +347,12 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>--%>
 
                 <!-- /.table-responsive -->
 
 
-                <div class="col-md-3">
+               <%-- <div class="col-md-3">
                     <asp:Chart ID="myChart1" runat="server" Height="400px" Width="600px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
@@ -364,7 +375,7 @@
                             </asp:Legend>
                         </Legends>
                     </asp:Chart>
-                </div>
+                </div>--%>
 
             </div>
         </div>
