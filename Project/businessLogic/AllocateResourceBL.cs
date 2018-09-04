@@ -84,8 +84,8 @@ namespace businessLogic
         {
             try
             {
-                string dtS = String.Format("{0:yyyy-dd-MM HH:mm:ss}", StartDate);
-                string dtE = String.Format("{0:yyyy-dd-MM HH:mm:ss}", EndDate);
+                string dtS = String.Format("{0:yyyy-MM-dd HH:mm:ss}", StartDate);
+                string dtE = String.Format("{0:yyyy-MM-dd HH:mm:ss}", EndDate);
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +

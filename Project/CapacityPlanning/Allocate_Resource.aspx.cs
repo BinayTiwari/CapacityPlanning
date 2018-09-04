@@ -231,13 +231,14 @@ namespace CapacityPlanning
                 if (dtstart <= dtEnd)
                 {
                     btnNext.Enabled = true;
-
                     SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
                     lblStartDate.Text = StartDate;
                 }
                 else
                 {
                     btnNext.Enabled = false;
+
+                    
                 }
 
             }
