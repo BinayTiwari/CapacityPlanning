@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="col-lg-6">
-                                <label>Date of Joining<span style="color: red;"> *</span></label>
+                                <label>Date of Joining(MM/DD/YYYY)<span style="color: red;"> *</span></label>
                                 <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" MaxLength="10"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojoining"
                                     ErrorMessage="Date of Joining can't be blank !" />

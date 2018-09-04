@@ -62,35 +62,35 @@ namespace CapacityPlanning
                 employeeDetails.DesignationID = Convert.ToInt32(listDesignation.SelectedValue);
                 employeeDetails.RolesID = Convert.ToInt32(listRole.SelectedValue);
                 employeeDetails.JoiningDate = Convert.ToDateTime(dojoining.Text.ToString());
-                if (employeeDetails.PriorWorkExperience != null)
+                employeeDetails.Skillsid = listSkillDD.SelectedValue;
+                if (expText.Text.Trim() != "")
                 {
                     employeeDetails.PriorWorkExperience = (float)Convert.ToDouble(expText.Text.Trim());
                 }
-                if(employeeDetails.PAN != "")
+                if(panNoTxt.Text.Trim() != "")
                 {
                     employeeDetails.PAN = panNoTxt.Text.Trim();
                 }
-                if(employeeDetails.Skillsid != "")
-                {
-                    employeeDetails.Skillsid = listSkillDD.SelectedValue;
-                }
-                if(employeeDetails.Address != "")
+               
+                    
+                
+                if(addressTxt.Text != "")
                 {
                     employeeDetails.Address = addressTxt.Text.Trim();
 
                 }
-                if(employeeDetails.PassportNo != "")
+                if(passportNum.Text != "")
                 {
                     employeeDetails.PassportNo = passportNum.Text.Trim();
 
                 }
                 
-                if (employeeDetails.PassportExpiryDate != null)
+                if (passExpDate.Text.Trim() != "")
                 {
                     employeeDetails.PassportExpiryDate = Convert.ToDateTime(passExpDate.Text.Trim().ToString());
                 }
 
-                if (employeeDetails.VisaExpiryDate != null)
+                if (visExpDate.Text.Trim() != "")
                 {
                     employeeDetails.VisaExpiryDate = Convert.ToDateTime(visExpDate.Text.Trim().ToString());
                 }
@@ -142,8 +142,27 @@ namespace CapacityPlanning
                 passportNum.Text = lst[0].PassportNo;
 
                 addressTxt.Text = lst[0].Address;
-                passExpDate.Text = Convert.ToString(Convert.ToDateTime( lst[0].PassportExpiryDate).ToShortDateString());
-                visExpDate.Text = Convert.ToString(Convert.ToDateTime( lst[0].VisaExpiryDate).ToShortDateString());
+                if(Convert.ToDateTime(lst[0].PassportExpiryDate).ToShortDateString() == "1/1/0001")
+                {
+                    passExpDate.Text = "";
+                }
+                else
+                {
+
+                    passExpDate.Text = Convert.ToString(Convert.ToDateTime(lst[0].PassportExpiryDate).ToShortDateString());
+                }
+                if (Convert.ToDateTime(lst[0].VisaExpiryDate).ToShortDateString() == "1/1/0001")
+                {
+                    visExpDate.Text = "";
+                }
+                else
+                {
+
+                    visExpDate.Text = Convert.ToString(Convert.ToDateTime(lst[0].VisaExpiryDate).ToShortDateString());
+                }
+
+               
+               
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
                 listSkillDD.Text = lst[0].Skillsid;

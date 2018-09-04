@@ -33,7 +33,7 @@
                                     <th>Account Name</th>
                                     <th>Process Name</th>
                                     <th>Opportunity Type</th>
-                                    <th>Sales Stage </th>
+                                    <th>Requested By </th>
 
                                    
                                     <th></th>
@@ -52,7 +52,7 @@
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("ProcessName") %></td>
                                             <td><%#Eval("OpportunityType")%></td>
-                                            <td><%#Eval("SalesStageName")%></td>
+                                            <td><%#Eval("EmployeetName")%></td>
                                            
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>

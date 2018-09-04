@@ -9,7 +9,7 @@
     <!-- /.col-lg-12 -->
 
     <div class="row">
-        <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel"
+        <asp:Button ID="backButton" runat="server" Style="float: right;" CssClass="btn btn-primary btn-md" Text="&#8617; Back"
             OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
         <div class="col-lg-12">
 
