@@ -127,6 +127,7 @@ namespace CapacityPlanning
                     details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
                     details.RoleMasterID = Convert.ToInt32(ViewState["RoleID"]);
+                    details.Released = false;
                     
                     String acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);

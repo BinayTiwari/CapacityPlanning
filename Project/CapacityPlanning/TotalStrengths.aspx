@@ -9,8 +9,7 @@
 
     <div class="row">
 
-        <asp:Button ID="backButton" runat="server" CssClass="btn btn-primary pull-right" Text="&#8617; Back"
-            OnClientClick="JavaScript:window.history.back(1);return false;"></asp:Button>
+        <asp:Button ID="backButton" runat="server" CssClass="btn btn-primary pull-right" Text="&#8617; Back" PostBackUrl="~/Dashboard.aspx"></asp:Button>
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">

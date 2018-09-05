@@ -377,11 +377,11 @@
                     </asp:Chart>
                 </div>--%>
 
-            </div>
+            <%--</div>
         </div>
 
 
-    </div>
+    </div>--%>
     <!-- designation vs resources -->
     <div id="RMVsR" style="display: none;" runat="server">
         <div class="col-lg-12">
