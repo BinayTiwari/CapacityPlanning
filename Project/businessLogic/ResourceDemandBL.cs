@@ -248,5 +248,30 @@ namespace businessLogic
             }
             return st;
         }
+
+        public static void updateReleasedValue(string id)
+        {
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = (from c in db.CPT_AllocateResource
+                                 where c.RequestID == id
+                                 select c).ToList();
+                    foreach (var detail in query)
+                    {
+                        detail.Released = true;
+                    }
+                    db.SaveChanges();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
