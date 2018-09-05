@@ -133,6 +133,18 @@ namespace MessageTemplate
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
+                case "ReleaseResource":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("PROJECT", valemail.PROJECT);
+                    dict.Add("PROCESS", valemail.PROCESS);
+                    
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
+
             }
 
         }
