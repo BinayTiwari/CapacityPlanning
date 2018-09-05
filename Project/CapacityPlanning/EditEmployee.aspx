@@ -195,11 +195,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Prior Experience<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="expText" runat="server" MaxLength="4" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
+                                <asp:TextBox ID="expText" runat="server" value="0" MaxLength="4" CssClass="form-control" placeholder="Experience in years"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
                                     ErrorMessage="Experience can't be blank !" />
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator7" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="expText"
-                                    ValidationExpression="^(?:50(?:\.0)?|[0-9](?:\.[0-9])?|0?\.[1-9])$" ErrorMessage="Invalid Experience !" />
+                                    ValidationExpression="[0-9.]*$" ErrorMessage="Invalid Experience !" />
                             </div>
 
                         </div>

@@ -57,20 +57,16 @@
                                 </tr>
                                 <tr>
                                     <td><b>Next Assignment</b></td>
-                                    <td>Capacity Planning</td>
-                                    <td><strong>Tentative Date:</strong>19 june 2018</td>
+                                    <td></td>
+                                    <td><strong>Tentative Date:</strong></td>
                                 </tr>
                                 <tr>
                                     <td><b>Current utilization</b></td>
-                                    <td>80%</td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
 
-                                <tr>
-                                    <td><b>Any Planned Leave:</b> Yes</td>
-                                    <td>Start Date: 20 june 2018</td>
-                                    <td>End Date: 22 june 2018</td>
-                                </tr>
+                                
                             </table>
                         </div>
                     </div>
@@ -134,7 +130,7 @@
                             <div class="row">
                                 <div class="col-lg-5">
                                     <label>Skill</label>
-                                    <asp:DropDownList ID="listSkillDD" CssClass="form-control" runat="server" Enabled="false"></asp:DropDownList>
+                                    <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple"></asp:ListBox>
                                 </div>
 
                                 <div class="col-lg-5">

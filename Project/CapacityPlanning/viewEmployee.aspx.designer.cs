@@ -13,13 +13,13 @@ namespace CapacityPlanning {
     public partial class viewEmployee {
         
         /// <summary>
-        /// btnBack control.
+        /// backButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.Button backButton;
         
         /// <summary>
         /// nameLBL control.
@@ -130,13 +130,13 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox dojoining;
         
         /// <summary>
-        /// listSkillDD control.
+        /// listSkill control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listSkillDD;
+        protected global::System.Web.UI.WebControls.ListBox listSkill;
         
         /// <summary>
         /// panNoTxt control.

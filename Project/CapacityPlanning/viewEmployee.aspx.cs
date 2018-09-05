@@ -21,7 +21,8 @@ namespace CapacityPlanning
             {
                 ClsCommon.ddlGetDesignation(listDesignation);
                 ClsCommon.ddlGetRole(listRole);
-                ClsCommon.ddlGetSkillDDL(listSkillDD);
+                //ClsCommon.ddlGetSkillDDL(listSkillDD);
+                ClsCommon.ddlGetSkill(listSkill);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                 empCurrentStatus();
                 BindTextBoxvalues();
@@ -81,7 +82,17 @@ namespace CapacityPlanning
 
                 listDesignation.Text = lst[0].DesignationID.ToString();
                 listRole.Text = lst[0].RolesID.ToString();
-                listSkillDD.Text = lst[0].Skillsid;
+                //    listSkillDD.Text = lst[0].Skillsid;
+                
+
+                String skillCommaSeperated = lst[0].Skillsid;
+                String[] lstSkillSingle = skillCommaSeperated.Split(',');
+                foreach (var item in lstSkillSingle)
+                {
+
+                    listSkill.Items.FindByValue(item).Selected = true;
+                }
+
             }
             catch (Exception ex)
             {
