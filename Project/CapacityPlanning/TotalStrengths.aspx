@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TotalStrengths.aspx.cs" Inherits="CapacityPlanning.TotalStrengths" %>
+﻿<%@ Page Title="Total Strength" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TotalStrengths.aspx.cs" Inherits="CapacityPlanning.TotalStrengths" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
