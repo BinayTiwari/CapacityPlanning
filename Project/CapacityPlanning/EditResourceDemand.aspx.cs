@@ -132,7 +132,10 @@ namespace CapacityPlanning
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
                // resourceDemandDetails.StatusMasterID = 19;
                 resourceDemandDetails.PriorityID = 27;
-
+                if (Convert.ToInt32(StatusMasterID.SelectedValue) == 23)
+                {
+                    ResourceDemandBL.updateReleasedValue(requestID);
+                }
                 // ResourceDetailsBL.deleteResourceDetails(requestID);
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
@@ -443,6 +446,8 @@ namespace CapacityPlanning
             }
 
         }
+
+        
 
     }
 }

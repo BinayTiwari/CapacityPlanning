@@ -4,21 +4,21 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Resource Demand</h1>
+            <h1 class="page-header">Resource Request</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
 
     <div class="row">
         <div style="float: right;">
-            <asp:Button ID="ResourceDemandAddButton" runat="server" Text="Add Resource Demand" class="btn btn-primary"
+            <asp:Button ID="ResourceDemandAddButton" runat="server" Text="Add Resource Request" class="btn btn-primary"
                 PostBackUrl="AddResourceDemand.aspx" />
         </div>
 
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Resource Demand Status
+                    Resource Request Status
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -50,6 +50,8 @@
                                             
                                             <td><%#Eval("SalesStageName")%></td>
                                             <td><%#Eval("StatusName")%></td>
+                                            
+
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
                                             <td class="center"><a href="EditResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
