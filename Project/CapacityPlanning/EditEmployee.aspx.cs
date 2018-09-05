@@ -51,6 +51,7 @@ namespace CapacityPlanning
                         message += item.Value + ",";
                     }
                 }
+                message = message.Remove(message.Length - 1);
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();
                 employeeDetails.EmployeeMasterID = employeeID;
                 employeeDetails.EmployeetName = fName.Text.Trim();

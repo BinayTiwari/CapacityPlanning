@@ -43,7 +43,7 @@ namespace CapacityPlanning
                         message += item.Value + ",";
                     }
                 }
-                message = message.Remove(message.Length - 1).Trim();
+                message = message.Remove(message.Length - 1);
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 CPT_ResourceMaster employeeDetails = new CPT_ResourceMaster();

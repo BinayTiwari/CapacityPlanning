@@ -27,6 +27,7 @@ namespace CapacityPlanning
                 //ClsCommon.ddlGetStatusNew(StatusMasterID);
                 BindTextBoxvalues();
                 bindDetailTextGrid();
+                disableFields();
 
             }
         }
@@ -421,6 +422,22 @@ namespace CapacityPlanning
             {
 
                 Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public void disableFields()
+        {
+            int statusID = ResourceDemandBL.getAccountbyrequest(requestID);
+            if(statusID == 20)
+            {
+                OpportunityID.Enabled = false;
+                RegionMasterID.Enabled = false;
+                AccountMasterID.Enabled = false;
+                SalesStageMasterID.Enabled = false;
+                processName.Enabled = false;
+                StatusMasterID.Enabled = false;
+                
             }
 
         }
