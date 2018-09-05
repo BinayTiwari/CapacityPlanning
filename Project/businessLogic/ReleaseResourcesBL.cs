@@ -24,7 +24,7 @@ namespace businessLogic
                                      join d in db.CPT_AllocateResource on c.EmployeeMasterID equals d.ResourceID
                                      join e in db.CPT_ResourceDemand on d.RequestID equals e.RequestID
                                      join f in db.CPT_AccountMaster on d.AccountID equals f.AccountMasterID
-                                     where d.Released != true 
+                                     where d.Released == false 
                                      select new
                                      {
                                          c.EmployeeMasterID,
@@ -43,7 +43,7 @@ namespace businessLogic
                                      join d in db.CPT_AllocateResource on c.EmployeeMasterID equals d.ResourceID
                                      join e in db.CPT_ResourceDemand on d.RequestID equals e.RequestID
                                      join f in db.CPT_AccountMaster on d.AccountID equals f.AccountMasterID
-                                     where d.Released != true && e.ResourceRequestBy == id
+                                     where d.Released == false && e.ResourceRequestBy == id
                                      select new
                                      {
                                          c.EmployeeMasterID,
@@ -76,11 +76,12 @@ namespace businessLogic
                 using (CPContext db = new CPContext())
                 {
                     var query = (from c in db.CPT_AllocateResource
+                                 where c.ResourceID == id
                                  select c).ToList();
                     foreach(var detail in query)
                     {
                         detail.Released = true;
-                        detail.EndDate = DateTime.Now;
+                        //detail.EndDate = DateTime.Now;
                     }
                     db.SaveChanges();
                 }
@@ -91,6 +92,49 @@ namespace businessLogic
 
                 throw;
             }
+        }
+
+        public static string getEmailIdByEmpID(int id)
+        { string mail = "";
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from c in db.CPT_ResourceMaster
+                                 where c.EmployeeMasterID == id
+                                 select c.Email).ToList();
+                    mail = query[0];
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return mail;
+        }
+
+        public static string getNameByEmpID(int id)
+        {
+            string name = "";
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from c in db.CPT_ResourceMaster
+                                 where c.EmployeeMasterID == id
+                                 select c.EmployeetName).ToList();
+                    name = query[0];
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return name;
         }
     }
 }
