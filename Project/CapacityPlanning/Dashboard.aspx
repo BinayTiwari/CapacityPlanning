@@ -13,9 +13,12 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-bar-chart fa-5x">
-                                <asp:Label ID="lblStregth" runat="server" Text=""></asp:Label></i>
+                        <div class="col-xs-3 ">
+                            <i class="fa fa-bank fa-5x">
+                                </i>
+                        </div >
+                        <div class="col-xs-3 pull-right ">
+                           <h3> <asp:Label ID="lblStregth" runat="server" Text=""></asp:Label></h3>
                         </div>
                     </div>
                 </div>
