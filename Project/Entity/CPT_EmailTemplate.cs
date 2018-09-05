@@ -42,5 +42,8 @@ namespace Entity
         public string REPORTINGMGR { get; set; }
         public string EMAIL { get; set; }
         public string PHONE { get; set; }
+        public string PROJECT { get; set; }
+        public string PROCESS { get; set; }
+
     }
 }
