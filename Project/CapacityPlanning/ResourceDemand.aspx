@@ -31,7 +31,7 @@
                                     <th>Opportunity Type</th>
                                     <th>Account Name</th>
                                     <th>Process Name</th>
-                                    
+
                                     <th>Sales Stage </th>
                                     <th>Status </th>
                                     <th></th>
@@ -47,15 +47,17 @@
                                             <td><%#Eval("OpportunityType")%></td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("ProcessName")%></td>
-                                            
+
                                             <td><%#Eval("SalesStageName")%></td>
                                             <td><%#Eval("StatusName")%></td>
-                                            
+
 
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
-                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
+                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
+                                            </a></td>
                                             <td class="center"><a href="EditResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
-                                                <ul><i class="fa fa-fw" aria-hidden="true" title="Edit"></i></ul></a></td>
+                                                <ul><i class="fa fa-fw" aria-hidden="true" title="Edit"></i></ul>
+                                            </a></td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

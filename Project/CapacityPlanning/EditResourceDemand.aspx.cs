@@ -432,16 +432,16 @@ namespace CapacityPlanning
         public void disableFields()
         {
             int statusID = ResourceDemandBL.getStatusbyRequest(requestID);
-            if(statusID == 20 || statusID == 32)
+            if(statusID == 20 || statusID == 32  || statusID == 26)
             {
                 OpportunityID.Enabled = false;
                 RegionMasterID.Enabled = false;
                 AccountMasterID.Enabled = false;
                 SalesStageMasterID.Enabled = false;
                 processName.Enabled = false;
-                StatusMasterID.Enabled = false;
+                
                 GridviewResourceDetail.Enabled = false;
-                save.Enabled = false;
+                
 
             }
 
