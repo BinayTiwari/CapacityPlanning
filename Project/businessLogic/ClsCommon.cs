@@ -259,9 +259,9 @@ namespace businessLogic
         {
             ddldropdownName.Items.Clear();
             ListItem li = new ListItem();
-            li.Text = "Select Skills";
-            li.Value = "0";
-            ddldropdownName.Items.Add(li);
+            //li.Text = "Select Skills";
+            //li.Value = "0";
+            //ddldropdownName.Items.Add(li);
 
             using (var db = new CPContext())
             {

@@ -81,7 +81,7 @@ namespace businessLogic
                     foreach(var detail in query)
                     {
                         detail.Released = true;
-                        //detail.EndDate = DateTime.Now;
+                        detail.EndDate = DateTime.Now;
                     }
                     db.SaveChanges();
                 }
