@@ -93,7 +93,7 @@ namespace businessLogic
                           orderby p.DateOfCreation descending
                           where p.ResourceRequestBy == employeeID
                           select new
-                          { p.RequestID, q.AccountName, c.CountryName, ct.CityName, t.OpportunityType, u.SalesStageName, p.ProcessName, v.StatusName,p.DateOfCreation
+                          { p.RequestID,p.AccountID, q.AccountName, c.CountryName, ct.CityName, t.OpportunityType, u.SalesStageName, p.ProcessName, v.StatusName,p.DateOfCreation
 
                           }).ToList();
 
@@ -224,6 +224,29 @@ namespace businessLogic
 
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public static int getStatusbyRequest(string id)
+        {
+            int st = 0;
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = (from c in db.CPT_ResourceDemand
+                                 where c.RequestID == id
+                                 select c.StatusMasterID).ToList();
+
+                    st = Convert.ToInt32( query[0]);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return st;
         }
     }
 }
