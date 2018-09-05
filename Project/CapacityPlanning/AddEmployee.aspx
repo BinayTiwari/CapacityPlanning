@@ -134,11 +134,11 @@
                                 <label>Skill<span style="color: red;"> *</span></label>
                                 <%--<asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>--%>
 
-                                <%--<asp:listbox id="listSkill" runat="server" cssclass="from-control" appenddatabounditems="true" selectionmode="Multiple"></asp:listbox>--%>
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkillDD" ForeColor="Red" Display="Dynamic"
-                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>--%>
-                                <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple"></asp:ListBox>
-
+                                <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple">
+                                    
+                                </asp:ListBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkill" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 
                             </div>
                             <div class="col-lg-6">
@@ -228,10 +228,18 @@
 
 
     <script type="text/javascript">
+
         $(function () {
+
             $('[id*=listSkill]').multiselect({
+
                 includeSelectAllOption: true
+
             });
+
+            
+
         });
+
     </script>
 </asp:Content>
