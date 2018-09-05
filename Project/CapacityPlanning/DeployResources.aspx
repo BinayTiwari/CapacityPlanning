@@ -23,6 +23,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables">
                             <thead>
                                 <tr>
+                                    <th>Sr. No.</th>
                                     <th>Request Id</th>
                                     <th>Request Date </th>
                                     <th>Account Name</th>
@@ -37,6 +38,7 @@
                                 <asp:Repeater ID="rptDeployResources" runat="server">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
+                                            <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                             <td><%#Eval("RequestId")%></td>
                                             <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
