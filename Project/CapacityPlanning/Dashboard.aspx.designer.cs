@@ -40,6 +40,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button btnClick1;
         
         /// <summary>
+        /// NumberOfResourcesOnBench control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NumberOfResourcesOnBench;
+        
+        /// <summary>
         /// btnClick2 control.
         /// </summary>
         /// <remarks>

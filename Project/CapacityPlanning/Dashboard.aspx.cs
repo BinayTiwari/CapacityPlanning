@@ -24,6 +24,7 @@ namespace CapacityPlanning
             dashboardBL.displayMgrVsRpt(MgrVSRpt);
             dashboardBL.displayDesigVsResBar(myChartBar);
             DashboardBL.TotalStregth(lblStregth);
+            DashboardBL.OnBench(NumberOfResourcesOnBench);
 
         }
         protected void btnClick_Click(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace CapacityPlanning
         {
             try
             {
+                
                 graphBlock.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "block");
                 //DsVsRes.Style.Add("display", "none");
@@ -72,12 +74,13 @@ namespace CapacityPlanning
         {
             try
             {
+                Response.Redirect("ResourcesOnBench.aspx");
                 graphBlock.Style.Add("display", "none");
-                AccVsNoR.Style.Add("display", "block");
+               // AccVsNoR.Style.Add("display", "block");
                 CapVsResDem.Style.Add("display", "none");
                 RMVsR.Style.Add("display", "none");
                 //DsVsRes.Style.Add("display", "none");
-                DashboardBL.showAccVsNoR(rptAccVsNoR);
+                //DashboardBL.showAccVsNoR(rptAccVsNoR);
             }
             catch (Exception ex)
             {

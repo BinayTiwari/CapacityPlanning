@@ -238,6 +238,33 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
+        public static void OnBench(Label NumberOfResourcesOnBench)
+        {
+            try
+            {
+
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeetName) AS Total FROM  CPT_AllocateResource RIGHT OUTER JOIN "+
+                                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID "+
+                                    " WHERE CPT_ResourceMaster.DesignationID NOT IN(36, 37, 38, 42) AND CPT_AllocateResource.IsDeployed = 0";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    NumberOfResourcesOnBench.Text = SqlCom.ExecuteScalar().ToString();
+                    //  t = reader["Total"].ToString();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         public void displayMgrVsRpt(Chart chart)
         {

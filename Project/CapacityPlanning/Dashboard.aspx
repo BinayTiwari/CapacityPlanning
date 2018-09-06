@@ -57,11 +57,14 @@
                         <div class="col-xs-3">
                             <i class="fa fa-th-list fa-5x"></i>
                         </div>
+                         <div class="col-xs-3 pull-right">
+                            <h3> <asp:Label ID="NumberOfResourcesOnBench" runat="server" Text=""></asp:Label></h3>
+                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Account Wise Resources</span>
+                        <span class="pull-left">Resources on Bench</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick2" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick2_Click" runat="server" /></span>
 
