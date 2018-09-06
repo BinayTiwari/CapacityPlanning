@@ -82,6 +82,7 @@ namespace businessLogic
                     {
                         detail.Released = true;
                         detail.EndDate = DateTime.Now;
+                        detail.IsDeployed = false;
                     }
                     db.SaveChanges();
                 }

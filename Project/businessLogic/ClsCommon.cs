@@ -84,6 +84,32 @@ namespace businessLogic
                 }
             }
         }
+        public static void ddlGetCity(DropDownList ddldropdownName, int countryID)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "Select City";
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
+
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_CityMaster
+                            where c.IsActive == true && c.CountryID == countryID
+                            orderby c.CityName
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.CityID.ToString();
+                    li.Text = item.CityName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
+
+
 
         public static void ddlGetCity(DropDownList ddldropdownName, int countryID, int regionID)
         {
