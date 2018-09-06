@@ -24,7 +24,7 @@ namespace businessLogic
                                      join d in db.CPT_AllocateResource on c.EmployeeMasterID equals d.ResourceID
                                      join e in db.CPT_ResourceDemand on d.RequestID equals e.RequestID
                                      join f in db.CPT_AccountMaster on d.AccountID equals f.AccountMasterID
-                                     where d.Released == false 
+                                     where d.Released == false && d.IsDeployed == true
                                      select new
                                      {
                                          c.EmployeeMasterID,
@@ -43,7 +43,7 @@ namespace businessLogic
                                      join d in db.CPT_AllocateResource on c.EmployeeMasterID equals d.ResourceID
                                      join e in db.CPT_ResourceDemand on d.RequestID equals e.RequestID
                                      join f in db.CPT_AccountMaster on d.AccountID equals f.AccountMasterID
-                                     where d.Released == false && e.ResourceRequestBy == id
+                                     where d.Released == false && d.IsDeployed == true && e.ResourceRequestBy == id
                                      select new
                                      {
                                          c.EmployeeMasterID,
