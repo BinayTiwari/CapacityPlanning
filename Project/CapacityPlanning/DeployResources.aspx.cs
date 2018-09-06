@@ -33,16 +33,23 @@ namespace CapacityPlanning
 
         protected void DeployResource(object sender, EventArgs e)
         {
-            Button theButton = sender as Button;
-            resourceID = Convert.ToInt32(theButton.CommandArgument);
-            requestID = theButton.Attributes["RequestId"];            
-            acName = theButton.Attributes["acName"];
-            prName = theButton.Attributes["prName"];
-            startDate = theButton.Attributes["StartDate"];
-            endDate = theButton.Attributes["EndDate"];
-            DeployResourcesBL.DeployStatus(resourceID, requestID);
-            Email();
-            BindRepeater();
+            try
+            {
+                Button theButton = sender as Button;
+                resourceID = Convert.ToInt32(theButton.CommandArgument);
+                requestID = theButton.Attributes["RequestId"];
+                acName = theButton.Attributes["acName"];
+                prName = theButton.Attributes["prName"];
+                startDate = theButton.Attributes["StartDate"];
+                endDate = theButton.Attributes["EndDate"];
+                DeployResourcesBL.DeployStatus(resourceID, requestID);
+                Email();
+                BindRepeater();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Email()
