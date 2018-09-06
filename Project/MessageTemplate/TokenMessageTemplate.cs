@@ -139,6 +139,7 @@ namespace MessageTemplate
                     
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
+                    ccAddress = valemail.BccEmailAddresses;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
