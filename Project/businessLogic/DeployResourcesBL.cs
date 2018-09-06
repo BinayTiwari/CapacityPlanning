@@ -34,7 +34,9 @@ namespace businessLogic
                                       p.ProcessName,
                                       ResourceRequestBy = x.EmployeetName,
                                       Name = s.EmployeetName,
-                                      ResourceID = s.EmployeeMasterID
+                                      ResourceID = s.EmployeeMasterID,
+                                      r.StartDate,
+                                      r.EndDate
                                        
                                   }).ToList();
 
