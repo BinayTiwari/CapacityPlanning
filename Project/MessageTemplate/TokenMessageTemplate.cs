@@ -10,7 +10,6 @@ using System.Text.RegularExpressions;
 using System.Net.Mail;
 using System.Net;
 using Entity;
-using businessLogic;
 
 
 namespace MessageTemplate
@@ -22,8 +21,6 @@ namespace MessageTemplate
         private string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
-
-
         }
 
         string ReplaceTokens(string template, Dictionary<string, string> replacements)
@@ -60,7 +57,7 @@ namespace MessageTemplate
 
                 case "ForgetPassword":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("EMAIL", valemail.Name);
                     dict.Add("UID", valemail.UID);
@@ -71,7 +68,7 @@ namespace MessageTemplate
 
                 case "ResourceDemand":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("EMAIL", valemail.Name);
                     //dict.Add("BccEmail", valemail.BccEmailAddresses);
@@ -84,7 +81,7 @@ namespace MessageTemplate
 
                 case "UpdateResourceDemand":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("EMAIL", valemail.Name);
                     //dict.Add("BccEmail", valemail.BccEmailAddresses);
@@ -97,7 +94,7 @@ namespace MessageTemplate
 
                 case "DeclinedOffer":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("JOINER", valemail.JOINER);
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("EMAIL", valemail.Name);
@@ -108,7 +105,7 @@ namespace MessageTemplate
 
                 case "AlignedResource" :
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("ACCOUNT", valemail.ACCOUNT);
                     dict.Add("STARTDATE", valemail.STARTDATE);
@@ -120,7 +117,7 @@ namespace MessageTemplate
 
                 case "Onboard":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("JOINER", valemail.JOINER);
                     dict.Add("DESIGNATION", valemail.DESIGNATION);
                     dict.Add("BASELOCATION", valemail.BASELOCATION);
@@ -135,13 +132,27 @@ namespace MessageTemplate
 
                 case "ReleaseResource":
                     MessageTemplate(ref valemail);
-                    dict.Add("FORUMNAME", "Capacity Planning");
+                    dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("PROJECT", valemail.PROJECT);
                     dict.Add("PROCESS", valemail.PROCESS);
                     
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
+
+                case "DeployResource":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Work Force Allocation");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("PROJECT", valemail.PROJECT);
+                    dict.Add("PROCESS", valemail.PROCESS);
+                    dict.Add("STARTDATE", valemail.STARTDATE);
+                    dict.Add("ENDDATE", valemail.ENDDATE);
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    ccAddress = valemail.BccEmailAddresses;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
@@ -194,10 +205,15 @@ namespace MessageTemplate
                 }
                 MailMessage mail = new MailMessage();
                 mail.IsBodyHtml = true;
-                mail.From = new MailAddress(fromAddress, "Capacity Planning");
+                mail.From = new MailAddress(fromAddress, "Work Force Allocation");
                 if (!string.IsNullOrEmpty(ccAddress))
                 {
-                    mail.CC.Add(ccAddress);
+                    string[] CCAddr = ccAddress.Split(',');
+                    foreach(string add in CCAddr)
+                    {
+                        mail.CC.Add(add);
+                    }
+                    
                 }
                 mail.To.Add(toAddress);
                 mail.Subject = subject;
@@ -207,7 +223,6 @@ namespace MessageTemplate
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
             
