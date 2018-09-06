@@ -41,7 +41,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Manager Vs Reporter</span>
+                        <span class="pull-left">Manager Wise Reportees</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick1" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick1_Click" runat="server" /></span>
 
@@ -61,7 +61,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Account Vs Resources</span>
+                        <span class="pull-left">Account Wise Resources</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick2" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick2_Click" runat="server" /></span>
 
@@ -81,7 +81,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Capacity Vs Demand</span>
+                        <span class="pull-left">Capacity V/S Demand</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick3" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick3_Click" runat="server" /></span>
 

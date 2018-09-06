@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Add Resource Demand</h1>
+            <h1 class="page-header">Resource Request</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Add Resource Demand
+                    Add Resource Request
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -109,14 +109,15 @@
                                     Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date !"></asp:CompareValidator>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
-                            <FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
-                            </FooterTemplate>
+
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" CausesValidation="false" />
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary btn-md" Text="Add Row" OnClick="ButtonAdd_Click" />
+                            </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
@@ -133,10 +134,10 @@
                         <div class="col-sm-12">
                             <div class="col-sm-2 pull-right">
                                 <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />
-                                
+
                             </div>
                             <div>
-                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Add Demand" OnClick="Add_Resource_Demand" />
+                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
                             </div>
                         </div>
                     </div>

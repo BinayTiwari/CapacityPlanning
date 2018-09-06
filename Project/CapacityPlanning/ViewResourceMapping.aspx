@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Resource Demand </h1>
+            <h1 class="page-header">Resource Request </h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Resource Demand Detail 
+                    Resource request Detail 
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
