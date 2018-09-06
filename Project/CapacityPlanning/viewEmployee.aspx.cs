@@ -25,7 +25,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetSkill(listSkill);
                 ClsCommon.ddlGetManager(RManagerDropDownList);
                 empCurrentStatus();
-                listSkill.Enabled = false;
+                
                 BindTextBoxvalues();
             }
 

@@ -52,5 +52,14 @@ namespace CapacityPlanning
             Response.Write("You Successfully logged out");
 
         }
+
+        protected void UserProfile_Click(object sender, EventArgs e)
+        {
+            List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+            lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+            int ID = lstdetils[0].EmployeeMasterID;
+            string url = ("viewEmployee?EmployeeID="+ID).Trim();
+            Response.Redirect(url);
+        }
     }
 }

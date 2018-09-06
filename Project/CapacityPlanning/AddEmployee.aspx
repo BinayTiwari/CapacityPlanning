@@ -134,9 +134,7 @@
                                 <label>Skill<span style="color: red;"> *</span></label>
                                 <%--<asp:DropDownList ID="listSkillDD" class="form-control" runat="server" SelectionMode="Multiple"></asp:DropDownList>--%>
 
-                                <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="listSkill" class="form-control" runat="server" SelectionMode="Multiple"></asp:ListBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="listSkill" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
 

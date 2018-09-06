@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="col-lg-12">
-        <h1 class="page-header">View Resource</h1>
+        <h1 class="page-header">View Profile</h1>
         
     </div>
     <!-- /.col-lg-12 -->
