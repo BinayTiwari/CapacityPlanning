@@ -12,6 +12,14 @@
 
     <div class="row">
         <div class="form-group form-inline col-lg-12">
+            <asp:DropDownList ID="RegionList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
+                AutoPostBack="True" OnSelectedIndexChanged="RegionList_SelectedIndexChanged1">
+            </asp:DropDownList>
+
+            <asp:DropDownList ID="CountryList" AppendDataBoundItems="true" runat="server" CssClass="form-control"
+                OnSelectedIndexChanged="CountryList_SelectedIndexChanged" AutoPostBack="True" >
+            </asp:DropDownList>
+
             <asp:DropDownList ID="CityList" AppendDataBoundItems="true" runat="server" CssClass="form-control" AutoPostBack="true"
                 OnSelectedIndexChanged="CityList_SelectedIndexChanged">
             </asp:DropDownList>

@@ -13,12 +13,21 @@ namespace CapacityPlanning
 {
     public partial class AccountMaster : System.Web.UI.Page
     {
+        
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-                AccountNameTextBox.Enabled = false;
+                ClsCommon.ddlGetRegion(RegionList);
+                ClsCommon.ddlGetCountry(CountryList);
                 ClsCommon.ddlGetCity(CityList);
+                CountryList.Enabled = false;
+                CityList.Enabled = false;
+               
+                AccountNameTextBox.Enabled = false;
+                
                 BindGrid();
 
             }
@@ -143,6 +152,46 @@ namespace CapacityPlanning
 
         }
 
+        
+        protected void RegionList_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+
+
+            if (RegionList.SelectedItem.Text == "Select Region")
+            {
+                CountryList.Enabled = false;
+                AccountNameTextBox.Enabled = false;
+                CityList.Enabled = false;
+
+
+            }
+            else
+            {
+                CountryList.Enabled = true;
+            }
+
+            int regionID = Convert.ToInt32(RegionList.SelectedValue);
+            ClsCommon.ddlGetCountry(CountryList, regionID);
+
+        }
+
+        protected void CountryList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CountryList.SelectedItem.Text == "Select Country")
+            {
+                AccountNameTextBox.Enabled = false;
+                CityList.Enabled = false;
+            }
+            else
+            {
+                //AccountNameTextBox.Enabled = true;
+                CityList.Enabled = true;
+
+            }
+           
+            int countryID = Convert.ToInt32(CountryList.SelectedValue);
+            ClsCommon.ddlGetCity(CityList, countryID);
+        }
         protected void CityList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
