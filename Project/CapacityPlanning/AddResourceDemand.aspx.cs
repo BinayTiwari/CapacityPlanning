@@ -117,7 +117,7 @@ namespace CapacityPlanning
                 }
                 
                 insertResourceDemand.Insert(resourceDemandDetails);
-             //   Email();
+                Email();
 
                 Response.Redirect("ResourceDemand.aspx");
 
