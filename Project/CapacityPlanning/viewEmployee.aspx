@@ -4,7 +4,7 @@
 
     <div class="col-lg-12">
         <h1 class="page-header">View Profile</h1>
-        
+
     </div>
     <!-- /.col-lg-12 -->
 
@@ -60,7 +60,9 @@
                                     <td>
                                         <asp:Label ID="NextAccount" runat="server" Text=""></asp:Label>
                                     </td>
-                                    <td><strong>Tentative Date: <asp:Label ID="startDate" runat="server" Text=""></asp:Label> </strong></td>
+                                    <td><strong>Tentative Date: </strong>
+                                        <asp:Label ID="startDate" runat="server" Text=""></asp:Label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><b>Current utilization</b></td>
@@ -68,7 +70,7 @@
                                     <td></td>
                                 </tr>
 
-                                
+
                             </table>
                         </div>
                     </div>

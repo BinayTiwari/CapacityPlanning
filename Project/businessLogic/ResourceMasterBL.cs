@@ -155,7 +155,7 @@ namespace businessLogic
             {
                 var query = (from c in db.CPT_AllocateResource
 
-                             where c.ResourceID == resource.EmployeeMasterID && c.IsDeployed == false
+                             where c.ResourceID == resource.EmployeeMasterID && c.IsDeployed == false && c.Released == false
                              select c);
                 foreach (var detail in query)
                 {
