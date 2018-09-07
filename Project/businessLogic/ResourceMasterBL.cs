@@ -130,16 +130,34 @@ namespace businessLogic
             return data;
         }
 
-       public List<CPT_AllocateResource> assignmentBinding( CPT_ResourceMaster resource)
+       public List<CPT_AllocateResource> assignmentCurrentBinding( CPT_ResourceMaster resource)
         {
             List<CPT_AllocateResource> data = new List<CPT_AllocateResource>();
             using(CPContext db = new CPContext())
             {
                 var query = (from c in db.CPT_AllocateResource
 
-                             where c.ResourceID == resource.EmployeeMasterID
+                             where c.ResourceID == resource.EmployeeMasterID && c.IsDeployed == true
                              select c);
                 foreach(var detail in query)
+                {
+                    data.Add(detail);
+                }
+            }
+
+            return data;
+        }
+
+        public List<CPT_AllocateResource> assignmentNextBinding(CPT_ResourceMaster resource)
+        {
+            List<CPT_AllocateResource> data = new List<CPT_AllocateResource>();
+            using (CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_AllocateResource
+
+                             where c.ResourceID == resource.EmployeeMasterID && c.IsDeployed == false
+                             select c);
+                foreach (var detail in query)
                 {
                     data.Add(detail);
                 }
