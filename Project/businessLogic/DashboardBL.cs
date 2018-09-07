@@ -171,8 +171,39 @@ namespace businessLogic
                 }
             }
         }
+        public static void DisplayAccountWiseResources(Repeater rpt)
+        {
 
-        
+            try
+            {
+
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "With Employees AS ( SELECT[CPT_AccountMaster].[AccountName],[CPT_RoleMaster].[RoleName], COUNT([CPT_AllocateResource].[RoleMasterID]) As ResourseNumber" +
+                                    " FROM CPT_AccountMaster INNER JOIN CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN" +
+                                   " CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID = CPT_RoleMaster.RoleMasterID Where[AccountID] = [AccountID] AND[CPT_RoleMaster].RoleMasterID NOT IN(1,4,5,8,15,16,20) AND [CPT_AllocateResource].ISDeployed = 1" +
+                                   " Group by[CPT_AllocateResource].[RoleMasterID],[CPT_RoleMaster].[RoleName],[CPT_AccountMaster].[AccountName])" +
+                                   " Select[AccountName],ISNULL([Project Manager],0) AS ProjectManager, ISNULL([Developer],0) AS Developer, ISNULL([Team Lead],0) As TeamLead, ISNULL([Quality Control],0) AS QualityControl, ISNULL([Architect],0) AS Architect, ISNULL([Senior Developer],0) As SeniorDeveloper, ISNULL([Business Analyst],0) As BUsinessAnalyst from Employees" +
+                                    " pivot (" +
+                                    " SUM([ResourseNumber])" +
+                                    "FOR [RoleName]" +
+                                    "IN ([Project Manager],[Developer],[Team Lead],[Quality Control],[Architect],[Senior Developer],[Business Analyst])" +
+                                     ") as pivotTable";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    rpt.DataSource = SqlCom.ExecuteReader();
+                    rpt.DataBind();
+                    //  t = reader["Total"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public void displayDesigVsResBar(Chart chart)
         {
             using (CPContext db = new CPContext())

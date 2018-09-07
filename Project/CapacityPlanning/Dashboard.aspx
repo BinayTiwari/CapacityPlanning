@@ -99,21 +99,85 @@
 
 
     <div id="graphBlock" style="display: block;" runat="server">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header text-center">Graphs and Charts</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
+       
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Role V/S Capacity
-                    </div>
+                    
                     <!-- /.panel-heading -->
-                    <div class="panel-body">
+                    <div class="row">
+        
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Acoount Wise Resource Deployment 
+                </div>
+                <!-- /.panel-heading -->
+               
+            </div>
+        </div>
+         <div class="col-lg-12">
+                    <div class="dataTable_wrapper">
+
+
+                        <table class="table table-striped table-bordered table-hover" id="dataTables">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Account Name</th>
+                                    <th>Project Manager</th>
+                                     <th>Architect</th>
+                                    <th>Business Analyst</th>
+                                    <th>Team Lead</th>
+                                      <th>Senior Developer</th>
+                                    <th>Developer</th>
+                                  
+                                    <th>Quality Control</th>
+                                   
+                                    
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptAccountWiseResources" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                            </td>
+                                            <td>
+                                               <%#Eval("AccountName")%>
+                                            </td>
+                                           <td><%#Eval("ProjectManager")%></td>
+                                                <td><%#Eval("Architect")%></td>
+                                            <td><%#Eval("BUsinessAnalyst")%></td>
+                                            <td><%#Eval("TeamLead")%></td>
+                                             <td><%#Eval("SeniorDeveloper")%></td>
+                                           <td><%#Eval("Developer")%></td>
+                                            
+                                            <td><%#Eval("QualityControl")%></td>
+                                        
+                                           
+                                            
+                                            
+                                        </tr>
+                                    </ItemTemplate>
+
+                                </asp:Repeater>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    </div>
+                    <%--<div class="panel-body">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-line-chart">
                                 <asp:Chart ID="RoleCap" runat="server" Width="1020px" Height="400px">
@@ -137,7 +201,7 @@
                                 </asp:Chart>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->

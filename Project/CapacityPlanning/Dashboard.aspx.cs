@@ -19,7 +19,8 @@ namespace CapacityPlanning
         {
             DashboardBL dashboardBL = new DashboardBL();
             dashboardBL.displayDesigVsRes(myChart);
-            DashboardBL.showRoleVsCapacity(RoleCap);
+            DashboardBL.DisplayAccountWiseResources(rptAccountWiseResources);
+            //DashboardBL.showRoleVsCapacity(RoleCap);
             DashboardBL.displayRoleVsDem(RoleDem);
             dashboardBL.displayMgrVsRpt(MgrVSRpt);
             dashboardBL.displayDesigVsResBar(myChartBar);
