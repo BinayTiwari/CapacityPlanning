@@ -113,14 +113,20 @@ namespace CapacityPlanning
                 CPT_ResourceMaster resourceMaster = new CPT_ResourceMaster();
                 resourceMaster.EmployeeMasterID = employeeID;
                 ResourceMasterBL resourceMasterBL = new ResourceMasterBL();
-                List<CPT_AllocateResource> lst = resourceMasterBL.assignmentBinding(resourceMaster);
+                List<CPT_AllocateResource> lst = resourceMasterBL.assignmentCurrentBinding(resourceMaster);
                 int acntID = lst[0].AccountID;
                 String acName = resourceMasterBL.getAccountByID(acntID);
                 crntAssign.Text = acName;
                 endDate.Text = lst[0].EndDate.ToShortDateString().ToString();
-                
-                
-                
+
+                List<CPT_AllocateResource> lstNext = resourceMasterBL.assignmentNextBinding(resourceMaster);
+                int accountNext = lstNext[0].AccountID;
+                String acNameNext = resourceMasterBL.getAccountByID(accountNext);
+                NextAccount.Text = acNameNext;
+                startDate.Text = lstNext[0].StartDate.ToLongDateString().ToString();
+
+
+
             }
             catch (Exception ex)
             {

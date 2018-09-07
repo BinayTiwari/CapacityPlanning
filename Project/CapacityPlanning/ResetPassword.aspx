@@ -30,7 +30,7 @@
                     <p class="login-box-msg"><strong>Recover Password</strong> </p>
                     <p class="text-center"><asp:Label ID="lblMessage" Visible="false" runat="server"></asp:Label></p>
                     <div class="form-group has-feedback">
-                        <asp:TextBox ID="txtAccountRecovery" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required ></asp:TextBox>
+                        <asp:TextBox ID="txtAccountRecovery" TextMode="Email" CssClass="form-control" MaxLength="50" placeholder="E-mail address" runat="server" required ></asp:TextBox>
                         <span class="fa fa-user form-control-feedback"></span><span><font color="red"></font></span>
                     </div>
 

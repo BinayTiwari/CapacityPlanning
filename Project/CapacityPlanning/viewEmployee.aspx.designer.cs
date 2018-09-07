@@ -76,6 +76,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Label endDate;
         
         /// <summary>
+        /// NextAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NextAccount;
+        
+        /// <summary>
+        /// startDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label startDate;
+        
+        /// <summary>
         /// RManagerDropDownList control.
         /// </summary>
         /// <remarks>

@@ -51,14 +51,17 @@
                                     ErrorMessage="Email can't be blank !" />
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator5" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="mail"
                                     ValidationExpression="^\w.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" ErrorMessage="Invalid Email !" />
+                                
                             </div>
 
                             <div class="col-lg-6">
                                 <label>Password<span style="color: red;"> *</span></label>
-
                                 <asp:TextBox TextMode="Password" ID="pass" MaxLength="15" CssClass="form-control" runat="server" placeholder="Password" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="pass"
                                     ErrorMessage="Password can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="pass"
+                                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$" ErrorMessage="Password length should be between 8-15 character and should include one 
+                                    special, atleast one uppercase, one lowercase character and one number !" />
                             </div>
                         </div>
                     </div>

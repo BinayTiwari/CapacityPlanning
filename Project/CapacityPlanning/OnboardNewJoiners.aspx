@@ -55,6 +55,9 @@
                                 <asp:TextBox TextMode="Password" ID="pass" MaxLength="15" CssClass="form-control" runat="server" placeholder="Password" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="pass"
                                     ErrorMessage="Password can't be blank !" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="pass"
+                                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$" ErrorMessage="Password length should be between 8-15 character and should include one 
+                                    special, atleast one uppercase, one lowercase character and one number !" />
                             </div>
                         </div>
                     </div>

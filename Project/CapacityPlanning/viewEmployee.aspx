@@ -57,8 +57,10 @@
                                 </tr>
                                 <tr>
                                     <td><b>Next Assignment</b></td>
-                                    <td></td>
-                                    <td><strong>Tentative Date:</strong></td>
+                                    <td>
+                                        <asp:Label ID="NextAccount" runat="server" Text=""></asp:Label>
+                                    </td>
+                                    <td><strong>Tentative Date: <asp:Label ID="startDate" runat="server" Text=""></asp:Label> </strong></td>
                                 </tr>
                                 <tr>
                                     <td><b>Current utilization</b></td>
