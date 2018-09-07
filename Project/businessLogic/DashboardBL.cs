@@ -251,7 +251,7 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "Select COUNT(EmployeetName) AS Total FROM CPT_ResourceMaster Where DesignationID Not IN(36,37,38,42)";
+                string SqlString = "Select COUNT(EmployeetName) AS Total FROM CPT_ResourceMaster Where CPT_ResourceMaster.RolesID  NOT IN (1,4,8,15,16)";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
@@ -278,7 +278,7 @@ namespace businessLogic
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeetName) AS Total FROM  CPT_AllocateResource RIGHT OUTER JOIN "+
                                     " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID "+
-                                    " WHERE CPT_ResourceMaster.DesignationID NOT IN(36, 37, 38, 42) AND CPT_AllocateResource.IsDeployed = 0";
+                                    " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,16,20) AND CPT_AllocateResource.IsDeployed = 0";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {

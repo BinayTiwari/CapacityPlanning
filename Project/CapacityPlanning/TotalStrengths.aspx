@@ -29,11 +29,12 @@
                                     <th>Sr. No.</th>
                                     <th>Employee ID</th>
                                     <th>Employee Name</th>
-                                    <th>Designation Name</th>
+                                    <th>Account Name</th>
+                                    <th>Designation</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Process Name</th>
-                                    <th>Account Name</th>
+                                    <th>Process</th>
+                                    
 
                                 </tr>
                             </thead>
@@ -50,11 +51,12 @@
                                             <td>
                                                 <%#Eval("EmployeetName")%>
                                             </td>
+                                            <td><%#Eval("AccountName")%></td>
                                             <td><%#Eval("DesignationName")%></td>
                                             <td><%#Eval("StartDate")%></td>
                                             <td><%#Eval("EndDate")%></td>
                                             <td><%#Eval("ProcessName")%></td>
-                                            <td><%#Eval("AccountName")%></td>
+                                            
                                         </tr>
                                     </ItemTemplate>
 
