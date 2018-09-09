@@ -181,7 +181,7 @@ namespace businessLogic
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "With Employees AS ( SELECT[CPT_AccountMaster].[AccountName],[CPT_RoleMaster].[RoleName], COUNT([CPT_AllocateResource].[RoleMasterID]) As ResourseNumber" +
                                     " FROM CPT_AccountMaster INNER JOIN CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN" +
-                                   " CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID = CPT_RoleMaster.RoleMasterID Where[AccountID] = [AccountID] AND[CPT_RoleMaster].RoleMasterID NOT IN(1,4,5,8,15,16,20) AND [CPT_AllocateResource].ISDeployed = 1" +
+                                   " CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID = CPT_RoleMaster.RoleMasterID Where[AccountID] = [AccountID] AND[CPT_RoleMaster].RoleMasterID NOT IN(1,4,5,8,15,20) AND [CPT_AllocateResource].ISDeployed = 1 " +
                                    " Group by[CPT_AllocateResource].[RoleMasterID],[CPT_RoleMaster].[RoleName],[CPT_AccountMaster].[AccountName])" +
                                    " Select[AccountName],ISNULL([Project Manager],0) AS ProjectManager, ISNULL([Developer],0) AS Developer, ISNULL([Team Lead],0) As TeamLead, ISNULL([Quality Control],0) AS QualityControl, ISNULL([Architect],0) AS Architect, ISNULL([Senior Developer],0) As SeniorDeveloper, ISNULL([Business Analyst],0) As BUsinessAnalyst from Employees" +
                                     " pivot (" +
@@ -251,12 +251,50 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "Select COUNT(EmployeetName) AS Total FROM CPT_ResourceMaster Where CPT_ResourceMaster.RolesID  NOT IN (1,4,8,15,16)";
+                string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeeMasterID) Total  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN  CPT_ResourceMaster INNER JOIN  CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON  CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID "+
+                                   " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20)   AND ISDeployed = 1 ";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
                     SqlConn.Open();
                     NumberOfResources.Text = SqlCom.ExecuteScalar().ToString();
+                    //  t = reader["Total"].ToString();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void OpenResourceRequest(Repeater rpt)
+        {
+            try
+            {
+
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = " SELECT  CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName, "+
+                                  "   CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, " +
+                                    " CPT_OpportunityMaster.OpportunityType,  CPT_AccountMaster.AccountName,  dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID, CPT_ResourceDetails.RequestDetailID) As Allocated" +
+                                    " FROM CPT_SkillsMaster INNER JOIN " +
+                                   "  CPT_ResourceDetails INNER JOIN " +
+                                    "  CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
+                                     " CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID INNER JOIN " +
+                                     " CPT_ResourceDemand ON CPT_ResourceDetails.RequestID = CPT_ResourceDemand.RequestID INNER JOIN " +
+                                     " CPT_AccountMaster ON CPT_ResourceDemand.AccountID = CPT_AccountMaster.AccountMasterID INNER JOIN " +
+                                     " CPT_OpportunityMaster ON CPT_ResourceDemand.OpportunityID = CPT_OpportunityMaster.OpportunityID " +
+                                      "  WHERE CPT_ResourceDemand.StatusMasterID = 19 ORDER BY CPT_ResourceDetails.RequestID";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    rpt.DataSource = SqlCom.ExecuteReader();
+                    rpt.DataBind();
                     //  t = reader["Total"].ToString();
                 }
 
@@ -276,9 +314,8 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeetName) AS Total FROM  CPT_AllocateResource RIGHT OUTER JOIN "+
-                                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID "+
-                                    " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,16,20) AND CPT_AllocateResource.IsDeployed = 0";
+                string SqlString = "Select COUNT(EmployeetName) FROM CPT_ResourceMaster WHERE RolesID NOT IN(1,4,5,8,15,20) AND EmployeeMasterID NOT IN "+
+                                   "(SELECT  ResourceID FROM  CPT_AllocateResource WHERE ISDeployed = 1 ) and ISDELETED =0";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
@@ -296,7 +333,57 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
+        public static void OpenRequests(Label NumberOpenRequests)
+        {
+            try
+            {
 
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "SELECT   COUNT(CPT_ResourceDetails.NoOfResources) AS Total FROM CPT_ResourceDemand INNER JOIN  CPT_ResourceDetails ON CPT_ResourceDemand.RequestID = CPT_ResourceDetails.RequestID Where CPT_ResourceDemand.StatusMasterID = 19";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    NumberOpenRequests.Text = SqlCom.ExecuteScalar().ToString();
+                    //  t = reader["Total"].ToString();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void NewJoiners(Label CountToltal)
+        {
+            try
+            {
+
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "Select COUNT(*) AS CountToltal FROM [dbo].[CPT_NewJoiners]";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    CountToltal.Text = SqlCom.ExecuteScalar().ToString();
+                    //  t = reader["Total"].ToString();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
         public void displayMgrVsRpt(Chart chart)
         {
             using (CPContext db = new CPContext())

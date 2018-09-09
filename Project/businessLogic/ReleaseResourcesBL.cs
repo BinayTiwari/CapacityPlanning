@@ -27,6 +27,7 @@ namespace businessLogic
                                      where d.Released == false && d.IsDeployed == true
                                      select new
                                      {
+                                         d.AllocationID,
                                          c.EmployeeMasterID,
                                          c.EmployeetName,
                                          f.AccountName,
@@ -46,6 +47,7 @@ namespace businessLogic
                                      where d.Released == false && d.IsDeployed == true && e.ResourceRequestBy == id
                                      select new
                                      {
+                                         d.AllocationID,
                                          c.EmployeeMasterID,
                                          c.EmployeetName,
                                          f.AccountName,
@@ -76,7 +78,7 @@ namespace businessLogic
                 using (CPContext db = new CPContext())
                 {
                     var query = (from c in db.CPT_AllocateResource
-                                 where c.ResourceID == id
+                                 where c.AllocationID == id
                                  select c).ToList();
                     foreach(var detail in query)
                     {

@@ -67,6 +67,7 @@
     <Compile Include="ClsCommon.cs" />
     <Compile Include="CountryMasterBL.cs" />
     <Compile Include="DashboardBL.cs" />
+    <Compile Include="DeployResourcesBL.cs" />
     <Compile Include="DesignationMasterBL.cs" />
     <Compile Include="GradeMasterBL.cs" />
     <Compile Include="NewJoinersBL.cs" />
@@ -74,14 +75,17 @@
     <Compile Include="PriorityMasterBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionMasterBL.cs" />
+    <Compile Include="ReleaseResourcesBL.cs" />
     <Compile Include="ResourceDemandBL.cs" />
     <Compile Include="ResourceDetailsBL.cs" />
     <Compile Include="ResourceMappingBL.cs" />
     <Compile Include="ResourceMasterBL.cs" />
+    <Compile Include="ResourcesOnBenchBL.cs" />
     <Compile Include="RoleMasterBL.cs" />
     <Compile Include="SalesStageMasterBL.cs" />
     <Compile Include="SkillsMasterBL.cs" />
     <Compile Include="StatusMasterBL.cs" />
+    <Compile Include="TotalStrengthBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entity\EntityDataModel.csproj">
