@@ -49,6 +49,15 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Button btnClick2;
         
         /// <summary>
+        /// OpenResourceRequests control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OpenResourceRequests;
+        
+        /// <summary>
         /// btnClick1 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace CapacityPlanning {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClick1;
+        
+        /// <summary>
+        /// NewJoiners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NewJoiners;
         
         /// <summary>
         /// btnClick3 control.

@@ -55,6 +55,19 @@ namespace CapacityPlanning
                 }
 
                 ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
+                RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
+                Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
+                float utilization = 0;
+                if (float.Parse(lblNoOfResources.Text) < 1)
+                {
+                    utilization = float.Parse(lblNoOfResources.Text);
+                }
+                else
+                {
+                    utilization = 1;
+                }
+
+                ViewState["utilization"] = utilization;
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
                 SearchAvailability(Convert.ToInt32(theButton.CommandArgument));
@@ -114,6 +127,8 @@ namespace CapacityPlanning
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
+                
+
                 int RequestDetailID = AllocateResourceBL.GetRequestDetailID(RequestID, skillID);
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
@@ -128,7 +143,11 @@ namespace CapacityPlanning
                     empID.EmployeeMasterID = resourceID[j];
                     details.RoleMasterID = Convert.ToInt32(ViewState["RoleID"]);
                     details.Released = false;
-                    
+                //    if (NoOfResources >= 1)
+                //        details.Utilization = 1;
+                ////    else
+                     details.Utilization = float.Parse(ViewState["utilization"].ToString());
+
                     String acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
                     String name = lst[0].EmployeetName;

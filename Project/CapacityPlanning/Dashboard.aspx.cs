@@ -26,6 +26,8 @@ namespace CapacityPlanning
             dashboardBL.displayDesigVsResBar(myChartBar);
             DashboardBL.TotalStregth(lblStregth);
             DashboardBL.OnBench(NumberOfResourcesOnBench);
+            DashboardBL.OpenRequests(OpenResourceRequests);
+            DashboardBL.NewJoiners(NewJoiners);
 
         }
         protected void btnClick_Click(object sender, EventArgs e)
@@ -52,63 +54,19 @@ namespace CapacityPlanning
 
         protected void btnClick1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                
-                graphBlock.Style.Add("display", "none");
-                RMVsR.Style.Add("display", "block");
-                //DsVsRes.Style.Add("display", "none");
-                CapVsResDem.Style.Add("display", "none");
-                AccVsNoR.Style.Add("display", "none");
-                DashboardBL.showRMVsR(rptRMVsR);
-                DashboardBL dashboardBL = new DashboardBL();
-                dashboardBL.displayMgrVsRpt(MgrVSRpt1);
-            }
-            catch (Exception ex)
-            {
+            Response.Redirect("OpenResourceRequests.aspx");
 
-                Console.WriteLine(ex.Message);
-            }
         }
 
         protected void btnClick2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Response.Redirect("ResourcesOnBench.aspx");
-                graphBlock.Style.Add("display", "none");
-               // AccVsNoR.Style.Add("display", "block");
-                CapVsResDem.Style.Add("display", "none");
-                RMVsR.Style.Add("display", "none");
-                //DsVsRes.Style.Add("display", "none");
-                //DashboardBL.showAccVsNoR(rptAccVsNoR);
-            }
-            catch (Exception ex)
-            {
+           
+            Response.Redirect("ResourcesOnBench.aspx");
 
-                Console.WriteLine(ex.Message);
-            }
         }
         protected void btnClick3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                graphBlock.Style.Add("display", "none");
-                CapVsResDem.Style.Add("display", "block");
-                AccVsNoR.Style.Add("display", "none");
-                RMVsR.Style.Add("display", "none");
-               // DsVsRes.Style.Add("display", "none");
-                DashboardBL.showCapVsResDem(rptCapVsDem);
-                DashboardBL.showCap(rptCpt);
-                DashboardBL.displayRoleVsDem(RoleDem1);
-                DashboardBL.showRoleVsCapacity(RoleCap1);
-                
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-            }
+            Response.Redirect("joiners.aspx");
         }
 
     

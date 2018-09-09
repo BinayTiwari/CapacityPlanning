@@ -58,7 +58,7 @@
                                                 <ul>
                                                     <asp:LinkButton ID="releaseButton" OnClientClick="return confirm('Do you want to Release this Employee?');"
                                                         OnClick="releaseButton_Click" acName ='<%#Eval("AccountName")%>' prName='<%#Eval("ProcessName")%>'
-                                                        empID='<%#Eval("EmployeeMasterID") %>' runat="server"><i class="fa fa-sign-in" aria-hidden="true" title="Release"></i></asp:LinkButton>
+                                                        AlocationID ='<%#Eval("AllocationID") %>' runat="server"><i class="fa fa-sign-in" aria-hidden="true" title="Release"></i></asp:LinkButton>
 
                                                 </ul>
                                             </td>

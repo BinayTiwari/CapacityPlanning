@@ -39,8 +39,8 @@
                                     <th>Employee ID </th>
                                     <th>Name</th>
 
-                                    <th>Reporting Manager</th>
-                                    <th>Location</th>
+                                    <th>Base Location</th>
+                                    <th>Designation</th>
 
                                     <th>Role </th>
                                     <th></th>
@@ -57,8 +57,9 @@
                                                 <asp:Image ID="Image1" Height="40" Width="40" runat="server" ImageUrl="~/images/user.png" /></td>
                                             <td><%#Eval("EmployeeMasterID")%> </td>
                                             <td><%#Eval("EmployeetName")%> </td>
-                                            <td><%#Eval("mgrName")%></td>
                                             <td><%#Eval("BaseLocation")%></td>
+                                            <td><%#Eval("DesignationName")%></td>
+                                            
                                             <td><%#Eval("RoleName")%></td>
                                             <td class="center"><a href="viewEmployee.aspx?EmployeeID=<%#Eval("EmployeeMasterID")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>

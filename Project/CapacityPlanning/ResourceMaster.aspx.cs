@@ -27,10 +27,10 @@ namespace CapacityPlanning
         }
         private void BindGrid()
         {
-            
 
-            ResourceMasterBL rm = new ResourceMasterBL();
-            rm.BindresRepeater(rptResourceMaster);
+
+            //     ResourceMasterBL rm = new ResourceMasterBL();
+            ResourceMasterBL.displayTotalStrength(rptResourceMaster);
 
         }
 
@@ -44,9 +44,12 @@ namespace CapacityPlanning
 
             employeeID = Convert.ToInt32(lb.Attributes["empID"]);
 
+
             cPT_ResourceMaster.EmployeeMasterID = employeeID;
+            cPT_ResourceMaster.IsDeleted = 1;
             ResourceMasterBL deleteresourceMasterBL = new ResourceMasterBL();
-            deleteresourceMasterBL.Delete(cPT_ResourceMaster);
+            //  deleteresourceMasterBL.Delete(cPT_ResourceMaster);
+            ResourceMasterBL.Delete(cPT_ResourceMaster);
             BindGrid();
 
 

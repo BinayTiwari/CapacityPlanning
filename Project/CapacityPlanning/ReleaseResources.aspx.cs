@@ -39,9 +39,9 @@ namespace CapacityPlanning
             LinkButton lb = sender as LinkButton;
             acName = lb.Attributes["acName"];
             prName = lb.Attributes["prName"];
-            employeeID = Convert.ToInt32(lb.Attributes["empID"]);
-            ReleaseResourcesBL.setReleasedStatus(employeeID);
-            Email();
+//employeeID = ;
+            ReleaseResourcesBL.setReleasedStatus(Convert.ToInt32(lb.Attributes["AlocationID"]));
+          //  Email();
             Response.Redirect("ReleaseResources.aspx");
         }
         public void Email()

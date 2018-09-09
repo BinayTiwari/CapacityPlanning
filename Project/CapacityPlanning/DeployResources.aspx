@@ -24,12 +24,16 @@
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Request Id</th>
-                                    <th>Request Date </th>
+                                    <th>Allocation Id</th>
+                                    <th>Resource Name</th>
                                     <th>Account Name</th>
                                     <th>Process Name</th>
-                                    <th>Requested By</th>
-                                    <th>Resource Name</th>
+                                     <th>Start Date </th>
+                                    <th>End Date </th>
+                                    
+                                   
+                                    
+                                   
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -39,19 +43,21 @@
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
                                             <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
-                                            <td><%#Eval("RequestId")%></td>
-                                            <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
-                                            <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
+                                            <td><%#Eval("AllocationID")%></td>
+                                            <td><%#Eval("EmployeetName")%></td>
+                                            <td><%#string.Concat(Eval("AccountName"))%></td>
                                             <td><%#Eval("ProcessName") %></td>
-                                            <td><%#Eval("ResourceRequestBy") %></td>
-                                            <td><%#Eval("Name")%></td>
                                             
+                                            <td><%#Eval("StartDate", "{0:d}")%> </td>
+                                            <td><%#Eval("EndDate", "{0:d}")%> </td>
+                                            
+                                                                                      
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>
                                             <td class="center">
                                                 <asp:Button ID="btnDeploy" Class="btn btn-success btn-md" runat="server" Text="Deploy"
-                                                    RequestId='<%#Eval("RequestId")%>' CommandArgument='<%#Eval("ResourceID")%>'
+                                                    AllocationID='<%#Eval("AllocationID")%>' CommandArgument='<%#Eval("EmployeeMasterID")%>'
                                                     acName ='<%#Eval("AccountName")%>' prName='<%#Eval("ProcessName")%>'
                                                     StartDate ='<%#Eval("StartDate","{0:d}") %>' EndDate ='<%#Eval("EndDate","{0:d}") %>'
                                                     OnClick="DeployResource" OnClientClick="return confirm('Do you want to deploy this Employee?');"/>

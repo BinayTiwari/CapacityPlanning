@@ -147,10 +147,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="AccountMaster.aspx" />
     <Content Include="AddEmployee.aspx" />
-    <Content Include="AddExperience.aspx" />
     <Content Include="AddNewJoiner.aspx" />
     <Content Include="AddResourceDemand.aspx" />
     <Content Include="Allocate.aspx" />
@@ -240,7 +238,6 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="CityMaster.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -250,6 +247,7 @@
     <Content Include="css\main.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DeployResources.aspx" />
     <Content Include="DesignationMaster.aspx" />
     <Content Include="Design\css\bootstrap-social.css" />
     <Content Include="Design\css\bootstrap-theme.min.css" />
@@ -277,6 +275,7 @@
     <Content Include="EditEmployee.aspx" />
     <Content Include="EditNewJoiners.aspx" />
     <Content Include="EditResourceDemand.aspx" />
+    <Content Include="ErrorPages\error404.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -336,13 +335,16 @@
     <Content Include="obj\Debug\CapacityPlanning.pdb" />
     <Content Include="obj\Debug\MainProject.csproj.FileListAbsolute.txt" />
     <Content Include="OnboardNewJoiners.aspx" />
+    <Content Include="OpenResourceRequests.aspx" />
     <Content Include="OpportunityMaster.aspx" />
     <Content Include="PriorityMaster.aspx" />
     <Content Include="RegionMaster.aspx" />
+    <Content Include="ReleaseResources.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="ResourceDemand.aspx" />
     <Content Include="ResourceMapping.aspx" />
     <Content Include="ResourceMaster.aspx" />
+    <Content Include="ResourcesOnBench.aspx" />
     <Content Include="RoleMaster.aspx" />
     <Content Include="SalesStageMaster.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -376,6 +378,7 @@
     <Content Include="Site.Master" />
     <Content Include="SkillsMaster.aspx" />
     <Content Include="StatusMaster.aspx" />
+    <Content Include="TotalStrengths.aspx" />
     <Content Include="viewEmployee.aspx" />
     <Content Include="ViewResourceDemand.aspx" />
     <Content Include="ViewResourceMapping.aspx" />
@@ -400,13 +403,6 @@
     </Compile>
     <Compile Include="AddEmployee.aspx.designer.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AddExperience.aspx.cs">
-      <DependentUpon>AddExperience.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddExperience.aspx.designer.cs">
-      <DependentUpon>AddExperience.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewJoiner.aspx.cs">
       <DependentUpon>AddNewJoiner.aspx</DependentUpon>
@@ -444,13 +440,6 @@
       <DependentUpon>AllTickets.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -465,13 +454,6 @@
     </Compile>
     <Compile Include="CityMaster.aspx.designer.cs">
       <DependentUpon>CityMaster.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="CountryMaster.aspx.cs">
       <DependentUpon>CountryMaster.aspx</DependentUpon>
@@ -493,6 +475,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeployResources.aspx.cs">
+      <DependentUpon>DeployResources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeployResources.aspx.designer.cs">
+      <DependentUpon>DeployResources.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesignationMaster.aspx.cs">
       <DependentUpon>DesignationMaster.aspx</DependentUpon>
@@ -522,6 +511,13 @@
     <Compile Include="EditResourceDemand.aspx.designer.cs">
       <DependentUpon>EditResourceDemand.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPages\error404.aspx.cs">
+      <DependentUpon>error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\error404.aspx.designer.cs">
+      <DependentUpon>error404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -546,12 +542,12 @@
     <Compile Include="NewJoiners.aspx.designer.cs">
       <DependentUpon>NewJoiners.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <!--<Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />-->
     <!--<Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -564,6 +560,13 @@
     </Compile>
     <Compile Include="OnboardNewJoiners.aspx.designer.cs">
       <DependentUpon>OnboardNewJoiners.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OpenResourceRequests.aspx.cs">
+      <DependentUpon>OpenResourceRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpenResourceRequests.aspx.designer.cs">
+      <DependentUpon>OpenResourceRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="OpportunityMaster.aspx.cs">
       <DependentUpon>OpportunityMaster.aspx</DependentUpon>
@@ -586,6 +589,13 @@
     </Compile>
     <Compile Include="RegionMaster.aspx.designer.cs">
       <DependentUpon>RegionMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReleaseResources.aspx.cs">
+      <DependentUpon>ReleaseResources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReleaseResources.aspx.designer.cs">
+      <DependentUpon>ReleaseResources.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
@@ -615,6 +625,13 @@
     <Compile Include="ResourceMaster.aspx.designer.cs">
       <DependentUpon>ResourceMaster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ResourcesOnBench.aspx.cs">
+      <DependentUpon>ResourcesOnBench.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourcesOnBench.aspx.designer.cs">
+      <DependentUpon>ResourcesOnBench.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RoleMaster.aspx.cs">
       <DependentUpon>RoleMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -629,13 +646,13 @@
     <Compile Include="SalesStageMaster.aspx.designer.cs">
       <DependentUpon>SalesStageMaster.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site-Admin.Master.cs">
+    <!--<Compile Include="Site-Admin.Master.cs">
       <DependentUpon>Site-Admin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site-Admin.Master.designer.cs">
-      <DependentUpon>Site-Admin.Master</DependentUpon>
-    </Compile>
+      <DependentUpon>Site-Admin.Master</DependentUpon>-->
+    <!--
+    </Compile>-->
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -663,6 +680,13 @@
     </Compile>
     <Compile Include="StatusMaster.aspx.designer.cs">
       <DependentUpon>StatusMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalStrengths.aspx.cs">
+      <DependentUpon>TotalStrengths.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalStrengths.aspx.designer.cs">
+      <DependentUpon>TotalStrengths.aspx</DependentUpon>
     </Compile>
     <Compile Include="viewEmployee.aspx.cs">
       <DependentUpon>viewEmployee.aspx</DependentUpon>

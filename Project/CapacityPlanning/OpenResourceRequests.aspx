@@ -1,9 +1,8 @@
-﻿<%@ Page Title="ResourcesOnBench" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResourcesOnBench.aspx.cs" Inherits="CapacityPlanning.ResourcesOnBench" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OpenResourceRequests.aspx.cs" Inherits="CapacityPlanning.OpenResourceRequests" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row">
+ <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Resources On Bench </h1>
+            <h1 class="page-header">Open Resource Request </h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -14,7 +13,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Resources On Bench
+                    Resources On Projects
  
                 </div>
                 <!-- /.panel-heading -->
@@ -28,40 +27,51 @@
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Employee Name</th>
-                                    <th>Designation Name</th>
+                                    <th>Request ID</th>
+                                    <th>Opportunity Type</th>
                                     <th>Account Name</th>
-                                    <th>Process Name</th>
+                                    <th>Role Name</th>
+                                    <th>Skills Name</th>
                                     <th>Start Date</th>
-                                      <th>End Date</th>
+                                    <th>End Date</th>
+                                    <th>No Of Resources</th>
+                                    <th>Allocated</th>
+                                   
+                                    
+                                    
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <asp:Repeater ID="rptDsVsRes" runat="server">
+                                <asp:Repeater ID="rptAccountWiseResources" runat="server">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
                                             <td>
                                                 <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
                                             </td>
                                             <td>
-                                               <%#Eval("EmployeetName")%>
+                                               <%#Eval("RequestID")%>
                                             </td>
-                                           <td><%#Eval("DesignationName")%></td>
-                                           <td><%#Eval("AccountName")%></td>
-                                            <td><%#Eval("ProcessName")%></td>
-                                            <td><%#Eval("StartDate")%></td>
+                                           <td><%#Eval("OpportunityType")%></td>
+                                                <td><%#Eval("AccountName")%></td>
+                                            <td><%#Eval("RoleName")%></td>
+                                            <td><%#Eval("SkillsName")%></td>
+                                             
+                                           <td><%#Eval("StartDate")%></td>
+                                            
                                             <td><%#Eval("EndDate")%></td>
+                                        <td><%#Eval("NoOfResources")%></td>
+                                            <td><%#Eval("Allocated")%></td>
+                                            
                                             
                                         </tr>
                                     </ItemTemplate>
 
                                 </asp:Repeater>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
     </div>
-  
 </asp:Content>

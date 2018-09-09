@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <span class="pull-left">Total Stregth</span>
+                    <span class="pull-left">Resources On Projects</span>
                     <span class="pull-right">
                         <asp:Button ID="btnClick" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick_Click" runat="server" /></span>
                     <div class="clearfix"></div>
@@ -62,12 +62,14 @@
                         <div class="col-xs-3">
                             <i class="fa fa-th-list fa-5x"></i>
                         </div>
-                         
+                          <div class="col-xs-3 pull-right">
+                            <h3> <asp:Label ID="OpenResourceRequests" runat="server" Text=""></asp:Label></h3>
+                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Manager wise Repartee’s </span>
+                        <span class="pull-left">Open Resource Requests</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick1" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick1_Click" runat="server" /></span>
 
@@ -83,11 +85,14 @@
                         <div class="col-xs-3">
                             <i class="fa fa-book fa-5x"></i>
                         </div>
+                         <div class="col-xs-3 pull-right">
+                            <h3> <asp:Label ID="NewJoiners" runat="server" Text=""></asp:Label></h3>
+                        </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Capacity V/S Demand</span>
+                        <span class="pull-left">New Joiners</span>
                         <span class="pull-right">
                             <asp:Button ID="btnClick3" CssClass="fa" Text="&#xf0a9;" OnClick="btnClick3_Click" runat="server" /></span>
 
