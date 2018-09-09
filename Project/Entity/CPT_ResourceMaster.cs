@@ -82,6 +82,8 @@ namespace Entity
 
         public float? isMapped { get; set; }
 
+        public int? IsDeleted { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 
