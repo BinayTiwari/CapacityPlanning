@@ -56,8 +56,8 @@
                                             <td><asp:Label ID="SkillsName" runat="server" Text='<%#Eval("SkillsName")%>' /></td>
                                             <td><asp:Label ID="lblNoOfResources" runat="server" Text='<%#Eval("NoOfResources")%>' /></td>
                                             <td><asp:Label ID="Allocated" runat="server" Text='<%#Eval("Allocated")%>' /></td>
-                                            <td><asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate")%>' /></td>
-                                            <td><asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate")%>' /></td>
+                                            <td><asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:d}")%>' /></td>
+                                            <td><asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:d}")%>' /></td>
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>
