@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Joiner.aspx.cs" Inherits="CapacityPlanning.Joiner" %>
+﻿<%@ Page Title="New Joiners" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Joiner.aspx.cs" Inherits="CapacityPlanning.Joiner" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <div class="row">
 
@@ -37,9 +37,10 @@
                                     <th>Joining Date</th>
 
                                     <th>Location </th>
-                                    <th>Experience (In Years)</th>
+                                    <th>Experience</th>
                                     <th>Skill</th>
                                     <th>Account</th>
+                                     <th>Interviewed By</th>
 
                                    
 
@@ -59,6 +60,7 @@
                                             <td><%#Eval("Experience")%></td>
                                             <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>
                                             <td><%#Eval("CPT_AccountMaster.AccountName")%></td>
+                                            <td><%#Eval("InterviewedBy")%></td>
 
                                            
 
