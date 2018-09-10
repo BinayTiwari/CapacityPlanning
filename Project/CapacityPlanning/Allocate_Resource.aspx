@@ -50,18 +50,28 @@
                                 <asp:Repeater ID="rptResourceAllocation" runat="server" OnItemDataBound="rptResourceAllocation_ItemDataBound">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
-                                            <td><asp:Label ID="lbId" runat="server" Text='<%#Eval("RequestDetailID")%>' /></td>
-                                            <td><asp:Label ID="RequestId" runat="server" Text='<%#Eval("RequestId")%>' /></td>
-                                            <td><asp:Label ID="RoleName" runat="server" Text='<%#Eval("RoleName")%>' /> </td>
-                                            <td><asp:Label ID="SkillsName" runat="server" Text='<%#Eval("SkillsName")%>' /></td>
-                                            <td><asp:Label ID="lblNoOfResources" runat="server" Text='<%#Eval("NoOfResources")%>' /></td>
-                                            <td><asp:Label ID="Allocated" runat="server" Text='<%#Eval("Allocated")%>' /></td>
-                                            <td><asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:d}")%>' /></td>
-                                            <td><asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:d}")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbId" runat="server" Text='<%#Eval("RequestDetailID")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="RequestId" runat="server" Text='<%#Eval("RequestId")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="RoleName" runat="server" Text='<%#Eval("RoleName")%>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="SkillsName" runat="server" Text='<%#Eval("SkillsName")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblNoOfResources" runat="server" Text='<%#Eval("NoOfResources")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="Allocated" runat="server" Text='<%#Eval("Allocated")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:d}")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:d}")%>' /></td>
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>
 
+                                            
                                             <td>
                                                 <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" SkillsName='<%#Eval("SkillsName") %>' StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />
                                             </td>
@@ -125,6 +135,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Account</th>
                                                     <th>Current Assignment</th>
                                                     <th>Owner</th>
                                                     <th>Release Date</th>
@@ -136,11 +147,13 @@
                                                     <ItemTemplate>
                                                         <tr class="odd gradeX">
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EmployeetName")%> </td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.AccountName")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
-                                                            
-                                                            <td><asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+
+                                                            <td>
+                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                             </td>
 
                                                         </tr>
@@ -161,7 +174,7 @@
                                     <br />
                                 </div>
                             </div>
-                              
+
                             <!-- /.panel-body -->
                         </div>
 
