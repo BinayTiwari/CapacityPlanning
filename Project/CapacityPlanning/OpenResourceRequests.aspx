@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OpenResourceRequests.aspx.cs" Inherits="CapacityPlanning.OpenResourceRequests" %>
+﻿<%@ Page Title="Open Resource Requests" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OpenResourceRequests.aspx.cs" Inherits="CapacityPlanning.OpenResourceRequests" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
  <div class="row">
         <div class="col-lg-12">
@@ -39,7 +39,7 @@
                                    
                                     
                                     
-
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,9 +57,9 @@
                                             <td><%#Eval("RoleName")%></td>
                                             <td><%#Eval("SkillsName")%></td>
                                              
-                                           <td><%#Eval("StartDate")%></td>
+                                           <td><%#Eval("StartDate", "{0:d}")%></td>
                                             
-                                            <td><%#Eval("EndDate")%></td>
+                                            <td><%#Eval("EndDate", "{0:d}")%></td>
                                         <td><%#Eval("NoOfResources")%></td>
                                             <td><%#Eval("Allocated")%></td>
                                             
@@ -74,4 +74,5 @@
                     </div>
                 </div>
     </div>
+   
 </asp:Content>

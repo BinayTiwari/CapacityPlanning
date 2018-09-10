@@ -66,7 +66,7 @@ namespace CapacityPlanning
         }
         protected void btnClick3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NewJoiners.aspx");
+            Response.Redirect("Joiner.aspx");
         }
 
     
