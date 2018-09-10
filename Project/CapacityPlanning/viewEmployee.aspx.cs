@@ -132,9 +132,7 @@ namespace CapacityPlanning
                     startDate.Text = lstNext[0].StartDate.ToShortDateString();
                 }
                 
-
-
-
+                
             }
             catch (Exception ex)
             {

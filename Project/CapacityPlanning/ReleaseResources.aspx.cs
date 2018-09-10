@@ -18,11 +18,11 @@ namespace CapacityPlanning
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(IsPostBack == false)
+            if (IsPostBack == false)
             {
                 BindRpt();
             }
-            
+
         }
 
         public void BindRpt()
@@ -39,9 +39,8 @@ namespace CapacityPlanning
             LinkButton lb = sender as LinkButton;
             acName = lb.Attributes["acName"];
             prName = lb.Attributes["prName"];
-//employeeID = ;
             ReleaseResourcesBL.setReleasedStatus(Convert.ToInt32(lb.Attributes["AlocationID"]));
-          //  Email();
+            Email();
             Response.Redirect("ReleaseResources.aspx");
         }
         public void Email()
@@ -55,9 +54,9 @@ namespace CapacityPlanning
                 registrationEmail.To = new List<string>();
                 registrationEmail.To.Add(mail);
                 registrationEmail.ToUserName = new List<string>();
-                
+
                 registrationEmail.ToUserName.Add(name);
-                registrationEmail.PROJECT= acName;
+                registrationEmail.PROJECT = acName;
                 registrationEmail.PROCESS = prName;
 
                 TokenMessageTemplate valEmail = new TokenMessageTemplate();

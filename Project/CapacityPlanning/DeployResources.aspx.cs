@@ -37,13 +37,12 @@ namespace CapacityPlanning
             {
                 Button theButton = sender as Button;
                 resourceID = Convert.ToInt32(theButton.CommandArgument);
-             //   AllocationID =;
                 acName = theButton.Attributes["acName"];
                 prName = theButton.Attributes["prName"];
                 startDate = theButton.Attributes["StartDate"];
                 endDate = theButton.Attributes["EndDate"];
                 DeployResourcesBL.DeployStatus(Convert.ToInt32(theButton.Attributes["AllocationID"]));
-              //  Email();
+                Email();
                 BindRepeater();
             }
             catch (Exception ex)

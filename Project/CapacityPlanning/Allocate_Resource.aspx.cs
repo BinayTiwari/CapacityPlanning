@@ -90,26 +90,18 @@ namespace CapacityPlanning
         {
             try
             {
-                //int count = 0;
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
                     var chek = (CheckBox)sender;
-                    //var reminderHiddenField = (HiddenField)chek.NamingContainer.FindControl("employeeID");
                     if (chk.Checked)
                     {
-                        //var empID = reminderHiddenField.Value;
-                        //name.Add(empID);
                         string EmployeeName = chek.Attributes["EmployeeName"];
                         name.Add(EmployeeName);
-                        /*count++*/
 
                     }
 
                 }
-                //if(count>0)
-                //dateSatrt = dateSatrt.Distinct().ToList();
-                //dateEnd = dateEnd.Distinct().ToList();
                 name = name.Distinct().ToList();
             }
             catch (Exception ex)
@@ -159,13 +151,7 @@ namespace CapacityPlanning
             
                 }
                 Response.Redirect("ResourceMapping.aspx");
-                //foreach (Repeater row in rptSuggestions.Items)
-                //{
-                //    var cb = row.FindControl("chkRequired") as CheckBox;
-                //    if (cb != null)
-                //        cb.Checked = false;
-
-                //}
+         
 
             }
             catch (Exception ex)
