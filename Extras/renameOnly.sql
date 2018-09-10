@@ -1,0 +1,1 @@
+exec sp_rename '[dbo].[Allocation]' , 'CPT_AllocateResource'
