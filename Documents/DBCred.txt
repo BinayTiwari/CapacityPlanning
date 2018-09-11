@@ -11,3 +11,7 @@ Pass:  a12345678
 host:  ftp.smarterasp.net
 
 DESKTOP-654818S\SQLEXPRESS
+
+
+
+https://github.com/gridtraining2018-1/trainingInterns.git/
