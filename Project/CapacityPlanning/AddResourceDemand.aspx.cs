@@ -23,7 +23,10 @@ namespace CapacityPlanning
                 AccountMasterID.Enabled = false;
 
                 ClsCommon.ddlGetOpportunity(OpportunityID);
-                ClsCommon.ddlGetSalesStage(SalesStageMasterID);               
+                ClsCommon.ddlGetSalesStage(SalesStageMasterID);
+
+                //TextBox txtDate = (TextBox)GridviewResourceDetail.FindControl("StartDate");
+                //txtDate.Text = DateTime.Now.AddDays(7).ToShortDateString();
                 
                 SetInitialRow();
             }

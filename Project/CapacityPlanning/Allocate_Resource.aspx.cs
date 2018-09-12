@@ -140,10 +140,10 @@ namespace CapacityPlanning
                 ////    else
                      details.Utilization = float.Parse(ViewState["utilization"].ToString());
 
-                    String acnt = rbl.getAccountByID(details.AccountID);
+                    string acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
-                    String name = lst[0].EmployeetName;
-                    String email = lst[0].Email;
+                    string name = lst[0].EmployeetName;
+                    string email = lst[0].Email;
                     rbl.Insert(details);
                     rbl.updateMap(empID);
 
@@ -159,7 +159,7 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
-        public void sendConfirmation(String name, String mail, String account, DateTime startDate, DateTime endDate)
+        public void sendConfirmation(string name, string mail, string account, DateTime startDate, DateTime endDate)
         {
             try
             {

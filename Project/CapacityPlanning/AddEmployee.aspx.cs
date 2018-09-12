@@ -97,6 +97,8 @@ namespace CapacityPlanning
                 employeeDetails.CreatedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.ModifiedBy = lstdetils[0].EmployeeMasterID;
                 employeeDetails.LastLogin = DateTime.Now;
+                employeeDetails.IsDeleted = 0;
+                employeeDetails.isMapped = 0;
                 ResourceMasterBL insertResource = new ResourceMasterBL();
                 int flag = insertResource.checkDuplicateID(Convert.ToInt32(empIdText.Text.Trim()));
                 if(flag > 0)

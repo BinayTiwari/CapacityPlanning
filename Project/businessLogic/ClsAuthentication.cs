@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Entity;
 
 namespace businessLogic
@@ -80,6 +81,56 @@ namespace businessLogic
                 }
             }
             return lstuserDetails;
+        }
+
+
+        public int EmpAccess()
+        {
+
+            int flag = 0;
+            string CurrentURL = HttpContext.Current.Request.Url.AbsoluteUri;
+            List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+            lstdetils = (List<CPT_ResourceMaster>)HttpContext.Current.Session["UserDetails"];
+            int lid = lstdetils[0].EmployeeMasterID;
+
+            using (CPContext db = new CPContext())
+            {
+
+                var murl = (from c in db.CPT_ResourceMaster
+                            join f in db.RoleMenuMappings on c.RolesID equals f.RoleID
+                            join e in db.CPT_MenuMaster on f.MenuID equals e.MenuID
+                            where c.EmployeeMasterID == lid
+                            select new
+                            {
+                                e.MenuURL
+                            }).ToList();
+
+                foreach (var u in murl)
+                {
+                    char c = '.';
+                    string q = u.MenuURL.Split(c)[0];
+                    if (CurrentURL.Contains(q))
+                    {
+                        //Access Granted
+                        flag = 1;
+                        break;
+                    }
+                    else
+                    {
+                        //Access Denied                        
+                    }
+                }
+
+                return flag;
+                /*if(flag!=1)
+                {
+                   // Redirect to Page: Not Authorized  
+                   
+                    
+                }*/
+
+            }
+
         }
     }
 

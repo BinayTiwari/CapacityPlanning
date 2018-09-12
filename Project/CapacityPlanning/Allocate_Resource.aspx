@@ -71,7 +71,7 @@
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>
 
-                                            
+
                                             <td>
                                                 <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" SkillsName='<%#Eval("SkillsName") %>' StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />
                                             </td>
@@ -153,7 +153,7 @@
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
 
                                                             <td>
-                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
+                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnChange="FunctionDisable()" OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                             </td>
 
                                                         </tr>
@@ -186,4 +186,24 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function FunctionDisable() {
+            var numberOfChecked = $('input:checkbox:checked').length;
+            var bc = document.getElementById('MainContent_rptResourceAllocation_Allocated_0').innerText;
+            var allocated = parseInt(bc);
+            var ab = document.getElementById('MainContent_rptResourceAllocation_lblNoOfResources_0').innerText;
+            var NoOfResources = parseInt(ab);
+            if (bc === "")
+                allocated = 0;
+            NoOfResources = NoOfResources - allocated;
+            if (numberOfChecked === NoOfResources) {
+                $('input:checkbox').attr('disabled',true);
+               
+                
+            }
+        }
+           
+
+        
+    </script>
 </asp:Content>

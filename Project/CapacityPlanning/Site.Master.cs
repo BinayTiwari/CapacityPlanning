@@ -13,6 +13,7 @@ namespace CapacityPlanning
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //int res = 1;
             try
             {
                 if (Session["UserDetails"] != null)
@@ -24,7 +25,35 @@ namespace CapacityPlanning
                     ClsAuthentication authmenu = new ClsAuthentication();
                     rptMeanu.DataSource = authmenu.getMeanu(lstdetils[0].RolesID);
                     rptMeanu.DataBind();
+                    string CURL = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
 
+
+
+                    //if (CURL.ToLower().Trim().Contains("dashboard"))
+
+                    //{
+
+
+
+                    //}
+
+                    //else
+
+                    //{
+
+                    //    ClsAuthentication valid = new ClsAuthentication();
+
+                    //    //res = valid.EmpAccess();
+
+                    //}
+
+                    //if (res == 0)
+
+                    //{
+
+                    //    Response.Redirect("ErrorPages/AuthenticationFailed.aspx");
+
+                    //}
 
                 }
                 else
