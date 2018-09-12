@@ -93,7 +93,7 @@ namespace businessLogic
                                     " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID LEFT OUTER JOIN CPT_AccountMaster ON CPT_AllocateResource.AccountID = CPT_AccountMaster.AccountMasterID"+
                                     " Where(CPT_ResourceMaster.RolesID = "+ RoleID + "   and '"+ SkillID + "' in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster WHERE EmployeeMasterID = EmployeeMasterID) AND CPT_ResourceMaster.EmployeeMasterID NOT"+
                                     " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE"+
-                    " (CPT_AllocateResource.EndDate >= '"+ dtS + "') AND  ISDELETED = 0) OR CPT_ResourceMaster.EmployeeMasterID = 10161 )";
+                    " (CPT_AllocateResource.EndDate >= '"+ dtS + "') AND  ISDELETED = 1) OR CPT_ResourceMaster.EmployeeMasterID = 10161 )";
 
                 //string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
                 //    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
