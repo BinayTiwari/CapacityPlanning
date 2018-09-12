@@ -14,20 +14,24 @@ namespace CapacityPlanning
 {
     public partial class AddResourceDemand : System.Web.UI.Page
     {
+        //protected string min { get; set; }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
+                //TextBox box3 = (TextBox)GridviewResourceDetail.FindControl("StartDate");
+               
+                //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
+
                 ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetAccount(AccountMasterID);
                 AccountMasterID.Enabled = false;
 
                 ClsCommon.ddlGetOpportunity(OpportunityID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
-
-                //TextBox txtDate = (TextBox)GridviewResourceDetail.FindControl("StartDate");
-                //txtDate.Text = DateTime.Now.AddDays(7).ToShortDateString();
-                
+                string minDate = DateTime.Now.AddDays(7).ToShortDateString();
                 SetInitialRow();
             }
         }
@@ -164,6 +168,13 @@ namespace CapacityPlanning
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
             DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+
+            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[0].Cells[4].FindControl("StartDate");
+            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[0].Cells[5].FindControl("EndDate");
+            box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+            box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
+
             ClsCommon.ddlGetRoleforDemand(ddl);
             ClsCommon.ddlGetSkillDDL(ddl1);          
 
@@ -199,6 +210,12 @@ namespace CapacityPlanning
                         DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+
+                        box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
+
+
 
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
@@ -242,6 +259,10 @@ namespace CapacityPlanning
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
 
+                        box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
+
                         //Fill the DropDownList with Data 
                         ClsCommon.ddlGetRoleforDemand(ddl);
                         ClsCommon.ddlGetSkillDDL(ddl1);                       
@@ -255,6 +276,7 @@ namespace CapacityPlanning
                             ddl1.ClearSelection();
                             ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
                             box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
+                            
                             box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
                                                       
                         }
@@ -409,6 +431,10 @@ namespace CapacityPlanning
                             DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
                             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
+
+                            box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                            box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+
 
                             //Fill the DropDownList with Data 
                             ClsCommon.ddlGetRoleforDemand(ddl);
