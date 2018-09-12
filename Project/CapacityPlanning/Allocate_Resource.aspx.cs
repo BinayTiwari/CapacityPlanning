@@ -253,6 +253,11 @@ namespace CapacityPlanning
 
         }
 
+        protected void UnDO_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Allocate_Resource.aspx?RequestID=" + Request.QueryString["RequestID"] + "");
+        }
+
 
         //private void Search(int RoleID)
         //{
