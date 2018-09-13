@@ -13,9 +13,21 @@ namespace CapacityPlanning
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            
             //int res = 1;
             try
             {
+                /* Prevent direct URL Access  */
+                string referer = Request.ServerVariables["HTTP_REFERER"];
+                if (string.IsNullOrEmpty(referer))
+                {
+                    Session["UserId"] = null;
+                    Response.Redirect("ErrorPages/AuthenticationFailed.aspx");
+                }
+
+                /* Prevent direct URL Access ends  */
+
                 if (Session["UserDetails"] != null)
                 {
                     List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
