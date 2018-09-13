@@ -187,7 +187,16 @@
         </div>
         <!-- /#wrapper -->
 
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p><center>All rights reserved. &copy; <%: DateTime.Now.Year %> - <b>Gridinfocom Pvt. Ltd. </b></center></p>
+                   <p><center>Developed and managed by:<b> Team Work Force Allocation</b></center></p>
 
+            </footer>
+        </div>
 
 
     </form>
