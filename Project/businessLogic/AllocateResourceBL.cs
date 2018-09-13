@@ -84,8 +84,8 @@ namespace businessLogic
         {
             try
             {
-                string dtS = String.Format("{0:yyyy-MM-dd}", StartDate);
-                string dtE = String.Format("{0:yyyy-MM-dd}", EndDate);
+                string dtS = string.Format("{0:yyyy-MM-dd}", StartDate);
+                string dtE = string.Format("{0:yyyy-MM-dd}", EndDate);
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_AccountMaster.AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy,CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, CPT_AllocateResource.EndDate"+
@@ -95,11 +95,6 @@ namespace businessLogic
                                     " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE"+
                     " CPT_AllocateResource.EndDate >= '"+ dtS + "') AND  ISDELETED = 0) OR CPT_ResourceMaster.EmployeeMasterID = 10161";
 
-                //string SqlString = "SELECT  CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID" +
-                //    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
-                //     " Where CPT_ResourceMaster.RolesID = "+ RoleID + "  and CPT_ResourceMaster.Skillsid = "+ SkillID + " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE " +
-                //    " (CPT_AllocateResource.StartDate <= '" + dtS + "')" + " OR (CPT_AllocateResource.EndDate >= '" + dtE + "'))";
-
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
                     SqlConn.Open();
@@ -107,33 +102,6 @@ namespace businessLogic
                     rpt.DataSource = reader;
                     rpt.DataBind();
                 }
-                //using (CPContext db = new CPContext())
-                //{
-
-                //    //var query1 = (from p in db.CPT_ResourceMaster
-                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                //    //              into t
-                //    //              from rt in t.DefaultIfEmpty()
-                //    //              where (p.RolesID == RoleID && p.Skillsid == SkillID)
-                //    //              select new
-                //    //              {
-                //    //                  p.EmployeetName,
-                //    //                  p.EmployeeMasterID
-                //    //              }).ToList();
-                //    //var query2 = (from p in db.CPT_ResourceMaster
-                //    //              join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID
-                //    //              into t
-                //    //              from rt in t.DefaultIfEmpty()
-                //    //              where (p.RolesID == RoleID && rt.StartDate <= StartDate)
-                //    //              select new
-                //    //              {
-                //    //                  p.EmployeetName,
-                //    //                  p.EmployeeMasterID
-                //    //              }).ToList();
-                //    //var query = query1.Except(query2).ToList();
-                //    //rpt.DataSource = query;
-                //    //rpt.DataBind();
-                //}
             }
             catch (Exception ex)
             {
