@@ -109,29 +109,7 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        //public static void getEmployeeNameByResourceType(Repeater repeater, int RoleID)
-        //{
-        //    try
-        //    {
-        //        using (CPContext db = new CPContext())
-        //        {
-        //            var query = (from p in db.CPT_ResourceMaster
-        //                         join q in db.CPT_AllocateResource on p.EmployeeMasterID equals q.ResourceID 
-        //                         into t from rt in t.DefaultIfEmpty()
-        //                         where (p.RolesID == RoleID && p.isMapped == 0)
-        //                         select new
-        //                         {
-        //                             p.EmployeetName,
-        //                         }).ToList();
-        //            repeater.DataSource = query;
-        //            repeater.DataBind();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
+        
         public static List<int> ResourceID(List<string> name)
         {
             using (CPContext db = new CPContext())
