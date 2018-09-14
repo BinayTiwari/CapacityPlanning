@@ -42,8 +42,8 @@
                         <span class="fa fa-lock form-control-feedback"></span><span><font color="red"></font></span>
                     </div>
                     <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
-                        <input type="checkbox" name="remember" value="" id="remember" />
-                        Remember me
+                        <asp:CheckBox ID="chkRemember" runat="server" Text="Remember Me" />
+                        
                     </div>
                     <div>
                      <a href="../ResetPassword.aspx">Can't access your account?</a>   

@@ -21,7 +21,11 @@ namespace CapacityPlanning
             if (!IsPostBack)
             {
 
-
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                {
+                    txtEmail.Text = Request.Cookies["UserName"].Value;
+                    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
+                }
 
             }
         }
@@ -48,6 +52,20 @@ namespace CapacityPlanning
                 lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                 lblErrorMsg.Text = "Your email or password is incorrect!";
             }
+            if (chkRemember.Checked)
+            {
+                Response.Cookies["UserName"].Value = txtEmail.Text.Trim();
+                Response.Cookies["Password"].Value = txtPassword.Text.Trim();
+                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(300);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(300);
+            }
+            else
+            {
+                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+
+            }
+           
         }
     }
 }
