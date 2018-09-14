@@ -14,11 +14,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3 ">
-                            <i class="fa fa-bank fa-5x">
-                                </i>
-                        </div >
+                            <i class="fa fa-bank fa-5x"></i>
+                        </div>
                         <div class="col-xs-3 pull-right ">
-                           <h3> <asp:Label ID="lblStregth" runat="server" Text=""></asp:Label></h3>
+                            <h3>
+                                <asp:Label ID="lblStregth" runat="server" Text=""></asp:Label></h3>
                         </div>
                     </div>
                 </div>
@@ -36,14 +36,15 @@
                     <div class="row">
                         <div class="col-xs-3">
                             <i class="fa fa-table fa-5x"></i>
-                            
+
                         </div>
                         <div class="col-xs-3 pull-right">
-                            <h3> <asp:Label ID="NumberOfResourcesOnBench" runat="server" Text=""></asp:Label></h3>
+                            <h3>
+                                <asp:Label ID="NumberOfResourcesOnBench" runat="server" Text=""></asp:Label></h3>
                         </div>
                     </div>
                 </div>
-                 <a href="#">
+                <a href="#">
                     <div class="panel-footer">
                         <span class="pull-left">Resources on Bench</span>
                         <span class="pull-right">
@@ -52,7 +53,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </a>
-               
+
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -62,8 +63,9 @@
                         <div class="col-xs-3">
                             <i class="fa fa-th-list fa-5x"></i>
                         </div>
-                          <div class="col-xs-3 pull-right">
-                            <h3> <asp:Label ID="OpenResourceRequests" runat="server" Text=""></asp:Label></h3>
+                        <div class="col-xs-3 pull-right">
+                            <h3>
+                                <asp:Label ID="OpenResourceRequests" runat="server" Text=""></asp:Label></h3>
                         </div>
                     </div>
                 </div>
@@ -85,8 +87,9 @@
                         <div class="col-xs-3">
                             <i class="fa fa-book fa-5x"></i>
                         </div>
-                         <div class="col-xs-3 pull-right">
-                            <h3> <asp:Label ID="NewJoiners" runat="server" Text=""></asp:Label></h3>
+                        <div class="col-xs-3 pull-right">
+                            <h3>
+                                <asp:Label ID="NewJoiners" runat="server" Text=""></asp:Label></h3>
                         </div>
                     </div>
                 </div>
@@ -107,84 +110,84 @@
 
 
     <div id="graphBlock" style="display: block;" runat="server">
-       
+
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    
+
                     <!-- /.panel-heading -->
                     <div class="row">
-        
-        <!-- /.col-lg-12 -->
-    </div>
 
-    <div class="row">
-
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Acoount Wise Resource Deployment 
-                </div>
-                <!-- /.panel-heading -->
-               
-            </div>
-        </div>
-         <div class="col-lg-12">
-                    <div class="dataTable_wrapper">
-
-
-                        <table class="table table-striped table-bordered table-hover" id="dataTables">
-                            <thead>
-                                <tr>
-                                    <th>Sr. No.</th>
-                                    <th>Account Name</th>
-                                    <th>Project Manager</th>
-                                     <th>Architect</th>
-                                    <th>Business Analyst</th>
-                                    <th>Team Lead</th>
-                                      <th>Senior Developer</th>
-                                    <th>Developer</th>
-                                  
-                                    <th>Quality Control</th>
-                                   
-                                    
-                                    
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <asp:Repeater ID="rptAccountWiseResources" runat="server">
-                                    <ItemTemplate>
-                                        <tr class="odd gradeX">
-                                            <td>
-                                                <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
-                                            </td>
-                                            <td>
-                                               <%#Eval("AccountName")%>
-                                            </td>
-                                           <td><%#Eval("ProjectManager")%></td>
-                                                <td><%#Eval("Architect")%></td>
-                                            <td><%#Eval("BUsinessAnalyst")%></td>
-                                            <td><%#Eval("TeamLead")%></td>
-                                             <td><%#Eval("SeniorDeveloper")%></td>
-                                           <td><%#Eval("Developer")%></td>
-                                            
-                                            <td><%#Eval("QualityControl")%></td>
-                                        
-                                           
-                                            
-                                            
-                                        </tr>
-                                    </ItemTemplate>
-
-                                </asp:Repeater>
-
-                            </tbody>
-                        </table>
+                        <!-- /.col-lg-12 -->
                     </div>
-                </div>
-    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Acoount Wise Resource Deployment 
+                                </div>
+                                <!-- /.panel-heading -->
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="dataTable_wrapper table-responsive">
+
+
+                                <table class="table table-striped table-bordered table-hover" id="dataTables">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Account Name</th>
+                                            <th>Project Manager</th>
+                                            <th>Architect</th>
+                                            <th>Business Analyst</th>
+                                            <th>Team Lead</th>
+                                            <th>Senior Developer</th>
+                                            <th>Developer</th>
+
+                                            <th>Quality Control</th>
+
+
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <asp:Repeater ID="rptAccountWiseResources" runat="server">
+                                            <ItemTemplate>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
+                                                    </td>
+                                                    <td>
+                                                        <%#Eval("AccountName")%>
+                                                    </td>
+                                                    <td><%#Eval("ProjectManager")%></td>
+                                                    <td><%#Eval("Architect")%></td>
+                                                    <td><%#Eval("BUsinessAnalyst")%></td>
+                                                    <td><%#Eval("TeamLead")%></td>
+                                                    <td><%#Eval("SeniorDeveloper")%></td>
+                                                    <td><%#Eval("Developer")%></td>
+
+                                                    <td><%#Eval("QualityControl")%></td>
+
+
+
+
+                                                </tr>
+                                            </ItemTemplate>
+
+                                        </asp:Repeater>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <%--<div class="panel-body">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-line-chart">
@@ -221,7 +224,7 @@
                         Designation V/S No. of Resources
                     </div>
                     <!-- /.panel-heading -->
-                    <div class="panel-body">
+                    <div class="panel-body table-responsive">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-pie-chart">
 
@@ -258,7 +261,7 @@
             </div>
             <!-- /.col-lg-6 -->
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Reporting Manager V/S No. of Reporters
                     </div>
@@ -296,7 +299,7 @@
             </div>
             <!-- /.col-lg-6 -->
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Role V/S Demand
                     </div>
@@ -335,7 +338,7 @@
             </div>
             <!-- /.col-lg-6 -->
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Designation V/S No. of Resources
                     </div>
@@ -360,7 +363,7 @@
                                         </asp:ChartArea>
                                     </ChartAreas>
 
-                                   
+
                                 </asp:Chart>
                             </div>
                         </div>
@@ -370,7 +373,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-6 -->
-           
+
             <!-- /.col-lg-6 -->
         </div>
         <!-- /.row -->
@@ -468,7 +471,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dataTable_wrapper" style="overflow-y:scroll; height:400px">
+                    <div class="dataTable_wrapper table-responsive" style="overflow-y:scroll; height:400px">
 
 
                         <table class="table table-striped table-bordered table-hover" id="dataTable1s">
@@ -535,7 +538,7 @@
     <div id="AccVsNoR" style="display: none;" runat="server">
         <div class="panel-body">
 
-            <div class="dataTable_wrapper" >
+            <div class="dataTable_wrapper table-responsive" >
 
 
                 <table class="table table-striped table-bordered table-hover" id="dataTable2s">
@@ -584,7 +587,7 @@
         <div class="col-lg-12">
                 <h1 class="page-header text-center">Capacity V/S Demand</h1>
             </div>
-        <div class="panel-body">
+        <div class="panel-body table-responsive">
             <div class="row">
                 <div class="col-md-4">
                     <div class="dataTable_wrapper">
