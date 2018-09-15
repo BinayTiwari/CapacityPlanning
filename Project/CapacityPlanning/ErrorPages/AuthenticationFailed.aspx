@@ -13,9 +13,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                    <asp:HyperLink runat="server" CssClass="center-block" NavigateUrl="~/Dashboard.aspx" Text=""><h3 >Back to Dashboard</h3></asp:HyperLink>
+                        <asp:HyperLink runat="server" CssClass="center-block" NavigateUrl="~/Dashboard.aspx" Text=""><h3 >⇦ Back to Dashboard</h3></asp:HyperLink>
                     </div>
-                    <img class="center-block" style="margin-top: 80px" src="../images/authfail.jpg" />
+                    <img class="center-block" style="margin-top: 40px" src="../images/authfail.jpg" />
                 </div>
 
             </div>
