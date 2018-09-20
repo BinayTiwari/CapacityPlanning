@@ -94,14 +94,14 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Start Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorStartDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="StartDate"
                                     ErrorMessage="Start Date can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="End Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
                                     ErrorMessage="End Date can't be blank !" />
                                 <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"

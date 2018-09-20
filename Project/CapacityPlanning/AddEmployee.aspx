@@ -118,7 +118,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Date of Joining<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="dojoining" runat="server" CssClass="form-control" TextMode="Date" onkeypress="return false;" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojoining"
                                     ErrorMessage="Date of Joining can't be blank !" />
                             </div>
@@ -178,7 +178,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Passport Expiry Date</label>
-                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="passExpDate" runat="server" CssClass="form-control" TextMode="Date" onkeypress="return false;" ></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Visa Expiry Date</label>
-                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="visExpDate" runat="server" CssClass="form-control" TextMode="Date" onkeypress="return false;" ></asp:TextBox>
                             </div>
                             <div class="col-lg-6">
                                 <label>Previous Experience<span style="color: red;"> *</span></label>

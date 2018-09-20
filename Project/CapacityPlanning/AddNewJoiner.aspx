@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Date of Joining<span style="color: red;"> *</span></label>
-                                <asp:TextBox ID="dojTextBox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="dojTextBox" TextMode="Date" CssClass="form-control" runat="server" onkeypress="return false;"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="dojTextBox"
                                     ErrorMessage="Date of Joining can't be blank !" />
                             </div>
@@ -111,8 +111,8 @@
                     <div class="row">
                         <div class="col-sm-3 pull-right">
                             <div class="col-sm-2s pull-right">
-                                                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
-                                
+                                <asp:Button ID="UnDoButton" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" formnovalidate />
+
                             </div>
                             <div class="col-sm-2s pull-left">
                                 <asp:Button ID="NewJoinerButton" Style="float: right;" CssClass="btn btn-success btn-md" OnClick="NewJoinerButton_Click" runat="server" Text="Save" />
