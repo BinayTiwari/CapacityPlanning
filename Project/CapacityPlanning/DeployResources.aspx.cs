@@ -42,7 +42,7 @@ namespace CapacityPlanning
                 startDate = theButton.Attributes["StartDate"];
                 endDate = theButton.Attributes["EndDate"];
                 DeployResourcesBL.DeployStatus(Convert.ToInt32(theButton.Attributes["AllocationID"]));
-                Email();
+                //Email();
                 BindRepeater();
             }
             catch (Exception ex)

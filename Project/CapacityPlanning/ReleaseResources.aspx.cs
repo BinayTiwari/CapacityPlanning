@@ -40,7 +40,7 @@ namespace CapacityPlanning
             acName = lb.Attributes["acName"];
             prName = lb.Attributes["prName"];
             ReleaseResourcesBL.setReleasedStatus(Convert.ToInt32(lb.Attributes["AlocationID"]));
-            Email();
+            //Email();
             Response.Redirect("ReleaseResources.aspx");
         }
         public void Email()

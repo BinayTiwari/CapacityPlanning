@@ -124,7 +124,7 @@ namespace CapacityPlanning
                 }
                 
                 insertResourceDemand.Insert(resourceDemandDetails);
-                Email();
+                //Email();
 
                 Response.Redirect("ResourceDemand.aspx");
 
@@ -171,8 +171,8 @@ namespace CapacityPlanning
 
             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[0].Cells[4].FindControl("StartDate");
             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[0].Cells[5].FindControl("EndDate");
-            box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-            box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+            //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+            //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
             ClsCommon.ddlGetRoleforDemand(ddl);
@@ -211,8 +211,8 @@ namespace CapacityPlanning
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
 
-                        box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-                        box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
 
@@ -259,8 +259,8 @@ namespace CapacityPlanning
                         TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
                         TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
 
-                        box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-                        box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                        //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
                         //Fill the DropDownList with Data 

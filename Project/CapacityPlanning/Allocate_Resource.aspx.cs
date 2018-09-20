@@ -147,7 +147,7 @@ namespace CapacityPlanning
                     rbl.Insert(details);
                     rbl.updateMap(empID);
 
-                   sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                   //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
             
                 }
                 Response.Redirect("ResourceMapping.aspx");
