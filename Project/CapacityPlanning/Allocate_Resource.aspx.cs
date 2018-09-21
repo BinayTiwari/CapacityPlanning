@@ -18,7 +18,9 @@ namespace CapacityPlanning
         List<string> name = new List<string>();
         static string StartDate;
         static string EndDate;
-        static int skillID;
+        static string skillID;
+        static int roleID;
+        static int requestDetailID;
         List<int> resourceID = new List<int>();
         //int RoleID = 0;
 
@@ -30,8 +32,6 @@ namespace CapacityPlanning
                 lblResourceAllocation.Text = id;
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
-                // AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, id);
-                // AllocateResourceBL.NoOfAllocated(rptResourceAllocation,id);
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -42,19 +42,20 @@ namespace CapacityPlanning
             {
                 myDIV.Style.Add("display", "block");
                 Button theButton = sender as Button;
-                StartDate = theButton.Attributes["StartDate"];
-                EndDate = theButton.Attributes["EndDate"];
-                string skillName = theButton.Attributes["SkillsName"];
+                requestDetailID = Convert.ToInt32(theButton.CommandArgument);
+
                 using (CPContext db = new CPContext())
                 {
-                    var query = (from p in db.CPT_SkillsMaster
-                                 where p.SkillsName == skillName
-                                 select p.SkillsMasterID).ToList();
-                    skillID = query[0];
+                    var query = (from p in db.CPT_ResourceDetails
+                                 where p.RequestDetailID == requestDetailID
+                                 select p).ToList();
+                    roleID = query[0].ResourceTypeID;
+                    StartDate = query[0].StartDate.ToShortDateString();
+                    EndDate = query[0].EndDate.ToShortDateString();
+                    skillID = query[0].SkillID;
 
                 }
 
-                ViewState["RoleID"] = Convert.ToInt32(theButton.CommandArgument);
                 RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
                 Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                 float utilization = 0;
@@ -70,7 +71,7 @@ namespace CapacityPlanning
                 ViewState["utilization"] = utilization;
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
-                SearchAvailability(Convert.ToInt32(theButton.CommandArgument));
+                SearchAvailability();
             }
             catch (Exception ex)
             {
@@ -90,6 +91,7 @@ namespace CapacityPlanning
         {
             try
             {
+
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
@@ -119,26 +121,25 @@ namespace CapacityPlanning
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
-                
 
-                int RequestDetailID = AllocateResourceBL.GetRequestDetailID(RequestID, skillID);
+
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
                 {
 
                     details.ResourceID = resourceID[j];
-                    details.RequestDetailID = RequestDetailID;
+                    details.RequestDetailID = requestDetailID;
                     details.RequestID = RequestID;
                     details.AccountID = AllocateResourceBL.getAccountID(details.RequestID.ToString());
                     details.StartDate = Convert.ToDateTime(StartDate);
                     details.EndDate = Convert.ToDateTime(EndDate);
                     empID.EmployeeMasterID = resourceID[j];
-                    details.RoleMasterID = Convert.ToInt32(ViewState["RoleID"]);
+                    details.RoleMasterID = roleID;
                     details.Released = false;
-                //    if (NoOfResources >= 1)
-                //        details.Utilization = 1;
-                ////    else
-                     details.Utilization = float.Parse(ViewState["utilization"].ToString());
+                    //    if (NoOfResources >= 1)
+                    //        details.Utilization = 1;
+                    ////    else
+                    details.Utilization = float.Parse(ViewState["utilization"].ToString());
 
                     string acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
@@ -147,11 +148,11 @@ namespace CapacityPlanning
                     rbl.Insert(details);
                     rbl.updateMap(empID);
 
-                   //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
-            
+                    //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+
                 }
                 Response.Redirect("ResourceMapping.aspx");
-         
+
 
             }
             catch (Exception ex)
@@ -183,15 +184,12 @@ namespace CapacityPlanning
                 //lblResult.Text = "Your message failed to send, please try again.";
             }
         }
-        public void SearchAvailability(int RoleID)
+        public void SearchAvailability()
         {
             string id = Request.QueryString["RequestID"];
             lblSuggestions.Text = id;
-            int roleID = Convert.ToInt32(ViewState["RoleID"]);
-            DateTime dateStart = Convert.ToDateTime(StartDate);
-             DateTime dateEnd = Convert.ToDateTime(EndDate);
             AllocateResourceBL rbl = new AllocateResourceBL();
-            rbl.getFreeEmployee(rptSuggestions, roleID, dateStart, skillID.ToString(), dateEnd);
+            rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -211,7 +209,7 @@ namespace CapacityPlanning
 
                     btnNext.Enabled = true;
                     lblStartDate.Text = StartDate;
-                    SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
+                    SearchAvailability();
                 }
 
 
@@ -234,14 +232,14 @@ namespace CapacityPlanning
                 if (dtstart <= dtEnd)
                 {
                     btnNext.Enabled = true;
-                    SearchAvailability(Convert.ToInt32(ViewState["RoleID"]));
+                    SearchAvailability();
                     lblStartDate.Text = StartDate;
                 }
                 else
                 {
                     btnNext.Enabled = false;
 
-                    
+
                 }
 
             }
@@ -259,23 +257,6 @@ namespace CapacityPlanning
         }
 
 
-        //private void Search(int RoleID)
-        //{
-        //    try
-        //    {
 
-        //        string id = Session["id"].ToString();
-        //        lblSuggestions.Text = id;
-        //        AllocateResourceBL.getEmployeeNameByResourceType(rptSuggestions, RoleID);
-
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-
-        //        Console.WriteLine(ex.Message);
-        //    }
-
-        //}
     }
 }
