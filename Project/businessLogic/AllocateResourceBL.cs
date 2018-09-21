@@ -186,7 +186,7 @@ namespace businessLogic
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = " SELECT CPT_ResourceDetails.RequestDetailID,CPT_ResourceDetails.ResourceTypeID, CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName," +
-                                  " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID,CPT_ResourceDetails.RequestDetailID) As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
+                                  " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources,ISNULL(dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID,CPT_ResourceDetails.RequestDetailID),0) As Allocated, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, CPT_RoleMaster.RoleMasterID " +
                                   " FROM CPT_SkillsMaster INNER JOIN CPT_ResourceDetails INNER JOIN CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
                                   "  CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID WHERE CPT_ResourceDetails.RequestID = " + reqID + "";
 
@@ -197,7 +197,10 @@ namespace businessLogic
                     rpt.DataSource = reader;
                     rpt.DataBind();
                 }
-              
+
+
+
+                
 
             }
             catch (Exception e)
