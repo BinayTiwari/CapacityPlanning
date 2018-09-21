@@ -189,7 +189,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function FunctionDisable() {
             var numberOfChecked = $('input:checkbox:checked').length;
             var bc = document.getElementById('MainContent_rptResourceAllocation_Allocated_0').innerText;
@@ -205,8 +205,7 @@
                 
             }
         }
-           
-
+          
         
-    </script>
+    </script>--%>
 </asp:Content>
