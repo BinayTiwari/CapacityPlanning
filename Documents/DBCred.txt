@@ -24,7 +24,7 @@ Username   :     gridinfocom-001
 Password     :     12qwaszx
 
 FTP Path / Folder Name    :    WorkAllocationGroup
-URL: rahulgic-001-site1.htempurl.com
+URL: gridinfocom-001-site2.ftempurl.com
 
 Database
 
