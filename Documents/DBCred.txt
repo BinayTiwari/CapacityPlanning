@@ -28,9 +28,9 @@ URL: rahulgic-001-site1.htempurl.com
 
 Database
 
-SERVER:    sql5007.site4now.net
+SERVER:    sql5035.site4now.net
 
-User Name : DB_A2AFEB_WAG_admin
+User Name : DB_A2AFEB_WFA_admin
 
 Password : 12qwaszx
 
