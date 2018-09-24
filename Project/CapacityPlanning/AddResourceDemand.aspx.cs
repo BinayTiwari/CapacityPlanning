@@ -432,8 +432,8 @@ namespace CapacityPlanning
                             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
                             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
 
-                            box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-                            box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                            //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+                            //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
                             //Fill the DropDownList with Data 

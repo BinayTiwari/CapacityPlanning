@@ -32,6 +32,7 @@ namespace CapacityPlanning
                 lblResourceAllocation.Text = id;
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
+                btnSave.Enabled = false;
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -91,6 +92,8 @@ namespace CapacityPlanning
         {
             try
             {
+
+                btnSave.Enabled = true;
 
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {

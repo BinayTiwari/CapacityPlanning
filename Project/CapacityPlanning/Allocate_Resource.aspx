@@ -119,9 +119,9 @@
                                        <b>End Date:</b>
                                     <asp:Label ID="lblEndDate" runat="server" Text=""></asp:Label>&nbsp;&nbsp;
 
-                                        <asp:Button ID="btnPreviousWeek" runat="server" Class="btn btn-success btn-md" Text="&#8678; Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
+                                        <asp:Button ID="btnPreviousWeek" runat="server" CssClass="btn btn-success btn-md" Text="&#8678; Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
                                     &nbsp;
-                                       <asp:Button ID="btnNext" runat="server" Class="btn btn-success btn-md" Text=" Availability in Next Week &#8680;" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <asp:Button ID="btnNext" runat="server" CSSClass="btn btn-success btn-md" Text=" Availability in Next Week &#8680;" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
               
                                 </div>
                                 <br />
@@ -154,7 +154,7 @@
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
 
                                                             <td>
-                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server"  />
+                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" AutoPostBack="true" />
                                                             </td>
 
                                                         </tr>
@@ -169,7 +169,7 @@
                                     <br />
                                     <br />
                                     <div class="pull-right">
-                                        <asp:Button ID="btnSave" Style="float: left;" class="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
+                                        <asp:Button ID="btnSave" Style="float: left;" CssClass="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
                                     </div>
                                     <div class="pull-left">
                                         <asp:Button ID="UnDO" Style="float: right;" class="btn btn-success btn-md" runat="server" Text="Undo Changes" OnClick="UnDO_Click" />
