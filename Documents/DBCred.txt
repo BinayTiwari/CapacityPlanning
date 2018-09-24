@@ -15,3 +15,26 @@ DESKTOP-654818S\SQLEXPRESS
 
 
 https://github.com/gridtraining2018-1/trainingInterns.git/
+
+
+
+
+
+
+MSSQL: sql5035.site4now.net
+Username: DB_A2AFEB_WFA_admin
+
+
+Password : 12qwaszx
+
+ 
+
+FTP
+
+ 
+
+Workallocationgroup
+
+12qwaszx
+
+
