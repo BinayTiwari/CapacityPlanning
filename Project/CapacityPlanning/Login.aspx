@@ -12,7 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    
+
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="images/1.png" rel="shortcut icon" type="image/x-icon" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -31,9 +31,11 @@
                 </div>
                 <div class="login-box-body">
                     <p class="login-box-msg"><b>Sign in to your account</b></p>
-                    <p class="text-center"><asp:Label ID="lblErrorMsg" runat="server" Visible="false"></asp:Label></p><br />
+                    <p class="text-center">
+                        <asp:Label ID="lblErrorMsg" runat="server" Visible="false"></asp:Label></p>
+                    <br />
                     <div class="form-group has-feedback">
-                        <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required ></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-control" placeholder="E-mail address" runat="server" required></asp:TextBox>
                         <span class="fa fa-user form-control-feedback"></span><span><font color="red"></font></span>
                     </div>
 
@@ -42,12 +44,12 @@
                         <span class="fa fa-lock form-control-feedback"></span><span><font color="red"></font></span>
                     </div>
                     <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
-                        <asp:CheckBox ID="chkRemember" runat="server" Text="Remember Me" />
-                        
+                        <asp:CheckBox ID="chkRemember" runat="server" Text="&nbsp;&nbsp;Remember Me" />
+
                     </div>
                     <div>
-                     <a href="../ResetPassword.aspx">Can't access your account?</a>   
-                        </div>
+                        <a href="../ResetPassword.aspx">Can't access your account?</a>
+                    </div>
 
 
                     <div class="row">
