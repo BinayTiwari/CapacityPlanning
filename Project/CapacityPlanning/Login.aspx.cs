@@ -39,6 +39,20 @@ namespace CapacityPlanning
             auth.EmployeePassword = txtPassword.Text.Trim();
             List<CPT_ResourceMaster> lstuserdetails = new List<CPT_ResourceMaster>();
 
+            if (chkRemember.Checked)
+            {
+                Response.Cookies["UserName"].Value = txtEmail.Text.Trim();
+                Response.Cookies["Password"].Value = txtPassword.Text.Trim();
+                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
+            }
+            else
+            {
+                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+
+            }
+
             lstuserdetails = blauthentication.getActiveUser(auth);
             if (lstuserdetails.Count > 0)
             {
@@ -52,19 +66,7 @@ namespace CapacityPlanning
                 lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                 lblErrorMsg.Text = "Your email or password is incorrect!";
             }
-            if (chkRemember.Checked)
-            {
-                Response.Cookies["UserName"].Value = txtEmail.Text.Trim();
-                Response.Cookies["Password"].Value = txtPassword.Text.Trim();
-                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(300);
-                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(300);
-            }
-            else
-            {
-                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
-
-            }
+            
            
         }
     }
