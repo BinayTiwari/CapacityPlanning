@@ -20,12 +20,20 @@ namespace CapacityPlanning
         {
             if (!IsPostBack)
             {
+                if (Request.Cookies["UserName"] != null)
 
-                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
-                {
                     txtEmail.Text = Request.Cookies["UserName"].Value;
-                    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
-                }
+
+                if (Request.Cookies["Password"] != null)
+
+                    txtPassword.Attributes.Add("value", Request.Cookies["Password"].Value);
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                    chkRemember.Checked = true;
+                //if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                //{
+                //    txtEmail.Text = Request.Cookies["UserName"].Value;
+                //    txtPassword.Attributes["value"] = Request.Cookies["Password"].Value;
+                //}
 
             }
         }
