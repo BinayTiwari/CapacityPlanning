@@ -110,6 +110,8 @@ namespace CapacityPlanning
         {
             try
             {
+
+
                 if (!string.IsNullOrEmpty(Request.QueryString["RequestId"]))
                 {
                     requestID = Request.QueryString["RequestId"].Trim();
@@ -130,7 +132,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.DateOfCreation = Convert.ToDateTime(ViewState["dateOfCreation"]);
                 resourceDemandDetails.DateOfModification = DateTime.Now;
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
-               // resourceDemandDetails.StatusMasterID = 19;
+                // resourceDemandDetails.StatusMasterID = 19;
                 resourceDemandDetails.PriorityID = 27;
                 if (Convert.ToInt32(StatusMasterID.SelectedValue) == 23)
                 {
@@ -139,13 +141,13 @@ namespace CapacityPlanning
                 // ResourceDetailsBL.deleteResourceDetails(requestID);
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
-                
+
 
 
                 ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
                 List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
-                for (int i = 0; i < GridviewResourceDetail.Rows.Count ; i++)
+                for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
                 {
                     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
@@ -165,6 +167,8 @@ namespace CapacityPlanning
                 //Email();
 
                 Response.Redirect("ResourceDemand.aspx");
+
+
             }
 
 
@@ -236,48 +240,48 @@ namespace CapacityPlanning
         private void AddNewRowToGrid()
         {
 
-           // if (ViewState["CurrentTable"] != null)
+            // if (ViewState["CurrentTable"] != null)
             //{
 
-                DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-                DataRow drCurrentRow = null;
+            DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
+            DataRow drCurrentRow = null;
 
             //    if (dtCurrentTable.Rows.Count > 0)
-              //  {
-                 //   drCurrentRow = dtCurrentTable.NewRow();
-                   // drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
-                    //add new row to DataTable   
-                    //dtCurrentTable.Rows.Add(drCurrentRow);
-                    //Store the current data to ViewState for future reference   
+            //  {
+            //   drCurrentRow = dtCurrentTable.NewRow();
+            // drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
+            //add new row to DataTable   
+            //dtCurrentTable.Rows.Add(drCurrentRow);
+            //Store the current data to ViewState for future reference   
 
-                    ViewState["CurrentTable"] = dtCurrentTable;
+            ViewState["CurrentTable"] = dtCurrentTable;
 
-                    for (int i = 0; i < GridviewResourceDetail.Rows.Count - 1; i++)
-                    {
-                        //extract the DropDownList Selected Items   
-                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
+            for (int i = 0; i < GridviewResourceDetail.Rows.Count - 1; i++)
+            {
+                //extract the DropDownList Selected Items   
+                DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
 
-                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
-                        dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
-                        dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                        dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
-                        dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
-                        dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
-                    }
+                TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
+                DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
+                TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
+                TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
+                dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
+                dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
+                dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
+                dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
+                dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
+            }
 
-                    //Rebind the Grid with the current data to reflect changes   
-                    GridviewResourceDetail.DataSource = dtCurrentTable;
-                    GridviewResourceDetail.DataBind();
-             //   }
-//            }
-  //          else
-    //        {
-           //     Response.Write("ViewState is null");
+            //Rebind the Grid with the current data to reflect changes   
+            GridviewResourceDetail.DataSource = dtCurrentTable;
+            GridviewResourceDetail.DataBind();
+            //   }
+            //            }
+            //          else
+            //        {
+            //     Response.Write("ViewState is null");
 
-      //      }
+            //      }
             //Set Previous Data on Postbacks   
             SetPreviousData();
         }
@@ -432,22 +436,22 @@ namespace CapacityPlanning
         public void disableFields()
         {
             int statusID = ResourceDemandBL.getStatusbyRequest(requestID);
-            if(statusID == 20 || statusID == 32  || statusID == 26)
+            if (statusID == 20 || statusID == 32 || statusID == 26)
             {
                 OpportunityID.Enabled = false;
                 RegionMasterID.Enabled = false;
                 AccountMasterID.Enabled = false;
                 SalesStageMasterID.Enabled = false;
                 processName.Enabled = false;
-                
+
                 GridviewResourceDetail.Enabled = false;
-                
+
 
             }
 
         }
 
-        
+
 
     }
 }

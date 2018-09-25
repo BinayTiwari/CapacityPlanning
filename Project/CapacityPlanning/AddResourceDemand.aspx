@@ -104,7 +104,7 @@
                                 <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
                                     ErrorMessage="End Date can't be blank !" />
-                                <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
+                                <asp:CompareValidator ID="CompareValidatorDtae" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
                                     Operator="LessThan" Type="Date" SetFocusOnError="true" ErrorMessage="Start date must be less than End date !"></asp:CompareValidator>
                             </ItemTemplate>

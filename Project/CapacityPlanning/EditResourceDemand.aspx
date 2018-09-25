@@ -96,7 +96,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>' TextMode="Number" max="50" min="0" placeholder='No of Resources' CssClass="form-control" step="0.5" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="NoOfResources" Text='<%# Bind("NoOfResources") %>' TextMode="Number" max="50" min="0" placeholder='No of Resources' CssClass="form-control" step="0.5" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorNoOfResources" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="NoOfResources"
                                     ErrorMessage="No of Resources can't be blank !" />
                             </ItemTemplate>
@@ -109,19 +109,19 @@
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Start Date (MM-dd-YYYY) *" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="Start Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="StartDate" runat="server" Text='<%# Bind("StartDate","{0:yyyy-MM-dd}") %>' TextMode="Date" onkeypress="return false;" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorStartDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="StartDate"
                                     ErrorMessage="Start Date can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="End Date (MM-dd-YYYY) *" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="End Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
                                 <asp:TextBox ID="EndDate" Text='<%# Bind("EndDate","{0:yyyy-MM-dd}") %>' TextMode="Date" runat="server" onkeypress="return false;" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
                                     ErrorMessage="End Date can't be blank !" />
-                                <asp:CompareValidator ID="CompareValidatorDtae" ValidationGroup="Date" ForeColor="Red"
+                                <asp:CompareValidator ID="CompareValidatorDate" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
                                     Operator="LessThan" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
