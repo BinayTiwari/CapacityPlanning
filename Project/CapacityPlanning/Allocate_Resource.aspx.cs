@@ -22,7 +22,7 @@ namespace CapacityPlanning
         static int roleID;
         static int requestDetailID;
         List<int> resourceID = new List<int>();
-        //int RoleID = 0;
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,26 @@ namespace CapacityPlanning
                 lblResourceAllocation.Text = id;
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
-                btnSave.Enabled = false;
+                
+                foreach (RepeaterItem item in rptResourceAllocation.Items)
+                {
+                    Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
+                    Label lblAllocated = (Label)item.FindControl("Allocated");
+                    
+                    if(Convert.ToInt32(lblNoOfResources.Text) == Convert.ToInt32(lblAllocated.Text))
+                    {
+                        Button btn = (Button)item.FindControl("btnAlign");
+                        btn.Enabled = false;
+
+
+
+                    }
+
+                }
+                
+
+
+
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -59,6 +78,8 @@ namespace CapacityPlanning
 
                 RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
                 Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
+                
+
                 float utilization = 0;
                 if (float.Parse(lblNoOfResources.Text) < 1)
                 {
@@ -93,7 +114,7 @@ namespace CapacityPlanning
             try
             {
 
-                btnSave.Enabled = true;
+                
 
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
@@ -139,6 +160,7 @@ namespace CapacityPlanning
                     empID.EmployeeMasterID = resourceID[j];
                     details.RoleMasterID = roleID;
                     details.Released = false;
+                    details.IsDeployed = false;
                     //    if (NoOfResources >= 1)
                     //        details.Utilization = 1;
                     ////    else
