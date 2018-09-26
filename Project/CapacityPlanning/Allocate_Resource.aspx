@@ -156,7 +156,7 @@
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
 
                                                             <td>
-                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" AutoPostBack="true" />
+                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server"/>
                                                             </td>
 
                                                         </tr>
