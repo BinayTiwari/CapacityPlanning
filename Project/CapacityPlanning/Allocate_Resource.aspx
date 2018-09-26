@@ -136,6 +136,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Designation</th>
                                                     <th>Account</th>
                                                     <th>Current Assignment</th>
                                                     <th>Owner</th>
@@ -148,6 +149,7 @@
                                                     <ItemTemplate>
                                                         <tr class="odd gradeX">
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EmployeetName")%> </td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.Designation")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.AccountName")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>
@@ -171,6 +173,7 @@
                                     <div class="pull-right">
                                         <asp:Button ID="btnSave" Style="float: left;" CssClass="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
                                     </div>
+                                   
                                     <div class="pull-left">
                                         <asp:Button ID="UnDO" Style="float: right;" class="btn btn-success btn-md" runat="server" Text="Undo Changes" OnClick="UnDO_Click" />
                                     </div>
@@ -190,14 +193,14 @@
             </div>
         </div>
     </div>
-    <%--<script type="text/javascript">
+    <script type="text/javascript">
         function FunctionDisable() {
             var numberOfChecked = $('input:checkbox:checked').length;
             var bc = document.getElementById('MainContent_rptResourceAllocation_Allocated_0').innerText;
             var allocated = parseInt(bc);
             var ab = document.getElementById('MainContent_rptResourceAllocation_lblNoOfResources_0').innerText;
             var NoOfResources = parseInt(ab);
-            if (bc === "")
+            if (bc === "0")
                 allocated = 0;
             NoOfResources = NoOfResources - allocated;
             if (numberOfChecked === NoOfResources) {
@@ -208,5 +211,5 @@
         }
           
         
-    </script>--%>
+    </script>
 </asp:Content>
