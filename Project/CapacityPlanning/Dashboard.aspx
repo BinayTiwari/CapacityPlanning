@@ -143,13 +143,13 @@
                                             <th>Sr. No.</th>
                                             <th>Account Name</th>
                                             <th>Project Manager</th>
-                                            <th>Architect</th>
+                                            <th>Solution Architect</th>
                                             <th>Business Analyst</th>
                                             <th>Team Lead</th>
                                             <th>Senior Developer</th>
                                             <th>Developer</th>
 
-                                            <th>Quality Control</th>
+                                            <th>Quality Analyst</th>
 
 
 
@@ -173,7 +173,7 @@
                                                     <td><%#Eval("SeniorDeveloper")%></td>
                                                     <td><%#Eval("Developer")%></td>
 
-                                                    <td><%#Eval("QualityControl")%></td>
+                                                    <td><%#Eval("QualityAnalyst")%></td>
 
 
 
