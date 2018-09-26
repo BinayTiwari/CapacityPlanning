@@ -57,9 +57,9 @@
                                             <td><%#Eval("RoleName")%></td>
                                             <td><%#Eval("SkillsName")%></td>
                                              
-                                           <td><%#Eval("StartDate", "{0:d}")%></td>
+                                           <td><%#Eval("StartDate", "{0:MMM dd yyyy}")%></td>
                                             
-                                            <td><%#Eval("EndDate", "{0:d}")%></td>
+                                            <td><%#Eval("EndDate", "{0:MMM dd yyyy}")%></td>
                                         <td><%#Eval("NoOfResources")%></td>
                                             <td><%#Eval("Allocated")%></td>
                                             

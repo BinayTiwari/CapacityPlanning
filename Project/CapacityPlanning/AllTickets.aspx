@@ -45,7 +45,7 @@
                                         <tr class="odd gradeX">
                                             <td>
                                                 <asp:Label ID="Request" Text='<%#Eval("RequestId")%>' runat="server" /></td>
-                                            <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
+                                            <td><%#Eval("DateOfCreation", "{0:MMM dd yyyy}")%> </td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                              <td><%#Eval("ProcessName") %></td>
                                             <td><%#Eval("EmployeetName") %></td>

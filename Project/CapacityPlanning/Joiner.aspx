@@ -55,7 +55,7 @@
                                             <td><%#Eval("NewJoinerID")%> </td>
                                             <td><%#Eval("Name")%> </td>
                                             <td><%#Eval("CPT_DesignationMaster.DesignationName")%></td>
-                                            <td><%#Eval("JoiningDate", "{0:d}")%> </td>
+                                            <td><%#Eval("JoiningDate", "{0:MMM dd yyyy}")%> </td>
                                             <td><%#Eval("Location")%></td>
                                             <td><%#Eval("Experience")%></td>
                                             <td><%#Eval("CPT_SkillsMaster.SkillsName")%></td>

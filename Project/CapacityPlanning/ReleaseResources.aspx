@@ -50,8 +50,8 @@
                                             <td><%#Eval("EmployeetName")%> </td>
                                             <td><%#Eval("AccountName")%></td>
                                             <td><%#Eval("ProcessName")%></td>
-                                            <td><%#Eval("StartDate", "{0:d}")%></td>
-                                            <td><%#Eval("EndDate", "{0:d}")%></td>
+                                            <td><%#Eval("StartDate", "{0:MMM dd yyyy}")%></td>
+                                            <td><%#Eval("EndDate", "{0:MMM dd yyyy}")%></td>
 
                                             <td class="center-block">
 

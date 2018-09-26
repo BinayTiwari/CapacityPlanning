@@ -64,9 +64,9 @@
                                             <td>
                                                 <asp:Label ID="Allocated" runat="server" Text='<%#Eval("Allocated")%>' /></td>
                                             <td>
-                                                <asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:d}")%>' /></td>
+                                                <asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:MMM dd yyyy}")%>' /></td>
                                             <td>
-                                                <asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:d}")%>' /></td>
+                                                <asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:MMM dd yyyy}")%>' /></td>
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>

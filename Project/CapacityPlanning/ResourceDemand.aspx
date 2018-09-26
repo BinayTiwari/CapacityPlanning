@@ -43,7 +43,7 @@
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
                                             <td><%#Eval("RequestId")%></td>
-                                            <td><%#Eval("DateOfCreation", "{0:d}")%> </td>
+                                            <td><%#Eval("DateOfCreation", "{0:MMM dd yyyy}")%> </td>
                                             <td><%#Eval("OpportunityType")%></td>
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("ProcessName")%></td>
