@@ -218,7 +218,7 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-12 -->
-            <div class="col-lg-12">
+            <%--<div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Designation V/S No. of Resources
@@ -258,8 +258,54 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-            </div>
+            </div>--%>
+
+
             <!-- /.col-lg-6 -->
+
+
+
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Opportunity Type Wise Resources
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body table-responsive">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-pie-chart">
+
+                                <asp:Chart ID="oppProChart" runat="server" Height="400px" Width="800px">
+                                    <Series>
+                                        <asp:Series   ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        </asp:Series>
+                                    </Series>
+                                    <ChartAreas>
+                                        <asp:ChartArea  Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray" >
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisX>
+                                            <AxisY LineColor="DarkGray">
+                                                <MajorGrid LineColor="LightGray" />
+                                            </AxisY>
+                                            <Area3DStyle Enable3D="true" WallWidth="5" LightStyle="Realistic"></Area3DStyle>
+                                        </asp:ChartArea>
+                                    </ChartAreas>
+
+                                    <%--<Legends>
+                                        <asp:Legend>
+                                        </asp:Legend>
+                                    </Legends>--%>
+                                </asp:Chart>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
             <div class="col-lg-12">
                 <div class="panel panel-default table-responsive">
                     <div class="panel-heading">

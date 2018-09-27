@@ -18,7 +18,7 @@ namespace CapacityPlanning
         protected void Page_Load(object sender, EventArgs e)
         {
             DashboardBL dashboardBL = new DashboardBL();
-            dashboardBL.displayDesigVsRes(myChart);
+            dashboardBL.displayOppoPro(oppProChart);
             DashboardBL.DisplayAccountWiseResources(rptAccountWiseResources);
             //DashboardBL.showRoleVsCapacity(RoleCap);
             DashboardBL.displayRoleVsDem(RoleDem);
