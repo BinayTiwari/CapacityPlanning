@@ -171,6 +171,47 @@ namespace businessLogic
                 }
             }
         }
+
+        public void displayOppoPro(Chart chart)
+        {
+            using (CPContext db = new CPContext())
+            {
+                var acc = (from p in db.CPT_AllocateResource
+                           join q in db.CPT_ResourceDemand on p.RequestID equals q.RequestID
+                           join r in db.CPT_OpportunityMaster on q.OpportunityID equals r.OpportunityID
+                           group p by r.OpportunityType into grp
+                           select new
+                           {
+                               Designation_Name = grp.Key,
+                               NoOfResources = grp.Count()
+                           }).ToList();
+
+                chart.Series[0].ToolTip = "#VALX : #VALY";
+                chart.Series[0].ChartType = SeriesChartType.Pie;
+                if (acc.Count() > 0)
+                {
+
+                    string[] xValues = new string[acc.Count()];
+                    int[] yValues = new int[acc.Count()];
+                    int count = 0;
+                    foreach (var obj in acc)
+                    {
+                        xValues[count] = obj.Designation_Name;
+                        yValues[count] = obj.NoOfResources;
+                        count++;
+                    }                   
+                    chart.Series[0].Points.DataBindXY(xValues, yValues);
+                    foreach (DataPoint p in chart.Series[0].Points)
+                    {
+                        p.Label = "#PERCENT\n#VALX";
+                    }
+
+                }
+            }
+        }
+
+
+
         public static void DisplayAccountWiseResources(Repeater rpt)
         {
 
