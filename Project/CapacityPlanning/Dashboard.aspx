@@ -314,9 +314,7 @@
                         Resources to be released in next 7 days 
                     </div>
                     <!-- /.panel-heading -->
-
-                </div>
-                <div class="dataTable_wrapper table-responsive" style="overflow-y:scroll; height:400px" >
+                     <div class="dataTable_wrapper table-responsive" style="overflow-y:scroll; height:400px" >
 
 
                     <table class="table table-striped table-bordered table-hover" ID="dataTables1">
@@ -350,6 +348,8 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
+               
             </div>
 
             <div class="col-lg-12">
