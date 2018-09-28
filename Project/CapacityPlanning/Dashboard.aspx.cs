@@ -28,6 +28,7 @@ namespace CapacityPlanning
             DashboardBL.OnBench(NumberOfResourcesOnBench);
             DashboardBL.OpenRequests(OpenResourceRequests);
             DashboardBL.NewJoiners(NewJoiners);
+            DashboardBL.releaseinSevenDays(rptSevenDays);
 
         }
         protected void btnClick_Click(object sender, EventArgs e)

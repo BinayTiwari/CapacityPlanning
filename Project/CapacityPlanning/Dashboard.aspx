@@ -265,24 +265,22 @@
 
 
 
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Opportunity Type Wise Resources
-                    </div>
+
                     <!-- /.panel-heading -->
                     <div class="panel-body table-responsive">
                         <div class="flot-chart">
                             <div class="flot-chart-content" id="flot-pie-chart">
 
-                                <asp:Chart ID="oppProChart" runat="server" Height="400px" Width="800px">
+                                <asp:Chart ID="oppProChart" runat="server" Height="400px" Width="400px">
                                     <Series>
-                                        <asp:Series   ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
+                                        <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
                                         </asp:Series>
                                     </Series>
                                     <ChartAreas>
-                                        <asp:ChartArea  Name="ChartArea1">
-                                            <AxisX LineColor="DarkGray" >
+                                        <asp:ChartArea Name="ChartArea1">
+                                            <AxisX LineColor="DarkGray">
                                                 <MajorGrid LineColor="LightGray" />
                                             </AxisX>
                                             <AxisY LineColor="DarkGray">
@@ -306,6 +304,54 @@
                 </div>
                 <!-- /.panel -->
             </div>
+
+
+
+
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Resources to be released in next 7 days 
+                    </div>
+                    <!-- /.panel-heading -->
+
+                </div>
+                <div class="dataTable_wrapper table-responsive" style="overflow-y:scroll; height:400px" >
+
+
+                    <table class="table table-striped table-bordered table-hover" ID="dataTables1">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                
+                                <th>Designation</th>
+                                <th>Account Name</th>
+                                <th>Release Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater ID="rptSevenDays" runat="server">
+                                <ItemTemplate>
+                                    <tr class="odd gradeX">
+
+
+                                        <td><%#Eval("EmployeetName")%></td>
+                                        <td><%#Eval("DesignationName")%></td>
+                                        <td><%#Eval("AccountName")%></td>
+                                        <td><%#Eval("EndDate", "{0: MMM dd yyyy}")%></td>
+
+
+                                    </tr>
+                                </ItemTemplate>
+
+                            </asp:Repeater>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="col-lg-12">
                 <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
@@ -476,10 +522,10 @@
                     </div>
                 </div>--%>
 
-                <!-- /.table-responsive -->
+    <!-- /.table-responsive -->
 
 
-               <%-- <div class="col-md-3">
+    <%-- <div class="col-md-3">
                     <asp:Chart ID="myChart1" runat="server" Height="400px" Width="600px">
                         <Series>
                             <asp:Series ToolTip="Value of X:#VALX;   Value of Y:#VALY" Name="Series1" Font="Verdana">
@@ -504,7 +550,7 @@
                     </asp:Chart>
                 </div>--%>
 
-            <%--</div>
+    <%--</div>
         </div>
 
 
@@ -512,12 +558,12 @@
     <!-- designation vs resources -->
     <div id="RMVsR" style="display: none;" runat="server">
         <div class="col-lg-12">
-                <h1 class="page-header text-center">Reporting Manager V/S No. of Reporters</h1>
-            </div>
+            <h1 class="page-header text-center">Reporting Manager V/S No. of Reporters</h1>
+        </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dataTable_wrapper table-responsive" style="overflow-y:scroll; height:400px">
+                    <div class="dataTable_wrapper table-responsive" style="overflow-y: scroll; height: 400px">
 
 
                         <table class="table table-striped table-bordered table-hover" id="dataTable1s">
@@ -584,7 +630,7 @@
     <div id="AccVsNoR" style="display: none;" runat="server">
         <div class="panel-body">
 
-            <div class="dataTable_wrapper table-responsive" >
+            <div class="dataTable_wrapper table-responsive">
 
 
                 <table class="table table-striped table-bordered table-hover" id="dataTable2s">
@@ -631,8 +677,8 @@
     <!-- Account vs No of resources -->
     <div id="CapVsResDem" style="display: none;" runat="server">
         <div class="col-lg-12">
-                <h1 class="page-header text-center">Capacity V/S Demand</h1>
-            </div>
+            <h1 class="page-header text-center">Capacity V/S Demand</h1>
+        </div>
         <div class="panel-body table-responsive">
             <div class="row">
                 <div class="col-md-4">
@@ -701,7 +747,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="dataTable_wrapper" style="overflow-y:scroll; height:400px">
+                    <div class="dataTable_wrapper" style="overflow-y: scroll; height: 400px">
                         <table class="table table-striped table-bordered table-hover" id="dataTable4s">
                             <thead>
                                 <tr>
