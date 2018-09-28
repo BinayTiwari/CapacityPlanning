@@ -188,6 +188,7 @@ namespace businessLogic
 
                 chart.Series[0].ToolTip = "#VALX : #VALY";
                 chart.Series[0].ChartType = SeriesChartType.Pie;
+                
                 if (acc.Count() > 0)
                 {
 
@@ -205,6 +206,11 @@ namespace businessLogic
                     {
                         p.Label = "#PERCENT\n#VALX";
                     }
+                    Title ty1 = chart.Titles.Add("ty1");
+                    ty1.ForeColor = System.Drawing.Color.Black;
+                    ty1.Font = new System.Drawing.Font("Arial", 12);
+                    ty1.Text = "Resource allocation as per Opportunity Type";
+                    ty1.Docking = Docking.Bottom;
 
                 }
             }
@@ -577,6 +583,34 @@ namespace businessLogic
 
                 }
             }
+        }
+
+
+
+        public static void releaseinSevenDays(Repeater rpt)
+        {
+            DateTime nextSevenDays = DateTime.Now.AddDays(7);
+            using(CPContext db = new CPContext())
+            {
+                var query = (from c in db.CPT_AllocateResource
+                             join d in db.CPT_ResourceMaster on c.ResourceID equals d.EmployeeMasterID
+                             join e in db.CPT_DesignationMaster on d.DesignationID equals e.DesignationMasterID
+                             join f in db.CPT_ResourceDemand on c.RequestID equals f.RequestID
+                             join g in db.CPT_AccountMaster on f.AccountID equals g.AccountMasterID
+                             where c.EndDate < nextSevenDays && c.EndDate > DateTime.Now orderby c.EndDate
+                             select new
+                             {
+                                 d.EmployeetName,
+                                 e.DesignationName,
+                                 g.AccountName,
+                                 c.EndDate
+
+                             }).ToList();
+
+                rpt.DataSource = query;
+                rpt.DataBind();
+            }
+
         }
 
 
