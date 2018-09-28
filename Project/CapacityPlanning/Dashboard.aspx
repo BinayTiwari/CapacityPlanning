@@ -265,7 +265,7 @@
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="panel panel-default">
 
                     <!-- /.panel-heading -->
@@ -308,7 +308,7 @@
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Resources to be released in next 7 days 
@@ -352,7 +352,7 @@
                
             </div>
 
-            <div class="col-lg-12">
+            <%--<div class="col-lg-12">
                 <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Reporting Manager V/S No. of Reporters
@@ -388,9 +388,9 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-            </div>
+            </div>--%>
             <!-- /.col-lg-6 -->
-            <div class="col-lg-12">
+           <%-- <div class="col-lg-12">
                 <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Role V/S Demand
@@ -427,9 +427,9 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-            </div>
+            </div>--%>
             <!-- /.col-lg-6 -->
-            <div class="col-lg-12">
+            <%--<div class="col-lg-12">
                 <div class="panel panel-default table-responsive">
                     <div class="panel-heading">
                         Designation V/S No. of Resources
@@ -463,7 +463,7 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-            </div>
+            </div>--%>
             <!-- /.col-lg-6 -->
 
             <!-- /.col-lg-6 -->
@@ -556,7 +556,7 @@
 
     </div>--%>
     <!-- designation vs resources -->
-    <div id="RMVsR" style="display: none;" runat="server">
+    <%--<div id="RMVsR" style="display: none;" runat="server">
         <div class="col-lg-12">
             <h1 class="page-header text-center">Reporting Manager V/S No. of Reporters</h1>
         </div>
@@ -625,9 +625,9 @@
 
             </div>
         </div>
-    </div>
+    </div>--%>
     <!-- Reporting managers vs reporters -->
-    <div id="AccVsNoR" style="display: none;" runat="server">
+   <%-- <div id="AccVsNoR" style="display: none;" runat="server">
         <div class="panel-body">
 
             <div class="dataTable_wrapper table-responsive">
@@ -673,7 +673,7 @@
             </div>
             <!-- /.table-responsive -->
         </div>
-    </div>
+    </div>--%>
     <!-- Account vs No of resources -->
     <div id="CapVsResDem" style="display: none;" runat="server">
         <div class="col-lg-12">

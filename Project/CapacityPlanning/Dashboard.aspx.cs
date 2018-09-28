@@ -21,9 +21,9 @@ namespace CapacityPlanning
             dashboardBL.displayOppoPro(oppProChart);
             DashboardBL.DisplayAccountWiseResources(rptAccountWiseResources);
             //DashboardBL.showRoleVsCapacity(RoleCap);
-            DashboardBL.displayRoleVsDem(RoleDem);
-            dashboardBL.displayMgrVsRpt(MgrVSRpt);
-            dashboardBL.displayDesigVsResBar(myChartBar);
+            //DashboardBL.displayRoleVsDem(RoleDem);
+            //dashboardBL.displayMgrVsRpt(MgrVSRpt);
+           // dashboardBL.displayDesigVsResBar(myChartBar);
             DashboardBL.TotalStregth(lblStregth);
             DashboardBL.OnBench(NumberOfResourcesOnBench);
             DashboardBL.OpenRequests(OpenResourceRequests);
@@ -38,9 +38,9 @@ namespace CapacityPlanning
                 graphBlock.Style.Add("display", "none");
                 Response.Redirect("TotalStrengths.aspx");
                 //DsVsRes.Style.Add("display", "block");
-                RMVsR.Style.Add("display", "none");
+                //RMVsR.Style.Add("display", "none");
                 CapVsResDem.Style.Add("display", "none");
-                AccVsNoR.Style.Add("display", "none");
+                //AccVsNoR.Style.Add("display", "none");
                 //DashboardBL.showDsVsRes(rptDsVsRes);
                 //DashboardBL.displayTotalStrength(rptDsVsRes);
                 //
