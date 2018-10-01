@@ -214,7 +214,7 @@ namespace CapacityPlanning
             string id = Request.QueryString["RequestID"];
             lblSuggestions.Text = id;
             AllocateResourceBL rbl = new AllocateResourceBL();
-            rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID);
+            rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID,StartDate);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {

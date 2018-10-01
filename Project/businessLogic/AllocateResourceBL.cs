@@ -59,11 +59,11 @@ namespace businessLogic
             }
             return 1;
         }
-        public void getFreeEmployee(Repeater rpt, int roleID, string endDate, string skillID)
+        public void getFreeEmployee(Repeater rpt, int roleID, string endDate, string skillID, string startDate)
         {
             try
             {
-                //string dtS = string.Format("{0:yyyy-MM-dd}", StartDate);
+                string dtS = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(startDate));
                 string dtE = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(endDate));
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
@@ -83,7 +83,7 @@ namespace businessLogic
                                     " = CPT_AccountMaster.AccountMasterID Where(CPT_ResourceMaster.RolesID = "+roleID+"   and(skillsid" +
                                     " in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+skillID+"%') and CPT_ResourceMaster.EmployeeMasterID NOT" +
                                    " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE" +
-                                    " CPT_AllocateResource.EndDate >= '"+dtE+"' AND  ISDELETED = 0)))" +
+                                    " (CPT_AllocateResource.EndDate BETWEEN '"+dtS+"' AND '"+dtE+"')  AND  ISDELETED = 0)))" +
                                     " OR CPT_ResourceMaster.EmployeeMasterID = 10161";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
