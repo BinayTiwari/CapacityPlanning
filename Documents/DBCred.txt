@@ -19,9 +19,9 @@ FTP Deploy Info
 
 Server IP   :    ftp.site4now.net
 
-Username   :     gridinfocom-001
+Username   :     workallocationgroup
 
-Password     :     12qwaszx
+Password   :     12qwaszx
 
 FTP Path / Folder Name    :    WorkAllocationGroup
 URL: gridinfocom-001-site2.ftempurl.com
