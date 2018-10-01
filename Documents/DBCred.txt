@@ -21,7 +21,7 @@ Server IP   :    ftp.site4now.net
 
 Username   :     workallocationgroup
 
-Password   :     12qwaszx
+Password   :    xzsawq21
 
 FTP Path / Folder Name    :    WorkAllocationGroup
 URL: gridinfocom-001-site2.ftempurl.com
