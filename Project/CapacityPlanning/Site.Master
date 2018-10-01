@@ -131,7 +131,7 @@
                         <ul class="dropdown-menu dropdown-user">
                             <%-- <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>--%>
                             <li>
-                                <asp:LinkButton ID="UserProfile" runat="server" OnClick="UserProfile_Click"><i class="fa fa-user fa-fw"></i>User Profile
+                                <asp:LinkButton ID="UserProfile" runat="server" CausesValidation="false" OnClick="UserProfile_Click"><i class="fa fa-user fa-fw"></i>User Profile
                                 </asp:LinkButton>
                             </li>
                             <%--<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
