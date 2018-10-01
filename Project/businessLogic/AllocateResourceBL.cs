@@ -67,12 +67,6 @@ namespace businessLogic
                 string dtE = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(endDate));
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                //string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_AccountMaster.AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy,CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, CPT_AllocateResource.EndDate"+
-                //                    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN"+
-                //                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID LEFT OUTER JOIN CPT_AccountMaster ON CPT_AllocateResource.AccountID = CPT_AccountMaster.AccountMasterID"+
-                //                    " Where(CPT_ResourceMaster.RolesID = "+ RoleID + "   and '"+ SkillID + "' in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster WHERE EmployeeMasterID = EmployeeMasterID) AND CPT_ResourceMaster.EmployeeMasterID NOT"+
-                //                    " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE"+
-                //    " CPT_AllocateResource.EndDate >= '"+ dtS + "') AND  ISDELETED = 0) OR CPT_ResourceMaster.EmployeeMasterID = 10161";
                 string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.SkillsID,CPT_ResourceMaster.DesignationID,CPT_ResourceMaster.EmployeetName,[dbo].[DesignationName](CPT_ResourceMaster.DesignationID) As Designation," +
                                     " CPT_AccountMaster.AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy," +
                                      " CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate" +
