@@ -50,7 +50,7 @@ namespace businessLogic
 
                 repeater.DataSource = query1;
                 repeater.DataBind();
-                
+
             }
             return statusID;
         }
@@ -85,57 +85,37 @@ namespace businessLogic
             }
         }
 
-        //public static void updateStatus(string priorityName, CPT_ResourceDemand details)
-        //{
-        //    int StatusID = 0;
-        //    try
-        //    {
-        //        using(CPContext db = new CPContext())
-        //        {
-        //            var query = (from p in db.CPT_StatusMaster
-        //                        where p.StatusName == priorityName
-        //                        select p.StatusMasterID).ToList();
-                   
-        //            StatusID = query[0];
-                    
-        //            var query1 = from p in db.CPT_ResourceDemand
-        //                         where p.RequestID == details.RequestID
-        //                         select p;
+        public static List<string> getRequestDetails(string RequestID)
+        {
+            List<string> details = new List<string>();
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceDemand
+                                 join q in db.CPT_ResourceMaster on p.ResourceRequestBy equals q.EmployeeMasterID
+                                 join r in db.CPT_AccountMaster on p.AccountID equals r.AccountMasterID
+                                 join s in db.CPT_CityMaster on p.CityID equals s.CityID
+                                 where p.RequestID == RequestID
+                                 select new { q.Email, q.EmployeetName, r.AccountName, s.CityName, p.ProcessName }).ToList();
 
-        //            foreach(CPT_ResourceDemand item in query1)
-        //            {
-        //                item.StatusMasterID = StatusID;
-        //            }
-        //            db.SaveChanges();
-        //        }                
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //    }
-            
-        //}
 
-        //public int SelectID(string PriorityName)
-        //{
-        //    try
-        //    {
-        //        using (CPContext db = new CPContext())
-        //        {
-        //            var query =
-        //                (from p in db.CPT_PriorityMaster
-        //                 where p.PriorityName == PriorityName
-        //                 select p.PriorityID).ToList();
-        //            int val = query[0];
-        //            return val;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e);
-        //        return 1;
-        //    }
-        //}
+                    string project = query[0].AccountName + "-" + query[0].CityName;
+                    details.Add(query[0].Email);
+                    details.Add(query[0].EmployeetName);
+                    details.Add(project);
+                    details.Add(query[0].ProcessName);
+
+                }
+            }
+
+            catch (Exception w)
+            {
+                Console.WriteLine(w.Message);
+            }
+
+            return details;
+        }
 
     }
 }
