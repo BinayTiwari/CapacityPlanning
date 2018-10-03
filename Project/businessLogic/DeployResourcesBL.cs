@@ -62,7 +62,7 @@ namespace businessLogic
                                    " CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID " +
                                    " INNER JOIN  CPT_ResourceMaster INNER JOIN CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON " +
                                    " CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID  WHERE CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20) " +
-                                   " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT RESOURCEID FROM CPT_AllocateResource WHERE[CPT_AllocateResource].ISDeployed = 1) ";
+                                   " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT RESOURCEID FROM CPT_AllocateResource WHERE[CPT_AllocateResource].ISDeployed = 1) and  [CPT_AllocateResource].[Released]!=1 ";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
