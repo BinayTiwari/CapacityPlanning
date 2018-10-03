@@ -103,7 +103,7 @@ namespace MessageTemplate
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
-                case "AlignedResource" :
+                case "AlignedResource":
                     MessageTemplate(ref valemail);
                     dict.Add("FORUMNAME", "Work Force Allocation");
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
@@ -124,7 +124,7 @@ namespace MessageTemplate
                     dict.Add("DOJ", valemail.DOJ);
                     dict.Add("EMAIL", valemail.EMAIL);
                     dict.Add("PHONE", valemail.PHONE);
-                    dict.Add("REPORTINGMGR", valemail.REPORTINGMGR);                   
+                    dict.Add("REPORTINGMGR", valemail.REPORTINGMGR);
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
@@ -136,7 +136,6 @@ namespace MessageTemplate
                     dict.Add("NAME", valemail.ToUserName[0].ToString());
                     dict.Add("PROJECT", valemail.PROJECT);
                     dict.Add("PROCESS", valemail.PROCESS);
-                    
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
                     ccAddress = valemail.BccEmailAddresses;
@@ -157,6 +156,18 @@ namespace MessageTemplate
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
+                case "RequestAction":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Work Force Allocation");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("PROJECT", valemail.PROJECT);
+                    dict.Add("PROCESS", valemail.PROCESS);
+                    dict.Add("STATUS", valemail.STATUS);
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    ccAddress = valemail.BccEmailAddresses;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
             }
 
         }
