@@ -44,6 +44,6 @@ namespace Entity
         public string PHONE { get; set; }
         public string PROJECT { get; set; }
         public string PROCESS { get; set; }
-
+        public string STATUS { get; set; }
     }
 }
