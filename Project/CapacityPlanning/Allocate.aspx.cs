@@ -8,6 +8,7 @@ using Entity;
 using System.Data;
 using businessLogic;
 using System.Reflection;
+using MessageTemplate;
 
 namespace CapacityPlanning
 {
@@ -41,6 +42,7 @@ namespace CapacityPlanning
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     DropDownList ddl1 = (DropDownList)item.FindControl("ddlPriorities");
+                    
                     int statusID = Convert.ToInt32(ddl1.SelectedValue);
                     //string PriorityName = ddl1.SelectedItem.Text;
 
@@ -52,7 +54,20 @@ namespace CapacityPlanning
                     CRM.StatusMasterID = statusID;
 
                     ABL.UpdateData(CRM);
-                    //AllocateBL.updateStatus(PriorityName, CRM);
+                   
+                    if(statusID == 26 || statusID == 27)
+                    { 
+                        if(statusID == 26)
+                        {
+                            Email(lblRequestID.Text, "Approved");
+                        }
+                        else
+                        {
+                            Email(lblRequestID.Text, "Rejected");
+                        }
+                        
+                    }
+                    
 
                 }
                 Response.Redirect("Allocate.aspx");
@@ -65,12 +80,31 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
-        protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        
+
+        public void Email(string RequestID, string Status)
         {
-            DropDownList selectList = e.Item.FindControl("ddlPriorities") as DropDownList;
-            if (selectList != null)
+            try
             {
-                ClsCommon.ddlGetPriority(selectList);
+                
+                List<string> data = AllocateBL.getRequestDetails(RequestID);
+                CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
+                registrationEmail.Name = "RequestAction";
+                registrationEmail.To = new List<string>();
+                registrationEmail.To.Add(data[0]);
+                registrationEmail.ToUserName = new List<string>();
+                registrationEmail.ToUserName.Add(data[1]);
+                registrationEmail.PROJECT = data[2];
+                registrationEmail.PROCESS = data[3];
+                registrationEmail.STATUS = Status;
+                TokenMessageTemplate valEmail = new TokenMessageTemplate();
+                valEmail.SendEmail(registrationEmail);
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
             }
 
         }

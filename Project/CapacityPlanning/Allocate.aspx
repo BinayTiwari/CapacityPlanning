@@ -33,9 +33,10 @@
                                     <th>Account Name</th>
                                     <th>Requested By</th>
                                     <th>Opportunity Type</th>
+                                    <th>ProcessName</th>
                                     <th>Sales Stage </th>
                                     <th>Action </th>
-                                    <%--<th>Change Priority</th>--%>
+                                    
                                     <th></th>
 
 
@@ -43,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <asp:Repeater ID="rptResourceAllocation" runat="server" OnItemDataBound="rptResourceAllocation_ItemDataBound">
+                                <asp:Repeater ID="rptResourceAllocation" runat="server" >
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
                                             <td>
@@ -52,8 +53,9 @@
                                             <td><%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%></td>
                                             <td><%#Eval("EmployeetName") %></td>
                                             <td><%#Eval("OpportunityType")%></td>
+                                            <td><%#Eval("ProcessName") %></td>
                                             <td><%#Eval("SalesStageName")%></td>
-                                            <%--<td><%#Eval("PriorityName")%></td>--%>
+                                            
                                             <td>
                                                 <asp:DropDownList ID="ddlPriorities" CssClass="form-control" runat="server"></asp:DropDownList></td>
                                             <td class="center"><a href="ViewResourceDemand.aspx?RequestId=<%#Eval("RequestId")%>">
