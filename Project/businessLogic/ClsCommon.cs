@@ -506,12 +506,25 @@ namespace businessLogic
             li.Text = "Select Status";
             li.Value = "0";
             ddldropdownName.Items.Add(li);
+            IOrderedQueryable<CPT_StatusMaster> query;
 
             using (var db = new CPContext())
             {
-                var query = from c in db.CPT_StatusMaster
-                            where c.IsActive == true && (c.StatusMasterID == 23 || c.StatusMasterID == statusID) orderby c.StatusName
-                            select c;
+                if (statusID == 27)
+                {
+                    query = from c in db.CPT_StatusMaster
+                                where c.IsActive == true && (c.StatusMasterID == 19 || c.StatusMasterID == 23 || c.StatusMasterID == statusID)
+                                orderby c.StatusName
+                                select c;
+                }
+                else
+                {
+                    query = from c in db.CPT_StatusMaster
+                                where c.IsActive == true && (c.StatusMasterID == 23 || c.StatusMasterID == statusID)
+                                orderby c.StatusName
+                                select c;
+                }
+                 
                 foreach (var item in query)
                 {
                     li = new ListItem();

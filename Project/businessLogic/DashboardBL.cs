@@ -288,8 +288,6 @@ namespace businessLogic
         private static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
-
-
         }
         public static void TotalStregth(Label NumberOfResources)
         {
