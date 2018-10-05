@@ -58,7 +58,7 @@
                             <label>Process Name<span style="color: red;"> *</span></label>
                             <asp:TextBox ID="processName" runat="server" MaxLength="50" CssClass="form-control" placeholder="Process Name"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorProcessName" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
-                                ValidationExpression="^[A-Za-z][A-Za-z0-9- ]*$" ErrorMessage="Invalid Process Name !" />
+                                ValidationExpression="^[A-Za-z][A-Za-z0-9-(), ]*$" ErrorMessage="Invalid Process Name !" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorProcess" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="processName"
                                 ErrorMessage="Invalid Process Name !" />
                         </div>
