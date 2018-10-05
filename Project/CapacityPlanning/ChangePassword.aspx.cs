@@ -12,9 +12,10 @@ namespace CapacityPlanning
     public partial class ChangePassword : System.Web.UI.Page
     {
         int employeeID = 0;
+        List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
         }
 
         protected void UpdatePassword(object sender, EventArgs e)
@@ -27,8 +28,8 @@ namespace CapacityPlanning
                 }
                 else
                 {
-                    List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
-                    lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                    
+                   
                     employeeID = lstdetils[0].EmployeeMasterID;
 
                 }
@@ -52,7 +53,15 @@ namespace CapacityPlanning
 
         protected void Cancel(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            if (lstdetils.Count > 0)
+            {
+                Response.Redirect("Dashboard.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
         }
     }
 }
