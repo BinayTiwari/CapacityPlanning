@@ -45,5 +45,6 @@ namespace Entity
         public string PROJECT { get; set; }
         public string PROCESS { get; set; }
         public string STATUS { get; set; }
+        public string STATOR { get; set; }
     }
 }
