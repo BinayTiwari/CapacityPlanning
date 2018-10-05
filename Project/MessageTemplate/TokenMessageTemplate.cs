@@ -163,6 +163,7 @@ namespace MessageTemplate
                     dict.Add("PROJECT", valemail.PROJECT);
                     dict.Add("PROCESS", valemail.PROCESS);
                     dict.Add("STATUS", valemail.STATUS);
+                    dict.Add("STATOR", valemail.STATOR);
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
                     ccAddress = valemail.BccEmailAddresses;
