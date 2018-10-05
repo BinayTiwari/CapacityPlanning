@@ -68,7 +68,6 @@ namespace CapacityPlanning
                         
                     }
                     
-
                 }
                 Response.Redirect("Allocate.aspx");
 
@@ -86,7 +85,8 @@ namespace CapacityPlanning
         {
             try
             {
-                
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 List<string> data = AllocateBL.getRequestDetails(RequestID);
                 CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
                 registrationEmail.Name = "RequestAction";
@@ -97,6 +97,7 @@ namespace CapacityPlanning
                 registrationEmail.PROJECT = data[2];
                 registrationEmail.PROCESS = data[3];
                 registrationEmail.STATUS = Status;
+                registrationEmail.STATOR = lstdetils[0].EmployeetName;
                 TokenMessageTemplate valEmail = new TokenMessageTemplate();
                 valEmail.SendEmail(registrationEmail);
 
