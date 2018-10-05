@@ -41,46 +41,6 @@ namespace CapacityPlanning
           
         }
 
-        // protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
-        // {
-        //   GridView1.PageIndex = e.NewPageIndex;
-        //   this.BindGrid();
-        // }
-
-        
-
-        // protected void edit(object sender, GridViewEditEventArgs e)
-        // {
-        //     GridView1.EditIndex = e.NewEditIndex;
-        //     BindGrid();
-        // }
-
-
-
-        // protected void canceledit(object sender, GridViewCancelEditEventArgs e)
-        // {
-
-        //     GridView1.EditIndex = -1;
-        //     BindGrid();
-        // }
-
-        // protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        // {
-        //     if (e.CommandName == "EditButton")
-        //     {
-        //         int index = Convert.ToInt32(e.CommandArgument);
-        //        GridViewRow row = GridView1.Rows[index];
-        //       string rows = row.Cells[0].Text;
-
-        //         Response.Redirect("~/EditResourceDemand.aspx?RequestId=" + row.Cells[0].Text);
-        //     }
-        // }
-
-        // protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        // {
-
-        // }
-
     }
 }
 

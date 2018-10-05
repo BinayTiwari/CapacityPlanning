@@ -19,11 +19,18 @@ namespace CapacityPlanning
 
         protected void UpdatePassword(object sender, EventArgs e)
         {
-            if(txtPass.Text.Trim() == txtConfirm.Text.Trim())
+            if (txtPass.Text.Trim() == txtConfirm.Text.Trim())
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["UID"]))
                 {
                     employeeID = Convert.ToInt32(Request.QueryString["UID"].Trim());
+                }
+                else
+                {
+                    List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                    lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                    employeeID = lstdetils[0].EmployeeMasterID;
+
                 }
                 CPT_ResourceMaster details = new CPT_ResourceMaster();
                 details.EmployeeMasterID = employeeID;
