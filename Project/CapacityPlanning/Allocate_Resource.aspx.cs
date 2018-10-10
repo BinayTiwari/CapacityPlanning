@@ -60,6 +60,9 @@ namespace CapacityPlanning
 
             try
             {
+                CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 myDIV.Style.Add("display", "block");
                 Button theButton = sender as Button;
                 requestDetailID = Convert.ToInt32(theButton.CommandArgument);
@@ -93,7 +96,15 @@ namespace CapacityPlanning
                 ViewState["utilization"] = utilization;
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
-                SearchAvailability();
+                if(lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
+                {
+                    AccordingToRoleSearch();
+                }
+                else
+                {
+                    SearchAvailability();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -216,6 +227,23 @@ namespace CapacityPlanning
             AllocateResourceBL rbl = new AllocateResourceBL();
             rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID,StartDate);
         }
+        public void AccordingToRoleSearch()
+        {
+            int rolesID = 0;
+            CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+            List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+            lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+            if(lstdetils[0].RolesID == 20)
+            {
+                rolesID = 14;
+            }
+            else if(lstdetils[0].RolesID == 25)
+            {
+                rolesID = 13;
+            }
+            AllocateResourceBL rbl = new AllocateResourceBL();
+            rbl.getEmployeeByRole(rptSuggestions, rolesID, EndDate, skillID, StartDate);
+        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
@@ -234,7 +262,17 @@ namespace CapacityPlanning
 
                     btnNext.Enabled = true;
                     lblStartDate.Text = StartDate;
-                    SearchAvailability();
+                    CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+                    List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                    lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                    if (lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
+                    {
+                        AccordingToRoleSearch();
+                    }
+                    else
+                    {
+                        SearchAvailability();
+                    }
                 }
 
 
@@ -257,7 +295,17 @@ namespace CapacityPlanning
                 if (dtstart <= dtEnd)
                 {
                     btnNext.Enabled = true;
-                    SearchAvailability();
+                    CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+                    List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                    lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                    if (lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
+                    {
+                        AccordingToRoleSearch();
+                    }
+                    else
+                    {
+                        SearchAvailability();
+                    }
                     lblStartDate.Text = StartDate;
                 }
                 else
