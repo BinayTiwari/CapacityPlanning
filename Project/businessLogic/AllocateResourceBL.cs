@@ -94,7 +94,43 @@ namespace businessLogic
                 Console.WriteLine(ex.Message);
             }
         }
-        
+
+        public void getEmployeeByRole(Repeater rpt, int roleID, string endDate, string skillID, string startDate)
+        {
+            try
+            {
+                string dtS = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(startDate));
+                string dtE = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(endDate));
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.SkillsID,CPT_ResourceMaster.DesignationID,CPT_ResourceMaster.EmployeetName,[dbo].[DesignationName](CPT_ResourceMaster.DesignationID) As Designation," +
+                                    " CPT_AccountMaster.AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy," +
+                                     " CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate" +
+                                    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON" +
+                                    " CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN" +
+                                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
+                                    " LEFT OUTER JOIN CPT_AccountMaster ON CPT_AllocateResource.AccountID" +
+                                    " = CPT_AccountMaster.AccountMasterID Where(CPT_ResourceMaster.RolesID = " + roleID + "   and(skillsid" +
+                                    " in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%" + skillID + "%') and CPT_ResourceMaster.EmployeeMasterID NOT" +
+                                   " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE" +
+                                    " (CPT_AllocateResource.EndDate BETWEEN '" + dtS + "' AND '" + dtE + "')  AND  ISDELETED = 0)))" +
+                                    " OR CPT_ResourceMaster.EmployeeMasterID = 10161";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    SqlDataReader reader = SqlCom.ExecuteReader();
+                    rpt.DataSource = reader;
+                    rpt.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public static List<int> ResourceID(List<string> name)
         {
             using (CPContext db = new CPContext())
