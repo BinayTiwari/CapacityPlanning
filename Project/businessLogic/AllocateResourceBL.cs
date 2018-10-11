@@ -331,6 +331,27 @@ namespace businessLogic
 
             }
         }
+        public static int getRole(string Role)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_RoleMaster
+                                 where p.RoleName == Role
+                                 select p.RoleMasterID
+                                 ).ToList();
+                    return query[0];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return 1;
+            }
+            
+        }
 
     }
 }
