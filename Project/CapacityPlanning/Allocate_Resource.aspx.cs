@@ -32,20 +32,36 @@ namespace CapacityPlanning
                 lblResourceAllocation.Text = id;
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
-                
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                     Label lblAllocated = (Label)item.FindControl("Allocated");
-                    
+                    Label lblRole = (Label)item.FindControl("RoleName");
                     if(Convert.ToInt32(lblNoOfResources.Text) == Convert.ToInt32(lblAllocated.Text))
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
                         btn.Enabled = false;
-
-
-
                     }
+                    int rolid = AllocateResourceBL.getRole(lblRole.Text);
+                    if (lstdetils[0].RolesID == 20)
+                    {
+                        if(rolid!=14)
+                        {
+                            Button btn = (Button)item.FindControl("btnAlign");
+                            btn.Enabled = false;
+                        }
+                    }
+                    else if (lstdetils[0].RolesID == 25)
+                    {
+                        if(rolid!=13)
+                        {
+                            Button btn = (Button)item.FindControl("btnAlign");
+                            btn.Enabled = false;
+                        }
+                    }
+
 
                 }
                 
@@ -184,7 +200,7 @@ namespace CapacityPlanning
                     rbl.Insert(details);
                     rbl.updateMap(empID);
 
-                    //sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
 
                 }
                 Response.Redirect("ResourceMapping.aspx");
