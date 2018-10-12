@@ -23,7 +23,7 @@
             <!-- /.col-lg-12 -->
         </div>
 
-        <div class="row center-block">
+        <div id="DvSkill" class="row center-block" style="display:block;" runat="server">
 
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -46,9 +46,9 @@
                         <br />
                         <br />
                         <div class="row center-block">
-                            
+
                             <div class="row center-block">
-                                <label style="color:green"><span style="color: red;">*</span>Please select the skills  on which you have the expertise:</label>
+                                <label style="color: green"><span style="color: red;">*</span>Please select the skills  on which you have the expertise:</label>
                             </div>
                             <div class="row center-block">
                                 <br />
@@ -75,7 +75,7 @@
                         <div class="row ">
                             <div class="col-md-2 pull-right">
                                 <asp:Button ID="Submit" runat="server" CssClass="btn btn-success" Text="Submit"
-                                     OnClick="UpdateEmpSkills" ></asp:Button>
+                                    OnClick="UpdateEmpSkills"></asp:Button>
                             </div>
                             <%--<div class="col-md-2 pull-right">
                                 <asp:Button ID="Cancel" runat="server" CssClass="btn btn-danger" Text="Cancel" PostBackUrl="~/Login.aspx"
@@ -90,5 +90,14 @@
             <!-- /.col-lg-12 -->
         </div>
     </form>
+    <div id="myDIV" class="center-block" style="display: none; text-align:center" runat="server">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1 style="color: green">Thank You!<br /> Your Skills has been successfully submitted</h1>
+    </div>
 </body>
 </html>

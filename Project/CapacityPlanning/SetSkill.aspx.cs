@@ -11,6 +11,7 @@ namespace CapacityPlanning
     public partial class SetSkill : System.Web.UI.Page
     {
         List<string> Skills = new List<string>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -41,14 +42,14 @@ namespace CapacityPlanning
             }
 
         }
-        
+
         protected void UpdateEmpSkills(object sender, EventArgs e)
         {
             try
             {
                 string SkillIDs = "";
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
-                
+
                 if (Skills.Count > 0)
                 {
                     foreach (string item in Skills)
@@ -67,6 +68,9 @@ namespace CapacityPlanning
                         CheckBox chk = (CheckBox)item.FindControl("chkSkill");
                         chk.Checked = false;
                     }
+                    form1.Style.Add("display", "none");
+                    DvSkill.Style.Add("display", "none");
+                    myDIV.Style.Add("display", "block");
                 }
                 else
                 {
