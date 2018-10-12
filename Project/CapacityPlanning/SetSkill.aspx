@@ -41,7 +41,7 @@
                                 ValidationExpression="^[0-9]{5,6}$" ErrorMessage="Invalid Employee ID !" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EmpID"
                                 ErrorMessage="Employee ID Required !" />
-                            <asp:Label ID="lblEmpID" runat="server" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lblEmpID" runat="server" Visible="false" ForeColor="Red"></asp:Label>
                         </div>
                         <br />
                         <div class="row">
@@ -53,7 +53,7 @@
                                 <div class="row">
                                     <asp:DataList ID="dtlSkills" runat="server" RepeatColumns="3" RepeatDirection="horizontal">
                                         <ItemTemplate>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <asp:CheckBox ID="chkSkill" SkillID='<%#Eval("SkillsMasterID") %>'
                                                     OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
 
@@ -73,12 +73,12 @@
                         <div class="row ">
                             <div class="col-md-2 pull-right">
                                 <asp:Button ID="Submit" runat="server" CssClass="btn btn-success" Text="Submit"
-                                    OnClick="UpdateEmpSkills"></asp:Button>
+                                     OnClick="UpdateEmpSkills" ></asp:Button>
                             </div>
-                            <div class="col-md-2 pull-right">
+                            <%--<div class="col-md-2 pull-right">
                                 <asp:Button ID="Cancel" runat="server" CssClass="btn btn-danger" Text="Cancel" PostBackUrl="~/Login.aspx"
                                     CausesValidation="false"></asp:Button>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                     <!-- /.panel-body -->

@@ -63,6 +63,7 @@ namespace CapacityPlanning
                 }
                 else
                 {
+                    lblEmpID.Visible = true;
                     lblEmpID.Text = "Employee ID does not exists !";
 
                 }
