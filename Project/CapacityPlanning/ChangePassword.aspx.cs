@@ -28,8 +28,7 @@ namespace CapacityPlanning
                 }
                 else
                 {
-                    
-                   
+                                      
                     employeeID = lstdetils[0].EmployeeMasterID;
 
                 }
@@ -53,14 +52,22 @@ namespace CapacityPlanning
 
         protected void Cancel(object sender, EventArgs e)
         {
-            if (lstdetils.Count > 0)
+            try
             {
-                Response.Redirect("Dashboard.aspx");
+                if (lstdetils.Count > 0)
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
-            else
+            catch (Exception)
             {
                 Response.Redirect("Login.aspx");
             }
+           
             
         }
     }
