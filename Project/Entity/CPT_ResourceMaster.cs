@@ -56,7 +56,7 @@ namespace Entity
         [StringLength(10)]
         public string PAN { get; set; }
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string Skillsid { get; set; }
 
         public string Address { get; set; }
