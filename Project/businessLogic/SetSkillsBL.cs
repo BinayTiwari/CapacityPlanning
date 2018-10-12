@@ -17,7 +17,7 @@ namespace businessLogic
                 using(CPContext db = new CPContext())
                 {
                     var query = (from p in db.CPT_SkillsMaster
-                                where p.IsActive == true
+                                where p.IsActive == true orderby p.SkillsName
                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
 
                     dtlSkills.DataSource = query;
