@@ -41,7 +41,7 @@ namespace CapacityPlanning
             }
 
         }
-
+        
         protected void UpdateEmpSkills(object sender, EventArgs e)
         {
             try
@@ -60,6 +60,13 @@ namespace CapacityPlanning
                 if (flag)
                 {
                     SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
+                    lblEmpID.Visible = false;
+                    EmpID.Text = string.Empty;
+                    foreach (DataListItem item in dtlSkills.Items)
+                    {
+                        CheckBox chk = (CheckBox)item.FindControl("chkSkill");
+                        chk.Checked = false;
+                    }
                 }
                 else
                 {
