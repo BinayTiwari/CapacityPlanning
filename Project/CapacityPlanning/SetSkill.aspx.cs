@@ -8,12 +8,12 @@ using System.Web.UI.WebControls;
 
 namespace CapacityPlanning
 {
-    public partial class SetSkills : System.Web.UI.Page
+    public partial class SetSkill : System.Web.UI.Page
     {
         List<string> Skills = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(IsPostBack == false)
+            if (IsPostBack == false)
             {
                 SetSkillsBL.GetSkills(dtlSkills);
             }
@@ -39,15 +39,15 @@ namespace CapacityPlanning
             {
                 Console.Write(p.Message);
             }
-           
+
         }
 
-       protected void UpdateEmpSkills(object sender, EventArgs e)
+        protected void UpdateEmpSkills(object sender, EventArgs e)
         {
             try
             {
                 string SkillIDs = "";
-                foreach(string item in Skills)
+                foreach (string item in Skills)
                 {
                     SkillIDs += item + ",";
                 }
@@ -60,11 +60,11 @@ namespace CapacityPlanning
                 else
                 {
                     lblEmpID.Text = "Employee ID does not exists !";
-                    
+
                 }
-                
-                
-                
+
+
+
             }
             catch (Exception q)
             {
@@ -72,6 +72,6 @@ namespace CapacityPlanning
             }
         }
 
-        
+
     }
 }
