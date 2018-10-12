@@ -44,13 +44,15 @@
                             <asp:Label ID="lblEmpID" runat="server" Visible="false" ForeColor="Red"></asp:Label>
                         </div>
                         <br />
-                        <div class="row">
-                            <div class="col-md-1">
-                                <label>Skills:<span style="color: red;"> *</span></label>
+                        <br />
+                        <div class="row center-block">
+                            
+                            <div class="row center-block">
+                                <label style="color:green"><span style="color: red;">*</span>Please select the skills  on which you have the expertise:</label>
                             </div>
-                            <div class="col-md-11">
+                            <div class="row center-block">
                                 <br />
-                                <div class="row">
+                                <div class="col-md-12">
                                     <asp:DataList ID="dtlSkills" runat="server" RepeatColumns="3" RepeatDirection="horizontal">
                                         <ItemTemplate>
                                             <div class="col-lg-12">
