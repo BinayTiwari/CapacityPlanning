@@ -76,7 +76,7 @@
                                     OnClick="UpdateEmpSkills"></asp:Button>
                             </div>
                             <div class="col-md-2 pull-right">
-                                <asp:Button ID="Cancel" runat="server" CssClass="btn btn-danger" Text="Cancel"
+                                <asp:Button ID="Cancel" runat="server" CssClass="btn btn-danger" Text="Cancel" PostBackUrl="~/Login.aspx"
                                     CausesValidation="false"></asp:Button>
                             </div>
                         </div>

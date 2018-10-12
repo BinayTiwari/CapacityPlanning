@@ -47,12 +47,16 @@ namespace CapacityPlanning
             try
             {
                 string SkillIDs = "";
-                foreach (string item in Skills)
-                {
-                    SkillIDs += item + ",";
-                }
-                SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
+                
+                if (Skills.Count > 0)
+                {
+                    foreach (string item in Skills)
+                    {
+                        SkillIDs += item + ",";
+                    }
+                    SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
+                }
                 if (flag)
                 {
                     SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
@@ -62,7 +66,6 @@ namespace CapacityPlanning
                     lblEmpID.Text = "Employee ID does not exists !";
 
                 }
-
 
 
             }
