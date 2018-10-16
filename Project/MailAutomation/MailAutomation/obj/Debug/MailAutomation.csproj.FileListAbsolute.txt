@@ -1,0 +1,13 @@
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\bin\Debug\MailAutomation.exe.config
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\bin\Debug\MailAutomation.exe
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\bin\Debug\MailAutomation.pdb
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\obj\Debug\MailAutomation.csprojAssemblyReference.cache
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\obj\Debug\MailAutomation.csproj.CoreCompileInputs.cache
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\obj\Debug\MailAutomation.exe
+C:\Users\Ds 8\source\repos\MailAutomation\MailAutomation\obj\Debug\MailAutomation.pdb
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\bin\Debug\MailAutomation.exe.config
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\bin\Debug\MailAutomation.exe
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\bin\Debug\MailAutomation.pdb
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\obj\Debug\MailAutomation.csproj.CoreCompileInputs.cache
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\obj\Debug\MailAutomation.exe
+E:\Vinay\CapacityPlanning\03-09-2018\trunk\Project\MailAutomation\MailAutomation\obj\Debug\MailAutomation.pdb

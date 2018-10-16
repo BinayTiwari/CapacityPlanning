@@ -30,6 +30,71 @@ namespace businessLogic
             }
         }
 
+        public static void GetNewSkills(DataList dtlRPA, DataList dtlLangPrg, DataList dtlMS, DataList dtlFrk, DataList dtlDB, DataList dtlOther)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 1
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlRPA.DataSource = query;
+                    dtlRPA.DataBind();
+
+                    var query1 = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 2
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlLangPrg.DataSource = query1;
+                    dtlLangPrg.DataBind();
+
+                    var query2 = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 3
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlMS.DataSource = query2;
+                    dtlMS.DataBind();
+
+                    var query3 = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 4
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlFrk.DataSource = query3;
+                    dtlFrk.DataBind();
+
+                    var query4 = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 5
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlDB.DataSource = query4;
+                    dtlDB.DataBind();
+
+                    var query5 = (from p in db.CPT_SkillsMaster
+                                 where p.IsActive == true && p.CategoryID == 6
+                                 orderby p.SkillsName
+                                 select new { p.SkillsMasterID, p.SkillsName }).ToList();
+
+                    dtlOther.DataSource = query5;
+                    dtlOther.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+        }
+
+        
+
+
+
         public static void UpdateSkills(int EmpID, string Skills)
         {
             try

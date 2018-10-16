@@ -8,15 +8,14 @@ using System.Web.UI.WebControls;
 
 namespace CapacityPlanning
 {
-    public partial class SetSkill : System.Web.UI.Page
+    public partial class Skills : System.Web.UI.Page
     {
-        List<string> Skills = new List<string>();
-
+        List<string> Skill = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-                SetSkillsBL.GetSkills(dtlSkills);
+                SetSkillsBL.GetNewSkills(dtlRPA, dtlLangPrg, dtlMS, dtlFrk, dtlDB, dtlOther);
             }
         }
 
@@ -24,17 +23,17 @@ namespace CapacityPlanning
         {
             try
             {
-                foreach (DataListItem item in dtlSkills.Items)
+                foreach (DataListItem item in dtlRPA.Items)
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkSkill");
                     var chek = (CheckBox)sender;
                     if (chk.Checked)
                     {
-                        Skills.Add(chek.Attributes["SkillID"]);
+                        Skill.Add(chek.Attributes["SkillID"]);
                     }
 
                 }
-                Skills = Skills.Distinct().ToList();
+                Skill = Skill.Distinct().ToList();
             }
             catch (Exception p)
             {
@@ -50,9 +49,9 @@ namespace CapacityPlanning
                 string SkillIDs = "";
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
 
-                if (Skills.Count > 0)
+                if (Skill.Count > 0)
                 {
-                    foreach (string item in Skills)
+                    foreach (string item in Skill)
                     {
                         SkillIDs += item + ",";
                     }
@@ -63,7 +62,7 @@ namespace CapacityPlanning
                     SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
                     lblEmpID.Visible = false;
                     EmpID.Text = string.Empty;
-                    foreach (DataListItem item in dtlSkills.Items)
+                    foreach (DataListItem item in dtlRPA.Items)
                     {
                         CheckBox chk = (CheckBox)item.FindControl("chkSkill");
                         chk.Checked = false;
@@ -86,7 +85,6 @@ namespace CapacityPlanning
                 Console.Write(q.Message);
             }
         }
-
 
     }
 }

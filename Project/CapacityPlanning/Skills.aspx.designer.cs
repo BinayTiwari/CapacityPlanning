@@ -10,7 +10,7 @@
 namespace CapacityPlanning {
     
     
-    public partial class SetSkill {
+    public partial class Skills {
         
         /// <summary>
         /// form1 control.
@@ -67,13 +67,58 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Label lblEmpID;
         
         /// <summary>
-        /// dtlSkills control.
+        /// dtlRPA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlSkills;
+        protected global::System.Web.UI.WebControls.DataList dtlRPA;
+        
+        /// <summary>
+        /// dtlLangPrg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dtlLangPrg;
+        
+        /// <summary>
+        /// dtlMS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dtlMS;
+        
+        /// <summary>
+        /// dtlFrk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dtlFrk;
+        
+        /// <summary>
+        /// dtlDB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dtlDB;
+        
+        /// <summary>
+        /// dtlOther control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dtlOther;
         
         /// <summary>
         /// Submit control.
