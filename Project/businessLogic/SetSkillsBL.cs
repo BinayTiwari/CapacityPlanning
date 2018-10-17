@@ -10,27 +10,9 @@ namespace businessLogic
 {
     public class SetSkillsBL
     {
-        public static void GetSkills(DataList dtlSkills)
-        {
-            try
-            {
-                using(CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_SkillsMaster
-                                where p.IsActive == true orderby p.SkillsName
-                                select new { p.SkillsMasterID, p.SkillsName }).ToList();
 
-                    dtlSkills.DataSource = query;
-                    dtlSkills.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
-        }
-
-        public static void GetNewSkills(DataList dtlRPA, DataList dtlLangPrg, DataList dtlMS, DataList dtlFrk, DataList dtlDB, DataList dtlOther)
+        public static void GetNewSkills(Repeater dtlRPA, Repeater dtlLangPrg, Repeater dtlMS, Repeater dtlFrk,
+            Repeater dtlDB, Repeater dtlOther)
         {
             try
             {
@@ -91,10 +73,6 @@ namespace businessLogic
             }
         }
 
-        
-
-
-
         public static void UpdateSkills(int EmpID, string Skills)
         {
             try
@@ -133,6 +111,27 @@ namespace businessLogic
                 }
 
                 return flag;
+            }
+        }
+
+        public static void InsertCertificate(List<CPT_Certificate> certificateDetails)
+        {
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    foreach(CPT_Certificate item in certificateDetails)
+                    {
+                        db.CPT_Certificate.Add(item);
+                        
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception q)
+            {
+                Console.Write(q.Message);
+                throw;
             }
         }
     }
