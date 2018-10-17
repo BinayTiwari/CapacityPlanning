@@ -5,9 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using businessLogic;
-using System.Windows.Forms;
-
-
 using Entity;
 using System.Web.UI.DataVisualization.Charting;
 
@@ -15,6 +12,7 @@ namespace CapacityPlanning
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+        string Total = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             DashboardBL dashboardBL = new DashboardBL();
@@ -23,7 +21,7 @@ namespace CapacityPlanning
             //DashboardBL.showRoleVsCapacity(RoleCap);
             //DashboardBL.displayRoleVsDem(RoleDem);
             //dashboardBL.displayMgrVsRpt(MgrVSRpt);
-           // dashboardBL.displayDesigVsResBar(myChartBar);
+            // dashboardBL.displayDesigVsResBar(myChartBar);
             DashboardBL.TotalStregth(lblStregth);
             DashboardBL.OnBench(NumberOfResourcesOnBench);
             DashboardBL.OpenRequests(OpenResourceRequests);
@@ -31,6 +29,7 @@ namespace CapacityPlanning
             DashboardBL.releaseinSevenDays(rptSevenDays);
 
         }
+
         protected void btnClick_Click(object sender, EventArgs e)
         {
             try
@@ -44,7 +43,7 @@ namespace CapacityPlanning
                 //DashboardBL.showDsVsRes(rptDsVsRes);
                 //DashboardBL.displayTotalStrength(rptDsVsRes);
                 //
-                
+
             }
             catch (Exception ex)
             {
@@ -61,7 +60,7 @@ namespace CapacityPlanning
 
         protected void btnClick2_Click(object sender, EventArgs e)
         {
-           
+
             Response.Redirect("ResourcesOnBench.aspx");
 
         }
@@ -70,7 +69,7 @@ namespace CapacityPlanning
             Response.Redirect("Joiner.aspx");
         }
 
-    
-        
+
+
     }
 }

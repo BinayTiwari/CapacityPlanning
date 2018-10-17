@@ -148,35 +148,25 @@
                                             <th>Team Lead</th>
                                             <th>Senior Developer</th>
                                             <th>Developer</th>
-
                                             <th>Quality Analyst</th>
-
-
-
+                                            <th>Total</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <asp:Repeater ID="rptAccountWiseResources" runat="server">
+                                        <asp:Repeater ID="rptAccountWiseResources" runat="server" >
                                             <ItemTemplate>
                                                 <tr class="odd gradeX">
-                                                    <td>
-                                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
-                                                    </td>
-                                                    <td>
-                                                        <%#Eval("AccountName")%>
-                                                    </td>
+                                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
+                                                    <td><%#Eval("AccountName")%></td>
                                                     <td><%#Eval("ProjectManager")%></td>
                                                     <td><%#Eval("Architect")%></td>
                                                     <td><%#Eval("BUsinessAnalyst")%></td>
                                                     <td><%#Eval("TeamLead")%></td>
                                                     <td><%#Eval("SeniorDeveloper")%></td>
                                                     <td><%#Eval("Developer")%></td>
-
                                                     <td><%#Eval("QualityAnalyst")%></td>
-
-
-
+                                                    <td><%#Eval("Total") %></td>
 
                                                 </tr>
                                             </ItemTemplate>
@@ -320,10 +310,10 @@
                     <table class="table table-striped table-bordered table-hover" ID="dataTables1">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                
+                                <th>Name</th>                                
                                 <th>Designation</th>
                                 <th>Account Name</th>
+                                <th>Reporting Manager</th>
                                 <th>Release Date</th>
 
                             </tr>
@@ -332,14 +322,12 @@
                             <asp:Repeater ID="rptSevenDays" runat="server">
                                 <ItemTemplate>
                                     <tr class="odd gradeX">
-
-
                                         <td><%#Eval("EmployeetName")%></td>
                                         <td><%#Eval("DesignationName")%></td>
                                         <td><%#Eval("AccountName")%></td>
+                                        <td><%#Eval("ReportingManager") %></td>
                                         <td><%#Eval("EndDate", "{0: MMM dd yyyy}")%></td>
-
-
+                                        
                                     </tr>
                                 </ItemTemplate>
 

@@ -80,7 +80,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="No of resources *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="NoOfResources" TextMode="Number" max="50" placeholder='No of Resources' min="0" CssClass="form-control" runat="server" step="0.5"></asp:TextBox>
+                                <asp:TextBox ID="NoOfResources" TextMode="Number" max="50" placeholder='No of Resources' min="0" CssClass="form-control" runat="server" step="0.25"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorNoOfResources" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="NoOfResources"
                                     ErrorMessage="No of Resources can't be blank !" />
                             </ItemTemplate>
@@ -94,14 +94,14 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Start Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;" ></asp:TextBox>
+                                <asp:TextBox ID="StartDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorStartDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="StartDate"
                                     ErrorMessage="Start Date can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="End Date *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;" ></asp:TextBox>
+                                <asp:TextBox ID="EndDate" TextMode="Date" runat="server" CssClass="form-control" onkeypress="return false;"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorEndDate" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EndDate"
                                     ErrorMessage="End Date can't be blank !" />
                                 <asp:CompareValidator ID="CompareValidatorDtae" ForeColor="Red"
@@ -130,23 +130,16 @@
             <div class="row">
                 <div class="content-box-large box-with-header">
                     <br />
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="col-sm-2 pull-right">
-                                <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />
-
-                            </div>
-                            <div>
-                                <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
-                            </div>
-                        </div>
+                    <div class="row pull-right">
+                        <asp:Button ID="save" runat="server" CssClass="btn-success btn btn-default" Text="Save" OnClick="Add_Resource_Demand" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="cancel" runat="server" CssClass="btn btn-danger btn-md" Text="Cancel" OnClick="UnDoButton_Click" CausesValidation="false" />
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-   
+
 </asp:Content>
 
