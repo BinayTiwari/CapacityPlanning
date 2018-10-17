@@ -5,68 +5,140 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entity;
 
 namespace CapacityPlanning
 {
     public partial class Skills : System.Web.UI.Page
     {
-        List<string> Skill = new List<string>();
+               
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-                SetSkillsBL.GetNewSkills(dtlRPA, dtlLangPrg, dtlMS, dtlFrk, dtlDB, dtlOther);
+                SetSkillsBL.GetNewSkills(rptRPA, rptLangPrg, rptMS, rptFrk, rptDB, rptOther);
             }
         }
 
-        protected void chkSkill_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (DataListItem item in dtlRPA.Items)
-                {
-                    CheckBox chk = (CheckBox)item.FindControl("chkSkill");
-                    var chek = (CheckBox)sender;
-                    if (chk.Checked)
-                    {
-                        Skill.Add(chek.Attributes["SkillID"]);
-                    }
-
-                }
-                Skill = Skill.Distinct().ToList();
-            }
-            catch (Exception p)
-            {
-                Console.Write(p.Message);
-            }
-
-        }
-
-        protected void UpdateEmpSkills(object sender, EventArgs e)
+        protected void InsertEmpSkills(object sender, EventArgs e)
         {
             try
             {
                 string SkillIDs = "";
+                List<CPT_Certificate> lstCertificates = new List<CPT_Certificate>();                
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
-
-                if (Skill.Count > 0)
-                {
-                    foreach (string item in Skill)
-                    {
-                        SkillIDs += item + ",";
-                    }
-                    SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
-                }
+                               
                 if (flag)
                 {
-                    SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
-                    lblEmpID.Visible = false;
-                    EmpID.Text = string.Empty;
-                    foreach (DataListItem item in dtlRPA.Items)
+                    foreach (RepeaterItem item in rptRPA.Items)
                     {
-                        CheckBox chk = (CheckBox)item.FindControl("chkSkill");
-                        chk.Checked = false;
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkRPA");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlRPARating");
+                        FileUpload filePath = (FileUpload)item.FindControl("RPACertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            if (filePath.HasFile)
+                            {
+                             
+                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                            }
+                            
+                            lstCertificates.Add(details);
+                        }
                     }
+                    foreach (RepeaterItem item in rptLangPrg.Items)
+                    {
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkLangPrg");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlLangPrgRating");
+                        FileUpload filePath = (FileUpload)item.FindControl("LangPrgCertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            details.CertificatePath = @"" + filePath.FileName;
+                            lstCertificates.Add(details);
+                        }
+                    }
+                    foreach (RepeaterItem item in rptMS.Items)
+                    {
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkMS");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlMSRating");
+                        FileUpload filePath = (FileUpload)item.FindControl("MSCertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            details.CertificatePath = @"" + filePath.FileName;
+                            lstCertificates.Add(details);
+                        }
+                    }
+                    foreach (RepeaterItem item in rptFrk.Items)
+                    {
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkFrk");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlFrkRating");
+                        FileUpload filePath = (FileUpload)item.FindControl("FrkCertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            details.CertificatePath = @"" + filePath.FileName;
+                            lstCertificates.Add(details);
+                        }
+                    }
+                    foreach (RepeaterItem item in rptDB.Items)
+                    {
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkDB");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlDBRating");
+                        FileUpload filePath = (FileUpload)item.FindControl("DBCertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            details.CertificatePath = @"" + filePath.FileName;
+                            lstCertificates.Add(details);
+                        }
+                    }
+                    foreach (RepeaterItem item in rptOther.Items)
+                    {
+                        CPT_Certificate details = new CPT_Certificate();
+                        CheckBox chk = (CheckBox)item.FindControl("chkOther");
+                        DropDownList ddlRating = (DropDownList)item.FindControl("ddlOtherRating");
+                        FileUpload filePath = (FileUpload)item.FindControl("OtherCertificate");
+                        if (chk.Checked)
+                        {
+                            details.EmployeeID = Convert.ToInt32(EmpID.Text);
+                            details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
+                            SkillIDs += chk.Attributes["SkillID"] + ",";
+                            details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            details.CertificatePath = @"" + filePath.FileName;
+                            lstCertificates.Add(details);
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(SkillIDs))
+                    {                       
+                        SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
+                    }
+          
+                    SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
+                    SetSkillsBL.InsertCertificate(lstCertificates);
                     form1.Style.Add("display", "none");
                     DvSkill.Style.Add("display", "none");
                     myDIV.Style.Add("display", "block");
@@ -77,8 +149,6 @@ namespace CapacityPlanning
                     lblEmpID.Text = "Employee ID does not exists !";
 
                 }
-
-
             }
             catch (Exception q)
             {
@@ -86,5 +156,6 @@ namespace CapacityPlanning
             }
         }
 
+        
     }
 }

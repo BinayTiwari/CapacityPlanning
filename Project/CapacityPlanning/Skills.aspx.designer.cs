@@ -67,58 +67,58 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.Label lblEmpID;
         
         /// <summary>
-        /// dtlRPA control.
+        /// rptRPA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlRPA;
+        protected global::System.Web.UI.WebControls.Repeater rptRPA;
         
         /// <summary>
-        /// dtlLangPrg control.
+        /// rptLangPrg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlLangPrg;
+        protected global::System.Web.UI.WebControls.Repeater rptLangPrg;
         
         /// <summary>
-        /// dtlMS control.
+        /// rptMS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlMS;
+        protected global::System.Web.UI.WebControls.Repeater rptMS;
         
         /// <summary>
-        /// dtlFrk control.
+        /// rptFrk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlFrk;
+        protected global::System.Web.UI.WebControls.Repeater rptFrk;
         
         /// <summary>
-        /// dtlDB control.
+        /// rptDB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlDB;
+        protected global::System.Web.UI.WebControls.Repeater rptDB;
         
         /// <summary>
-        /// dtlOther control.
+        /// rptOther control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlOther;
+        protected global::System.Web.UI.WebControls.Repeater rptOther;
         
         /// <summary>
         /// Submit control.

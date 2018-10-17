@@ -32,7 +32,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Please enter your Employee ID<span style="color: red;"> *</span></label>
+                                <label style="font-size:medium"><span style="color: red;"> *</span>Please enter your Employee ID</label>
                             </div>
                             <div class="col-md-4">
                                 <asp:TextBox ID="EmpID" runat="server" MaxLength="6" CssClass="form-control"></asp:TextBox>
@@ -48,7 +48,7 @@
                         <div class="row center-block">
 
                             <div class="row center-block">
-                                <label style="color: green"><span style="color: red;">*</span>Please select the skills  on which you have the expertise:</label>
+                                <label style="font-size:medium"><span style="color: red;">*</span>Please select the skills on which you have the expertise:</label>
                             </div>
                             <br />
 
@@ -56,30 +56,36 @@
                                 <label>RPA Tools:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlRPA" runat="server">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7" style="float:left;">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptRPA" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlRPARating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="RPACertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="RPACertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -88,30 +94,36 @@
                                 <label>Programming Languages:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlLangPrg" runat="server" style="float:left;">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptLangPrg" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkLangPrg" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlLangPrgRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="LangPrgCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="LangPrgCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -120,30 +132,36 @@
                                 <label>Microsoft Technologies:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlMS" runat="server">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7" style="float:left;">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptMS" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkMS" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlMSRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="MSCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="MSCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -152,30 +170,36 @@
                                 <label>Framework:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlFrk" runat="server">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7" style="float:left;">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptFrk" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkFrk" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlFrkRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="FrkCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="FrkCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -184,30 +208,36 @@
                                 <label>Databases:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlDB" runat="server">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7" style="float:left;">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptDB" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkDB" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlDBRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="DBCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="DBCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -216,30 +246,36 @@
                                 <label>Other:</label>
                             </div>
                             <div class="row center-block">
-                                <br />                                
-                                    <asp:DataList ID="dtlOther" runat="server">
-                                        <ItemTemplate>                                   
-                                                <div class="col-md-7" style="float:left;">
-                                                    <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>'
-                                                        OnCheckedChanged="chkSkill_CheckedChanged" runat="server" />
-                                                    <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
-                                                </div>
-                                                
-                                                <div class="col-md-5" style="float:right;">
-                                                    <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                                        <asp:ListItem Value="1"> 1 </asp:ListItem>
-                                                        <asp:ListItem Value="2"> 2 </asp:ListItem>
-                                                        <asp:ListItem Value="3"> 3 </asp:ListItem>
-                                                        <asp:ListItem Value="4"> 4 </asp:ListItem>
-                                                        <asp:ListItem Value="5"> 5 </asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <br />
-                                                <br />
-                                           
-                                        </ItemTemplate>
-                                    </asp:DataList>                               
+                                <br />
+                                <asp:Repeater ID="rptOther" runat="server">
+                                    <ItemTemplate>
+                                        <div class="row center-block">
+                                            <div class="col-md-5">
+                                                <asp:CheckBox ID="chkOther" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <asp:DropDownList ID="ddlOtherRating" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">Select Rating</asp:ListItem>
+                                                    <asp:ListItem Value="1"> 1 </asp:ListItem>
+                                                    <asp:ListItem Value="2"> 2 </asp:ListItem>
+                                                    <asp:ListItem Value="3"> 3 </asp:ListItem>
+                                                    <asp:ListItem Value="4"> 4 </asp:ListItem>
+                                                    <asp:ListItem Value="5"> 5 </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:FileUpload ID="OtherCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="OtherCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                    Display="Dynamic" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <br />
                             <br />
@@ -252,7 +288,7 @@
                         <div class="row ">
                             <div class="col-md-2 pull-right">
                                 <asp:Button ID="Submit" runat="server" CssClass="btn btn-success" Text="Submit"
-                                    OnClick="UpdateEmpSkills"></asp:Button>
+                                    OnClick="InsertEmpSkills"></asp:Button>
                             </div>
 
                         </div>
