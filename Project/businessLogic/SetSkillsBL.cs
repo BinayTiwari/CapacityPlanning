@@ -118,6 +118,7 @@ namespace businessLogic
         {
             try
             {
+                Delete(certificateDetails[0].EmployeeID.Value);
                 using(CPContext db = new CPContext())
                 {
                     foreach(CPT_Certificate item in certificateDetails)
@@ -131,7 +132,32 @@ namespace businessLogic
             catch (Exception q)
             {
                 Console.Write(q.Message);
-                throw;
+            }
+        }
+
+        public static void Delete(int empID)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_Certificate
+                                 where p.EmployeeID == empID
+                                 select p).ToList();
+                    if (query.Count() > 0)
+                    {
+                        foreach (var item in query)
+                        {
+                            db.CPT_Certificate.Remove(item);
+                        }
+                        db.SaveChanges();
+                    }                                       
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
             }
         }
     }
