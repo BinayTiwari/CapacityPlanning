@@ -44,8 +44,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {                     
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             
                             lstCertificates.Add(details);
@@ -65,8 +65,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -85,8 +85,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -105,8 +105,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -125,8 +125,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -145,8 +145,8 @@ namespace CapacityPlanning
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(@"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName);
-                                details.CertificatePath = @"h:\root\home\gridinfocom - 001\www\workallocationgroup\Documents\" + filePath.FileName;
+                                filePath.SaveAs(@"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName);
+                                details.CertificatePath = @"h:\root\home\gridinfocom-001\www\workallocationgroup\Documents\" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
