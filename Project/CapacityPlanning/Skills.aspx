@@ -50,7 +50,7 @@
                             <div class="row center-block">
                                 <label style="font-size:medium"><span style="color: red;">*</span>Please select the skills on which you have the expertise:
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;Rating(1:Low,5:High)</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Rating(1:Low, 5:High)</label>
                             </div>
                             <br />
 
