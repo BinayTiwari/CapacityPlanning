@@ -77,7 +77,7 @@ namespace businessLogic
                                     " = CPT_AccountMaster.AccountMasterID Where(CPT_ResourceMaster.RolesID = "+roleID+"   and(skillsid" +
                                     " in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+skillID+"%') and CPT_ResourceMaster.EmployeeMasterID NOT" +
                                    " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE" +
-                                    " (CPT_AllocateResource.EndDate BETWEEN '"+dtS+"' AND '"+dtE+ "') AND Released=0 ) AND  ISDELETED = 0))" +
+                                    " (CPT_AllocateResource.EndDate  >= '" + dtS+"') AND Released=0 ) AND  ISDELETED = 0))" +
                                     " OR CPT_ResourceMaster.EmployeeMasterID = 10161";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
