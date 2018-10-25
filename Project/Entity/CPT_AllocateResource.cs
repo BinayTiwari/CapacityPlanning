@@ -31,7 +31,7 @@ namespace Entity
 
         public int? RequestDetailID { get; set; }
 
-        public bool IsDeployed { get; set; }
+        public bool? IsDeployed { get; set; }
 
         public virtual CPT_AccountMaster CPT_AccountMaster { get; set; }
 

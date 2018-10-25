@@ -12,6 +12,7 @@ namespace Entity
         public CPT_ResourceMaster()
         {
             CPT_AllocateResource = new HashSet<CPT_AllocateResource>();
+            CPT_Certificate = new HashSet<CPT_Certificate>();
             CPT_ResourceDemand = new HashSet<CPT_ResourceDemand>();
         }
 
@@ -86,6 +87,9 @@ namespace Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CPT_Certificate> CPT_Certificate { get; set; }
 
         public virtual CPT_DesignationMaster CPT_DesignationMaster { get; set; }
 
