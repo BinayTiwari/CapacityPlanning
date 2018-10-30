@@ -266,10 +266,10 @@ namespace businessLogic
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                Console.WriteLine(ex.Message);
             }
         }
 

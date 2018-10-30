@@ -56,7 +56,7 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = " SELECT AllocationID,CPT_AllocateResource.RequestId,CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, ISNULL(CAST(CPT_AllocateResource.StartDate AS VARCHAR(12)), '-') AS StartDate, " +
+                string SqlString = " SELECT AllocationID,[dbo].[ReportingManager](CPT_ResourceDemand.ResourceRequestBy) as RequesterEmail,CPT_AllocateResource.RequestId,CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, ISNULL(CAST(CPT_AllocateResource.StartDate AS VARCHAR(12)), '-') AS StartDate, " +
                                    " ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate,  CPT_DesignationMaster.DesignationName, ISNULL(CPT_AccountMaster.AccountName, '-') " +
                                    " AS AccountName, ISNULL(CPT_ResourceDemand.ProcessName, '-') AS ProcessName  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON " +
                                    " CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID " +
