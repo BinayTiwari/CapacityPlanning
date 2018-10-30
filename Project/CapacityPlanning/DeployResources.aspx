@@ -58,7 +58,7 @@
                                             <td class="center">
                                                 <asp:Button ID="btnDeploy" Class="btn btn-success btn-md" runat="server" Text="Deploy"
                                                     AllocationID='<%#Eval("AllocationID")%>' CommandArgument='<%#Eval("EmployeeMasterID")%>'
-                                                    acName ='<%#Eval("AccountName")%>' prName='<%#Eval("ProcessName")%>'
+                                                    acName ='<%#Eval("AccountName")%>' prName='<%#Eval("ProcessName")%>' RequesterEmail='<%#Eval("RequesterEmail")%>'
                                                     StartDate ='<%#Eval("StartDate","{0:d}") %>' EndDate ='<%#Eval("EndDate","{0:d}") %>'
                                                     OnClick="DeployResource" OnClientClick="return confirm('Do you want to deploy this Employee?');"/>
                                             </td>

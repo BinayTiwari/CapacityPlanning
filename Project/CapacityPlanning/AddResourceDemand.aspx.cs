@@ -215,8 +215,6 @@ namespace CapacityPlanning
                         //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
-
-
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
                         dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                       

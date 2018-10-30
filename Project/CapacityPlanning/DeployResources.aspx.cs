@@ -18,6 +18,7 @@ namespace CapacityPlanning
         string requestID = "";
         string startDate = "";
         string endDate = "";
+        string RequesterEmailID = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -41,8 +42,9 @@ namespace CapacityPlanning
                 prName = theButton.Attributes["prName"];
                 startDate = theButton.Attributes["StartDate"];
                 endDate = theButton.Attributes["EndDate"];
+                RequesterEmailID = theButton.Attributes["RequesterEmail"];
                 DeployResourcesBL.DeployStatus(Convert.ToInt32(theButton.Attributes["AllocationID"]));
-                //Email();
+                Email();
                 BindRepeater();
             }
             catch (Exception ex)
@@ -61,6 +63,8 @@ namespace CapacityPlanning
                 registrationEmail.Name = "DeployResource";
                 registrationEmail.To = new List<string>();
                 registrationEmail.To.Add(mail);
+                registrationEmail.CC = new List<string>();
+                registrationEmail.CC.Add(RequesterEmailID);
                 registrationEmail.ToUserName = new List<string>();
                 registrationEmail.ToUserName.Add(name);
                 registrationEmail.PROJECT = acName;
