@@ -23,17 +23,13 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables">
                             <thead>
                                 <tr>
-                                    <th>Sr. No.</th>
-                                    <th>Allocation Id</th>
+                                    <th>Sr. No.</th>                                    
                                     <th>Resource Name</th>
                                     <th>Account Name</th>
                                     <th>Process Name</th>
+                                    <th>Requested BY</th>
                                      <th>Start Date </th>
-                                    <th>End Date </th>
-                                    
-                                   
-                                    
-                                   
+                                    <th>End Date </th>                                
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -42,12 +38,11 @@
                                 <asp:Repeater ID="rptDeployResources" runat="server">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
-                                            <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
-                                            <td><%#Eval("AllocationID")%></td>
+                                            <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>                                            
                                             <td><%#Eval("EmployeetName")%></td>
                                             <td><%#string.Concat(Eval("AccountName"))%></td>
                                             <td><%#Eval("ProcessName") %></td>
-                                            
+                                            <td><%#Eval("Requested_By") %></td>
                                             <td><%#Eval("StartDate", "{0:d}")%> </td>
                                             <td><%#Eval("EndDate", "{0:d}")%> </td>
                                             

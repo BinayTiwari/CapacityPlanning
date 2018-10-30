@@ -123,7 +123,7 @@
                                     ErrorMessage="End Date can't be blank !" />
                                 <asp:CompareValidator ID="CompareValidatorDate" ForeColor="Red"
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
-                                    Operator="LessThan" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
+                                    Operator="LessThanEqual" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <%--<FooterTemplate>
