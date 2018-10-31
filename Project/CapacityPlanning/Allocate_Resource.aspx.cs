@@ -39,7 +39,7 @@ namespace CapacityPlanning
                     Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                     Label lblAllocated = (Label)item.FindControl("Allocated");
                     Label lblRole = (Label)item.FindControl("RoleName");
-                    if(Convert.ToInt32(lblNoOfResources.Text) == Convert.ToInt32(lblAllocated.Text))
+                    if((int)Math.Ceiling(Convert.ToDouble(lblNoOfResources.Text)) == Convert.ToInt32(lblAllocated.Text))
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
                         btn.Enabled = false;
