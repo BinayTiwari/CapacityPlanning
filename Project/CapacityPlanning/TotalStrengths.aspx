@@ -34,6 +34,7 @@
                             <th>Designation</th>
                             <th>Account Name</th>
                             <th>Process</th>
+                            <th>RequestedBy</th>
                             <th>Start Date</th>
                             <th>End Date</th>
 
@@ -45,18 +46,13 @@
                         <asp:Repeater ID="rptDsVsRes" runat="server">
                             <ItemTemplate>
                                 <tr class="odd gradeX">
-                                    <td>
-                                        <%#(((RepeaterItem)Container).ItemIndex+1).ToString()%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("EmployeeMasterID")%>
-                                    </td>
-                                    <td>
-                                        <%#Eval("EmployeetName")%>
-                                    </td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
+                                    <td><%#Eval("EmployeeMasterID")%></td>
+                                    <td><%#Eval("EmployeetName")%></td>
                                     <td><%#Eval("DesignationName")%></td>
                                     <td><%#Eval("AccountName")%></td>
                                     <td><%#Eval("ProcessName")%></td>
+                                    <td><%#Eval("RequestedBy") %></td>
                                     <td><%#Eval("StartDate")%></td>
                                     <td><%#Eval("EndDate")%></td>
 

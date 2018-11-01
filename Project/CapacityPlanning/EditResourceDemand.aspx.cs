@@ -81,7 +81,7 @@ namespace CapacityPlanning
                     for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
                     {
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID");
-                        ClsCommon.ddlGetRole(ddl);
+                        ClsCommon.ddlGetRoleforDemand(ddl);
                         ddl.SelectedValue = lstDetail[i].ResourceTypeID.ToString();
                         //ddl.Items.FindByValue(lstDetail[0].ResourceTypeID.ToString()).Selected = true;
 
@@ -244,7 +244,7 @@ namespace CapacityPlanning
             //{
 
             DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-            DataRow drCurrentRow = null;
+            //DataRow drCurrentRow = null;
 
             //    if (dtCurrentTable.Rows.Count > 0)
             //  {

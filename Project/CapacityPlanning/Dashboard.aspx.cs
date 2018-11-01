@@ -12,7 +12,7 @@ namespace CapacityPlanning
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        string Total = "";
+        //string Total = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             DashboardBL dashboardBL = new DashboardBL();

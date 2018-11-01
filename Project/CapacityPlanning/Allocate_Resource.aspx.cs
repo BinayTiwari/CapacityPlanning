@@ -39,7 +39,8 @@ namespace CapacityPlanning
                     Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                     Label lblAllocated = (Label)item.FindControl("Allocated");
                     Label lblRole = (Label)item.FindControl("RoleName");
-                    if((int)Math.Ceiling(Convert.ToDouble(lblNoOfResources.Text)) == Convert.ToInt32(lblAllocated.Text))
+                    int noOfRes = (Int32)Math.Ceiling(Convert.ToDouble(lblNoOfResources.Text));
+                    if (noOfRes == Convert.ToInt32(lblAllocated.Text))
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
                         btn.Enabled = false;
@@ -193,8 +194,8 @@ namespace CapacityPlanning
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
                     string name = lst[0].EmployeetName;
                     string email = lst[0].Email;
-                    //rbl.Insert(details);
-                    //rbl.updateMap(empID);
+                    rbl.Insert(details);
+                    rbl.updateMap(empID);
 
                     sendConfirmation(name, email, RequesterEmailID, acnt, details.StartDate, details.EndDate);
 
