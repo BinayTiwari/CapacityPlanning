@@ -353,5 +353,28 @@ namespace businessLogic
             
         }
 
+        public static string GetRequesterEmail(string RequestID)
+        {
+            string Email = "";
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceDemand
+                                join q in db.CPT_ResourceMaster on p.ResourceRequestBy equals q.EmployeeMasterID
+                                where p.RequestID == RequestID
+                                select q.Email).ToList();
+
+                    Email = query[0];
+                }
+                return Email;
+            }
+            catch (Exception EX)
+            {
+                Console.Write(EX.Message);
+                return "";
+            }
+            
+        }
     }
 }
