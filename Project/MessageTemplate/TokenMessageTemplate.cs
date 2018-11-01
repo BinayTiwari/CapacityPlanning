@@ -112,6 +112,7 @@ namespace MessageTemplate
                     dict.Add("ENDDATE", valemail.ENDDATE);
                     token = ReplaceTokens(valemail.Body, dict);
                     valemail.Body = token;
+                    ccAddress += valemail.CC[0];
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
 
@@ -151,7 +152,7 @@ namespace MessageTemplate
                     dict.Add("STARTDATE", valemail.STARTDATE);
                     dict.Add("ENDDATE", valemail.ENDDATE);
                     token = ReplaceTokens(valemail.Body, dict);
-                    valemail.Body = token;                    
+                    valemail.Body = token;
                     if (!valemail.BccEmailAddresses.Contains(valemail.CC[0]))
                     {
                         ccAddress += valemail.CC[0] + ",";
@@ -226,11 +227,11 @@ namespace MessageTemplate
                 if (!string.IsNullOrEmpty(ccAddress))
                 {
                     string[] CCAddr = ccAddress.Split(',');
-                    foreach(string add in CCAddr)
+                    foreach (string add in CCAddr)
                     {
                         mail.CC.Add(add);
                     }
-                    
+
                 }
                 mail.To.Add(toAddress);
                 mail.Subject = subject;
@@ -242,7 +243,7 @@ namespace MessageTemplate
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
 
         }
     }
