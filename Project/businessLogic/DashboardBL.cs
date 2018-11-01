@@ -231,7 +231,7 @@ namespace businessLogic
  " INNER JOIN CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID ="+
  " CPT_AllocateResource.AccountID INNER JOIN CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID"+
 " = CPT_RoleMaster.RoleMasterID Where[CPT_RoleMaster].RoleMasterID"+
- " NOT IN(1,4,5,8,15,20) AND[CPT_AllocateResource].ISDeployed = 1"+
+ " NOT IN(1,4,5,8,15,20,26) AND[CPT_AllocateResource].ISDeployed = 1"+
  " Group by[CPT_AllocateResource].[RoleMasterID],[CPT_RoleMaster].[RoleName],"+
  " [CPT_AccountMaster].[AccountName]),"+
   " tbl as (select AccountID, count([CPT_AllocateResource].RoleMasterID)As Total, AccountName as ab"+
@@ -306,7 +306,7 @@ public static void TotalStregth(Label NumberOfResources)
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
         string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeeMasterID) Total  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN  CPT_ResourceMaster INNER JOIN  CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON  CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID " +
-                           " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20)   AND ISDeployed = 1 ";
+                           " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20,26)   AND ISDeployed = 1 ";
 
         using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
         {
@@ -368,7 +368,7 @@ public static void OnBench(Label NumberOfResourcesOnBench)
 
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
-        string SqlString = "Select COUNT(EmployeetName) FROM CPT_ResourceMaster WHERE RolesID NOT IN(1,4,5,8,15,20) AND EmployeeMasterID NOT IN " +
+        string SqlString = "Select COUNT(EmployeetName) FROM CPT_ResourceMaster WHERE RolesID NOT IN(1,4,5,8,15,20,26) AND EmployeeMasterID NOT IN " +
                            "(SELECT  ResourceID FROM  CPT_AllocateResource WHERE ISDeployed = 1 ) and ISDELETED =0";
 
         using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
@@ -394,7 +394,7 @@ public static void OpenRequests(Label NumberOpenRequests)
 
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
-        string SqlString = "SELECT   COUNT(CPT_ResourceDetails.NoOfResources) AS Total FROM CPT_ResourceDemand INNER JOIN  CPT_ResourceDetails ON CPT_ResourceDemand.RequestID = CPT_ResourceDetails.RequestID Where CPT_ResourceDemand.StatusMasterID = 19";
+        string SqlString = "SELECT COUNT(CPT_ResourceDetails.NoOfResources) AS Total FROM CPT_ResourceDemand INNER JOIN  CPT_ResourceDetails ON CPT_ResourceDemand.RequestID = CPT_ResourceDetails.RequestID Where CPT_ResourceDemand.StatusMasterID = 19";
 
         using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
         {
