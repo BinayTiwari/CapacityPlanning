@@ -236,7 +236,7 @@ namespace businessLogic
                                    " CPT_ResourceMaster.JoiningDate, CPT_RoleMaster.RoleName, CPT_DesignationMaster.DesignationName FROM            CPT_ResourceMaster INNER JOIN " +
                                    " CPT_RoleMaster ON CPT_ResourceMaster.RolesID = CPT_RoleMaster.RoleMasterID INNER JOIN " +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID " +
-                                   " WHERE(CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15)) AND ISDELETED =0 " +
+                                   " WHERE(CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,26)) AND ISDELETED =0 " +
                                    " ORDER BY CPT_ResourceMaster.EmployeetName";
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {

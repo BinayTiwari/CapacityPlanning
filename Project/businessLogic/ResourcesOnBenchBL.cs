@@ -30,7 +30,7 @@ namespace businessLogic
                                     "    AS AccountName, ISNULL(CPT_ResourceDemand.ProcessName, '-') AS ProcessName  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON " +
                                      "   CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID " +
                                       "  RIGHT OUTER JOIN CPT_ResourceMaster INNER JOIN  CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON " +
-                                       " CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID  WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20) " +
+                                       " CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID  WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20,26) " +
                                        " AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT RESOURCEID FROM CPT_AllocateResource WHERE[CPT_AllocateResource].ISDeployed = 1 ) AND ISDELETED =0 AND ( CPT_AllocateResource.Released = 1 OR  CPT_AllocateResource.Released IS null)";
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
