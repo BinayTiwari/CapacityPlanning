@@ -15,7 +15,7 @@ namespace CapacityPlanning
         int resourceID = 0;
         string acName = "";
         string prName = "";
-        string requestID = "";
+        //string requestID = "";
         string startDate = "";
         string endDate = "";
         string RequesterEmailID = "";

@@ -168,11 +168,10 @@ namespace CapacityPlanning
             try
             {
                 string RequestID = Request.QueryString["RequestID"];
+                string RequesterEmailID = AllocateResourceBL.GetRequesterEmail(RequestID);
                 CPT_AllocateResource details = new CPT_AllocateResource();
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
-
-
 
                 resourceID = AllocateResourceBL.ResourceID(name);
                 for (int j = 0; j < name.Count; j++)
@@ -188,19 +187,16 @@ namespace CapacityPlanning
                     details.RoleMasterID = roleID;
                     details.Released = false;
                     details.IsDeployed = false;
-                    //    if (NoOfResources >= 1)
-                    //        details.Utilization = 1;
-                    ////    else
                     details.Utilization = float.Parse(ViewState["utilization"].ToString());
 
                     string acnt = rbl.getAccountByID(details.AccountID);
                     List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
                     string name = lst[0].EmployeetName;
                     string email = lst[0].Email;
-                    rbl.Insert(details);
-                    rbl.updateMap(empID);
+                    //rbl.Insert(details);
+                    //rbl.updateMap(empID);
 
-                    sendConfirmation(name, email, acnt, details.StartDate, details.EndDate);
+                    sendConfirmation(name, email, RequesterEmailID, acnt, details.StartDate, details.EndDate);
 
                 }
                 Response.Redirect("ResourceMapping.aspx");
@@ -212,7 +208,7 @@ namespace CapacityPlanning
                 Console.WriteLine(ex.Message);
             }
         }
-        public void sendConfirmation(string name, string mail, string account, DateTime startDate, DateTime endDate)
+        public void sendConfirmation(string name, string mail, string RequesterEmail, string account, DateTime startDate, DateTime endDate)
         {
             try
             {
@@ -222,6 +218,8 @@ namespace CapacityPlanning
                 registrationEmail.To.Add(mail);
                 registrationEmail.ToUserName = new List<string>();
                 registrationEmail.ToUserName.Add(name);
+                registrationEmail.CC = new List<string>();
+                registrationEmail.CC.Add(RequesterEmail);
                 registrationEmail.STARTDATE = startDate.ToShortDateString().ToString();
                 registrationEmail.ENDDATE = endDate.ToShortDateString().ToString();
                 registrationEmail.ACCOUNT = account;
