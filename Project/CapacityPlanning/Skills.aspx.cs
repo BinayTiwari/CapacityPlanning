@@ -25,7 +25,8 @@ namespace CapacityPlanning
             try
             {
                 string SkillIDs = "";
-                string path = Server.MapPath(@"/Documents/");
+                
+                string path = HttpContext.Current.Server.MapPath("Documents/");
                 List<CPT_Certificate> lstCertificates = new List<CPT_Certificate>();                
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
                                

@@ -168,6 +168,7 @@ namespace CapacityPlanning
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
             DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+            //ListBox ddl2 = (ListBox)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID1");
 
             TextBox box3 = (TextBox)GridviewResourceDetail.Rows[0].Cells[4].FindControl("StartDate");
             TextBox box4 = (TextBox)GridviewResourceDetail.Rows[0].Cells[5].FindControl("EndDate");
@@ -176,7 +177,8 @@ namespace CapacityPlanning
 
 
             ClsCommon.ddlGetRoleforDemand(ddl);
-            ClsCommon.ddlGetSkillDDL(ddl1);          
+            ClsCommon.ddlGetSkillDDL(ddl1);
+            //ClsCommon.ddlGetSkill(ddl2);
 
         }
 

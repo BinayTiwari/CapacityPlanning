@@ -87,6 +87,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
+<%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+
                                 <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
@@ -139,6 +141,15 @@
             </div>
         </div>
     </div>
+    
+
+   <%-- <script type="text/javascript">
+        $(function () {
+            $('[id*=SkillID1]').multiselect({
+                includeSelectAllOption: true
+            });
+        });
+    </script>--%>
 
 
 </asp:Content>

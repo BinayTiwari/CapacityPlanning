@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -30,17 +32,22 @@ namespace CapacityPlanning
             {
                 string id = Request.QueryString["RequestID"];
                 lblResourceAllocation.Text = id;
+                
                 AllocateResourceBL displaydemand = new AllocateResourceBL();
                 displaydemand.AllocateResourceByID(rptResourceAllocation, id);
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
+                    int NoOfRes = 0;
+                    int NoOfAllocate = 0;
                     Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                     Label lblAllocated = (Label)item.FindControl("Allocated");
                     Label lblRole = (Label)item.FindControl("RoleName");
-                    int noOfRes = (Int32)Math.Ceiling(Convert.ToDouble(lblNoOfResources.Text));
-                    if (noOfRes == Convert.ToInt32(lblAllocated.Text))
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                    NoOfRes = (int)Math.Ceiling(decimal.Parse(lblNoOfResources.Text));
+                    NoOfAllocate= (int)Math.Ceiling(decimal.Parse(lblAllocated.Text));
+                    if (NoOfRes==NoOfAllocate)
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
                         btn.Enabled = false;

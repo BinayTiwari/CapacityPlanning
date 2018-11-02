@@ -32,7 +32,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <label style="font-size:medium"><span style="color: red;"> *</span>Please enter your Employee ID</label>
+                                <label style="font-size: medium"><span style="color: red;">*</span>Please enter your Employee ID</label>
                             </div>
                             <div class="col-md-4">
                                 <asp:TextBox ID="EmpID" runat="server" MaxLength="6" CssClass="form-control"></asp:TextBox>
@@ -48,7 +48,8 @@
                         <div class="row center-block">
 
                             <div class="row center-block">
-                                <label style="font-size:medium"><span style="color: red;">*</span>Please select the skills on which you have the expertise:
+                                <label style="font-size: medium">
+                                    <span style="color: red;">*</span>Please select the skills on which you have the expertise:
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;Rating(1:Low, 5:High)</label>
                             </div>
@@ -281,6 +282,7 @@
                             </div>
                             <br />
                             <br />
+
                         </div>
                         <br />
                         <br />
@@ -301,7 +303,10 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        
     </form>
+
+
     <div id="myDIV" class="center-block" style="display: none; text-align: center" runat="server">
         <br />
         <br />
@@ -310,7 +315,7 @@
         <br />
         <br />
         <h1 style="color: green">Thank You!<br />
-            Your Skills has been successfully submitted</h1>
+            Your Skills has been successfully submitted.</h1>
     </div>
 </body>
 </html>
