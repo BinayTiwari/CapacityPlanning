@@ -103,7 +103,7 @@ namespace businessLogic
             using (CPContext db = new CPContext())
             {
                 var query = (from c in db.CPT_ResourceMaster
-                            where c.EmployeeMasterID == id
+                            where c.EmployeeMasterID == id && c.IsDeleted==0
                             select c).ToList();
                 if (query.Count() > 0)
                 {
