@@ -64,7 +64,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                    OnCheckedChanged="chkRPA_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -102,7 +103,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkLangPrg" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkLangPrg" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                    OnCheckedChanged="chkLangPrg_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -140,7 +142,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkMS" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkMS" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                    OnCheckedChanged="chkMS_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -178,7 +181,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkFrk" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkFrk" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                    OnCheckedChanged="chkFrk_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -216,7 +220,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkDB" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkDB" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                    OnCheckedChanged="chkDB_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -254,7 +259,8 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkOther" SkillID='<%#Eval("SkillsMasterID") %>' runat="server" />
+                                                <asp:CheckBox ID="chkOther" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
+                                                    OnCheckedChanged="chkOther_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
 
@@ -305,8 +311,6 @@
         </div>
         
     </form>
-
-
     <div id="myDIV" class="center-block" style="display: none; text-align: center" runat="server">
         <br />
         <br />
@@ -317,5 +321,7 @@
         <h1 style="color: green">Thank You!<br />
             Your Skills has been successfully submitted.</h1>
     </div>
+
+    
 </body>
 </html>

@@ -17,6 +17,169 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 SetSkillsBL.GetNewSkills(rptRPA, rptLangPrg, rptMS, rptFrk, rptDB, rptOther);
+                
+            }
+        }
+
+        protected void chkRPA_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptRPA.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkRPA");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlRPARating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("RPACertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void chkLangPrg_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptLangPrg.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkLangPrg");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlLangPrgRating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("LangPrgCertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void chkMS_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptMS.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkMS");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlMSRating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("MSCertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void chkFrk_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptFrk.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkFrk");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlFrkRating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("FrkCertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void chkDB_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptDB.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkDB");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlDBRating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("DBCertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        protected void chkOther_Changed(object sender, EventArgs e)
+        {
+            try
+            {
+                //foreach (RepeaterItem item in rptOther.Items)
+                //{
+                //    CheckBox chk = (CheckBox)item.FindControl("chkOther");
+                //    DropDownList ddlRating = (DropDownList)item.FindControl("ddlOtherRating");
+                //    FileUpload filePath = (FileUpload)item.FindControl("OtherCertificate");
+                //    if (chk.Checked)
+                //    {
+                //        ddlRating.Enabled = true;
+                //        filePath.Enabled = true;
+                //    }
+                //    else
+                //    {
+                //        ddlRating.Enabled = false;
+                //        filePath.Enabled = false;
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -25,7 +188,7 @@ namespace CapacityPlanning
             try
             {
                 string SkillIDs = "";
-                
+                string Skillname = "";
                 string path = HttpContext.Current.Server.MapPath("Documents/");
                 List<CPT_Certificate> lstCertificates = new List<CPT_Certificate>();                
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
@@ -40,14 +203,18 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("RPACertificate");
                         if (chk.Checked)
                         {
+                            
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
-                            {                     
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+                            {
+                                
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                             
                             }
                             
                             lstCertificates.Add(details);
@@ -61,14 +228,16 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("LangPrgCertificate");
                         if (chk.Checked)
                         {
+                            
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -81,14 +250,16 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("MSCertificate");
                         if (chk.Checked)
                         {
+                           
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -101,14 +272,17 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("FrkCertificate");
                         if (chk.Checked)
                         {
+                           
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -121,14 +295,17 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("DBCertificate");
                         if (chk.Checked)
                         {
+                           
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
+                            
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -141,14 +318,16 @@ namespace CapacityPlanning
                         FileUpload filePath = (FileUpload)item.FindControl("OtherCertificate");
                         if (chk.Checked)
                         {
+                           
                             details.EmployeeID = Convert.ToInt32(EmpID.Text);
                             details.SkillID = Convert.ToInt32(chk.Attributes["SkillID"]);
                             SkillIDs += chk.Attributes["SkillID"] + ",";
+                            Skillname = chk.Attributes["Skillname"];
                             details.Rating = Convert.ToInt32(ddlRating.SelectedValue);
                             if (filePath.HasFile)
                             {
-                                filePath.SaveAs(path + filePath.FileName);
-                                details.CertificatePath = path + filePath.FileName;
+                                filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
+                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
