@@ -34,6 +34,7 @@
                             <th>Designation</th>
                             <th>Account Name</th>
                             <th>Process</th>
+                            <th>Utilization</th>
                             <th>RequestedBy</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -52,6 +53,7 @@
                                     <td><%#Eval("DesignationName")%></td>
                                     <td><%#Eval("AccountName")%></td>
                                     <td><%#Eval("ProcessName")%></td>
+                                    <td><%#string.Concat(Eval("Utilization"),"%") %></td>
                                     <td><%#Eval("RequestedBy") %></td>
                                     <td><%#Eval("StartDate")%></td>
                                     <td><%#Eval("EndDate")%></td>
