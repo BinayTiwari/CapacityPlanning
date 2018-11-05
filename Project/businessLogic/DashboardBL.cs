@@ -306,7 +306,7 @@ public static void TotalStregth(Label NumberOfResources)
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
         string SqlString = "SELECT COUNT(CPT_ResourceMaster.EmployeeMasterID) Total  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN  CPT_ResourceMaster INNER JOIN  CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON  CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID " +
-                           " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20,26)   AND ISDeployed = 1 ";
+                           " WHERE CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,20,26,25)   AND ISDeployed = 1  AND ISDELETED =0 ";
 
         using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
         {
