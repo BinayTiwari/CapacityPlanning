@@ -58,7 +58,9 @@
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
                                             <td>
                                                
-                                                <asp:Button ID="btnMap" Class="btn btn-success btn-md" runat="server" Text="Map"  CommandArgument='<%#Eval("RequestID")%>' OnClick="btnMap_Click" /> </td>
+                                                <asp:Button ID="btnMap" Class="btn btn-success btn-md" runat="server" Text="Map"
+                                                    AccountName='<%#string.Concat(Eval("AccountName"),"-", Eval("CityName"))%>' 
+                                                    ProcessName='<%#Eval("ProcessName") %>' CommandArgument='<%#Eval("RequestID")%>' OnClick="btnMap_Click" /> </td>
                                         </tr>
                                     </ItemTemplate>
 

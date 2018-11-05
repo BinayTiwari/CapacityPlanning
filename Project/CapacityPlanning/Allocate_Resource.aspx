@@ -16,12 +16,15 @@
         <asp:Button ID="btnBack" Text="&#8617;  Back" runat="server" CssClass="btn btn-primary pull-right" PostBackUrl="ResourceMapping.aspx" />
 
         <div class="col-lg-12">
-
+            <strong>Account : &nbsp;</strong>
+                <asp:Label ID="lblAccount" runat="server" Text=""></asp:Label><br />
+              <strong>  Process : &nbsp;  </strong><asp:Label ID="lblProcessName" runat="server" Text=""></asp:Label><br />
+            <br />
             <div class="panel panel-default">
 
                 <div class="panel-heading">
                     Allocate Resources for Request ID :
-                        <asp:Label ID="lblResourceAllocation" runat="server" Text='<%#Eval("RequestID") %>'></asp:Label>
+                      <asp:Label ID="lblResourceAllocation" runat="server" Text='<%#Eval("RequestID") %>'></asp:Label>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -32,11 +35,12 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables1">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Request Id</th>
+                                    <%--<th>ID</th>
+                                    <th>Request Id</th>--%>
                                     <th>Role</th>
                                     <th>Skills</th>
                                     <th>No of Resources</th>
+                                    <%--<th>Requested By</th>--%>
                                     <th>Allocated</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
@@ -50,17 +54,15 @@
                                 <asp:Repeater ID="rptResourceAllocation" runat="server" OnItemDataBound="rptResourceAllocation_ItemDataBound">
                                     <ItemTemplate>
                                         <tr class="odd gradeX">
+                                            <%--<td><asp:Label ID="lbId" runat="server" Text='<%#Eval("RequestDetailID")%>' /></td>
+                                            <td><asp:Label ID="RequestId" runat="server" Text='<%#Eval("RequestId")%>' /></td>--%>
                                             <td>
-                                                <asp:Label ID="lbId" runat="server" Text='<%#Eval("RequestDetailID")%>' /></td>
-                                            <td>
-                                                <asp:Label ID="RequestId" runat="server" Text='<%#Eval("RequestId")%>' /></td>
-                                            <td>
-                                                <asp:Label ID="RoleName" runat="server" Text='<%#Eval("RoleName")%>' />
-                                            </td>
+                                                <asp:Label ID="RoleName" runat="server" Text='<%#Eval("RoleName")%>' /></td>
                                             <td>
                                                 <asp:Label ID="SkillsName" runat="server" Text='<%#Eval("SkillsName")%>' /></td>
                                             <td>
                                                 <asp:Label ID="lblNoOfResources" runat="server" Text='<%#Eval("NoOfResources")%>' /></td>
+                                            <%--<td><asp:Label ID="Label1" runat="server" Text='<%#Eval("RequestedBy")%>' /></td>--%>
                                             <td>
                                                 <asp:Label ID="Allocated" runat="server" Text='<%#Eval("Allocated")%>' /></td>
                                             <td>
@@ -73,8 +75,8 @@
 
 
                                             <td>
-                                               <%-- <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" SkillsName='<%#Eval("SkillsName") %>' StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />--%>
-                                             <asp:Button ID="btnAlign" CssClass="btn btn-success btn-md" runat="server" Text="Align"  CommandArgument='<%#Eval("RequestDetailID")%>' OnClick="btnAllocate_Resource_Click" />
+                                                <%-- <asp:Button ID="btnAlign" Class="btn btn-success btn-md" runat="server" Text="Align" SkillsName='<%#Eval("SkillsName") %>' StartDate='<%#Eval("StartDate","{0:d}")%>' EndDate='<%#Eval("EndDate","{0:d}")%>' CommandArgument='<%#Eval("RoleMasterID")%>' OnClick="btnAllocate_Resource_Click" />--%>
+                                                <asp:Button ID="btnAlign" CssClass="btn btn-success btn-md" runat="server" Text="Align" CommandArgument='<%#Eval("RequestDetailID")%>' OnClick="btnAllocate_Resource_Click" />
                                             </td>
 
                                         </tr>
@@ -121,7 +123,7 @@
 
                                         <asp:Button ID="btnPreviousWeek" runat="server" CssClass="btn btn-success btn-md" Text="&#8678; Availability in Previous Week" OnClick="btnPreviousWeek_Click" />
                                     &nbsp;
-                                       <asp:Button ID="btnNext" runat="server" CSSClass="btn btn-success btn-md" Text=" Availability in Next Week &#8680;" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <asp:Button ID="btnNext" runat="server" CssClass="btn btn-success btn-md" Text=" Availability in Next Week &#8680;" OnClick="btnNext_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
               
                                 </div>
                                 <br />
@@ -136,11 +138,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Designation</th>
+                                                    <%--<th>Designation</th>--%>
                                                     <th>Account</th>
-                                                    <th>Current Assignment</th>
-                                                    <th>Owner</th>
+                                                    <th>Previous/Current Assignment</th>
+                                                    <th>Requested by</th>
                                                     <th>Release Date</th>
+                                                    <th>Is Released ?</th>
                                                     <th>Align</th>
                                                 </tr>
                                             </thead>
@@ -149,14 +152,15 @@
                                                     <ItemTemplate>
                                                         <tr class="odd gradeX">
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EmployeetName")%> </td>
-                                                            <td><%#DataBinder.Eval(Container,"DataItem.Designation")%></td>
+                                                            <%--<td><%#DataBinder.Eval(Container,"DataItem.Designation")%></td>--%>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.AccountName")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
+                                                            <td><%#DataBinder.Eval(Container,"DataItem.IsReleased")%></td>
 
                                                             <td>
-                                                                <asp:CheckBox ID="chkRequired" EmployeeName='<%#Eval("EmployeetName") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server"/>
+                                                                <asp:CheckBox ID="chkRequired" EmployeeMasterID='<%#Eval("EmployeeMasterID") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
                                                             </td>
 
                                                         </tr>
@@ -173,7 +177,7 @@
                                     <div class="pull-right">
                                         <asp:Button ID="btnSave" Style="float: left;" CssClass="btn btn-success btn-md" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
                                     </div>
-                                   
+
                                     <div class="pull-left">
                                         <asp:Button ID="UnDO" Style="float: right;" class="btn btn-success btn-md" runat="server" Text="Undo Changes" OnClick="UnDO_Click" />
                                     </div>
@@ -204,12 +208,12 @@
                 allocated = 0;
             NoOfResources = NoOfResources - allocated;
             if (numberOfChecked === NoOfResources) {
-                $('input:checkbox').attr('disabled',true);
-               
-                
+                $('input:checkbox').attr('disabled', true);
+
+
             }
         }
-          
-        
+
+
     </script>
 </asp:Content>

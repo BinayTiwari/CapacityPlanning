@@ -25,10 +25,11 @@ namespace CapacityPlanning
             try
             {
                 Button theButton = sender as Button;
-              //  Session["id"] = theButton.CommandArgument;
-               // string getID = theButton.CommandArgument;
+
                 //AllocateResourceBL.AllocateResourceByID(rptResourceAllocation, getID);
-                Response.Redirect("Allocate_Resource.aspx?RequestID="+theButton.CommandArgument+"");
+                string AccountName = theButton.Attributes["AccountName"];
+                string ProcessName = theButton.Attributes["ProcessName"];
+                Response.Redirect("Allocate_Resource.aspx?RequestID="+theButton.CommandArgument+ "&AccountName="+ AccountName + "&ProcessName="+ ProcessName +"");
                 
             }
             catch (Exception ex)

@@ -17,26 +17,31 @@ namespace CapacityPlanning
 {
     public partial class Allocate_Resource : System.Web.UI.Page
     {
-        List<string> name = new List<string>();
+        List<Int32> name = new List<Int32>();
         static string StartDate;
         static string EndDate;
         static string skillID;
         static int roleID;
         static int requestDetailID;
-        List<int> resourceID = new List<int>();
        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
                 string id = Request.QueryString["RequestID"];
+
                 lblResourceAllocation.Text = id;
-                
-                AllocateResourceBL displaydemand = new AllocateResourceBL();
-                displaydemand.AllocateResourceByID(rptResourceAllocation, id);
+                lblAccount.Text = Request.QueryString["AccountName"];
+                lblProcessName.Text = Request.QueryString["ProcessName"];
+
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+
+                AllocateResourceBL displaydemand = new AllocateResourceBL();
+                displaydemand.AllocateResourceByID(rptResourceAllocation, id, lstdetils[0].RolesID);
+
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
                     int NoOfRes = 0;
@@ -46,36 +51,14 @@ namespace CapacityPlanning
                     Label lblRole = (Label)item.FindControl("RoleName");
                     Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
                     NoOfRes = (int)Math.Ceiling(decimal.Parse(lblNoOfResources.Text));
-                    NoOfAllocate= (int)Math.Ceiling(decimal.Parse(lblAllocated.Text));
-                    if (NoOfRes==NoOfAllocate)
+                    NoOfAllocate = (int)Math.Ceiling(decimal.Parse(lblAllocated.Text));
+                    if (NoOfRes == NoOfAllocate)
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
                         btn.Enabled = false;
                     }
-                    int rolid = AllocateResourceBL.getRole(lblRole.Text);
-                    if (lstdetils[0].RolesID == 20)
-                    {
-                        if(rolid!=14)
-                        {
-                            Button btn = (Button)item.FindControl("btnAlign");
-                            btn.Enabled = false;
-                        }
-                    }
-                    else if (lstdetils[0].RolesID == 25)
-                    {
-                        if(rolid!=13)
-                        {
-                            Button btn = (Button)item.FindControl("btnAlign");
-                            btn.Enabled = false;
-                        }
-                    }
-
-
+                    
                 }
-                
-
-
-
             }
         }
         protected void btnAllocate_Resource_Click(object sender, EventArgs e)
@@ -105,7 +88,7 @@ namespace CapacityPlanning
 
                 RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
                 Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
-                
+
 
                 float utilization = 0;
                 if (float.Parse(lblNoOfResources.Text) < 1)
@@ -120,15 +103,16 @@ namespace CapacityPlanning
                 ViewState["utilization"] = utilization;
                 lblStartDate.Text = StartDate;
                 lblEndDate.Text = EndDate;
-                if(lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
+                if (lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
                 {
-                    AccordingToRoleSearch();
+                    //AccordingToRoleSearch();
+                    SearchAvailability();
                 }
                 else
                 {
                     SearchAvailability();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -149,7 +133,7 @@ namespace CapacityPlanning
             try
             {
 
-                
+
 
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
@@ -157,8 +141,8 @@ namespace CapacityPlanning
                     var chek = (CheckBox)sender;
                     if (chk.Checked)
                     {
-                        string EmployeeName = chek.Attributes["EmployeeName"];
-                        name.Add(EmployeeName);
+                        int EmployeeID = Convert.ToInt32(chek.Attributes["EmployeeMasterID"]);
+                        name.Add(EmployeeID);
 
                     }
 
@@ -181,24 +165,25 @@ namespace CapacityPlanning
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
-                resourceID = AllocateResourceBL.ResourceID(name);
-                for (int j = 0; j < name.Count; j++)
+
+                foreach (var item in name)
                 {
 
-                    details.ResourceID = resourceID[j];
+                    details.ResourceID = Convert.ToInt32(item);
                     details.RequestDetailID = requestDetailID;
+
                     details.RequestID = RequestID;
                     details.AccountID = AllocateResourceBL.getAccountID(details.RequestID.ToString());
                     details.StartDate = Convert.ToDateTime(StartDate);
                     details.EndDate = Convert.ToDateTime(EndDate);
-                    empID.EmployeeMasterID = resourceID[j];
+                    empID.EmployeeMasterID = Convert.ToInt32(item);
                     details.RoleMasterID = roleID;
                     details.Released = false;
                     details.IsDeployed = false;
                     details.Utilization = float.Parse(ViewState["utilization"].ToString());
 
                     string acnt = rbl.getAccountByID(details.AccountID);
-                    List<CPT_ResourceMaster> lst = rbl.getMailDetails(resourceID[j]);
+                    List<CPT_ResourceMaster> lst = rbl.getMailDetails(Convert.ToInt32(item));
                     string name = lst[0].EmployeetName;
                     string email = lst[0].Email;
                     rbl.Insert(details);
@@ -247,7 +232,7 @@ namespace CapacityPlanning
             string id = Request.QueryString["RequestID"];
             lblSuggestions.Text = id;
             AllocateResourceBL rbl = new AllocateResourceBL();
-            rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID,StartDate);
+            rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID, StartDate);
         }
         public void AccordingToRoleSearch()
         {
@@ -255,16 +240,16 @@ namespace CapacityPlanning
             CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
             List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
             lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
-            if(lstdetils[0].RolesID == 20)
+            if (lstdetils[0].RolesID == 20)
             {
                 rolesID = 14;
             }
-            else if(lstdetils[0].RolesID == 25)
+            else if (lstdetils[0].RolesID == 25)
             {
                 rolesID = 13;
             }
             AllocateResourceBL rbl = new AllocateResourceBL();
-            rbl.getEmployeeByRole(rptSuggestions, rolesID, EndDate, skillID, StartDate);
+            //rbl.getEmployeeByRole(rptSuggestions, rolesID, EndDate, skillID, StartDate);
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -289,7 +274,7 @@ namespace CapacityPlanning
                     lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                     if (lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
                     {
-                        AccordingToRoleSearch();
+                        SearchAvailability();
                     }
                     else
                     {
@@ -322,7 +307,7 @@ namespace CapacityPlanning
                     lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
                     if (lstdetils[0].RolesID == 20 || lstdetils[0].RolesID == 25)
                     {
-                        AccordingToRoleSearch();
+                        SearchAvailability();
                     }
                     else
                     {

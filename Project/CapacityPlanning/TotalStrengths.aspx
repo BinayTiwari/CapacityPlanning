@@ -28,14 +28,14 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTables">
                     <thead>
                         <tr>
-                            <th>Sr. No.</th>
+                            <th>#</th>
                             <th>Employee ID</th>
                             <th>Employee Name</th>
-                            <th>Designation</th>
+                           <%-- <th>Designation</th>--%>
                             <th>Account Name</th>
                             <th>Process</th>
-                            <th>Utilization</th>
-                            <th>RequestedBy</th>
+                            <th>Allocation</th>
+                            <th>Requested By</th>
                             <th>Start Date</th>
                             <th>End Date</th>
 
@@ -50,7 +50,7 @@
                                     <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%#Eval("EmployeeMasterID")%></td>
                                     <td><%#Eval("EmployeetName")%></td>
-                                    <td><%#Eval("DesignationName")%></td>
+                                  <%--  <td><%#Eval("DesignationName")%></td>--%>
                                     <td><%#Eval("AccountName")%></td>
                                     <td><%#Eval("ProcessName")%></td>
                                     <td><%#string.Concat(Eval("Utilization"),"%") %></td>
