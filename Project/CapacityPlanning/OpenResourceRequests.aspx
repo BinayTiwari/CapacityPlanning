@@ -27,13 +27,14 @@
                 <table class="table table-striped table-bordered table-hover" id="dataTables">
                     <thead>
                         <tr>
-                            <th>Sr. No.</th>
+                            <th>#</th>
                             <th>Request ID</th>
                             <th>Opportunity Type</th>
                             <th>Account Name</th>
                             <th>Process Name</th>
                             <th>Role Name</th>
-                            <th>Skills Name</th>
+                            <th>Skill</th>
+                            <th>Requested By</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>No Of Resources</th>
@@ -52,6 +53,7 @@
                                     <td><%#Eval("ProcessName") %></td>
                                     <td><%#Eval("RoleName")%></td>
                                     <td><%#Eval("SkillsName")%></td>
+                                    <td><%#Eval("RequestedBy")%></td>
                                     <td><%#Eval("StartDate", "{0:MMM dd yyyy}")%></td>
                                     <td><%#Eval("EndDate", "{0:MMM dd yyyy}")%></td>
                                     <td><%#Eval("NoOfResources")%></td>
