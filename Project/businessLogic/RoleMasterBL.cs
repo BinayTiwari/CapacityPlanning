@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace businessLogic
 {
@@ -47,6 +48,7 @@ namespace businessLogic
                     foreach (CPT_RoleMaster detail in query)
                     {
                         detail.RoleName = RoleDetails.RoleName;
+                        detail.Show_in_Dropdown = RoleDetails.Show_in_Dropdown;
                     }
                     db.SaveChanges();
                 }
@@ -84,38 +86,32 @@ namespace businessLogic
             }
             return 1;
         }
-        public List<CPT_RoleMaster> getRole()
+
+        public static void getRole(GridView GvRole)
         {
-
-            List<CPT_RoleMaster> lstRoleName = new List<CPT_RoleMaster>();
-            using (CPContext db = new CPContext())
+            try
             {
-                //GridView1.DataSource = db.CPT_CountryMaster.ToList();
-                var query = (from c in db.CPT_RoleMaster
-                             orderby c.RoleMasterID descending
-                             where c.IsActive == true
-                             select new
-                             {
-                                 c.RoleMasterID,
-                                 c.RoleName
-                             }).ToList();
-
-                foreach (var item in query)
+                using (CPContext db = new CPContext())
                 {
-                    CPT_RoleMaster Role = new CPT_RoleMaster();
+                    var query = (from c in db.CPT_RoleMaster
+                                 orderby c.RoleMasterID descending
+                                 where c.IsActive == true
+                                 select new
+                                 {
+                                     c.RoleMasterID,
+                                     c.RoleName,
+                                     c.Show_in_Dropdown
+                                 }).ToList();
 
-                    Role.RoleName = item.RoleName;
-                    Role.RoleMasterID = item.RoleMasterID;
-
-
-                    lstRoleName.Add(Role);
+                    GvRole.DataSource = query;
+                    GvRole.DataBind();
                 }
-
-
-                return lstRoleName;
-
             }
-
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+                          
         }
     }
 }
