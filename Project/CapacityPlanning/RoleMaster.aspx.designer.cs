@@ -22,6 +22,24 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox RoleNameTextBox;
         
         /// <summary>
+        /// lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl;
+        
+        /// <summary>
+        /// chkShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkShow;
+        
+        /// <summary>
         /// RoleAddButton control.
         /// </summary>
         /// <remarks>

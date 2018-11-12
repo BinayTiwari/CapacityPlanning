@@ -142,8 +142,6 @@ namespace CapacityPlanning
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
 
-
-
                 ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
                 List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
@@ -164,7 +162,7 @@ namespace CapacityPlanning
                 }
 
                 insertResourceDemand.Update(resourceDemandDetails);
-                Email();
+                Email(requestID,Convert.ToInt32(StatusMasterID.SelectedValue));
 
                 Response.Redirect("ResourceDemand.aspx");
 
@@ -407,7 +405,7 @@ namespace CapacityPlanning
             }
         }
 
-        public void Email()
+        public void Email(string RequestID,int Status)
         {
             try
             {
@@ -416,7 +414,15 @@ namespace CapacityPlanning
                 string employeeEmailID = lstdetils[0].Email;
 
                 CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
-                registrationEmail.Name = "UpdateResourceDemand";
+                if(Status == 23)
+                {
+                    registrationEmail.Name = "DropResourceRequest";
+                    registrationEmail.STATUS = requestID;
+                }
+                else
+                {
+                    registrationEmail.Name = "UpdateResourceDemand";
+                }
                 registrationEmail.To = new List<string>();
                 registrationEmail.To.Add(employeeEmailID);
                 registrationEmail.ToUserName = new List<string>();
