@@ -12,13 +12,13 @@
 
     <div class="row">
         <div class="form-group form-inline col-lg-12">
-            <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server" required></asp:TextBox>
-
+            <asp:TextBox ID="RoleNameTextBox" placeholder="Role" CssClass="form-control" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lbl" runat="server">Show</asp:Label>&nbsp;&nbsp;<asp:CheckBox ID="chkShow" runat="server" CssClass="form-control" />&nbsp;&nbsp;
             <asp:Button ID="RoleAddButton" runat="server" Text="Add Role" CssClass="btn btn-md btn-success" OnClick="RoleAddButton_Click" />
         </div>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidatorRole" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox"
+        &nbsp;&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidatorRole" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox"
             ValidationExpression="^[A-Za-z][A-Za-z ]+$" ErrorMessage="*Only Alphabets are allowed." />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox" 
+        &nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidatorRole" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="RoleNameTextBox" 
     ErrorMessage="*Only Alphabets are allowed." />
 
         <div class="col-lg-12">
@@ -40,7 +40,7 @@
                             <Columns>
                                 <asp:BoundField ReadOnly="True" DataField="RoleMasterID" HeaderText="Role ID" />
                                 <asp:BoundField DataField="RoleName" HeaderText="Role" />
-
+                                <asp:BoundField DataField="Show_in_Dropdown" HeaderText="Show" />
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:ImageButton ID="ButtonEdit" runat="server" CssClass="center-block" ImageUrl="~/images/22.png" CommandName="Edit" CausesValidation="false" formnovalidate />
