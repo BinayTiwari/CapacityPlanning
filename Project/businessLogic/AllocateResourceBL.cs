@@ -66,10 +66,10 @@ namespace businessLogic
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.SkillsID,CPT_ResourceMaster.DesignationID," +
-                                   "CASE ISNULL(CPT_AllocateResource.[Released],0) WHEN 0 Then 'No' ELSE 'Yes' END   AS IsReleased," +
+                                   "CASE ISNULL(CAST(CPT_AllocateResource.Released As varchar(12)),'-') WHEN '-' Then '-' when '0' then 'No' ELSE 'Yes' END AS IsReleased," +
                                    "CPT_ResourceMaster.EmployeetName,[dbo].[DesignationName](CPT_ResourceMaster.DesignationID) As Designation," +
-                                   " CPT_AccountMaster.AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy," +
-                                   " CPT_ResourceDemand.ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate" +
+                                   " ISNULL(CAST(CPT_AccountMaster.AccountName As VARCHAR(50)), '-') AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy," +
+                                   " ISNULL(CAST(CPT_ResourceDemand.ProcessName As VARCHAR(50)), '-') ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate" +
                                    " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON" +
                                    " CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN" +
                                    " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +

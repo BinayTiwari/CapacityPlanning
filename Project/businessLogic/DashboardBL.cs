@@ -333,9 +333,9 @@ public static void OpenResourceRequest(Repeater rpt)
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
         string SqlString = " SELECT  CPT_ResourceDetails.RequestID, CPT_RoleMaster.RoleName,CPT_ResourceDemand.ProcessName, " +
-                          "   CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, " +
-                            " CPT_OpportunityMaster.OpportunityType,  CPT_AccountMaster.AccountName,  ISNULL(dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID, CPT_ResourceDetails.RequestDetailID),0) As Allocated" +
-                            " FROM CPT_SkillsMaster INNER JOIN " +
+                           " CPT_SkillsMaster.SkillsName, CPT_ResourceDetails.NoOfResources, CPT_ResourceDetails.StartDate, CPT_ResourceDetails.EndDate, " +
+                            " CPT_OpportunityMaster.OpportunityType,CPT_AccountMaster.AccountName,ISNULL(dbo.TotalResurcesAllocated(CPT_RoleMaster.RoleMasterID, CPT_ResourceDetails.RequestDetailID),0) As Allocated," +
+                            " dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as RequestedBy FROM CPT_SkillsMaster INNER JOIN " +
                            "  CPT_ResourceDetails INNER JOIN " +
                             "  CPT_RoleMaster ON CPT_ResourceDetails.ResourceTypeID = CPT_RoleMaster.RoleMasterID ON " +
                              " CPT_SkillsMaster.SkillsMasterID = CPT_ResourceDetails.SkillID INNER JOIN " +
