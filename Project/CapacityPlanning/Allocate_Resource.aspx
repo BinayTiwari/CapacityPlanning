@@ -141,7 +141,7 @@
                                                     <%--<th>Designation</th>--%>
                                                     <th>Account</th>
                                                     <th>Previous/Current Assignment</th>
-                                                    <th>Requested by</th>
+                                                    <%--<th>Requested by</th>--%>
                                                     <th>Release Date</th>
                                                     <th>Is Released ?</th>
                                                     <th>Align</th>
@@ -155,7 +155,7 @@
                                                             <%--<td><%#DataBinder.Eval(Container,"DataItem.Designation")%></td>--%>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.AccountName")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.ProcessName")%> </td>
-                                                            <td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>
+                                                            <%--<td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>--%>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.IsReleased")%></td>
 
