@@ -26,7 +26,7 @@ namespace Entity
 
         public bool IsActive { get; set; }
 
-        public bool? Show_in_Dropdown { get; set; }
+        public bool Show_in_Dropdown { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
