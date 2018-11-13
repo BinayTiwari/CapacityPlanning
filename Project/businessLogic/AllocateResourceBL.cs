@@ -65,20 +65,29 @@ namespace businessLogic
                 string dtE = string.Format("{0:yyyy-MM-dd}", Convert.ToDateTime(endDate));
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName,CPT_ResourceMaster.SkillsID,CPT_ResourceMaster.DesignationID," +
-                                   "CASE ISNULL(CAST(CPT_AllocateResource.Released As varchar(12)),'-') WHEN '-' Then '-' when '0' then 'No' ELSE 'Yes' END AS IsReleased," +
-                                   "CPT_ResourceMaster.EmployeetName,[dbo].[DesignationName](CPT_ResourceMaster.DesignationID) As Designation," +
-                                   " ISNULL(CAST(CPT_AccountMaster.AccountName As VARCHAR(50)), '-') AccountName,CPT_ResourceMaster.RolesID,CPT_AllocateResource.ResourceID,CPT_ResourceDemand.ResourceRequestBy," +
-                                   " ISNULL(CAST(CPT_ResourceDemand.ProcessName As VARCHAR(50)), '-') ProcessName,dbo.Owner(CPT_ResourceDemand.ResourceRequestBy) as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate" +
-                                   " FROM CPT_AllocateResource RIGHT OUTER JOIN CPT_ResourceDemand ON" +
-                                   " CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN" +
-                                   " CPT_ResourceMaster ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID" +
-                                   " LEFT OUTER JOIN CPT_AccountMaster ON CPT_AllocateResource.AccountID" +
-                                   " = CPT_AccountMaster.AccountMasterID Where(CPT_ResourceMaster.RolesID = " + roleID + "   and(skillsid" +
-                                   " in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%" + skillID + "%') and CPT_ResourceMaster.EmployeeMasterID NOT" +
-                                   " IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource WHERE" +
-                                   " (CPT_AllocateResource.EndDate  >= '" + dtS + "') AND Released=0 ) AND  ISDELETED = 0))";
-                                   
+                string SqlString = " SELECT EmployeeMasterID,EmployeetName,AccountName,ProcessName,EndDate,IsReleased FROM "+
+                                   " (SELECT CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, CASE ISNULL(CAST(CPT_AllocateResource.Released" +
+                                   " As varchar(12)), '-') WHEN '-' Then '-' when '0' then 'No' ELSE 'Yes' END AS IsReleased,[dbo].[DesignationName]"+
+                                   " (CPT_ResourceMaster.DesignationID) As Designation, ISNULL(CAST(CPT_AccountMaster.AccountName As VARCHAR(50)), '-')"+
+                                   " AccountName, CPT_ResourceMaster.RolesID, CPT_AllocateResource.ResourceID, CPT_ResourceDemand.ResourceRequestBy,"+
+                                   " ISNULL(CAST(CPT_ResourceDemand.ProcessName As VARCHAR(50)), '-') ProcessName, dbo.Owner(CPT_ResourceDemand.ResourceRequestBy)"+
+                                   " as Owner, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') EndDate, CPT_AllocateResource.EndDate As binner FROM CPT_AllocateResource RIGHT OUTER JOIN"+
+                                   " CPT_ResourceDemand ON CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID RIGHT OUTER JOIN CPT_ResourceMaster"+
+                                   " ON CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID LEFT OUTER JOIN CPT_AccountMaster ON"+
+                                   " CPT_AllocateResource.AccountID = CPT_AccountMaster.AccountMasterID Where(CPT_ResourceMaster.RolesID = "+ roleID +" and"+
+                                   " (skillsid in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+ skillID +"%') and"+
+                                   " CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT CPT_AllocateResource.ResourceID FROM CPT_AllocateResource"+
+                                   " WHERE(CPT_AllocateResource.EndDate >= '" + dtS + "') AND Released = 0) AND ISDELETED = 0))) a INNER JOIN"+
+                                   " (Select ResourceID, Max(EndDate) AS EndDate1 FROM CPT_AllocateResource Group by ResourceID)"+
+                                   " b ON a.EmployeeMasterID = b.ResourceID AND a.binner = b.EndDate1 UNION SELECT CPT_ResourceMaster.EmployeeMasterID,"+
+                                   " CPT_ResourceMaster.EmployeetName, '-' AS AccountName,'-' AS ProcessName, '-' AS EndDate,'-' As IsReleased"+
+                                   " FROM CPT_ResourceMaster INNER JOIN CPT_DesignationMaster ON" +
+                                   " CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID" +
+                                   " WHERE CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT ResourceID FROM CPT_AllocateResource)" +
+                                   " AND CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20, 26, 25) AND ISDELETED = 0" +
+                                   " and(skillsid in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+ skillID +"%') )";
+
+
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
