@@ -603,7 +603,7 @@ public static void releaseinSevenDays(Repeater rpt)
                      join e in db.CPT_DesignationMaster on d.DesignationID equals e.DesignationMasterID
                      join f in db.CPT_ResourceDemand on c.RequestID equals f.RequestID
                      join g in db.CPT_AccountMaster on f.AccountID equals g.AccountMasterID
-                     where c.EndDate < nextSevenDays && c.Released == false
+                     where c.EndDate < nextSevenDays && c.Released == false && d.IsDeleted == 0
                      orderby c.EndDate
                      select new
                      {
