@@ -84,8 +84,8 @@ namespace businessLogic
                                    " FROM CPT_ResourceMaster INNER JOIN CPT_DesignationMaster ON" +
                                    " CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID" +
                                    " WHERE CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT ResourceID FROM CPT_AllocateResource)" +
-                                   " AND CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20, 26, 25) AND ISDELETED = 0" +
-                                   " and(skillsid in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+ skillID +"%') )";
+                                   " AND CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20, 26, 25) AND ISDELETED = 0 AND CPT_ResourceMaster.RolesID =" + roleID + " AND" +
+                                   " (skillsid in (Select CPT_ResourceMaster.Skillsid FROM CPT_ResourceMaster where skillsid like '%"+ skillID +"%') )";
 
 
 
