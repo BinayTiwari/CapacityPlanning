@@ -174,6 +174,18 @@ namespace MessageTemplate
                     ccAddress = valemail.BccEmailAddresses;
                     send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
                     break;
+
+                case "DropResourceRequest":
+                    MessageTemplate(ref valemail);
+                    dict.Add("FORUMNAME", "Work Force Allocation");
+                    dict.Add("NAME", valemail.ToUserName[0].ToString());
+                    dict.Add("EMAIL", valemail.EMAIL);
+                    dict.Add("REQUESTID", valemail.STATUS);
+                    token = ReplaceTokens(valemail.Body, dict);
+                    valemail.Body = token;
+                    ccAddress = valemail.BccEmailAddresses;
+                    send(ConfigurationManager.AppSettings["FromEmail"].ToString(), valemail.To[0], valemail.Subject, token);
+                    break;
             }
 
         }
