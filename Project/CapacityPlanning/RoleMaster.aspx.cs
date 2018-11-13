@@ -48,14 +48,7 @@ namespace CapacityPlanning
             {
                 CPT_RoleMaster Roledetails = new CPT_RoleMaster();
                 Roledetails.RoleName = RoleNameTextBox.Text;
-                if (chkShow.Checked)
-                {
-                    Roledetails.Show_in_Dropdown = true;
-                }
-                else
-                {
-                    Roledetails.Show_in_Dropdown = false;
-                }
+                Roledetails.Show_in_Dropdown = true;
                 Roledetails.IsActive = true;
 
                 RoleMasterBL insertRole = new RoleMasterBL();
@@ -94,16 +87,9 @@ namespace CapacityPlanning
                 int id = int.Parse(gvRole.DataKeys[e.RowIndex].Value.ToString());
                 Roledetails.RoleMasterID = id;
                 string RoleName = ((TextBox)gvRole.Rows[e.RowIndex].Cells[1].Controls[0]).Text;
-                string Show = ((TextBox)gvRole.Rows[e.RowIndex].Cells[2].Controls[0]).Text.ToLower();
+                DropDownList ddl = (DropDownList)gvRole.Rows[e.RowIndex].FindControl("ddlShow");                
                 Roledetails.RoleName = RoleName;
-                if (Show.Equals("true"))
-                {
-                    Roledetails.Show_in_Dropdown = true;
-                }
-                else
-                {
-                    Roledetails.Show_in_Dropdown = false;
-                }
+                Roledetails.Show_in_Dropdown = ddl.SelectedValue == "0"? false : true;
                 RoleMasterBL updateRole = new RoleMasterBL();
                 updateRole.Update(Roledetails);
                 gvRole.EditIndex = -1;
