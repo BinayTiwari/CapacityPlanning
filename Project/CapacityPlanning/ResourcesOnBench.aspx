@@ -27,7 +27,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables">
                             <thead>
                                 <tr>
-                                    <th>Sr. No.</th>
+                                    <th>#</th>
                                     <th>Employee Name</th>
                                     <th>Designation Name</th>
                                     <th>Previous Account</th>
