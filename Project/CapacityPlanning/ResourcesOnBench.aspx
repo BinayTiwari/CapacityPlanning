@@ -30,7 +30,7 @@
                                     <th>Sr. No.</th>
                                     <th>Employee Name</th>
                                     <th>Designation Name</th>
-                                    <th>previous Account</th>
+                                    <th>Previous Account</th>
                                     <th>Previous Project</th>
                                     <th>Start Date</th>
                                       <th>End Date</th>
