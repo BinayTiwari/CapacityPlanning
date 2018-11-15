@@ -36,7 +36,7 @@ namespace businessLogic
                                    " CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID   RIGHT OUTER JOIN CPT_ResourceMaster INNER JOIN" +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON" +
                                    " CPT_AllocateResource.ResourceID = CPT_ResourceMaster.EmployeeMasterID WHERE CPT_ResourceMaster.RolesID" +
-                                   " NOT IN(1, 4, 5, 8, 15, 20, 26, 25)  AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT RESOURCEID FROM" +
+                                   " NOT IN(1, 4, 5, 8, 15, 20, 26, 25, 28)  AND CPT_ResourceMaster.EmployeeMasterID NOT IN(SELECT RESOURCEID FROM" +
                                    " CPT_AllocateResource WHERE[CPT_AllocateResource].ISDeployed = 1) AND ISDELETED = 0 AND" +
                                    " (CPT_AllocateResource.Released = 1 OR  CPT_AllocateResource.Released IS null)) a" +
                                    " INNER JOIN" +
@@ -49,7 +49,7 @@ namespace businessLogic
                                    " INNER JOIN" +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID" +
                                    " WHERE CPT_ResourceMaster.EmployeeMasterID" +
-                                   " NOT IN(SELECT ResourceID FROM CPT_AllocateResource) AND CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20, 26, 25) AND ISDELETED = 0";
+                                   " NOT IN(SELECT ResourceID FROM CPT_AllocateResource) AND CPT_ResourceMaster.RolesID NOT IN(1, 4, 5, 8, 15, 20, 26, 25, 28) AND ISDELETED = 0";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {

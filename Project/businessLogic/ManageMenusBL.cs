@@ -17,8 +17,7 @@ namespace businessLogic
                 using(CPContext db = new CPContext())
                 {
                     var query = (from p in db.CPT_MenuMaster
-                                 join q in db.RoleMenuMappings on p.MenuID equals q.MenuID
-                                where p.IsActive==true
+                                 where p.IsActive==true
                                 select p).ToList();
 
                     rptMenus.DataSource = query;

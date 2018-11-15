@@ -367,7 +367,7 @@ public static void OnBench(Label NumberOfResourcesOnBench)
 
         SqlConnection SqlConn = new SqlConnection();
         SqlConn.ConnectionString = GetConnectionString();
-        string SqlString = "Select COUNT(EmployeetName) FROM CPT_ResourceMaster WHERE RolesID NOT IN(1,4,5,8,15,20,26) AND EmployeeMasterID NOT IN " +
+        string SqlString = "Select COUNT(EmployeetName) FROM CPT_ResourceMaster WHERE RolesID NOT IN(1,4,5,8,15,20,25,26,28) AND EmployeeMasterID NOT IN " +
                            "(SELECT  ResourceID FROM  CPT_AllocateResource WHERE ISDeployed = 1 ) and ISDELETED =0";
 
         using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
