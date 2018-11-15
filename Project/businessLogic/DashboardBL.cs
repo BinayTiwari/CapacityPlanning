@@ -227,24 +227,23 @@ namespace businessLogic
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "With Employees AS ( SELECT[CPT_AccountMaster].[AccountName],[CPT_RoleMaster].[RoleName],"+
- " COUNT([CPT_AllocateResource].[RoleMasterID]) As ResourseNumber FROM CPT_AccountMaster"+
- " INNER JOIN CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID ="+
- " CPT_AllocateResource.AccountID INNER JOIN CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID"+
-" = CPT_RoleMaster.RoleMasterID Where[CPT_RoleMaster].RoleMasterID"+
- " NOT IN(1,4,5,8,15,20,26) AND[CPT_AllocateResource].ISDeployed = 1"+
- " Group by[CPT_AllocateResource].[RoleMasterID],[CPT_RoleMaster].[RoleName],"+
- " [CPT_AccountMaster].[AccountName]),"+
-  " tbl as (select AccountID, count([CPT_AllocateResource].RoleMasterID)As Total, AccountName as ab"+
-    " from[CPT_AllocateResource] inner join CPT_AccountMaster on CPT_AllocateResource.AccountID= CPT_AccountMaster.AccountMasterID"+
-   " where isdeployed=1 group by[AccountName], AccountID)"+
- " Select[AccountName],[AccountID],Total,ISNULL([Project Manager],0) AS"+
-" ProjectManager, ISNULL([Developer],0) AS Developer, ISNULL([Team Lead],0) As TeamLead,"+
-" ISNULL([Quality Analyst],0) AS QualityAnalyst, ISNULL([Solution Architect],0) AS Architect,"+
-" ISNULL([Senior Developer],0) As SeniorDeveloper, ISNULL([Business Analyst],0) As"+
-" BUsinessAnalyst from Employees pivot(SUM([ResourseNumber]) FOR [RoleName]IN"+
-" ([Project Manager],[Developer],[Team Lead],[Quality Analyst],[Solution Architect],"+
-" [Senior Developer],[Business Analyst])) as pivotTable join"+
- "  tbl on tbl.ab = pivotTable.AccountName";
+                                   " COUNT([CPT_AllocateResource].[RoleMasterID]) As ResourseNumber FROM CPT_AccountMaster"+
+                                   " INNER JOIN CPT_AllocateResource ON CPT_AccountMaster.AccountMasterID ="+
+                                   " CPT_AllocateResource.AccountID INNER JOIN CPT_RoleMaster ON CPT_AllocateResource.RoleMasterID"+
+                                   " = CPT_RoleMaster.RoleMasterID Where[CPT_RoleMaster].RoleMasterID"+
+                                   " NOT IN(1,4,5,8,15,20,26) AND[CPT_AllocateResource].ISDeployed = 1"+
+                                   " Group by[CPT_AllocateResource].[RoleMasterID],[CPT_RoleMaster].[RoleName],"+
+                                   " [CPT_AccountMaster].[AccountName]),"+
+                                   " tbl as (select AccountID, count([CPT_AllocateResource].RoleMasterID)As Total, AccountName as ab"+
+                                   " from[CPT_AllocateResource] inner join CPT_AccountMaster on CPT_AllocateResource.AccountID= CPT_AccountMaster.AccountMasterID"+
+                                   " where isdeployed=1 group by[AccountName], AccountID)"+
+                                   " Select[AccountName],[AccountID],Total,ISNULL([Project Manager],0) AS"+
+                                   " ProjectManager, ISNULL([Developer],0) AS Developer, ISNULL([Team Lead],0) As TeamLead,"+
+                                   " ISNULL([Quality Analyst],0) AS QualityAnalyst, ISNULL([Solution Architect],0) AS Architect,"+
+                                   " ISNULL([Senior Developer],0) As SeniorDeveloper, ISNULL([Business Analyst],0) As"+
+                                   " BUsinessAnalyst from Employees pivot(SUM([ResourseNumber]) FOR [RoleName]IN"+
+                                   " ([Project Manager],[Developer],[Team Lead],[Quality Analyst],[Solution Architect],"+
+                                   " [Senior Developer],[Business Analyst])) as pivotTable join tbl on tbl.ab = pivotTable.AccountName";
 
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
