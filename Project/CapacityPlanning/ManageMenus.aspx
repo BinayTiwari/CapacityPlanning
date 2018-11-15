@@ -39,7 +39,7 @@
                                         <ItemTemplate>
                                             <tr class="odd gradeX">
                                                 <td><%#Eval("MenuName")%></td>
-                                                <td><asp:CheckBox ID="chkAccMgr" MenuID='<%#Eval("MenuID") %>' RoleID="8" Checked= runat="server" /></td>
+                                                <td><asp:CheckBox ID="chkAccMgr" MenuID='<%#Eval("MenuID") %>' RoleID="8" runat="server" /></td>
                                                 <td><asp:CheckBox ID="ChkAdmin" MenuID='<%#Eval("MenuID") %>' RoleID="4" runat="server" /></td>
                                                 <td><asp:CheckBox ID="ChkGovernance" MenuID='<%#Eval("MenuID") %>' RoleID="26" runat="server" /></td>
                                                 <td><asp:CheckBox ID="ChkHeadBA" MenuID='<%#Eval("MenuID") %>' RoleID="20" runat="server" /></td>
