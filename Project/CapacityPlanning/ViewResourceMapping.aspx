@@ -124,7 +124,7 @@
                     <th>Skill</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Utilization</th>
+                    <th>Allocated</th>
                 </tr>
             </thead>
             <tbody>
@@ -137,7 +137,7 @@
                             <td><%#Eval("SkillsName")%></td>
                             <td><%#Eval("StartDate", "{0:d}") %></td>
                             <td><%#Eval("EndDate", "{0:d}")%></td>
-                            <td></td>
+                            <td><%#Eval("Allocated") %></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
