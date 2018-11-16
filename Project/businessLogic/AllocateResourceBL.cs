@@ -292,7 +292,8 @@ namespace businessLogic
                                  c.EndDate,
                                  d.EmployeetName,
                                  e.RoleName,
-                                 g.SkillsName
+                                 g.SkillsName,
+                                 Allocated = c.Utilization
                              }).ToList();
                 rpt.DataSource = query;
                 rpt.DataBind();
