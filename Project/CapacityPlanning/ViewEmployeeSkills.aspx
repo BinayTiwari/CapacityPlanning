@@ -254,7 +254,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Employee List for <>
+                        Employee List for <%=Skillnames %>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">

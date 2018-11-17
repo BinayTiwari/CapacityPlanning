@@ -11,6 +11,7 @@ namespace CapacityPlanning
 {
     public partial class ViewEmployeeSkills : System.Web.UI.Page
     {
+        public string Skillnames = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -24,6 +25,7 @@ namespace CapacityPlanning
         {
             List<Int32> lstSkillID = new List<Int32>();
             List<Int32> lstRating = new List<Int32>();
+            string Skillname = "";
             foreach (RepeaterItem item in rptRPA.Items)
             {
                 
@@ -35,7 +37,7 @@ namespace CapacityPlanning
                     lstSkillID.Add( Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
                     
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
                     
                 }
             }
@@ -49,7 +51,7 @@ namespace CapacityPlanning
                     lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
 
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
@@ -63,7 +65,7 @@ namespace CapacityPlanning
                     lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
 
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
@@ -77,7 +79,7 @@ namespace CapacityPlanning
                     lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
 
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
@@ -91,7 +93,7 @@ namespace CapacityPlanning
                     lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
 
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
@@ -105,11 +107,17 @@ namespace CapacityPlanning
                     lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
                     lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
 
-                    //Skillname = chk.Attributes["Skillname"];
+                    Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
+            if (Skillname.Length > 1)
+            {
+                Skillnames = Skillname.Remove(Skillname.Length - 1);
+            }
+            
             SkillDiv.Style.Add("display", "none");
+            ViewEmployeeSkillsBL.GetEmployeeList(lstSkillID, lstRating);
             EmployeeDiv.Style.Add("display", "block");
 
         }
