@@ -9,7 +9,7 @@ namespace businessLogic
 {
     public class ViewEmployeeSkillsBL
     {
-        public void GetEmployeeList(List<Int32> lstSkillIDs, List<Int32> lstRatings)
+        public static void GetEmployeeList(List<Int32> lstSkillIDs, List<Int32> lstRatings)
         {
             try
             {
@@ -22,10 +22,9 @@ namespace businessLogic
                                 select new { q.EmployeetName, r.SkillsName, p.Rating};
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Console.Write(ex.Message);
             }
         }
     }
