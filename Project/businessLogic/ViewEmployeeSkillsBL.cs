@@ -1,25 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity;
+using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace businessLogic
 {
     public class ViewEmployeeSkillsBL
     {
-        public static void GetEmployeeList(List<Int32> lstSkillIDs, List<Int32> lstRatings)
+        private static string GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
+        }
+
+        public static void GetEmployeeList(Repeater rpt, string SkillIDs, string Ratings)
         {
             try
             {
-                using(CPContext db = new CPContext())
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "select EmployeeMasterID, EmployeetName, SkillsName, Rating, ISNULL(CertificatePath, 'No') As Cerificate" +
+                                   " from [dbo].[CPT_ResourceMaster] inner join [dbo].[CPT_Certificate] ON" +
+                                   " [CPT_ResourceMaster].EmployeeMasterID = [CPT_Certificate].EmployeeID inner join" +
+                                   " [dbo].[CPT_SkillsMaster] ON [CPT_Certificate].SkillID = [CPT_SkillsMaster].SkillsMasterID where" +
+                                   " SkillID in (" + SkillIDs + ") And Rating in ("+ Ratings + ") order by EmployeetName";
+
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
-                    var query = from p in db.CPT_Certificate
-                                join q in db.CPT_ResourceMaster on p.EmployeeID equals q.EmployeeMasterID
-                                join r in db.CPT_SkillsMaster on p.SkillID equals r.SkillsMasterID
-                                where p.SkillID == lstSkillIDs[0] && p.Rating >= lstRatings[0]
-                                select new { q.EmployeetName, r.SkillsName, p.Rating};
+                    SqlConn.Open();
+                    SqlDataReader reader = SqlCom.ExecuteReader();
+                    rpt.DataSource = reader;
+                    rpt.DataBind();
                 }
             }
             catch (Exception ex)
