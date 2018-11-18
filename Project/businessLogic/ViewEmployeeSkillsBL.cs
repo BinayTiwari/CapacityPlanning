@@ -23,7 +23,7 @@ namespace businessLogic
             {
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "select EmployeeMasterID, EmployeetName, SkillsName, Rating, ISNULL(CertificatePath, 'No') As Cerificate" +
+                string SqlString = "select EmployeeMasterID, EmployeetName, SkillsName, Rating, ISNULL(CertificatePath, '-') As Cerificate" +
                                    " from [dbo].[CPT_ResourceMaster] inner join [dbo].[CPT_Certificate] ON" +
                                    " [CPT_ResourceMaster].EmployeeMasterID = [CPT_Certificate].EmployeeID inner join" +
                                    " [dbo].[CPT_SkillsMaster] ON [CPT_Certificate].SkillID = [CPT_SkillsMaster].SkillsMasterID where" +
