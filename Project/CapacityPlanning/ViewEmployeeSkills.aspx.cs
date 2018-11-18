@@ -104,9 +104,9 @@ namespace CapacityPlanning
 
                 }
             }
-            if (Skillname.Length > 1 && SkillIDs.Length > 1)
+            if (Skillname.Length > 2 && SkillIDs.Length > 1)
             {
-                lblSkill.Text = "Employees have Skill" + Skillname.Remove(Skillname.Length - 1);
+                lblSkill.Text = "Employees have Skill " + Skillname.Remove(Skillname.Length - 2);
                 SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
             }
             else
