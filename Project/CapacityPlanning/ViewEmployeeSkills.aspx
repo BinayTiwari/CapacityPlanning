@@ -254,29 +254,33 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Employee List for <%=Skillnames %>
+                        <asp:label ID="lblSkill" runat="server" Text=""></asp:label>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="row form-group">
                             <div class="dataTable_wrapper table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables">
                                     <thead>
                                         <tr>
                                             <th>EmployeeID</th>
                                             <th>Employee Name</th>
-
+                                            <th>Skill</th>
+                                            <th>Rating</th>
+                                            <th>Cerificate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <asp:Repeater ID="rptEmployeeList" runat="server">
                                             <ItemTemplate>
                                                 <tr class="odd gradeX">
-                                                    <td><%#Eval("RoleName")%></td>
-                                                    <td><%#Eval("RoleName")%></td>
+                                                    <td><%#Eval("EmployeeMasterID")%></td>
+                                                    <td><%#Eval("EmployeetName")%></td>
+                                                    <td><%#Eval("SkillsName")%></td>
+                                                    <td><%#Eval("Rating")%></td>
+                                                    <td><%#Eval("Cerificate")%></td>
                                                 </tr>
                                             </ItemTemplate>
-
                                         </asp:Repeater>
 
                                     </tbody>

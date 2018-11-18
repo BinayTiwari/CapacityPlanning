@@ -11,20 +11,19 @@ namespace CapacityPlanning
 {
     public partial class ViewEmployeeSkills : System.Web.UI.Page
     {
-        public string Skillnames = "";
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
                 SetSkillsBL.GetNewSkills(rptRPA, rptLangPrg, rptMS, rptFrk, rptDB, rptOther);
-
             }
         }
 
         protected void InsertEmpSkills(object sender, EventArgs e)
         {
-            List<Int32> lstSkillID = new List<Int32>();
-            List<Int32> lstRating = new List<Int32>();
+            string SkillIDs = "";
+            string Ratings = "";
             string Skillname = "";
             foreach (RepeaterItem item in rptRPA.Items)
             {
@@ -34,9 +33,8 @@ namespace CapacityPlanning
                
                 if (chk.Checked)
                 {
-                    lstSkillID.Add( Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-                    
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";                    
                     Skillname += chk.Attributes["Skillname"] + ", ";
                     
                 }
@@ -48,9 +46,8 @@ namespace CapacityPlanning
 
                 if (chk.Checked)
                 {
-                    lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
@@ -62,9 +59,8 @@ namespace CapacityPlanning
 
                 if (chk.Checked)
                 {
-                    lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
@@ -76,9 +72,8 @@ namespace CapacityPlanning
 
                 if (chk.Checked)
                 {
-                    lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
@@ -90,9 +85,8 @@ namespace CapacityPlanning
 
                 if (chk.Checked)
                 {
-                    lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
@@ -104,20 +98,28 @@ namespace CapacityPlanning
 
                 if (chk.Checked)
                 {
-                    lstSkillID.Add(Convert.ToInt32(chk.Attributes["SkillID"]));
-                    lstRating.Add(Convert.ToInt32(ddlRating.SelectedValue));
-
+                    SkillIDs += chk.Attributes["SkillID"] + ",";
+                    Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
 
                 }
             }
-            if (Skillname.Length > 1)
+            if (Skillname.Length > 1 && SkillIDs.Length > 1)
             {
-                Skillnames = Skillname.Remove(Skillname.Length - 1);
+                lblSkill.Text = "Employees have Skill" + Skillname.Remove(Skillname.Length - 1);
+                SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
+            }
+            else
+            {
+                lblSkill.Text = "No Skill Selected";
+            }
+            if(Ratings.Length > 1)
+            {
+                Ratings = Ratings.Remove(Ratings.Length - 1);
             }
             
             SkillDiv.Style.Add("display", "none");
-            ViewEmployeeSkillsBL.GetEmployeeList(lstSkillID, lstRating);
+            ViewEmployeeSkillsBL.GetEmployeeList(rptEmployeeList, SkillIDs, Ratings);
             EmployeeDiv.Style.Add("display", "block");
 
         }
