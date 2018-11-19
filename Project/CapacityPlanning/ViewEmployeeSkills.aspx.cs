@@ -25,6 +25,7 @@ namespace CapacityPlanning
             string SkillIDs = "";
             string Ratings = "";
             string Skillname = "";
+            int flag = 0;
             foreach (RepeaterItem item in rptRPA.Items)
             {
                 
@@ -36,7 +37,7 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";                    
                     Skillname += chk.Attributes["Skillname"] + ", ";
-                    
+                    flag = 1;
                 }
             }
             foreach (RepeaterItem item in rptLangPrg.Items)
@@ -49,7 +50,7 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
-
+                    flag = 1;
                 }
             }
             foreach (RepeaterItem item in rptMS.Items)
@@ -62,7 +63,7 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
-
+                    flag = 1;
                 }
             }
             foreach (RepeaterItem item in rptFrk.Items)
@@ -75,7 +76,7 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
-
+                    flag = 1;
                 }
             }
             foreach (RepeaterItem item in rptDB.Items)
@@ -88,7 +89,7 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
-
+                    flag = 1;
                 }
             }
             foreach (RepeaterItem item in rptOther.Items)
@@ -101,27 +102,36 @@ namespace CapacityPlanning
                     SkillIDs += chk.Attributes["SkillID"] + ",";
                     Ratings += ddlRating.SelectedValue + ",";
                     Skillname += chk.Attributes["Skillname"] + ", ";
-
+                    flag = 1;
                 }
             }
-            if (Skillname.Length > 2 && SkillIDs.Length > 1)
+            if (flag == 1)
             {
                 lblSkill.Text = "Employees have Skill " + Skillname.Remove(Skillname.Length - 2);
                 SkillIDs = SkillIDs.Remove(SkillIDs.Length - 1);
+                Ratings = Ratings.Remove(Ratings.Length - 1);
+                SkillDiv.Style.Add("display", "none");
+                ViewEmployeeSkillsBL.GetEmployeeList(rptEmployeeList, SkillIDs, Ratings);
+                EmployeeDiv.Style.Add("display", "block");
+
             }
             else
             {
-                lblSkill.Text = "No Skill Selected";
-            }
-            if(Ratings.Length > 1)
-            {
-                Ratings = Ratings.Remove(Ratings.Length - 1);
-            }
-            
-            SkillDiv.Style.Add("display", "none");
-            ViewEmployeeSkillsBL.GetEmployeeList(rptEmployeeList, SkillIDs, Ratings);
-            EmployeeDiv.Style.Add("display", "block");
+                Response.Write("<Script>alert('No Skill Selected! Please select atleast one Skill.')</Script>");
+            }            
+        }
 
+        //public void ViewCertificate()
+        //{
+        //    System.Diagnostics.Process.Start(@"");
+        //}
+
+        protected void rptEmployeeList_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if(e.Item.ItemType == ListItemType.Item)
+            {
+
+            }
         }
     }
 }

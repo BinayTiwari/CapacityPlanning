@@ -241,7 +241,8 @@
                     <div class="content-box-large box-with-header">
                         <br />
                         <div class="row pull-right">
-                            <asp:Button ID="save" runat="server" CssClass="btn-success btn btn-default" Text="Show Employees" OnClick="InsertEmpSkills" />
+                            <asp:Button ID="btnShow" runat="server" CssClass="btn-success btn btn-default" Text="Show Employees"
+                                OnClick="InsertEmpSkills" />
 
                         </div>
                     </div>
@@ -254,7 +255,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <asp:label ID="lblSkill" runat="server" Text=""></asp:label>
+                        <asp:Label ID="lblSkill" runat="server" Text=""></asp:Label>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -271,7 +272,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <asp:Repeater ID="rptEmployeeList" runat="server">
+                                        <asp:Repeater ID="rptEmployeeList" runat="server" OnItemDataBound="rptEmployeeList_ItemDataBound">
                                             <ItemTemplate>
                                                 <tr class="odd gradeX">
                                                     <td><%#Eval("EmployeeMasterID")%></td>
@@ -279,6 +280,8 @@
                                                     <td><%#Eval("SkillsName")%></td>
                                                     <td><%#Eval("Rating")%></td>
                                                     <td><%#Eval("Cerificate")%></td>
+                                                    <%--<td><asp:HyperLink ID="hplik" runat="server" Target="_blank" NavigateUrl='<%#Eval("Cerificate")%>'>View</asp:HyperLink></td>--%>
+                                                    
                                                 </tr>
                                             </ItemTemplate>
                                         </asp:Repeater>
