@@ -279,9 +279,11 @@
                                                     <td><%#Eval("EmployeetName")%></td>
                                                     <td><%#Eval("SkillsName")%></td>
                                                     <td><%#Eval("Rating")%></td>
-                                                    <td><%#Eval("Cerificate")%></td>
-                                                    <%--<td><asp:HyperLink ID="hplik" runat="server" Target="_blank" NavigateUrl='<%#Eval("Cerificate")%>'>View</asp:HyperLink></td>--%>
-                                                    
+                                                    <td>
+                                                        <asp:Label ID="lblCerti" runat="server" Text=""></asp:Label>
+                                                        <asp:Button ID="btnViewCerti" runat="server" Text="View" Visible="false"
+                                                            CssClass="btn btn-success" CertiPath='<%#Eval("Certificate")%>' OnClick="btnViewCertificate" />
+                                                    </td>
                                                 </tr>
                                             </ItemTemplate>
                                         </asp:Repeater>
