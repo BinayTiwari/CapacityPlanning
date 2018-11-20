@@ -190,6 +190,7 @@ namespace CapacityPlanning
                 string SkillIDs = "";
                 string Skillname = "";
                 string path = HttpContext.Current.Server.MapPath("Documents/");
+                string FilePath = "http://gridinfocom-001-site2.ftempurl.com/Documents/";
                 List<CPT_Certificate> lstCertificates = new List<CPT_Certificate>();                
                 bool flag = SetSkillsBL.CheckEmpID(Convert.ToInt32(EmpID.Text));
                                
@@ -213,7 +214,7 @@ namespace CapacityPlanning
                             {
                                 
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                              
                             }
                             
@@ -237,7 +238,7 @@ namespace CapacityPlanning
                             if (filePath.HasFile)
                             {
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -259,7 +260,7 @@ namespace CapacityPlanning
                             if (filePath.HasFile)
                             {
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -282,7 +283,7 @@ namespace CapacityPlanning
                             {
 
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -305,7 +306,7 @@ namespace CapacityPlanning
                             if (filePath.HasFile)
                             {
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }
@@ -327,7 +328,7 @@ namespace CapacityPlanning
                             if (filePath.HasFile)
                             {
                                 filePath.SaveAs(path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName);
-                                details.CertificatePath = path + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
+                                details.CertificatePath = FilePath + EmpID.Text + "_" + chk.Attributes["SkillID"] + "_" + filePath.FileName;
                             }
                             lstCertificates.Add(details);
                         }

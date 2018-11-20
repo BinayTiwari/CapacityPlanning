@@ -163,8 +163,8 @@ namespace CapacityPlanning
             {
                 Button btn = sender as Button;
                 string path = btn.Attributes["CertiPath"];
-                string ss = "http://gridinfocom-001-site2.ftempurl.com/Documents/10458_53_Orchestrator%20certificate.pdf";
-                System.Diagnostics.Process.Start(ss);
+                //string ss = "http://gridinfocom-001-site2.ftempurl.com/Documents/1.pdf";
+                System.Diagnostics.Process.Start(path);
             }
             catch (Exception ex)
             {
