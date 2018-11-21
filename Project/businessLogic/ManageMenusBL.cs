@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +12,26 @@ namespace businessLogic
 {
     public class ManageMenusBL
     {
+        private static string GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["CPContext"].ConnectionString;
+        }
         public static void GetMenus(Repeater rptMenus)
         {
             try
             {
-                using(CPContext db = new CPContext())
-                {
-                    var query = (from p in db.CPT_MenuMaster
-                                 where p.IsActive==true orderby p.MenuName
-                                select p).ToList();
+                SqlConnection SqlConn = new SqlConnection();
+                SqlConn.ConnectionString = GetConnectionString();
+                string SqlString = "select MenuID,MenuName from [CPT_MenuMaster] where IsActive = 1 order by MenuName";
 
-                    rptMenus.DataSource = query;
+                using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
+                {
+                    SqlConn.Open();
+                    SqlDataReader reader = SqlCom.ExecuteReader();
+                    rptMenus.DataSource = reader;
                     rptMenus.DataBind();
                 }
+               
             }
             catch (Exception ex)
             {
@@ -47,6 +56,27 @@ namespace businessLogic
             {
                 Console.Write(ex.Message);
             }
+        }
+
+        public static List<RoleMenuMapping> GetRoleMenuMapping()
+        {
+            List<RoleMenuMapping> lstRoleMenu = new List<RoleMenuMapping>();
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = (from p in db.RoleMenuMappings
+                                select p).ToList();
+
+                    lstRoleMenu = query;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+            return lstRoleMenu;
         }
     }
 }
