@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,11 +12,14 @@ namespace CapacityPlanning
 {
     public partial class ManageMenus : System.Web.UI.Page
     {
+        static List<RoleMenuMapping> lstRoleMenu = new List<RoleMenuMapping>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
+                lstRoleMenu = ManageMenusBL.GetRoleMenuMapping();
                 ManageMenusBL.GetMenus(rptMenus);
+                
             }
         }
 
@@ -35,7 +39,7 @@ namespace CapacityPlanning
                 CheckBox ChkPM = (CheckBox)item.FindControl("ChkPM");
                 CheckBox ChkRequestor = (CheckBox)item.FindControl("ChkRequestor");
                 CheckBox ChkSolHead = (CheckBox)item.FindControl("ChkSolHead");
-                
+
                 if (chkAccountMgr.Checked)
                 {
                     details.MenuID = Convert.ToInt32(chkAccountMgr.Attributes["MenuID"]);
@@ -96,12 +100,45 @@ namespace CapacityPlanning
                     details.RoleID = Convert.ToInt32(ChkSolHead.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
-                
-                
+
+
             }
             if (lstRoleMenuMapping.Count() > 0)
             {
                 //ManageMenusBL.InsertRoleMapping(lstRoleMenuMapping);
+            }
+        }
+
+        protected void rptMenus_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            try
+            {
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
+                    
+                    int MenuID = Convert.ToInt32(((DbDataRecord)e.Item.DataItem).GetValue(0));
+                    CheckBox chkAccMgr = (CheckBox)e.Item.FindControl("chkAccMgr");
+                    CheckBox ChkAdmin = (CheckBox)e.Item.FindControl("ChkAdmin");
+                    CheckBox ChkGovernance = (CheckBox)e.Item.FindControl("ChkGovernance");
+                    CheckBox ChkHeadBA = (CheckBox)e.Item.FindControl("ChkHeadBA");
+                    CheckBox ChkHeadDelivery = (CheckBox)e.Item.FindControl("ChkHeadDelivery");
+                    CheckBox ChkHR = (CheckBox)e.Item.FindControl("ChkHR");
+                    CheckBox ChkPMO = (CheckBox)e.Item.FindControl("ChkPMO");
+                    CheckBox ChkPM = (CheckBox)e.Item.FindControl("ChkPM");
+                    CheckBox ChkRequestor = (CheckBox)e.Item.FindControl("ChkRequestor");
+                    CheckBox ChkSolHead = (CheckBox)e.Item.FindControl("ChkSolHead");
+                    foreach(var item in lstRoleMenu)
+                    {
+                        if(item.MenuID == MenuID)
+                        {
+                            //if(item.RoleID == )
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
             }
         }
     }

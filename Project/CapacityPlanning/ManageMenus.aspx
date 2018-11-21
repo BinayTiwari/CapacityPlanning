@@ -35,7 +35,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <asp:Repeater ID="rptMenus" runat="server">
+                                    <asp:Repeater ID="rptMenus" runat="server" OnItemDataBound="rptMenus_ItemDataBound">
                                         <ItemTemplate>
                                             <tr class="odd gradeX">
                                                 <td><%#Eval("MenuName")%></td>
