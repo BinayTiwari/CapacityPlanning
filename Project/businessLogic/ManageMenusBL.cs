@@ -43,6 +43,7 @@ namespace businessLogic
         {
             try
             {
+                DeleteRoleMenu();
                 using (CPContext db = new CPContext())
                 {
                     foreach(RoleMenuMapping item in lstRoleMenus)
@@ -69,14 +70,33 @@ namespace businessLogic
                                 select p).ToList();
 
                     lstRoleMenu = query;
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
             }
             return lstRoleMenu;
+        }
+
+        public static void DeleteRoleMenu()
+        {
+            try
+            {
+                using(CPContext db = new CPContext())
+                {
+                    var query = from p in db.RoleMenuMappings select p;
+                    foreach(var item in query)
+                    {
+                        db.RoleMenuMappings.Remove(item);
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
     }
 }
