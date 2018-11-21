@@ -17,7 +17,7 @@ namespace businessLogic
                 using(CPContext db = new CPContext())
                 {
                     var query = (from p in db.CPT_MenuMaster
-                                 where p.IsActive==true
+                                 where p.IsActive==true orderby p.MenuName
                                 select p).ToList();
 
                     rptMenus.DataSource = query;
