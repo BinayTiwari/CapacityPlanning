@@ -81,8 +81,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="RPACertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="RPACertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="RPACertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />
@@ -120,8 +120,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="LangPrgCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="LangPrgCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="LangPrgCertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />
@@ -159,8 +159,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="MSCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="MSCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="MSCertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />
@@ -198,8 +198,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="FrkCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="FrkCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="FrkCertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />
@@ -237,8 +237,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="DBCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="DBCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="DBCertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />
@@ -276,8 +276,8 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <asp:FileUpload ID="OtherCertificate" runat="server" text="Upload Certificate" ToolTip="Select Only pdf/jpg/jpeg document" />
-                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.pdf)$"
-                                                    ControlToValidate="OtherCertificate" runat="server" ForeColor="Red" ErrorMessage="Please select valid format document"
+                                                <asp:RegularExpressionValidator ID="RegexValidator1" ValidationExpression="([a-zA-Z0-9\s_\\.\-():])+(.jpg|.jpeg|.pdf)$"
+                                                    ControlToValidate="OtherCertificate" runat="server" ForeColor="Red" ErrorMessage="Document name is not valid!"
                                                     Display="Dynamic" />
                                             </div>
                                             <br />

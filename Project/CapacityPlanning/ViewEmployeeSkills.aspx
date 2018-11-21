@@ -281,6 +281,7 @@
                                                     <td><%#Eval("Rating")%></td>
                                                     <td>
                                                         <asp:Label ID="lblCerti" runat="server" Text=""></asp:Label>
+                                                        
                                                         <asp:Button ID="btnViewCerti" runat="server" Text="View" Visible="false"
                                                             CssClass="btn btn-success" CertiPath='<%#Eval("Certificate")%>' OnClick="btnViewCertificate" />
                                                     </td>
