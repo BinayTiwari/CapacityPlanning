@@ -100,8 +100,6 @@ namespace CapacityPlanning
                     details.RoleID = Convert.ToInt32(ChkSolHead.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
-
-
             }
             if (lstRoleMenuMapping.Count() > 0)
             {
@@ -131,7 +129,26 @@ namespace CapacityPlanning
                     {
                         if(item.MenuID == MenuID)
                         {
-                            //if(item.RoleID == )
+                            if (item.RoleID == Convert.ToInt32(chkAccMgr.Attributes["RoleID"]))
+                                chkAccMgr.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkAdmin.Attributes["RoleID"]))
+                                ChkAdmin.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkGovernance.Attributes["RoleID"]))
+                                ChkGovernance.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkHeadBA.Attributes["RoleID"]))
+                                ChkHeadBA.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkHeadDelivery.Attributes["RoleID"]))
+                                ChkHeadDelivery.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkHR.Attributes["RoleID"]))
+                                ChkHR.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkPMO.Attributes["RoleID"]))
+                                ChkPMO.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkPM.Attributes["RoleID"]))
+                                ChkPM.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkRequestor.Attributes["RoleID"]))
+                                ChkRequestor.Checked = true;
+                            if (item.RoleID == Convert.ToInt32(ChkSolHead.Attributes["RoleID"]))
+                                ChkSolHead.Checked = true;
                         }
                     }
                 }

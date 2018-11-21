@@ -71,9 +71,7 @@
                 <div class="content-box-large box-with-header">
                     <br />
                     <div class="row pull-right">
-                        <asp:Button ID="save" runat="server" CssClass="btn-success btn btn-default" Text="Save" OnClick="InsertMenuMapping"/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="cancel" runat="server" CssClass="btn btn-danger btn-md" Text="Cancel" CausesValidation="false" />
+                        <asp:Button ID="save" runat="server" CssClass="btn-success btn btn-default" Text="Save" OnClick="InsertMenuMapping"/>                       
                     </div>
                 </div>
             </div>
