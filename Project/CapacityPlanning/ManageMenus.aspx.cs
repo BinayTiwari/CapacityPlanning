@@ -28,7 +28,7 @@ namespace CapacityPlanning
             List<RoleMenuMapping> lstRoleMenuMapping = new List<RoleMenuMapping>();
             foreach (RepeaterItem item in rptMenus.Items)
             {
-                RoleMenuMapping details = new RoleMenuMapping();
+                
                 CheckBox chkAccountMgr = (CheckBox)item.FindControl("chkAccMgr");
                 CheckBox chkAdmin = (CheckBox)item.FindControl("ChkAdmin");
                 CheckBox ChkGovern = (CheckBox)item.FindControl("ChkGovernance");
@@ -42,68 +42,79 @@ namespace CapacityPlanning
 
                 if (chkAccountMgr.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(chkAccountMgr.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(chkAccountMgr.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (chkAdmin.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(chkAdmin.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(chkAdmin.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkGovern.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkGovern.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkGovern.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkHeadBA.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkHeadBA.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkHeadBA.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkHeadDlvry.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkHeadDlvry.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkHeadDlvry.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkHR.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkHR.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkHR.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkPMO.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkPMO.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkPMO.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkPM.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkPM.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkPM.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkRequestor.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkRequestor.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkRequestor.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
                 if (ChkSolHead.Checked)
                 {
+                    RoleMenuMapping details = new RoleMenuMapping();
                     details.MenuID = Convert.ToInt32(ChkSolHead.Attributes["MenuID"]);
                     details.RoleID = Convert.ToInt32(ChkSolHead.Attributes["RoleID"]);
                     lstRoleMenuMapping.Add(details);
                 }
             }
+            
             if (lstRoleMenuMapping.Count() > 0)
             {
-                //ManageMenusBL.InsertRoleMapping(lstRoleMenuMapping);
+                ManageMenusBL.InsertRoleMapping(lstRoleMenuMapping);
             }
         }
 

@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <div class="row form-group">
                         <div class="dataTable_wrapper table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables">
+                            <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Menu</th>
