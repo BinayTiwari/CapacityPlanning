@@ -133,10 +133,12 @@ namespace CapacityPlanning
                 }
             }
         }
+
         protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-
+           
         }
+
         protected void chkRequired_CheckedChanged(object sender, EventArgs e)
         {
             try
