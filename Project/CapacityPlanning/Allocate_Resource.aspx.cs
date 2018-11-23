@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -122,7 +123,15 @@ namespace CapacityPlanning
         }
         protected void rptSuggestions_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-
+            if(e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                string a = ((DbDataRecord)e.Item.DataItem).GetValue(5).ToString();
+                if (a.Equals("No"))
+                {
+                    CheckBox chk = (CheckBox)e.Item.FindControl("chkRequired");
+                    chk.Enabled = false;
+                }
+            }
         }
         protected void rptResourceAllocation_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -132,9 +141,6 @@ namespace CapacityPlanning
         {
             try
             {
-
-
-
                 foreach (RepeaterItem item in rptSuggestions.Items)
                 {
                     CheckBox chk = (CheckBox)item.FindControl("chkRequired");
@@ -155,6 +161,7 @@ namespace CapacityPlanning
             }
 
         }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -165,13 +172,10 @@ namespace CapacityPlanning
                 CPT_ResourceMaster empID = new CPT_ResourceMaster();
                 AllocateResourceBL rbl = new AllocateResourceBL();
 
-
                 foreach (var item in name)
                 {
-
                     details.ResourceID = Convert.ToInt32(item);
                     details.RequestDetailID = requestDetailID;
-
                     details.RequestID = RequestID;
                     details.AccountID = AllocateResourceBL.getAccountID(details.RequestID.ToString());
                     details.StartDate = Convert.ToDateTime(StartDate);
@@ -193,14 +197,13 @@ namespace CapacityPlanning
 
                 }
                 Response.Redirect("ResourceMapping.aspx");
-
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
         public void sendConfirmation(string name, string mail, string RequesterEmail, string account, DateTime startDate, DateTime endDate)
         {
             try
@@ -227,6 +230,7 @@ namespace CapacityPlanning
                 //lblResult.Text = "Your message failed to send, please try again.";
             }
         }
+
         public void SearchAvailability()
         {
             string id = Request.QueryString["RequestID"];
@@ -234,6 +238,7 @@ namespace CapacityPlanning
             AllocateResourceBL rbl = new AllocateResourceBL();
             rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID, StartDate);
         }
+        
         public void AccordingToRoleSearch()
         {
             int rolesID = 0;
@@ -251,17 +256,16 @@ namespace CapacityPlanning
             AllocateResourceBL rbl = new AllocateResourceBL();
             //rbl.getEmployeeByRole(rptSuggestions, rolesID, EndDate, skillID, StartDate);
         }
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
-
                 StartDate = ((Convert.ToDateTime(StartDate)).AddDays(7)).ToShortDateString();
                 DateTime dtstart = Convert.ToDateTime(StartDate);
                 DateTime dtEnd = Convert.ToDateTime(EndDate);
                 if (dtstart > dtEnd)
                 {
-
                     btnNext.Enabled = false;
                 }
                 else
@@ -281,8 +285,6 @@ namespace CapacityPlanning
                         SearchAvailability();
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -318,17 +320,12 @@ namespace CapacityPlanning
                 else
                 {
                     btnNext.Enabled = false;
-
-
                 }
-
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         protected void UnDO_Click(object sender, EventArgs e)
