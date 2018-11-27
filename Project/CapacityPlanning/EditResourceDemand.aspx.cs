@@ -22,9 +22,7 @@ namespace CapacityPlanning
                 ClsCommon.ddlGetOpportunity(OpportunityID);
                 ClsCommon.ddlGetRegion(RegionMasterID);
                 ClsCommon.ddlGetSalesStage(SalesStageMasterID);
-                //ClsCommon.ddlGetStatus(StatusMasterID);
-                //ClsCommon.ddlGetPriority(PriorityID);
-                //ClsCommon.ddlGetStatusNew(StatusMasterID);
+                
                 BindTextBoxvalues();
                 bindDetailTextGrid();
                 disableFields();
@@ -54,7 +52,7 @@ namespace CapacityPlanning
                 SalesStageMasterID.Text = lst[0].SalesStageID.ToString();
                 processName.Text = lst[0].ProcessName;
                 StatusMasterID.Text = lst[0].StatusMasterID.ToString();
-                //PriorityID.Text = lst[0].PriorityID.ToString();
+                
                 ViewState["dateOfCreation"] = lst[0].DateOfCreation.ToString();
 
             }
@@ -75,7 +73,6 @@ namespace CapacityPlanning
 
                 List<CPT_ResourceDetails> lstDetail = ResourceDemandBL.uiDataBindingDetails(GridviewResourceDetail, requestID);
 
-                //ViewState["CurrentTable"] = lstDetail;
                 if (GridviewResourceDetail.Rows.Count > 0)
                 {
                     for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
@@ -90,14 +87,8 @@ namespace CapacityPlanning
                         ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
 
                     }
-                    //ViewState["Table"] = GridviewResourceDetail;
+                    
                 }
-
-                else
-                {
-                    SetInitialRow();
-                }
-
 
             }
             catch (Exception ex)
@@ -110,8 +101,6 @@ namespace CapacityPlanning
         {
             try
             {
-
-
                 if (!string.IsNullOrEmpty(Request.QueryString["RequestId"]))
                 {
                     requestID = Request.QueryString["RequestId"].Trim();
@@ -131,18 +120,15 @@ namespace CapacityPlanning
                 resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
                 resourceDemandDetails.DateOfCreation = Convert.ToDateTime(ViewState["dateOfCreation"]);
                 resourceDemandDetails.DateOfModification = DateTime.Now;
-                resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
-                // resourceDemandDetails.StatusMasterID = 19;
+                resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;                
                 resourceDemandDetails.PriorityID = 27;
                 if (Convert.ToInt32(StatusMasterID.SelectedValue) == 23)
                 {
                     ResourceDemandBL.updateReleasedValue(requestID);
                 }
-                // ResourceDetailsBL.deleteResourceDetails(requestID);
 
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
 
-                ResourceDetailsBL insertDemandDetails = new ResourceDetailsBL();
                 List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
                 for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
@@ -195,214 +181,6 @@ namespace CapacityPlanning
         protected void UnDoButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("ResourceDemand.aspx");
-        }
-
-        private void SetInitialRow()
-        {
-
-            DataTable dt = new DataTable();
-            DataRow dr = null;
-            dt.Columns.Add(new DataColumn("RowNumber", typeof(string)));
-            dt.Columns.Add(new DataColumn("ResourceTypeID", typeof(Int32)));//for DropDownList selected item   
-            dt.Columns.Add(new DataColumn("NoOfResources", typeof(float)));//for TextBox value   
-            dt.Columns.Add(new DataColumn("SkillID", typeof(string)));//for List selected item   
-            dt.Columns.Add(new DataColumn("StartDate", typeof(string)));//for Start Date 
-            dt.Columns.Add(new DataColumn("EndDate", typeof(string)));//for End Date 
-            //Set the Default value.
-            //dt.Columns["NoOfResources"].DefaultValue = 5.00;
-
-            dr = dt.NewRow();
-            dr["RowNumber"] = 1;
-
-            //dr["NoOfResources"] = 5;
-            dr["StartDate"] = string.Empty;
-            dr["EndDate"] = string.Empty;
-            dt.Rows.Add(dr);
-
-            //Store the DataTable in ViewState for future reference   
-            ViewState["CurrentTable"] = dt;
-
-            //Bind the Gridview   
-            GridviewResourceDetail.DataSource = dt;
-            GridviewResourceDetail.DataBind();
-
-            //After binding the gridview, we can then extract and fill the DropDownList with Data   
-            DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
-            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
-            ClsCommon.ddlGetRoleforDemand(ddl);
-            ClsCommon.ddlGetSkillDDL(ddl1);
-
-        }
-
-
-        private void AddNewRowToGrid()
-        {
-
-            // if (ViewState["CurrentTable"] != null)
-            //{
-
-            DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-            //DataRow drCurrentRow = null;
-
-            //    if (dtCurrentTable.Rows.Count > 0)
-            //  {
-            //   drCurrentRow = dtCurrentTable.NewRow();
-            // drCurrentRow["RowNumber"] = dtCurrentTable.Rows.Count + 1;
-            //add new row to DataTable   
-            //dtCurrentTable.Rows.Add(drCurrentRow);
-            //Store the current data to ViewState for future reference   
-
-            ViewState["CurrentTable"] = dtCurrentTable;
-
-            for (int i = 0; i < GridviewResourceDetail.Rows.Count - 1; i++)
-            {
-                //extract the DropDownList Selected Items   
-                DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
-
-                TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
-                DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
-                TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
-                TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
-                dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
-                dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;
-                dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
-                dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
-            }
-
-            //Rebind the Grid with the current data to reflect changes   
-            GridviewResourceDetail.DataSource = dtCurrentTable;
-            GridviewResourceDetail.DataBind();
-            //   }
-            //            }
-            //          else
-            //        {
-            //     Response.Write("ViewState is null");
-
-            //      }
-            //Set Previous Data on Postbacks   
-            SetPreviousData();
-        }
-
-        private void SetPreviousData()
-        {
-
-            int rowIndex = 0;
-            if (ViewState["CurrentTable"] != null)
-            {
-
-                DataTable dt = (DataTable)ViewState["CurrentTable"];
-                if (dt.Rows.Count > 0)
-                {
-
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-
-                        DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID");
-                        TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate");
-                        //Fill the DropDownList with Data 
-
-                        ClsCommon.ddlGetRoleforDemand(ddl);
-                        ClsCommon.ddlGetSkillDDL(ddl1);
-
-                        if (i < dt.Rows.Count - 1)
-                        {
-                            ddl.ClearSelection();
-                            ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
-
-                            //Assign the value from DataTable to the TextBox   
-                            box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
-
-                            //Set the Previous Selected Items on Each DropDownList on Postbacks
-                            ddl1.ClearSelection();
-                            ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
-
-                            box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
-                            box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
-
-                        }
-
-                        rowIndex++;
-                    }
-                }
-            }
-        }
-
-        protected void ButtonAdd_Click(object sender, EventArgs e)
-        {
-            //SetInitialRow();
-            AddNewRowToGrid();
-
-        }
-
-        //protected void LinkButton1_Click(object sender, EventArgs e)
-        //{
-        //    Button lb = (Button)sender;
-        //    GridViewRow gvRow = (GridViewRow)lb.NamingContainer;
-        //    int rowID = gvRow.RowIndex;
-        //    if (ViewState["CurrentTable"] != null)
-        //    {
-
-        //        DataTable dt = (DataTable)ViewState["CurrentTable"];
-        //        if (dt.Rows.Count > 1)
-        //        {
-        //            if (gvRow.RowIndex <= dt.Rows.Count - 1)
-        //            {
-        //                //Remove the Selected Row data and reset row number  
-        //                dt.Rows.Remove(dt.Rows[rowID]);
-        //                ResetRowID(dt);
-        //            }
-        //        }
-
-        //        //Store the current data in ViewState for future reference  
-        //        ViewState["CurrentTable"] = dt;
-
-        //        //Re bind the GridView for the updated data  
-        //        GridviewResourceDetail.DataSource = dt;
-        //        GridviewResourceDetail.DataBind();
-        //    }
-
-        //    //Set Previous Data on Postbacks  
-        //    SetPreviousData();
-        //}
-
-        //private void ResetRowID(DataTable dt)
-        //{
-        //    int rowNumber = 1;
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow row in dt.Rows)
-        //        {
-        //            row[0] = rowNumber;
-        //            rowNumber++;
-        //        }
-        //    }
-        //}
-
-        protected void GridviewResourceDetail_RowCreated(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                DataTable dt = (DataTable)ViewState["CurrentTable"];
-                LinkButton lb = (LinkButton)e.Row.FindControl("LinkButton1");
-                if (lb != null)
-                {
-                    if (dt.Rows.Count > 1)
-                    {
-                        if (e.Row.RowIndex == dt.Rows.Count - 1)
-                        {
-                            lb.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        lb.Visible = false;
-                    }
-                }
-            }
         }
 
         public void Email(string RequestID,int Status)

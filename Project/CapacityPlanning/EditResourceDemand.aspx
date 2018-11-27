@@ -83,8 +83,7 @@
 
             <div class="dataTable_wrapper">
                 <asp:GridView ID="GridviewResourceDetail" runat="server" ShowFooter="True"
-                    CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False"
-                    OnRowCreated="GridviewResourceDetail_RowCreated">
+                    CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False">
                     <Columns>
                         <%--<asp:BoundField DataField="RowNumber" HeaderText="#" />--%>
                         <asp:TemplateField HeaderText="Resource Type *" HeaderStyle-CssClass="text-center">
@@ -125,17 +124,8 @@
                                     runat="server" ControlToValidate="StartDate" ControlToCompare="EndDate"
                                     Operator="LessThanEqual" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
-                            <FooterStyle HorizontalAlign="Right" />
-                            <%--<FooterTemplate>
-                                <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-primary" Text="Add New Row" OnClick="ButtonAdd_Click" />
-                            </FooterTemplate>--%>
-
                         </asp:TemplateField>
-                        <%--<asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-danger btn-md" Text="Remove" OnClick="LinkButton1_Click" />
-                            </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        
                     </Columns>
                 </asp:GridView>
             </div>
