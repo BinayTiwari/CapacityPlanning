@@ -30,52 +30,27 @@ namespace businessLogic
             return 1;
         }
 
-        public int Update(CPT_ResourceDemand resourceDemandDetails)
+        public void Update(CPT_ResourceDemand resourceDemandDetails)
         {
-            Delete(resourceDemandDetails.RequestID);
-            using (CPContext db = new CPContext())
+            if (resourceDemandDetails.StatusMasterID != 20)
             {
-                try
+                Delete(resourceDemandDetails.RequestID);
+                using (CPContext db = new CPContext())
                 {
-                    db.CPT_ResourceDemand.Add(resourceDemandDetails);
-                    db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-            }
-            return 1;
-        }
-        public int UpdateResourceDemand(CPT_ResourceDemand resourceDemandDetails)
-        {
-            using (CPContext db = new CPContext())
-            {
-                try
-                {
-                    var query = from details in db.CPT_ResourceDemand
-                                where details.RequestID == resourceDemandDetails.RequestID
-                                select details;
-
-                    foreach (var detail in query)
+                    try
                     {
-                        detail.AccountID = resourceDemandDetails.AccountID;
-                        detail.CityID = resourceDemandDetails.CityID;
-                        detail.OpportunityID = resourceDemandDetails.OpportunityID;
-                        detail.SalesStageID = resourceDemandDetails.SalesStageID;
-                        detail.ProcessName = resourceDemandDetails.ProcessName;
-                        detail.StatusMasterID = resourceDemandDetails.StatusMasterID;
+                        db.CPT_ResourceDemand.Add(resourceDemandDetails);
+                        db.Entry(resourceDemandDetails).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+
                 }
             }
-            return 1;
+                    
         }
 
 
