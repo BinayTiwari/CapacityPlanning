@@ -34,7 +34,7 @@
                             <th>Previous/Next Project</th>
                             <th>Aligned With</th>
                             <th>Release Date</th>
-                            <th>On Bench</th>
+                            <th>On Bench(days)</th>
 
                         </tr>
                     </thead>
@@ -49,7 +49,7 @@
                                     <td><%#Eval("ProcessName")%></td>
                                     <td><%#Eval("ReportingManager")%></td>
                                     <td><%#Eval("EndDate")%></td>
-                                    <td><%#string.Concat(Eval("OnBench"),"days")%></td>
+                                    <td><%#string.Concat(Eval("OnBench"))%></td>
 
                                 </tr>
                             </ItemTemplate>
