@@ -30,11 +30,11 @@
                             <th>#</th>
                             <th>Employee Name</th>
                             <th>Designation Name</th>
-                            <th>Previous Account</th>
-                            <th>Previous Project</th>
-                            <th>Reporting Manager</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
+                            <th>Previous/Next Account</th>
+                            <th>Previous/Next Project</th>
+                            <th>Aligned With</th>
+                            <th>Release Date</th>
+                            <th>On Bench</th>
 
                         </tr>
                     </thead>
@@ -48,8 +48,8 @@
                                     <td><%#Eval("AccountName")%></td>
                                     <td><%#Eval("ProcessName")%></td>
                                     <td><%#Eval("ReportingManager")%></td>
-                                    <td><%#Eval("StartDate")%></td>
                                     <td><%#Eval("EndDate")%></td>
+                                    <td><%#string.Concat(Eval("OnBench"),"days")%></td>
 
                                 </tr>
                             </ItemTemplate>

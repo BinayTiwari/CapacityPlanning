@@ -25,8 +25,8 @@ namespace businessLogic
 
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
-                string SqlString = "SELECT EmployeeMasterID,EmployeetName,StartDate,EndDate,DesignationName,AccountName,ProcessName," +
-                                   "[dbo].[ReportingManagerName](ReportingManagerID) As ReportingManager "+
+                string SqlString = "SELECT EmployeeMasterID,EmployeetName,StartDate,EndDate,DesignationName,AccountName,ProcessName,[dbo].[OnBench](EndDate) As OnBench," +
+                                   " [dbo].[ReportingManagerName](ReportingManagerID) As ReportingManager "+
                                    " FROM(SELECT CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, ISNULL(CAST(CPT_AllocateResource.StartDate" +
                                    " AS VARCHAR(12)), '-') AS StartDate, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') AS EndDate," +
                                    " ReportingManagerID, CPT_AllocateResource.EndDate As testdate," +
@@ -44,7 +44,7 @@ namespace businessLogic
                                    " CPT_AllocateResource.Released IS null Group by ResourceID) b ON a.EmployeeMasterID = b.ResourceID AND a.testdate = b.EndDatea" +
                                    " UNION" +
                                    " SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, '-' AS StartDate, '-' AS EndDate," +
-                                   " CPT_DesignationMaster.DesignationName,'-' AS AccountName,'-' AS ProcessName," +
+                                   " CPT_DesignationMaster.DesignationName,'-' AS AccountName,'-' AS ProcessName,'-' AS OnBench," +
                                    " [dbo].[ReportingManagerName](CPT_ResourceMaster.ReportingManagerID) As ReportingManager FROM CPT_ResourceMaster" +
                                    " INNER JOIN" +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID" +
