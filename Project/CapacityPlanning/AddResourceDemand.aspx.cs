@@ -9,12 +9,15 @@ using businessLogic;
 using System.Data;
 using System.Collections;
 using MessageTemplate;
+using System.Net.Mail;
 
 namespace CapacityPlanning
 {
     public partial class AddResourceDemand : System.Web.UI.Page
     {
         //protected string min { get; set; }
+        List<string> lstRoles = new List<string>();
+        List<string> lstSkills = new List<string>();
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -92,6 +95,8 @@ namespace CapacityPlanning
                             dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                            
                             dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
                             dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
+                            lstRoles.Add(ddl.SelectedItem.Text);
+                            lstSkills.Add(ddl1.SelectedItem.Text);
                         }
 
                         //Rebind the Grid with the current data to reflect changes   
@@ -122,8 +127,9 @@ namespace CapacityPlanning
                     //insertDemandDetails.Insert(demandDetails);
 
                 }
-                
+                EmailNew(lstSkills,lstRoles, processName.Text.Trim());
                 insertResourceDemand.Insert(resourceDemandDetails);
+                
                 Email();
 
                 Response.Redirect("ResourceDemand.aspx");
@@ -384,7 +390,46 @@ namespace CapacityPlanning
         {
             Response.Redirect("ResourceDemand.aspx");
         }
+        public void EmailNew(List<string> lstSkills,List<string> lstRole,string ProcessName)
+        {
+            try
+            {
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                MailMessage mail = new MailMessage();
+                mail.IsBodyHtml = true;
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("resourceallocationgic@gmail.com");
+                //mail.To.Add(lstdetils[0].Email);
+                mail.To.Add("jagmeet.sarna@gridinfocom.com");
+                //mail.CC.Add("pradeep.tyagi@gridinfocom.com,arun.kumar@gridinfocom.com,saransh.gupta@gridinfocom.com");
+                mail.Subject = "Resource Requested";
+                mail.Body = "<div align='justify' style='font - family: Calibri; font - size: 15px;'>" +
+                    "<strong> Dear <b> Team </b></strong>,&nbsp;" +
+                    "<p> Mr "+lstdetils[0].EmployeetName +" has raise a resource request for process "+ProcessName+".<br/>" +
+                    "Please find the details below.</p><table border='0'><tr><th>Role</th><th>Skill</th></tr> ";
+                for(int i=0;i<lstSkills.Count;i++)
+                {
+                    mail.Body += "<tr><td>" + lstRole[i] + "</td>" + "<td>" + lstSkills[i] + "</td></tr>";
+                }
 
+                mail.Body += "</table><br><p> Please login to the capacity planning tool to allocate resources.</p> "+
+                             "<a href='http://gridinfocom-001-site2.ftempurl.com'> <b>click here<b> </a><br>" +
+                            "<p><b>Warm Regards, </b></p> <p><b>Work Force Allocation</b></p>" +                             
+                             " <p><h6>This email is system generated, please do not respond to this email.</h6></p>";
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("resourceallocationgic@gmail.com", "incorrect@gic");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
+        }
         public void Email()
         {
             try
