@@ -18,6 +18,9 @@ namespace CapacityPlanning
         //protected string min { get; set; }
         List<string> lstRoles = new List<string>();
         List<string> lstSkills = new List<string>();
+        List<string> lstStartDate = new List<string>();
+        List<string> lstEnddate = new List<string>();
+        string AccountName = "";
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,7 +64,7 @@ namespace CapacityPlanning
                 resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;
                 resourceDemandDetails.StatusMasterID = 19;
                 resourceDemandDetails.PriorityID = 27;
-
+                AccountName = AccountMasterID.SelectedItem.Text.Trim();
                 ResourceDemandBL insertResourceDemand = new ResourceDemandBL();
                 //insertResourceDemand.Insert(resourceDemandDetails);
 
@@ -97,6 +100,8 @@ namespace CapacityPlanning
                             dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
                             lstRoles.Add(ddl.SelectedItem.Text);
                             lstSkills.Add(ddl1.SelectedItem.Text);
+                            lstStartDate.Add(box3.Text.Trim());
+                            lstEnddate.Add(box4.Text.Trim());
                         }
 
                         //Rebind the Grid with the current data to reflect changes   
@@ -127,10 +132,10 @@ namespace CapacityPlanning
                     //insertDemandDetails.Insert(demandDetails);
 
                 }
-                EmailNew(lstSkills,lstRoles, processName.Text.Trim());
                 insertResourceDemand.Insert(resourceDemandDetails);
-                
-                Email();
+                EmailNew(lstSkills, lstRoles, processName.Text.Trim(),lstStartDate,lstEnddate,AccountName);
+
+                // Email();
 
                 Response.Redirect("ResourceDemand.aspx");
 
@@ -390,7 +395,7 @@ namespace CapacityPlanning
         {
             Response.Redirect("ResourceDemand.aspx");
         }
-        public void EmailNew(List<string> lstSkills,List<string> lstRole,string ProcessName)
+        public void EmailNew(List<string> lstSkills,List<string> lstRole,string ProcessName,List<string> StartDate, List<string> EndDate,string Account)
         {
             try
             {
@@ -400,17 +405,17 @@ namespace CapacityPlanning
                 mail.IsBodyHtml = true;
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress("resourceallocationgic@gmail.com");
-                //mail.To.Add(lstdetils[0].Email);
-                mail.To.Add("jagmeet.sarna@gridinfocom.com");
-                //mail.CC.Add("pradeep.tyagi@gridinfocom.com,arun.kumar@gridinfocom.com,saransh.gupta@gridinfocom.com");
+                mail.To.Add(lstdetils[0].Email);
+                //mail.To.Add("jagmeet.sarna@gridinfocom.com");
+                mail.CC.Add("pradeep.tyagi@gridinfocom.com,arun.kumar@gridinfocom.com,saransh.gupta@gridinfocom.com");
                 mail.Subject = "Resource Requested";
                 mail.Body = "<div align='justify' style='font - family: Calibri; font - size: 15px;'>" +
                     "<strong> Dear <b> Team </b></strong>,&nbsp;" +
-                    "<p> Mr "+lstdetils[0].EmployeetName +" has raise a resource request for process "+ProcessName+".<br/>" +
-                    "Please find the details below.</p><table border='0'><tr><th>Role</th><th>Skill</th></tr> ";
+                    "<p> Mr "+lstdetils[0].EmployeetName +" has raise a resource request for process <b>"+Account +" - "+ ProcessName+"</b>.<br/>" +
+                    "Please find the details below.</p><table border='1' cellpadding=" + 0 + " cellspacing=" + 0 + " width = " + 400 + "><tr bgcolor='#4da6ff'><th>Role</th><th>Skill</th><th>Start Date</th><th>End Date</th></tr> ";
                 for(int i=0;i<lstSkills.Count;i++)
                 {
-                    mail.Body += "<tr><td>" + lstRole[i] + "</td>" + "<td>" + lstSkills[i] + "</td></tr>";
+                    mail.Body += "<tr><td>" + lstRole[i] + "</td>" + "<td>" + lstSkills[i] + "</td> <td>"+StartDate[i]+"</td><td>"+EndDate[i]+"</td></tr>";
                 }
 
                 mail.Body += "</table><br><p> Please login to the capacity planning tool to allocate resources.</p> "+
