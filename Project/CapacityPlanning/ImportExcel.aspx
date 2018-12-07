@@ -27,15 +27,10 @@
                 OnPageIndexChanging="PageIndexChanging" AllowPaging="true">
             </asp:GridView>
         </div>
-        <%--<asp:GridView ID="GridView2" runat="server"
-                OnPageIndexChanging="PageIndexChanging2" AllowPaging="true">
-            </asp:GridView>
-            <asp:GridView ID="GridView3" runat="server"
-                OnPageIndexChanging="PageIndexChanging3" AllowPaging="true">
-            </asp:GridView>
-            <asp:GridView ID="GridView4" runat="server"
-                OnPageIndexChanging="PageIndexChanging4" AllowPaging="true">
-            </asp:GridView>--%>
+        <div class="text-center">
+            <asp:Label ID="lblShow" Visible="false" runat="server"></asp:Label>
+        </div>
+       
     </div>
 </asp:Content>
 

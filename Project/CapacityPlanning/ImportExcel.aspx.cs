@@ -29,6 +29,9 @@ namespace CapacityPlanning
                 FileUpload1.SaveAs(FilePath);
                 Ui.Style.Add("display","none");
                 gridView.Style.Add("display", "block");
+                lblShow.Visible = true;
+                lblShow.ForeColor = System.Drawing.Color.Red;
+                lblShow.Text = "Processing...";
                 Import_To_Grid(FilePath, Extension, "Yes");
             }
         }
@@ -53,21 +56,10 @@ namespace CapacityPlanning
             connExcel.Open();
             DataTable dtExcelSchema;
             dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            //string[] excelSheets = new string[dtExcelSchema.Rows.Count];
-            //int i = 0;
-            //foreach (DataRow row in dtExcelSchema.Rows)
-            //{
-            //    excelSheets[i] = row["TABLE_NAME"].ToString();
-            //    i++;
-            //}
-            //for (int j = 0; j < excelSheets.Length; j++)
-            //{
             string SheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
             connExcel.Close();
             connExcel.Open();
             cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
-            //}
-
 
             oda.SelectCommand = cmdExcel;
             oda.Fill(dt1);
@@ -75,7 +67,47 @@ namespace CapacityPlanning
             GridView1.Caption = Path.GetFileName(FilePath);
             GridView1.DataSource = dt1;
             GridView1.DataBind();
-
+            DataTable dt=ConvertExcelToDataTable(FilePath);
+        }
+        private static DataTable ConvertExcelToDataTable(string FileName)
+        {
+            DataTable dtResult = null;
+            int totalSheet = 0; //No of sheets on excel file  
+            using (OleDbConnection objConn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties='Excel 12.0;HDR=YES;IMEX=1;';"))
+            {
+                objConn.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                OleDbDataAdapter oleda = new OleDbDataAdapter();
+                DataSet ds = new DataSet();
+                DataTable dt = objConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                string sheetName = string.Empty;
+                if (dt != null)
+                {
+                    var tempDataTable = (from dataRow in dt.AsEnumerable()
+                                         where !dataRow["TABLE_NAME"].ToString().Contains("FilterDatabase")
+                                         select dataRow).CopyToDataTable();
+                    dt = tempDataTable;
+                    totalSheet = dt.Rows.Count;
+                    sheetName = dt.Rows[0]["TABLE_NAME"].ToString();
+                }
+                cmd.Connection = objConn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM [" + sheetName + "]";
+                oleda = new OleDbDataAdapter(cmd);
+                oleda.Fill(ds, "excelData");
+                dtResult = ds.Tables["excelData"];
+                objConn.Close();
+                return dtResult; //Returning Dattable  
+            }
+        }
+        private void processData(DataTable dt)
+        {
+            List<string> lstAccountName = new List<string>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                lstAccountName.Add(dt.Rows[i]["Client"].ToString());
+            }
+            lstAccountName = lstAccountName.Distinct().ToList();
         }
         protected void PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
