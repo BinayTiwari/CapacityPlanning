@@ -45,14 +45,13 @@ namespace CapacityPlanning
 
                 foreach (RepeaterItem item in rptResourceAllocation.Items)
                 {
-                    int NoOfRes = 0;
-                    int NoOfAllocate = 0;
+                    float NoOfRes = 0;
+                    float NoOfAllocate = 0;
                     Label lblNoOfResources = (Label)item.FindControl("lblNoOfResources");
                     Label lblAllocated = (Label)item.FindControl("Allocated");
                     Label lblRole = (Label)item.FindControl("RoleName");
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-                    NoOfRes = (int)Math.Ceiling(decimal.Parse(lblNoOfResources.Text));
-                    NoOfAllocate = (int)Math.Ceiling(decimal.Parse(lblAllocated.Text));
+                    NoOfRes = float.Parse(lblNoOfResources.Text);
+                    NoOfAllocate = float.Parse(lblAllocated.Text);
                     if (NoOfRes == NoOfAllocate)
                     {
                         Button btn = (Button)item.FindControl("btnAlign");
@@ -125,8 +124,8 @@ namespace CapacityPlanning
         {
             if(e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                string a = ((DbDataRecord)e.Item.DataItem).GetValue(5).ToString();
-                if (a.Equals("No"))
+                string a = ((DbDataRecord)e.Item.DataItem).GetValue(6).ToString();
+                if (a.Equals("100"))
                 {
                     CheckBox chk = (CheckBox)e.Item.FindControl("chkRequired");
                     chk.Enabled = false;

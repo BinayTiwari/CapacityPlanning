@@ -144,6 +144,7 @@
                                                     <%--<th>Requested by</th>--%>
                                                     <th>Release Date</th>
                                                     <th>Is Released ?</th>
+                                                    <th>Utilization</th>
                                                     <th>Align</th>
                                                 </tr>
                                             </thead>
@@ -158,6 +159,7 @@
                                                             <%--<td><%#DataBinder.Eval(Container,"DataItem.Owner")%></td>--%>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.EndDate","{0:d}")%></td>
                                                             <td><%#DataBinder.Eval(Container,"DataItem.IsReleased")%></td>
+                                                            <td><%#string.Concat(Eval("utilization"),"%")%></td>
 
                                                             <td>
                                                                 <asp:CheckBox ID="chkRequired" EmployeeMasterID='<%#Eval("EmployeeMasterID") %>' OnCheckedChanged="chkRequired_CheckedChanged" runat="server" />
