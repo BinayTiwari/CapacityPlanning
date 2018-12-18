@@ -31,11 +31,23 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label style="font-size: medium"><span style="color: red;">*</span>Please enter your Employee ID</label>
                             </div>
-                            <div class="col-md-4">
-                                <asp:TextBox ID="EmpID" runat="server" MaxLength="6" CssClass="form-control"></asp:TextBox>
+                            <div class="col-md-2">
+                                <asp:TextBox ID="EmpID" runat="server" MaxLength="6" CssClass="form-control" required></asp:TextBox>
+                            </div>
+                            <div class="col-md-2">
+                                <asp:DropDownList ID="ddlPrimary" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-2">
+                                <asp:DropDownList ID="ddlSecondry" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-2">
+                                <asp:DropDownList ID="ddlTertiary" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
                             </div>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorfirstNameTextBox" SetFocusOnError="true" runat="server" ForeColor="Red" Display="Dynamic" ControlToValidate="EmpID"
                                 ValidationExpression="^[0-9]{5,6}$" ErrorMessage="Invalid Employee ID !" />
@@ -64,7 +76,7 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                <asp:CheckBox ID="chkRPA" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
                                                     OnCheckedChanged="chkRPA_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
@@ -103,7 +115,7 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkLangPrg" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                <asp:CheckBox ID="chkLangPrg" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
                                                     OnCheckedChanged="chkLangPrg_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
@@ -142,7 +154,7 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkMS" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                <asp:CheckBox ID="chkMS" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
                                                     OnCheckedChanged="chkMS_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
@@ -181,7 +193,7 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkFrk" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                <asp:CheckBox ID="chkFrk" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
                                                     OnCheckedChanged="chkFrk_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
@@ -220,7 +232,7 @@
                                     <ItemTemplate>
                                         <div class="row center-block">
                                             <div class="col-md-5">
-                                                <asp:CheckBox ID="chkDB" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>' 
+                                                <asp:CheckBox ID="chkDB" SkillID='<%#Eval("SkillsMasterID") %>' Skillname='<%#Eval("SkillsName") %>'
                                                     OnCheckedChanged="chkDB_Changed" runat="server" />
                                                 <%#DataBinder.Eval(Container,"DataItem.SkillsName")%>
                                             </div>
@@ -309,7 +321,7 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        
+
     </form>
     <div id="myDIV" class="center-block" style="display: none; text-align: center" runat="server">
         <br />
@@ -322,6 +334,6 @@
             Your Skills has been successfully submitted.</h1>
     </div>
 
-    
+
 </body>
 </html>

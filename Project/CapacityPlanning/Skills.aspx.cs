@@ -17,7 +17,11 @@ namespace CapacityPlanning
             if (IsPostBack == false)
             {
                 SetSkillsBL.GetNewSkills(rptRPA, rptLangPrg, rptMS, rptFrk, rptDB, rptOther);
-                
+                ClsCommon.ddlGetSkillddl(ddlPrimary, "Select Primary Skill");
+                ClsCommon.ddlGetSkillddl(ddlSecondry,"Select Secondary Skill");
+                ClsCommon.ddlGetSkillddl(ddlTertiary,"Select Ternary Skill");
+
+
             }
         }
 
@@ -339,6 +343,7 @@ namespace CapacityPlanning
                     }
           
                     SetSkillsBL.UpdateSkills(Convert.ToInt32(EmpID.Text), SkillIDs);
+                    SetSkillsBL.UpdateSkill(Convert.ToInt32(EmpID.Text), ddlPrimary.SelectedValue,ddlSecondry.SelectedValue,ddlTertiary.SelectedValue);
                     SetSkillsBL.InsertCertificate(lstCertificates);
                     form1.Style.Add("display", "none");
                     DvSkill.Style.Add("display", "none");
@@ -353,6 +358,8 @@ namespace CapacityPlanning
             }
             catch (Exception q)
             {
+                lblEmpID.Visible = true;
+                lblEmpID.Text = q.Message;
                 Console.Write(q.Message);
             }
         }

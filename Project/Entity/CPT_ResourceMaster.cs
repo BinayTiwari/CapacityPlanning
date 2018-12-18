@@ -85,6 +85,15 @@ namespace Entity
 
         public int? IsDeleted { get; set; }
 
+        [StringLength(100)]
+        public string PRIMARY_SKILL { get; set; }
+
+        [StringLength(100)]
+        public string SECONDARY_SKILL { get; set; }
+
+        [StringLength(100)]
+        public string TERTIARY_SKILL { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CPT_AllocateResource> CPT_AllocateResource { get; set; }
 

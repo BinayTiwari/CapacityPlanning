@@ -40,6 +40,33 @@ namespace CapacityPlanning {
         protected global::System.Web.UI.WebControls.TextBox EmpID;
         
         /// <summary>
+        /// ddlPrimary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrimary;
+        
+        /// <summary>
+        /// ddlSecondry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecondry;
+        
+        /// <summary>
+        /// ddlTertiary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTertiary;
+        
+        /// <summary>
         /// RegularExpressionValidatorfirstNameTextBox control.
         /// </summary>
         /// <remarks>

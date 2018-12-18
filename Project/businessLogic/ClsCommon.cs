@@ -330,7 +330,30 @@ namespace businessLogic
             }
         }
 
+        public static void ddlGetSkillddl(DropDownList ddldropdownName,string str)
+        {
+            ddldropdownName.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = str;
+            li.Value = "0";
+            ddldropdownName.Items.Add(li);
 
+            using (var db = new CPContext())
+            {
+                var query = from c in db.CPT_SkillsMaster
+                            where c.IsActive == true
+                            orderby c.SkillsName
+                            select c;
+                foreach (var item in query)
+                {
+                    li = new ListItem();
+                    li.Value = item.SkillsMasterID.ToString();
+                    li.Text = item.SkillsName.ToString();
+                    ddldropdownName.Items.Add(li);
+
+                }
+            }
+        }
 
 
         public static void ddlGetSalesStage(DropDownList ddldropdownName)

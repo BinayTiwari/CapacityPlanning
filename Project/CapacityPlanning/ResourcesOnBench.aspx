@@ -35,13 +35,14 @@
                             <th>Aligned With</th>
                             <th>Release Date</th>
                             <th>On Bench(days)</th>
+                            <th>Status</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <asp:Repeater ID="rptDsVsRes" runat="server">
                             <ItemTemplate>
-                                <tr class="odd gradeX">
+                                <tr id="trID" runat="server" class="odd gradeX">
                                     <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%#Eval("EmployeetName")%></td>
                                     <td><%#Eval("DesignationName")%></td>
@@ -49,8 +50,8 @@
                                     <td><%#Eval("ProcessName")%></td>
                                     <td><%#Eval("ReportingManager")%></td>
                                     <td><%#Eval("EndDate")%></td>
-                                    <td><%#string.Concat(Eval("OnBench"))%></td>
-
+                                    <td><asp:Label ID="lblOnBench" runat="server" Text='<%#string.Concat(Eval("OnBench"))%>'></asp:Label></td>
+                                    <td><asp:Label ID="lblStatus" runat="server" Text='<%#Eval("StatusVal")%>'></asp:Label></td>
                                 </tr>
                             </ItemTemplate>
 

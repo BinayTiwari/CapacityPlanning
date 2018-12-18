@@ -24,11 +24,11 @@
         </div>
         <div id="gridView" style="display: none;" runat="server">
             <asp:GridView ID="GridView1" runat="server"
-                OnPageIndexChanging="PageIndexChanging" AllowPaging="true">
+                OnPageIndexChanging="PageIndexChanging" AllowPaging="false">
             </asp:GridView>
         </div>
         <div class="text-center">
-            <asp:Label ID="lblShow" Visible="false" runat="server"></asp:Label>
+            <asp:Label ID="lblShow" Visible="false" runat="server"></asp:Label> 
         </div>
        
     </div>

@@ -14,6 +14,8 @@ namespace Entity
 
         public virtual DbSet<CPT_AccountMaster> CPT_AccountMaster { get; set; }
         public virtual DbSet<CPT_AllocateResource> CPT_AllocateResource { get; set; }
+        public virtual DbSet<CPT_Category> CPT_Category { get; set; }
+        public virtual DbSet<CPT_Certificate> CPT_Certificate { get; set; }
         public virtual DbSet<CPT_CityMaster> CPT_CityMaster { get; set; }
         public virtual DbSet<CPT_CountryMaster> CPT_CountryMaster { get; set; }
         public virtual DbSet<CPT_DesignationMaster> CPT_DesignationMaster { get; set; }
@@ -119,6 +121,11 @@ namespace Entity
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CPT_ResourceMaster>()
+                .HasMany(e => e.CPT_Certificate)
+                .WithOptional(e => e.CPT_ResourceMaster)
+                .HasForeignKey(e => e.EmployeeID);
+
+            modelBuilder.Entity<CPT_ResourceMaster>()
                 .HasMany(e => e.CPT_ResourceDemand)
                 .WithOptional(e => e.CPT_ResourceMaster)
                 .HasForeignKey(e => e.ResourceRequestBy);
@@ -138,6 +145,11 @@ namespace Entity
                 .WithRequired(e => e.CPT_SalesStageMaster)
                 .HasForeignKey(e => e.SalesStageID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CPT_SkillsMaster>()
+                .HasMany(e => e.CPT_Certificate)
+                .WithOptional(e => e.CPT_SkillsMaster)
+                .HasForeignKey(e => e.SkillID);
 
             modelBuilder.Entity<CPT_SkillsMaster>()
                 .HasMany(e => e.CPT_NewJoiners)
