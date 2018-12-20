@@ -15,7 +15,23 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                ResourceMappingBL.ResourceMapping(rptResourceMapping);
+                int roleID = 0;
+                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+                if(lstdetils[0].RolesID == 20)
+                {
+                    roleID = 14;
+                    ResourceMappingBL.ResourceMappingRoleWise(rptResourceMapping, roleID);
+                }
+                else if(lstdetils[0].RolesID == 25)
+                {
+                    roleID = 13;
+                    ResourceMappingBL.ResourceMappingRoleWise(rptResourceMapping, roleID);
+                }
+                else
+                {
+                    ResourceMappingBL.ResourceMapping(rptResourceMapping);
+                }
 
             }
         }

@@ -26,7 +26,7 @@ namespace CapacityPlanning
         {
             if (IsPostBack == false)
             {
-                //TextBox box3 = (TextBox)GridviewResourceDetail.FindControl("StartDate");
+                //TextBox box3 = (TextBox)GridviewResourceDdviail.FindControl("StartDate");
                
                 //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
@@ -87,19 +87,23 @@ namespace CapacityPlanning
                         {
                             //extract the DropDownList Selected Items   
                             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
-                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
+                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("ddlPrimary");
+                            DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[4].FindControl("ddlSecondry");
+                            DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[5].FindControl("ddlTernary");
                             //TextBox box1 = (TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("TextBox1");
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[6].FindControl("StartDate");
+                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[7].FindControl("EndDate");
 
                             dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                             dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                            dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                            
+                            dtCurrentTable.Rows[i]["PrimarySkill"] = ddl1.SelectedValue;
+                            dtCurrentTable.Rows[i]["SecondrySkill"] = ddl2.SelectedValue;
+                            dtCurrentTable.Rows[i]["TernarySkill"] = ddl3.SelectedValue;
                             dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
                             dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
                             lstRoles.Add(ddl.SelectedItem.Text);
-                            lstSkills.Add(ddl1.SelectedItem.Text);
+                            lstSkills.Add(ddl1.SelectedItem.Text+","+ddl2.SelectedItem.Text+","+ddl3.SelectedItem.Text);
                             lstStartDate.Add(box3.Text.Trim());
                             lstEnddate.Add(box4.Text.Trim());
                         }
@@ -122,7 +126,7 @@ namespace CapacityPlanning
                     details.RequestID = resourceDemandDetails.RequestID;
                     details.ResourceTypeID = Convert.ToInt32(data.Rows[i]["ResourceTypeID"]);
                     details.NoOfResources = (float)Convert.ToDouble(data.Rows[i]["NoOfResources"]);
-                    details.SkillID = data.Rows[i]["SkillID"].ToString().Trim();
+                    details.SkillID = data.Rows[i]["PrimarySkill"].ToString().Trim()+","+ data.Rows[i]["SecondrySkill"].ToString().Trim()+","+ data.Rows[i]["TernarySkill"].ToString().Trim();
                     details.StartDate = Convert.ToDateTime(data.Rows[i]["StartDate"]);
                     details.EndDate = Convert.ToDateTime(data.Rows[i]["EndDate"]);
 
@@ -155,7 +159,9 @@ namespace CapacityPlanning
             dt.Columns.Add(new DataColumn("RowNumber", typeof(string)));
             dt.Columns.Add(new DataColumn("ResourceTypeID", typeof(Int32)));//for DropDownList selected item   
             dt.Columns.Add(new DataColumn("NoOfResources", typeof(float)));//for TextBox value   
-            dt.Columns.Add(new DataColumn("SkillID", typeof(string)));//for List selected item   
+            dt.Columns.Add(new DataColumn("PrimarySkill", typeof(string)));
+            dt.Columns.Add(new DataColumn("SecondrySkill", typeof(string)));//for List selected item   
+            dt.Columns.Add(new DataColumn("TernarySkill", typeof(string)));//for List selected item   
             dt.Columns.Add(new DataColumn("StartDate", typeof(string)));//for Start Date 
             dt.Columns.Add(new DataColumn("EndDate", typeof(string)));//for End Date 
             //Set the Default value.
@@ -178,17 +184,23 @@ namespace CapacityPlanning
 
             //After binding the gridview, we can then extract and fill the DropDownList with Data   
             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[0].Cells[1].FindControl("ResourceTypeID");
-            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID");
+            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[3].FindControl("ddlPrimary");
+            DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[4].FindControl("ddlSecondry");
+            DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[0].Cells[5].FindControl("ddlTernary");
+
             //ListBox ddl2 = (ListBox)GridviewResourceDetail.Rows[0].Cells[3].FindControl("SkillID1");
 
-            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[0].Cells[4].FindControl("StartDate");
-            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[0].Cells[5].FindControl("EndDate");
+            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[0].Cells[6].FindControl("StartDate");
+            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[0].Cells[7].FindControl("EndDate");
             //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
             //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
 
 
             ClsCommon.ddlGetRoleforDemand(ddl);
-            ClsCommon.ddlGetSkillDDL(ddl1);
+            ClsCommon.ddlGetSkillddl(ddl1,"Select Primary Skill");
+            ClsCommon.ddlGetSkillddl(ddl2, "Select Secondry Skill");
+            ClsCommon.ddlGetSkillddl(ddl3, "Select Ternary Skill");
+            //ClsCommon.ddlGetSkillDDL(ddl1);
             //ClsCommon.ddlGetSkill(ddl2);
 
         }
@@ -220,9 +232,11 @@ namespace CapacityPlanning
                         //extract the DropDownList Selected Items   
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].Cells[1].FindControl("ResourceTypeID");
                         TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[3].FindControl("ddlPrimary");
+                        DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[4].FindControl("ddlSecondry");
+                        DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[i].Cells[5].FindControl("ddlTernary");
+                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[6].FindControl("StartDate");
+                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[7].FindControl("EndDate");
 
                         //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
                         //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
@@ -230,7 +244,10 @@ namespace CapacityPlanning
 
                         dtCurrentTable.Rows[i]["ResourceTypeID"] = ddl.SelectedValue;
                         dtCurrentTable.Rows[i]["NoOfResources"] = box2.Text.Trim();
-                        dtCurrentTable.Rows[i]["SkillID"] = ddl1.SelectedValue;                       
+                        dtCurrentTable.Rows[i]["PrimarySkill"] = ddl1.SelectedValue;
+                        dtCurrentTable.Rows[i]["SecondrySkill"] = ddl2.SelectedValue;
+                        dtCurrentTable.Rows[i]["TernarySkill"] = ddl3.SelectedValue;
+
                         dtCurrentTable.Rows[i]["StartDate"] = box3.Text.Trim();
                         dtCurrentTable.Rows[i]["EndDate"] = box4.Text.Trim();
 
@@ -266,9 +283,11 @@ namespace CapacityPlanning
 
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[1].FindControl("ResourceTypeID");
                         TextBox box2 = (TextBox)GridviewResourceDetail.Rows[i].Cells[2].FindControl("NoOfResources");
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
-                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("StartDate");
-                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[5].FindControl("EndDate");
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("ddlPrimary");
+                        DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("ddlSecondry");
+                        DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("ddlTernary");
+                        TextBox box3 = (TextBox)GridviewResourceDetail.Rows[i].Cells[6].FindControl("StartDate");
+                        TextBox box4 = (TextBox)GridviewResourceDetail.Rows[i].Cells[7].FindControl("EndDate");
 
                         //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
                         //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
@@ -276,7 +295,10 @@ namespace CapacityPlanning
 
                         //Fill the DropDownList with Data 
                         ClsCommon.ddlGetRoleforDemand(ddl);
-                        ClsCommon.ddlGetSkillDDL(ddl1);                       
+                        //ClsCommon.ddlGetSkillDDL(ddl1);  
+                        ClsCommon.ddlGetSkillddl(ddl1, "Select Primary Skill");
+                        ClsCommon.ddlGetSkillddl(ddl2, "Select Secondry Skill");
+                        ClsCommon.ddlGetSkillddl(ddl3, "Select Ternary Skill");
 
                         if (i < dt.Rows.Count-1)
                         {
@@ -285,7 +307,11 @@ namespace CapacityPlanning
                             box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
                             
                             ddl1.ClearSelection();
-                            ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
+                            ddl2.ClearSelection();
+                            ddl3.ClearSelection();
+                            ddl1.Items.FindByValue(dt.Rows[i]["PrimarySkill"].ToString()).Selected = true;
+                            ddl2.Items.FindByValue(dt.Rows[i]["SecondrySkill"].ToString()).Selected = true;
+                            ddl3.Items.FindByValue(dt.Rows[i]["TernarySkill"].ToString()).Selected = true;
                             box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
                             
                             box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
@@ -407,12 +433,12 @@ namespace CapacityPlanning
                 mail.From = new MailAddress("resourceallocationgic@gmail.com");
                 mail.To.Add(lstdetils[0].Email);
                 //mail.To.Add("jagmeet.sarna@gridinfocom.com");
-                mail.CC.Add("pradeep.tyagi@gridinfocom.com,arun.kumar@gridinfocom.com,saransh.gupta@gridinfocom.com");
+               mail.CC.Add("pradeep.tyagi@gridinfocom.com,arun.kumar@gridinfocom.com,saransh.gupta@gridinfocom.com");
                 mail.Subject = "Resource Requested";
                 mail.Body = "<div align='justify' style='font - family: Calibri; font - size: 15px;'>" +
                     "<strong> Dear <b> Team </b></strong>,&nbsp;" +
                     "<p> Mr "+lstdetils[0].EmployeetName +" has raise a resource request for process <b>"+Account +" - "+ ProcessName+"</b>.<br/>" +
-                    "Please find the details below.</p><table border='1' cellpadding=" + 0 + " cellspacing=" + 0 + " width = " + 400 + "><tr bgcolor='#4da6ff'><th>Role</th><th>Skill</th><th>Start Date</th><th>End Date</th></tr> ";
+                    "Please find the details below.</p><table border='1' cellpadding=" + 0 + " cellspacing=" + 0 + " width = " + 400 + "><tr bgcolor='#4da6ff'><th>Role</th><th>Skills</th><th>Start Date</th><th>End Date</th></tr> ";
                 for(int i=0;i<lstSkills.Count;i++)
                 {
                     mail.Body += "<tr><td>" + lstRole[i] + "</td>" + "<td>" + lstSkills[i] + "</td> <td>"+StartDate[i]+"</td><td>"+EndDate[i]+"</td></tr>";
@@ -435,31 +461,31 @@ namespace CapacityPlanning
             }
 
         }
-        public void Email()
-        {
-            try
-            {
-                List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
-                lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
-                string employeeEmailID = lstdetils[0].Email;
+        //public void Email()
+        //{
+        //    try
+        //    {
+        //        List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
+        //        lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
+        //        string employeeEmailID = lstdetils[0].Email;
 
-                CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
-                registrationEmail.Name = "ResourceDemand";
-                registrationEmail.To = new List<string>();
-                registrationEmail.To.Add(employeeEmailID);
-                registrationEmail.ToUserName = new List<string>();
-                registrationEmail.ToUserName.Add(lstdetils[0].EmployeetName);
-                //registrationEmail.UID = lstdetils[0].EmployeeMasterID.ToString();
-                TokenMessageTemplate valEmail = new TokenMessageTemplate();
-                valEmail.SendEmail(registrationEmail);
-            }
-            catch (Exception ex)
-            {
+        //        CPT_EmailTemplate registrationEmail = new CPT_EmailTemplate();
+        //        registrationEmail.Name = "ResourceDemand";
+        //        registrationEmail.To = new List<string>();
+        //        registrationEmail.To.Add(employeeEmailID);
+        //        registrationEmail.ToUserName = new List<string>();
+        //        registrationEmail.ToUserName.Add(lstdetils[0].EmployeetName);
+        //        //registrationEmail.UID = lstdetils[0].EmployeeMasterID.ToString();
+        //        TokenMessageTemplate valEmail = new TokenMessageTemplate();
+        //        valEmail.SendEmail(registrationEmail);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                Console.WriteLine(ex.Message);
-            }
+        //        Console.WriteLine(ex.Message);
+        //    }
             
-        }
+        //}
 
         private void SetPreviousDataforRemove()
         {
@@ -478,9 +504,11 @@ namespace CapacityPlanning
 
                             DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[1].FindControl("ResourceTypeID");
                             TextBox box2 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[2].FindControl("NoOfResources");
-                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("SkillID");
-                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("StartDate");
-                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("EndDate");
+                            DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[3].FindControl("ddlPrimary");
+                            DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[4].FindControl("ddlSecondry");
+                            DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[rowIndex].Cells[5].FindControl("ddlTernary");
+                            TextBox box3 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[6].FindControl("StartDate");
+                            TextBox box4 = (TextBox)GridviewResourceDetail.Rows[rowIndex].Cells[7].FindControl("EndDate");
 
                             //box3.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
                             //box4.Attributes["min"] = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
@@ -488,17 +516,25 @@ namespace CapacityPlanning
 
                             //Fill the DropDownList with Data 
                             ClsCommon.ddlGetRoleforDemand(ddl);
-                            ClsCommon.ddlGetSkillDDL(ddl1);
+                            // ClsCommon.ddlGetSkillDDL(ddl1);
+                            ClsCommon.ddlGetSkillddl(ddl1, "Select Primary Skill");
+                            ClsCommon.ddlGetSkillddl(ddl2, "Select Secondry Skill");
+                            ClsCommon.ddlGetSkillddl(ddl3, "Select Ternary Skill");
 
-                           
-                                ddl.ClearSelection();
+
+                            ddl.ClearSelection();
                             
                                 ddl.Items.FindByValue(dt.Rows[i]["ResourceTypeID"].ToString()).Selected = true;
                                 box2.Text = dt.Rows[i]["NoOfResources"].ToString().Trim();
 
                                 ddl1.ClearSelection();
-                                ddl1.Items.FindByValue(dt.Rows[i]["SkillID"].ToString()).Selected = true;
-                                box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
+                            ddl2.ClearSelection();
+                            ddl3.ClearSelection();
+                            ddl1.Items.FindByValue(dt.Rows[i]["PrimarySkill"].ToString()).Selected = true;
+                            ddl2.Items.FindByValue(dt.Rows[i]["SecondrySkill"].ToString()).Selected = true;
+                            ddl3.Items.FindByValue(dt.Rows[i]["TernarySkill"].ToString()).Selected = true;
+
+                            box3.Text = dt.Rows[i]["StartDate"].ToString().Trim();
                                 box4.Text = dt.Rows[i]["EndDate"].ToString().Trim();
                             
                             rowIndex++;

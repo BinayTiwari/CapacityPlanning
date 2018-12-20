@@ -59,7 +59,7 @@
                                             <td>
                                                 <asp:Label ID="RoleName" runat="server" Text='<%#Eval("RoleName")%>' /></td>
                                             <td>
-                                                <asp:Label ID="SkillsName" runat="server" Text='<%#Eval("SkillsName")%>' /></td>
+                                                <asp:Label ID="SkillsName" runat="server" Text='<%#Eval("Skills")%>' /></td>
                                             <td>
                                                 <asp:Label ID="lblNoOfResources" runat="server" Text='<%#Eval("NoOfResources")%>' /></td>
                                             <%--<td><asp:Label ID="Label1" runat="server" Text='<%#Eval("RequestedBy")%>' /></td>--%>
@@ -69,7 +69,7 @@
                                                 <asp:Label ID="StartDate" runat="server" Text='<%#Eval("StartDate", "{0:MMM dd yyyy}")%>' /></td>
                                             <td>
                                                 <asp:Label ID="EndDate" runat="server" Text='<%#Eval("EndDate", "{0:MMM dd yyyy}")%>' /></td>
-                                            <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
+                                            <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestID")%>">
                                                 <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul>
                                             </a></td>
 

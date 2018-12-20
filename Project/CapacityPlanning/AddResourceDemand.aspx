@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Add Resource Demand" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddResourceDemand.aspx.cs" Inherits="CapacityPlanning.AddResourceDemand" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-12">
@@ -85,12 +86,27 @@
                                     ErrorMessage="No of Resources can't be blank !" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField HeaderText="Primary Skills *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
 <%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
-
-                                <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
+                                <asp:DropDownList ID="ddlPrimary" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlPrimary" runat="server" ControlToValidate="ddlPrimary" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Secondry Skills *" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+<%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+                                <asp:DropDownList ID="ddlSecondry" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlSecondry" runat="server" ControlToValidate="ddlSecondry" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ternary Skills *" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+<%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+                                <asp:DropDownList ID="ddlTernary" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlTernary" runat="server" ControlToValidate="ddlTernary" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -143,13 +159,7 @@
     </div>
     
 
-   <%-- <script type="text/javascript">
-        $(function () {
-            $('[id*=SkillID1]').multiselect({
-                includeSelectAllOption: true
-            });
-        });
-    </script>--%>
+    
 
 
 </asp:Content>

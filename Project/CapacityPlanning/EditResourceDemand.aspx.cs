@@ -77,14 +77,30 @@ namespace CapacityPlanning
                 {
                     for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
                     {
+                        var skills = lstDetail[i].SkillID.Split(',');
                         DropDownList ddl = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ResourceTypeID");
                         ClsCommon.ddlGetRoleforDemand(ddl);
                         ddl.SelectedValue = lstDetail[i].ResourceTypeID.ToString();
                         //ddl.Items.FindByValue(lstDetail[0].ResourceTypeID.ToString()).Selected = true;
-
-                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("SkillID");
-                        ClsCommon.ddlGetSkillDDL(ddl1);
-                        ddl1.SelectedValue = lstDetail[i].SkillID.ToString();
+                        DropDownList ddl1 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ddlPrimary");
+                        DropDownList ddl2 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ddlSecondry");
+                        DropDownList ddl3 = (DropDownList)GridviewResourceDetail.Rows[i].FindControl("ddlTernary");
+                        if (skills.Count()>1)
+                        {
+                            ClsCommon.ddlGetSkillddl(ddl1, "Select Primary Skill");
+                            ClsCommon.ddlGetSkillddl(ddl2, "Select Secondry Skill");
+                            ClsCommon.ddlGetSkillddl(ddl3, "Select Ternary Skill");
+                            ddl1.SelectedValue = skills[0];
+                            ddl2.SelectedValue = skills[1];
+                            ddl3.SelectedValue = skills[2];
+                        }
+                        else
+                        {
+                            ClsCommon.ddlGetSkillddl(ddl1, "Select Primary Skill");
+                            ddl1.SelectedValue = skills[0];
+                            ddl2.Visible = false;
+                            ddl3.Visible = false;
+                        }
 
                     }
                     
@@ -109,19 +125,19 @@ namespace CapacityPlanning
                 List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
                 lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
 
-                CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
-                resourceDemandDetails.RequestID = requestID;
-                resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
-                int CityID = ResourceDemandBL.getCityID(Convert.ToInt32(AccountMasterID.SelectedValue));
-                resourceDemandDetails.CityID = CityID;
-                resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
-                resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
-                resourceDemandDetails.ProcessName = processName.Text;
-                resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
-                resourceDemandDetails.DateOfCreation = Convert.ToDateTime(ViewState["dateOfCreation"]);
-                resourceDemandDetails.DateOfModification = DateTime.Now;
-                resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;                
-                resourceDemandDetails.PriorityID = 27;
+                //CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
+                //resourceDemandDetails.RequestID = requestID;
+                //resourceDemandDetails.AccountID = Convert.ToInt32(AccountMasterID.SelectedValue);
+                //int CityID = ResourceDemandBL.getCityID(Convert.ToInt32(AccountMasterID.SelectedValue));
+                //resourceDemandDetails.CityID = CityID;
+                //resourceDemandDetails.OpportunityID = Convert.ToInt32(OpportunityID.SelectedValue);
+                //resourceDemandDetails.SalesStageID = Convert.ToInt32(SalesStageMasterID.SelectedValue);
+                //resourceDemandDetails.ProcessName = processName.Text;
+                //resourceDemandDetails.StatusMasterID = Convert.ToInt32(StatusMasterID.SelectedValue);
+                //resourceDemandDetails.DateOfCreation = Convert.ToDateTime(ViewState["dateOfCreation"]);
+                //resourceDemandDetails.DateOfModification = DateTime.Now;
+                //resourceDemandDetails.ResourceRequestBy = lstdetils[0].EmployeeMasterID;                
+                //resourceDemandDetails.PriorityID = 27;
                 if (Convert.ToInt32(StatusMasterID.SelectedValue) == 23)
                 {
                     ResourceDemandBL.updateReleasedValue(requestID);
@@ -131,24 +147,24 @@ namespace CapacityPlanning
 
                 List<CPT_ResourceDetails> lstdetails = new List<CPT_ResourceDetails>();
 
-                for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
-                {
-                    CPT_ResourceDetails details = new CPT_ResourceDetails();
+               // for (int i = 0; i < GridviewResourceDetail.Rows.Count; i++)
+               // {
+               //     CPT_ResourceDetails details = new CPT_ResourceDetails();
 
-                    details.RequestID = resourceDemandDetails.RequestID;
-                    details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID")).SelectedValue);
-                    details.NoOfResources = (float)Convert.ToDouble(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
-                    details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID")).SelectedValue;
-                    details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate")).Text.Trim());
-                    string endDate = ((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim();
-                    details.EndDate = DateTime.Parse(endDate);
+               //     details.RequestID = resourceDemandDetails.RequestID;
+               //     details.ResourceTypeID = Convert.ToInt32(((DropDownList)GridviewResourceDetail.Rows[i].Cells[0].FindControl("ResourceTypeID")).SelectedValue);
+               //     details.NoOfResources = (float)Convert.ToDouble(((TextBox)GridviewResourceDetail.Rows[i].Cells[1].FindControl("NoOfResources")).Text.Trim());
+               //     details.SkillID = ((DropDownList)GridviewResourceDetail.Rows[i].Cells[2].FindControl("SkillID")).SelectedValue;
+               //     details.StartDate = Convert.ToDateTime(((TextBox)GridviewResourceDetail.Rows[i].Cells[3].FindControl("StartDate")).Text.Trim());
+               //     string endDate = ((TextBox)GridviewResourceDetail.Rows[i].Cells[4].FindControl("EndDate")).Text.Trim();
+               //     details.EndDate = DateTime.Parse(endDate);
 
-                    lstdetails.Add(details);
-                    resourceDemandDetails.CPT_ResourceDetails = lstdetails;
-                }
+               //     lstdetails.Add(details);
+               //     resourceDemandDetails.CPT_ResourceDetails = lstdetails;
+               // }
 
-                insertResourceDemand.Update(resourceDemandDetails);
-                Email(requestID,Convert.ToInt32(StatusMasterID.SelectedValue));
+               // insertResourceDemand.Update(resourceDemandDetails);
+               Email(requestID,Convert.ToInt32(StatusMasterID.SelectedValue));
 
                 Response.Redirect("ResourceDemand.aspx");
 

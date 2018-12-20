@@ -97,6 +97,32 @@ namespace businessLogic
             }
         }
 
+        public static void UpdateSkill(int EmpID, string primarySkill,string secondarySkill,string ternarySkill)
+        {
+            try
+            {
+                using (CPContext db = new CPContext())
+                {
+                    var query = (from p in db.CPT_ResourceMaster
+                                 where p.EmployeeMasterID == EmpID
+                                 select p).ToList();
+
+                    foreach (CPT_ResourceMaster item in query)
+                    {
+                        item.PRIMARY_SKILL= primarySkill;
+                        item.SECONDARY_SKILL = secondarySkill;
+                        item.TERTIARY_SKILL = ternarySkill;
+                    }
+                    db.SaveChanges();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+        }
+
         public static bool CheckEmpID(int id)
         {
             bool flag = false;

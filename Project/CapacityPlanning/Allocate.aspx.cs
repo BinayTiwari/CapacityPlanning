@@ -59,11 +59,11 @@ namespace CapacityPlanning
                     { 
                         if(statusID == 26)
                         {
-                            Email(lblRequestID.Text, "Approved");
+                            //Email(lblRequestID.Text, "Approved");
                         }
                         else
                         {
-                            Email(lblRequestID.Text, "Rejected");
+                            //Email(lblRequestID.Text, "Rejected");
                         }
                         
                     }

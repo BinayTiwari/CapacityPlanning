@@ -26,12 +26,12 @@ namespace businessLogic
                 SqlConnection SqlConn = new SqlConnection();
                 SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = "SELECT EmployeeMasterID,EmployeetName,StartDate,EndDate,DesignationName,AccountName,ProcessName,[dbo].[OnBench](EndDate) As OnBench," +
-                                   " [dbo].[ReportingManagerName](ReportingManagerID) As ReportingManager "+
+                                   " [dbo].[ReportingManagerName](ReportingManagerID) As ReportingManager,StatusVal "+
                                    " FROM(SELECT CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, ISNULL(CAST(CPT_AllocateResource.StartDate" +
                                    " AS VARCHAR(12)), '-') AS StartDate, ISNULL(CAST(CPT_AllocateResource.EndDate As VARCHAR(12)), '-') AS EndDate," +
                                    " ReportingManagerID, CPT_AllocateResource.EndDate As testdate," +
                                    " CPT_DesignationMaster.DesignationName, ISNULL(CPT_AccountMaster.AccountName, '-') AS AccountName," +
-                                   " ISNULL(CPT_ResourceDemand.ProcessName, '-') AS ProcessName  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON" +
+                                   " ISNULL(CPT_ResourceDemand.ProcessName, '-') AS ProcessName,IIF(Released=0 and isdeployed=0,'Allocated','Free') as StatusVal  FROM CPT_AccountMaster INNER JOIN  CPT_AllocateResource ON" +
                                    " CPT_AccountMaster.AccountMasterID = CPT_AllocateResource.AccountID INNER JOIN  CPT_ResourceDemand ON" +
                                    " CPT_AllocateResource.RequestID = CPT_ResourceDemand.RequestID   RIGHT OUTER JOIN CPT_ResourceMaster INNER JOIN" +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID ON" +
@@ -45,7 +45,7 @@ namespace businessLogic
                                    " UNION" +
                                    " SELECT CPT_ResourceMaster.EmployeeMasterID,CPT_ResourceMaster.EmployeetName, '-' AS StartDate, '-' AS EndDate," +
                                    " CPT_DesignationMaster.DesignationName,'-' AS AccountName,'-' AS ProcessName,'-' AS OnBench," +
-                                   " [dbo].[ReportingManagerName](CPT_ResourceMaster.ReportingManagerID) As ReportingManager FROM CPT_ResourceMaster" +
+                                   " [dbo].[ReportingManagerName](CPT_ResourceMaster.ReportingManagerID) As ReportingManager,'-' As StatusVal FROM CPT_ResourceMaster" +
                                    " INNER JOIN" +
                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID" +
                                    " WHERE CPT_ResourceMaster.EmployeeMasterID" +

@@ -101,10 +101,27 @@
                             </ItemTemplate>
 
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Skills *" HeaderStyle-CssClass="text-center">
+                        <asp:TemplateField  HeaderText="Primary Skills *" HeaderStyle-CssClass="text-center">
                             <ItemTemplate>
-                                <asp:DropDownList ID="SkillID" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSkill" runat="server" ControlToValidate="SkillID" ForeColor="Red" Display="Dynamic"
+                                <%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+                                <asp:DropDownList ID="ddlPrimary" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlPrimary" runat="server" ControlToValidate="ddlPrimary" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Secondry Skills *" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+                                <asp:DropDownList ID="ddlSecondry" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlSecondry" runat="server" ControlToValidate="ddlSecondry" ForeColor="Red" Display="Dynamic"
+                                    ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ternary Skills *" HeaderStyle-CssClass="text-center">
+                            <ItemTemplate>
+                                <%--                                <asp:ListBox ID="SkillID1" CssClass="form-control" AppendDataBoundItems="true" SelectionMode="Multiple" runat="server"></asp:ListBox>--%>
+                                <asp:DropDownList ID="ddlTernary" runat="server" CssClass="form-control" AppendDataBoundItems="true"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorddlTernary" runat="server" ControlToValidate="ddlTernary" ForeColor="Red" Display="Dynamic"
                                     ErrorMessage="Please select Skill !" InitialValue="0" SetFocusOnError="true"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -125,7 +142,7 @@
                                     Operator="LessThanEqual" Type="Date" ErrorMessage="Start date must be less than End date."></asp:CompareValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
+
                     </Columns>
                 </asp:GridView>
             </div>
@@ -140,7 +157,7 @@
                             <div class="col-sm-12">
                                 <div class="col-sm-2 pull-right">
                                     <asp:Button ID="cancel" runat="server" Style="float: right;" CssClass="btn btn-danger btn-md" Text="Cancel" CausesValidation="false" OnClick="UnDoButton_Click" />
-                                    
+
                                 </div>
                                 <div>
                                     <asp:Button ID="save" runat="server" CssClass="pull-right btn-success btn btn-default" Text="Update" OnClick="Update_Resource_Demand" />

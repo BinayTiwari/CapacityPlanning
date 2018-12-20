@@ -229,15 +229,16 @@ namespace businessLogic
 
         try
         {
+               
 
-            SqlConnection SqlConn = new SqlConnection();
+                   SqlConnection SqlConn = new SqlConnection();
             SqlConn.ConnectionString = GetConnectionString();
                 string SqlString = " SELECT CPT_ResourceMaster.EmployeeMasterID, CPT_ResourceMaster.EmployeetName, CPT_ResourceMaster.BaseLocation, CPT_ResourceMaster.Mobile, " +
-                                   " CPT_ResourceMaster.JoiningDate, CPT_RoleMaster.RoleName, CPT_DesignationMaster.DesignationName FROM            CPT_ResourceMaster INNER JOIN " +
-                                   " CPT_RoleMaster ON CPT_ResourceMaster.RolesID = CPT_RoleMaster.RoleMasterID INNER JOIN " +
-                                   " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID " +
-                                   " WHERE(CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,26)) AND ISDELETED =0 " +
-                                   " ORDER BY CPT_ResourceMaster.EmployeetName";
+                                    " CPT_ResourceMaster.JoiningDate, CPT_RoleMaster.RoleName, CPT_DesignationMaster.DesignationName FROM            CPT_ResourceMaster INNER JOIN " +
+                                    " CPT_RoleMaster ON CPT_ResourceMaster.RolesID = CPT_RoleMaster.RoleMasterID INNER JOIN " +
+                                    " CPT_DesignationMaster ON CPT_ResourceMaster.DesignationID = CPT_DesignationMaster.DesignationMasterID " +
+                                    " WHERE(CPT_ResourceMaster.RolesID NOT IN(1,4,5,8,15,26)) AND ISDELETED =0 " +
+                                    " ORDER BY CPT_ResourceMaster.EmployeetName";
                 using (SqlCommand SqlCom = new SqlCommand(SqlString, SqlConn))
                 {
                 SqlConn.Open();

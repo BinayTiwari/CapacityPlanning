@@ -18,10 +18,10 @@ namespace CapacityPlanning
 {
     public partial class Allocate_Resource : System.Web.UI.Page
     {
-        List<Int32> name = new List<Int32>();
+        List<int> name = new List<int>();
         static string StartDate;
         static string EndDate;
-        static string skillID;
+        static List<string> skillID = new List<string>();
         static int roleID;
         static int requestDetailID;
        
@@ -82,8 +82,14 @@ namespace CapacityPlanning
                     roleID = query[0].ResourceTypeID;
                     StartDate = query[0].StartDate.ToShortDateString();
                     EndDate = query[0].EndDate.ToShortDateString();
-                    skillID = query[0].SkillID;
-
+                    skillID = query[0].SkillID.Split(',').ToList();
+                    if(skillID.Count==1)
+                    {
+                        skillID.Clear();
+                        skillID.Add(query[0].SkillID);
+                        skillID.Add(query[0].SkillID);
+                        skillID.Add(query[0].SkillID);
+                    }
                 }
 
                 RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
@@ -193,9 +199,7 @@ namespace CapacityPlanning
                     string email = lst[0].Email;
                     rbl.Insert(details);
                     rbl.updateMap(empID);
-
                     sendConfirmation(name, email, RequesterEmailID, acnt, details.StartDate, details.EndDate);
-
                 }
                 Response.Redirect("ResourceMapping.aspx");
             }
@@ -239,25 +243,6 @@ namespace CapacityPlanning
             AllocateResourceBL rbl = new AllocateResourceBL();
             rbl.getFreeEmployee(rptSuggestions, roleID, EndDate, skillID, StartDate);
         }
-        
-        public void AccordingToRoleSearch()
-        {
-            int rolesID = 0;
-            CPT_ResourceDemand resourceDemandDetails = new CPT_ResourceDemand();
-            List<CPT_ResourceMaster> lstdetils = new List<CPT_ResourceMaster>();
-            lstdetils = (List<CPT_ResourceMaster>)Session["UserDetails"];
-            if (lstdetils[0].RolesID == 20)
-            {
-                rolesID = 14;
-            }
-            else if (lstdetils[0].RolesID == 25)
-            {
-                rolesID = 13;
-            }
-            AllocateResourceBL rbl = new AllocateResourceBL();
-            //rbl.getEmployeeByRole(rptSuggestions, rolesID, EndDate, skillID, StartDate);
-        }
-
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try

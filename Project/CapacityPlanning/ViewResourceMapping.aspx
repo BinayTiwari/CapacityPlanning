@@ -98,7 +98,7 @@
                         <tr class="odd gradeX">
                             <td><%#Eval("RoleName")%></td>
                             <td><%#Eval("NoOfResources")%> </td>
-                            <td><%#Eval("SkillsName")%></td>
+                            <td><%#Eval("Skills")%></td>
                             <td><%#Eval("StartDate", "{0:d}") %></td>
                             <td><%#Eval("EndDate", "{0:d}")%></td>
                         </tr>
@@ -121,7 +121,7 @@
                     <th>Resource ID</th>
                     <th>Name</th>
                     <th>Type</th>
-                    <th>Skill</th>
+                    <th>Skills</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Allocated</th>

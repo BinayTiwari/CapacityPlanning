@@ -55,7 +55,7 @@
                                             <td><%#Eval("EmployeetName")%></td>
                                            
                                             <td class="center"><a href="ViewResourceMapping.aspx?RequestId=<%#Eval("RequestId")%>">
-                                                <ul><i class="fa fa-fw" aria-hidden="true" title="View"></i></ul></a></td>
+                                                <ul><i class="fa fa-fw"  aria-hidden="true" title="View"></i></ul></a></td>
                                             <td>
                                                
                                                 <asp:Button ID="btnMap" Class="btn btn-success btn-md" runat="server" Text="Map"
